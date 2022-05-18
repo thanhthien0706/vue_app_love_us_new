@@ -1,0 +1,26 @@
+@charset "UTF-8";
+@import "./variables";
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    right: $rightFadeStart;
+  }
+  to {
+    opacity: 1;
+    right: $rightFadeEnd;
+  }
+}
+
+@keyframes fade-out {
+}

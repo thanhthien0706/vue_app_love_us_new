@@ -1,0 +1,43 @@
+/* FONT  */
+$font-size-16: 16;
+
+/**
+COLOR
+*/
+$red: red;
+$camarone: #006600;
+$mine-shaft: #333333;
+$mine-shaft-50: rgb(51, 51, 51, 0.5);
+$mine-shaft-40: rgb(51, 51, 51, 0.4);
+$shark: #1c1f25;
+$shark-12: rgb(29, 32, 38, 0.12);
+$white: #ffffff;
+$black: #000000;
+$gray: rgb(232, 232, 232);
+$gray-30: rgb(232, 232, 232, 1);
+$white-smoke: rgb(245, 245, 245);
+$bg-main: #cecece;
+$bg-main-30: rgb(206, 206, 206, 0.3);
+$green-main: #42c636;
+
+// EDF4FB
+
+/*SIZE RESPONSIVE*/
+$width-min-mobile: 320px;
+$width-mobile: 480px;
+$width-tablet: 768px;
+$width-desktop: 992px;
+$width-large-desktop: 1200px;
+$width-medium-desktop: 1300px;
+$width-mid-desktop: 1301px;
+$width-large-wrap: 1450px;
+
+$width-left: 180px;
+$width-right: 300px;
+
+/**
+    KEYFRAMES
+*/
+
+$rightFadeStart: 20%;
+$rightFadeEnd: 7%;

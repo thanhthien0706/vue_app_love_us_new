@@ -10,11 +10,14 @@ const en = {
   login: "Login",
   register: "Register",
   search: "Search",
-  go: "Đi thôi!",
+  go: "Go!",
   password: "Password",
   noAccount: "No account ?",
   loginWith: "Login with",
   campaign: "Campaigns",
+  textBegin: "MESSAGE WE WANT TO SEND TO YOU",
+  nextPage: "Skip",
+  back: "Back",
 };
 
 export default en;

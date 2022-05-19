@@ -10,11 +10,14 @@ const vn = {
   login: "Đăng nhập",
   register: "Đăng kí",
   search: "Tìm kiếm",
-  go: "Đi thôi",
+  go: "Đi thôi!",
   password: "Mật khẩu",
   noAccount: "Chưa có tài khoản ?",
   loginWith: "Đăng nhập với",
   campaign: "Chiến dịch",
+  textBegin: "THÔNG ĐIỆP CHÚNG TÔI MUỐN GỬI ĐẾN BẠN",
+  nextPage: "Bỏ qua",
+  back: "Quay lại",
 };
 
 export default vn;

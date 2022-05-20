@@ -16,6 +16,7 @@
       <div class="boxNextPage">
         <div
           class="boxNextPage__inner animate__animated animate__fadeInBottomRight"
+          @click="nextToPageHome"
         >
           <p>Tới trang chủ</p>
           <fa :icon="['fas', 'arrow-right']" class="ic_arrow_right_skip" />
@@ -27,6 +28,7 @@
 
 <script>
 import "particles.js";
+import handleBegin from "@/utils/handleBegin";
 
 export default {
   name: "BeginPromise",
@@ -44,6 +46,9 @@ export default {
   },
   mounted() {
     this.initParticles();
+    // if (!handleBegin.getItem) {
+    //   console.log("tim duoc tren local" + handleBegin.getItem);
+    // }
   },
   created() {
     setTimeout(this.initTextThank, this.newTextDelay + 200);
@@ -70,6 +75,18 @@ export default {
       } else {
         this.handleSoundTypeText(false);
       }
+    },
+    handleSoundTypeText(status) {
+      if (status) {
+        this.$refs.soundTypeText.play();
+      } else {
+        this.$refs.soundTypeText.pause();
+      }
+    },
+    nextToPageHome() {
+      this.handleSoundTypeText(false);
+      handleBegin.setBegin(true);
+      this.$router.push({ name: "home" });
     },
     initParticles() {
       window.particlesJS("particles-js", {
@@ -177,13 +194,6 @@ export default {
         },
         retina_detect: true,
       });
-    },
-    handleSoundTypeText(status) {
-      if (status) {
-        this.$refs.soundTypeText.play();
-      } else {
-        this.$refs.soundTypeText.pause();
-      }
     },
   },
 };

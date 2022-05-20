@@ -21,6 +21,7 @@
 import BeginFirst from "@/components/BeginView/BeginFirst.vue";
 import BeginVideo from "@/components/BeginView/BeginVideo.vue";
 import BeginPromise from "@/components/BeginView/BeginPromise.vue";
+import handleBegin from "@/utils/handleBegin";
 
 export default {
   name: "BeginStartView",
@@ -31,6 +32,12 @@ export default {
       isShowVideo: false,
       isShowPromise: false,
     };
+  },
+  created() {
+    if (handleBegin.getBegin()) {
+      // console.log(handleBegin.getBegin());
+      this.$router.push({ name: "home" });
+    }
   },
   methods: {
     handlePlayVideo() {

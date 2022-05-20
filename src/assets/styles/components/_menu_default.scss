@@ -1,4 +1,7 @@
 .boxMenuMain {
+  display: flex;
+  flex-direction: column;
+
   .item__header {
     &--logo {
       width: $width-left;
@@ -245,6 +248,7 @@
     flex-direction: column;
     justify-content: space-between;
     margin-top: 40px;
+    height: 100%;
 
     .list__menu {
       .item__menu {
@@ -339,6 +343,17 @@
         .text__logout {
           margin-left: 10px;
           @include FontSize(16);
+        }
+      }
+      .box__show_auth {
+        .link_auth {
+          font-weight: 600;
+          @include FontSize(14);
+          color: $mine-shaft;
+          transition: all 0.2s linear;
+          &:hover {
+            color: $green-main;
+          }
         }
       }
     }

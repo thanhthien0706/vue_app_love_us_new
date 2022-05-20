@@ -46,9 +46,9 @@
     .content__inner {
       &__left {
         width: $width-left;
-        position: sticky;
-        top: 30px;
-        left: 0;
+        // position: sticky;
+        // top: 30px;
+        // left: 0;
       }
 
       &__middle {
@@ -59,9 +59,9 @@
 
       &__right {
         width: $width-right;
-        position: sticky;
-        top: 30px;
-        right: 0;
+        // position: sticky;
+        // top: 30px;
+        // right: 0;
 
         @include MaxWidth(1496px) {
           display: none;

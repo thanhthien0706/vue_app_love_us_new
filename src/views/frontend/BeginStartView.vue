@@ -13,7 +13,11 @@
       @onPlayVideo="handlePlayVideo"
       @onEmitNextPromise="handleNextPromise"
     />
-    <BeginPromise v-if="isShowPromise" :isShowPromise="isShowPromise" />
+    <BeginPromise
+      v-if="isShowPromise"
+      @onBackPage="handleBackPage"
+      :isShowPromise="isShowPromise"
+    />
   </div>
 </template>
 

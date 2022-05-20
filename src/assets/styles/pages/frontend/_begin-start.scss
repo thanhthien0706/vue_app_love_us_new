@@ -173,6 +173,14 @@
               @include FontSize(30);
               color: #ffffff;
               margin-bottom: 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              line-height: 1.4;
+              .textMessage {
+                color: #42c636;
+                @include FontSize(25);
+              }
             }
             .boxBtnPlay {
               position: relative;
@@ -265,6 +273,26 @@
               background-color: #42c636;
               box-shadow: 0 0 20px 12px rgba(66, 198, 54, 0.5);
             }
+          }
+        }
+      }
+      .boxBackPage {
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
+        &__inner {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          color: #ffffff;
+          transition: all 0.2s linear;
+          cursor: pointer;
+
+          &:hover {
+            color: #42c636;
+          }
+          .ic_rotate_left_back {
+            margin-right: 6px;
           }
         }
       }

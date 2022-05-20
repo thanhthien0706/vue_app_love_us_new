@@ -15,9 +15,11 @@ const en = {
   noAccount: "No account ?",
   loginWith: "Login with",
   campaign: "Campaigns",
-  textBegin: "MESSAGE WE WANT TO SEND TO YOU",
+  textBegin: " WE WANT TO SEND TO YOU",
   nextPage: "Skip",
   back: "Back",
+  setting: "Setting",
+  textMessage: "MESSAGE",
 };
 
 export default en;

@@ -3,8 +3,24 @@
 <template>
   <div id="BeginPromise">
     <div id="particles-js">
-      ``
-      <p>chao banhi</p>
+      <div class="boxInner">
+        <p class="textThankyou">{{ typeValueThank }}</p>
+        <p class="textPromise">{{ typeValuePromise }}</p>
+        <audio ref="soundTypeText">
+          <source src="@/assets/sound/go_van_ban.mp3" type="audio/mp3" />
+        </audio>
+        <div class="boxButton">
+          <button class="btnLeft">Tôi đống ý</button>
+        </div>
+      </div>
+      <div class="boxNextPage">
+        <div
+          class="boxNextPage__inner animate__animated animate__fadeInBottomRight"
+        >
+          <p>Tới trang chủ</p>
+          <fa :icon="['fas', 'arrow-right']" class="ic_arrow_right_skip" />
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -15,10 +31,46 @@ import "particles.js";
 export default {
   name: "BeginPromise",
   props: ["isShowPromise"],
+  data() {
+    return {
+      textPromise:
+        "Trái đất là của chúng ta, bạn và tôi cùng bảo vệ hành tinh của chúng ta nhé!",
+      textThankyout: "Cảm ơn bạn lắng nghe thông điệp của chúng tôi!",
+      startText: 0,
+      typeValueThank: "",
+      typeValuePromise: "",
+      newTextDelay: 50,
+    };
+  },
   mounted() {
     this.initParticles();
   },
+  created() {
+    setTimeout(this.initTextThank, this.newTextDelay + 200);
+  },
   methods: {
+    initTextThank() {
+      if (this.startText < this.textThankyout.length) {
+        this.typeValueThank += this.textThankyout.charAt(this.startText);
+        this.startText++;
+        setTimeout(this.initTextThank, this.newTextDelay);
+        this.handleSoundTypeText(true);
+      } else {
+        this.startText = 0;
+        this.handleSoundTypeText(false);
+        this.initTextPromise();
+      }
+    },
+    initTextPromise() {
+      if (this.startText < this.textPromise.length) {
+        this.typeValuePromise += this.textPromise.charAt(this.startText);
+        this.startText++;
+        setTimeout(this.initTextPromise, this.newTextDelay);
+        this.handleSoundTypeText(true);
+      } else {
+        this.handleSoundTypeText(false);
+      }
+    },
     initParticles() {
       window.particlesJS("particles-js", {
         particles: {
@@ -125,6 +177,13 @@ export default {
         },
         retina_detect: true,
       });
+    },
+    handleSoundTypeText(status) {
+      if (status) {
+        this.$refs.soundTypeText.play();
+      } else {
+        this.$refs.soundTypeText.pause();
+      }
     },
   },
 };

@@ -13,6 +13,7 @@
       <video class="video_begin" ref="videoNatural" @ended="onEventVideoFinish">
         <source src="@/assets/video/begin_video.mp4" type="video/mp4" />
       </video>
+
       <div
         class="boxOverPlayOnVideo"
         :style="[
@@ -77,6 +78,7 @@ export default {
     },
     onEventVideoFinish() {
       this.isPlayVideo = !this.isPlayVideo;
+      this.onEmitNextPromise();
     },
     onHandleVideo() {
       this.isPlayVideo = !this.isPlayVideo;

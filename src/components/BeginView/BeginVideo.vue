@@ -10,10 +10,16 @@
     leave-active-class="animate__animated animate__fadeOut"
   >
     <div id="BeginVideo" v-if="isShowVideo">
-      <video class="video_begin" ref="videoNatural">
+      <video class="video_begin" ref="videoNatural" @ended="onEventVideoFinish">
         <source src="@/assets/video/begin_video.mp4" type="video/mp4" />
       </video>
-      <div class="boxOverPlayOnVideo">
+
+      <div
+        class="boxOverPlayOnVideo"
+        :style="[
+          isShowButtonPlay ? { backgroundColor: 'rgba(0, 0, 0, 0.5)' } : '',
+        ]"
+      >
         <div class="boxOverPlayOnVideo__inner" @click.self="onHandleVideo">
           <Transition
             enter-active-class="animate__animated animate__fadeIn"
@@ -41,6 +47,7 @@
           <div class="boxNextPage">
             <div
               class="boxNextPage__inner animate__animated animate__fadeInBottomRight"
+              @click="onEmitNextPromise"
             >
               <p>{{ $t("nextPage") }}</p>
               <fa :icon="['fas', 'arrow-right']" class="ic_arrow_right_skip" />
@@ -69,6 +76,10 @@ export default {
     onInitBegin() {
       this.$refs.videoNatural.play();
     },
+    onEventVideoFinish() {
+      this.isPlayVideo = !this.isPlayVideo;
+      this.onEmitNextPromise();
+    },
     onHandleVideo() {
       this.isPlayVideo = !this.isPlayVideo;
     },
@@ -77,6 +88,9 @@ export default {
     },
     onPlayVideo() {
       this.isPlayVideo = !this.isPlayVideo;
+    },
+    onEmitNextPromise() {
+      this.$emit("onEmitNextPromise");
     },
   },
   watch: {

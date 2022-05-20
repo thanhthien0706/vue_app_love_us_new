@@ -45,6 +45,7 @@
           <div class="boxNextPage">
             <div
               class="boxNextPage__inner animate__animated animate__fadeInBottomRight"
+              @click="onEmitNextPromise"
             >
               <p>{{ $t("nextPage") }}</p>
               <fa :icon="['fas', 'arrow-right']" class="ic_arrow_right_skip" />
@@ -63,6 +64,9 @@ export default {
   methods: {
     onPlayVideo() {
       this.$emit("onPlayVideo");
+    },
+    onEmitNextPromise() {
+      this.$emit("onEmitNextPromise");
     },
   },
 };

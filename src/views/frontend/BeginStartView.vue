@@ -6,32 +6,47 @@
       v-if="isShowVideo"
       :isShowVideo="isShowVideo"
       @onBackPage="handleBackPage"
+      @onEmitNextPromise="handleNextPromise"
     />
-    <BeginFirst :isShowFirst="isShowFirst" @onPlayVideo="handlePlayVideo" />
+    <BeginFirst
+      :isShowFirst="isShowFirst"
+      @onPlayVideo="handlePlayVideo"
+      @onEmitNextPromise="handleNextPromise"
+    />
+    <BeginPromise v-if="isShowPromise" :isShowPromise="isShowPromise" />
   </div>
 </template>
 
 <script>
 import BeginFirst from "@/components/BeginView/BeginFirst.vue";
 import BeginVideo from "@/components/BeginView/BeginVideo.vue";
+import BeginPromise from "@/components/BeginView/BeginPromise.vue";
 
 export default {
   name: "BeginStartView",
-  components: { BeginFirst, BeginVideo },
+  components: { BeginFirst, BeginVideo, BeginPromise },
   data() {
     return {
       isShowFirst: true,
       isShowVideo: false,
+      isShowPromise: false,
     };
   },
   methods: {
     handlePlayVideo() {
       this.isShowVideo = true;
       this.isShowFirst = false;
+      this.isShowPromise = false;
     },
     handleBackPage() {
       this.isShowVideo = false;
       this.isShowFirst = true;
+      this.isShowPromise = false;
+    },
+    handleNextPromise() {
+      this.isShowVideo = false;
+      this.isShowFirst = false;
+      this.isShowPromise = true;
     },
   },
 };

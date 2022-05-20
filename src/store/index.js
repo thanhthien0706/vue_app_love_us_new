@@ -184,7 +184,7 @@ export default createStore({
     dataBlogs: [
       {
         id: 0,
-        link: "test",
+        link: "home",
         name: "Finding your niche as a hihi haha hihi hahahahahah",
         description:
           "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
@@ -195,7 +195,7 @@ export default createStore({
 
       {
         id: 1,
-        link: "test",
+        link: "home",
         name: "Finding your niche as a hihi haha hihi hahahahahah",
         description:
           "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
@@ -206,7 +206,7 @@ export default createStore({
 
       {
         id: 2,
-        link: "test",
+        link: "home",
         name: "Finding your niche as a hihi haha hihi hahahahahah",
         description:
           "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
@@ -217,7 +217,7 @@ export default createStore({
 
       {
         id: 3,
-        link: "test",
+        link: "home",
         name: "Finding your niche as a hihi haha hihi hahahahahah",
         description:
           "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
@@ -228,7 +228,7 @@ export default createStore({
 
       {
         id: 4,
-        link: "test",
+        link: "home",
         name: "Finding your niche as a hihi haha hihi hahahahahah",
         description:
           "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",

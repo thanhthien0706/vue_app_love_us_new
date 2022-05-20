@@ -61,6 +61,16 @@
           />
           <p class="text__logout">{{ $t("signout") }}</p>
         </div>
+
+        <div class="box__show_auth d-flex align-items-center" v-else>
+          <router-link :to="{ name: 'login' }" class="link_auth">{{
+            $t("login")
+          }}</router-link>
+          /
+          <router-link :to="{ name: 'register' }" class="link_auth">
+            {{ $t("register") }}
+          </router-link>
+        </div>
       </div>
     </nav>
   </div>
@@ -121,6 +131,12 @@ export default {
           link: "convey",
           image: "group.png",
           name: "group",
+        },
+        {
+          id: 2,
+          link: "convey",
+          image: "settings.png",
+          name: "setting",
         },
       ],
     };

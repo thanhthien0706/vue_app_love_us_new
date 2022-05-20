@@ -10,9 +10,20 @@
           <source src="@/assets/sound/go_van_ban.mp3" type="audio/mp3" />
         </audio>
         <div class="boxButton">
-          <button class="btnLeft">Tôi đống ý</button>
+          <button class="btnLeft" @click="onNextOke">Tôi đống ý</button>
         </div>
       </div>
+
+      <div class="boxBackPage">
+        <div
+          class="boxBackPage__inner animate__animated animate__fadeInBottomLeft"
+          @click="onBackPage"
+        >
+          <fa :icon="['fas', 'rotate-left']" class="ic_rotate_left_back" />
+          <p>{{ $t("back") }}</p>
+        </div>
+      </div>
+
       <div class="boxNextPage">
         <div
           class="boxNextPage__inner animate__animated animate__fadeInBottomRight"
@@ -36,7 +47,7 @@ export default {
   data() {
     return {
       textPromise:
-        "Trái đất là của chúng ta, bạn và tôi cùng bảo vệ hành tinh của chúng ta nhé!",
+        "Hãy tham gia với chúng tôi để tìm kiếm nhiều trường trình bảo vệ môi trường hơn nhé!",
       textThankyout: "Cảm ơn bạn lắng nghe thông điệp của chúng tôi!",
       startText: 0,
       typeValueThank: "",
@@ -88,6 +99,13 @@ export default {
       handleBegin.setBegin(true);
       this.$router.push({ name: "home" });
     },
+    onNextOke() {
+      handleBegin.setBegin(true);
+      this.$router.push({ name: "login" });
+    },
+    onBackPage() {
+      this.$emit("onBackPage");
+    },
     initParticles() {
       window.particlesJS("particles-js", {
         particles: {
@@ -99,13 +117,13 @@ export default {
             },
           },
           color: {
-            value: "#ffffff",
+            value: "#42c636",
           },
           shape: {
             type: "circle",
             stroke: {
               width: 0,
-              color: "#000000",
+              color: "#42c636",
             },
             polygon: {
               nb_sides: 5,
@@ -134,7 +152,7 @@ export default {
           line_linked: {
             enable: true,
             distance: 150,
-            color: "#ffffff",
+            color: "#42c636",
             opacity: 0.4,
             width: 1,
           },

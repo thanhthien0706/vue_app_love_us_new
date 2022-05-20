@@ -34,7 +34,10 @@
               class="boxContent animate__animated animate__fadeInUp"
               @click="onPlayVideo"
             >
-              <p class="textContent">{{ $t("textBegin") }}</p>
+              <p class="textContent">
+                <span class="textMessage">{{ $t("textMessage") }} </span>
+                {{ $t("textBegin") }}
+              </p>
               <div class="boxBtnPlay">
                 <fa :icon="['fas', 'play']" class="btnPlay" />
                 <div class="overLayButtonPlay"></div>

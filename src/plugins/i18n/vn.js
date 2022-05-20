@@ -15,9 +15,11 @@ const vn = {
   noAccount: "Chưa có tài khoản ?",
   loginWith: "Đăng nhập với",
   campaign: "Chiến dịch",
-  textBegin: "THÔNG ĐIỆP CHÚNG TÔI MUỐN GỬI ĐẾN BẠN",
+  textBegin: " CHÚNG TÔI MUỐN GỬI ĐẾN BẠN",
   nextPage: "Bỏ qua",
   back: "Quay lại",
+  setting: "Cài đặt",
+  textMessage: "THÔNG ĐIỆP",
 };
 
 export default vn;

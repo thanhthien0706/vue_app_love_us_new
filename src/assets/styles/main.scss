@@ -9,20 +9,19 @@
 // ----------------------------------------------------------------------
 // Conponent
 // ----------------------------------------------------------------------
-// @import "./components/frontend/header_main";
-// @import "./components/frontend/menu_default";
-// @import "./components/frontend/right_default";
+@import "./components/menu_default";
+@import "./components/right_default";
 
 // ----------------------------------------------------------------------
 // Layout
 // ----------------------------------------------------------------------
-// @import "./layouts/frontend/default";
+@import "./layouts/default-frontend-1";
 @import "./layouts/authen-default";
 
 // ----------------------------------------------------------------------
 // Pages
 // ----------------------------------------------------------------------
-// @import "./pages/home_page";
+@import "./pages/frontend//home_page";
 // @import "./pages/actives";
 @import "./pages/auth/login";
 @import "./pages/auth/register";

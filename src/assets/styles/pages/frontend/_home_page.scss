@@ -1,0 +1,115 @@
+#HomePage {
+  width: 100%;
+  /*
+    STYLE SLIDE MAIN HOME START
+    */
+  .sc_slide_main {
+    // height: 490px;
+
+    .slide_main {
+      height: 100%;
+
+      .swiper {
+        .swiper-pagination {
+          bottom: 30px;
+          .swiper-pagination-bullet {
+            @include WidthHeight(15px, 15px);
+            background-color: rgba(51, 51, 51, 0.7);
+
+            &.swiper-pagination-bullet-active-main {
+              background-color: #42c636;
+            }
+          }
+        }
+      }
+
+      .slide__item {
+        border-radius: 16px;
+        background-color: $bg-main-30;
+        padding: 30px 60px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 400px;
+
+        .box__slide__left {
+          display: flex;
+          flex-direction: column;
+          align-items: start;
+          color: $mine-shaft;
+
+          .item__title {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+
+            .name__animal {
+              font-weight: 700;
+              @include FontSize(35);
+              margin-bottom: 12px;
+            }
+
+            .text__resources {
+              padding: 0 65px;
+              position: relative;
+              font-weight: 700;
+              color: rgba(129, 125, 125, 0.7);
+              @include FontSize(18);
+
+              &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                background: rgba(129, 125, 125, 0.7);
+                @include WidthHeight(55px, 3px);
+              }
+            }
+          }
+
+          .text__body {
+            margin: 30px 0;
+            font-style: italic;
+            font-weight: 400;
+            @include FontSize(16);
+            line-height: 22px;
+            color: rgba(51, 51, 51, 0.4);
+          }
+
+          .btn_inf {
+            display: inline-block;
+            padding: 12px 46px;
+            border: 3px solid #42c636;
+            @include BorderRadius(16px);
+            background: none;
+            font-weight: 500;
+            @include FontSize(16);
+            transition: all 0.2s linear;
+            color: #333;
+
+            &:hover {
+              background: #42c636;
+              color: #fff;
+            }
+          }
+        }
+
+        .box__slide__right {
+          img {
+            // @include WidthHeight(586px, 305px);
+            @include WidthHeight(100%, 100%);
+            object-fit: contain;
+
+            @include MaxWidth(1812px) {
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /*
+        STYLE SLIDE MAIN HOME END
+        */
+}

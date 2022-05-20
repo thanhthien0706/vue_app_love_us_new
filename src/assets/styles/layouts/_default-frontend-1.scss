@@ -1,0 +1,72 @@
+.default__layout {
+  @include WidthHeight(100%, 100%);
+  display: flex;
+  flex-direction: column;
+
+  #bg__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+
+    &:after {
+      content: "";
+      position: absolute;
+      @include WidthHeight(290px, 435px);
+      background: linear-gradient(180deg, #00ff00 0%, #99ffcc 100%);
+      background-attachment: fixed;
+      filter: blur(80px);
+      transform: matrix(-0.96, -0.26, 0.29, -0.96, 0, 0);
+      right: 15%;
+      top: 25%;
+      z-index: -1;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      @include WidthHeight(220px, 400px);
+      background: linear-gradient(180deg, #00ff00 0%, #99ffcc 100%);
+      background-attachment: fixed;
+      filter: blur(80px);
+      transform: rotate(76.66deg);
+      left: 280px;
+      top: 20%;
+      z-index: -1;
+    }
+  }
+
+  .content__main {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    @include ContainerCustom(95%);
+    .content__inner {
+      &__left {
+        width: $width-left;
+        position: sticky;
+        top: 30px;
+        left: 0;
+      }
+
+      &__middle {
+        width: calc(100% - $width-left - $width-right);
+        flex: 1;
+        margin-top: 30px;
+      }
+
+      &__right {
+        width: $width-right;
+        position: sticky;
+        top: 30px;
+        right: 0;
+
+        @include MaxWidth(1496px) {
+          display: none;
+        }
+      }
+    }
+  }
+}

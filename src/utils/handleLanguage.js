@@ -7,7 +7,7 @@ const handleLanguage = {
   },
 
   getLanguage() {
-    return localStorage.getItem("locale") || "vn";
+    return localStorage.getItem("locale") || "vi";
   },
 };
 

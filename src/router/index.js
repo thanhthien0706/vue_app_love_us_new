@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import checkBeginStart from "@/middleware/checkBeginStart";
 
 const routes = [
   /**
@@ -38,6 +39,15 @@ const routes = [
     },
     component: () => import("@/views/frontend/BeginStartView"),
   },
+  {
+    path: "/home",
+    name: "home",
+    meta: {
+      title: "Trang chu",
+      middleware: [checkBeginStart],
+    },
+    component: () => import("@/views/frontend/HomeView"),
+  },
 ];
 
 const router = createRouter({
@@ -61,9 +71,6 @@ router.afterEach((from) => {
   document.title = from.meta.title || "Us love";
 });
 
-/**
- * MIDDLEWARE ROUTER
- */
 router.beforeEach((to, from, next) => {
   if (to.meta.middleware) {
     const middleware = Array.isArray(to.meta.middleware)

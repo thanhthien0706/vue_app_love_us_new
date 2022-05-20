@@ -17,6 +17,7 @@
       right: 0;
       bottom: 0;
       z-index: 2;
+      transition: all 0.2s linear;
       @include WidthHeight(100%, 100%);
 
       &__inner {
@@ -216,6 +217,30 @@
           }
         }
       }
+    }
+  }
+
+  #BeginPromise {
+    position: relative;
+    #particles-js {
+      background: black;
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      @include WidthHeight(100%, 100%);
+      p {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+      }
+    }
+    .boxContentMain {
+      // position: fixed;
+      // right: 0;
+      // bottom: 0;
+      // @include WidthHeight(100%, 100%);
+      // z-index: 1;
+      color: #42c636;
     }
   }
 }

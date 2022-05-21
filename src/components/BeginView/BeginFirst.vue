@@ -4,7 +4,11 @@
   <Transition leave-active-class="animate__animated animate__fadeOut">
     <div id="BeginFirst" v-if="isShowFirst">
       <div class="boxBeginMain__image">
-        <div
+        <video autoplay muted loop="true" class="videoSpace">
+          <source src="@/assets/video/video_space.mp4" type="video/mp4" />
+        </video>
+        <!-- <img src="@/assets/images/page/img_earth_from_space_2.jpg" alt="" /> -->
+        <!-- <div
           class="boxImageInner boxImageLeft animate__animated animate__fadeInLeft"
         >
           <img src="@/assets/styles/begin/image_begin_1.jpg" alt="" />
@@ -13,7 +17,7 @@
           class="boxImageInner boxImageRight animate__animated animate__fadeInRight"
         >
           <img src="@/assets/styles/begin/image_begin_2.png" alt="" />
-        </div>
+        </div> -->
       </div>
 
       <div class="boxOverlayMain">

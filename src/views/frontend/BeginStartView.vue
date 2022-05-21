@@ -37,7 +37,7 @@ export default {
       isShowPromise: false,
     };
   },
-  created() {
+  beforeCreate() {
     if (handleBegin.getBegin()) {
       // console.log(handleBegin.getBegin());
       this.$router.push({ name: "home" });

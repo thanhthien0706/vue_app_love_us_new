@@ -29,8 +29,7 @@
       position: absolute;
       @include WidthHeight(220px, 400px);
       background: linear-gradient(180deg, #00ff00 0%, #99ffcc 100%);
-      background-attachment: fixed;
-      filter: blur(80px);
+      filter: blur(100px);
       transform: rotate(76.66deg);
       left: 280px;
       top: 20%;

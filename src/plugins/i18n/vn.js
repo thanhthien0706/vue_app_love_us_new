@@ -19,7 +19,7 @@ const vn = {
   nextPage: "Bỏ qua",
   back: "Quay lại",
   setting: "Cài đặt",
-  textMessage: "THÔNG ĐIỆP",
+  textMessage: "THÔNG ĐIỆP TỪ VŨ TRỤ",
   textCreateCampaign: "Tạo chiến dịch",
 };
 

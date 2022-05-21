@@ -11,7 +11,7 @@
   >
     <div id="BeginVideo" v-if="isShowVideo">
       <video class="video_begin" ref="videoNatural" @ended="onEventVideoFinish">
-        <source src="@/assets/video/begin_video.mp4" type="video/mp4" />
+        <source src="@/assets/video/bao_ve_dong_vat.mp4" type="video/mp4" />
       </video>
 
       <div

@@ -20,6 +20,7 @@ const en = {
   back: "Back",
   setting: "Setting",
   textMessage: "MESSAGE",
+  textCreateCampaign: "Create a campaign",
 };
 
 export default en;

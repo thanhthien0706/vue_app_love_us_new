@@ -47,7 +47,7 @@ export default {
   data() {
     return {
       textPromise:
-        "Hãy tham gia với chúng tôi để tìm kiếm nhiều trường trình bảo vệ môi trường hơn nhé!",
+        "Hãy tham gia với chúng tôi để tìm kiếm nhiều chương trình bảo vệ môi trường hơn nhé!",
       textThankyout: "Cảm ơn bạn lắng nghe thông điệp của chúng tôi!",
       startText: 0,
       typeValueThank: "",

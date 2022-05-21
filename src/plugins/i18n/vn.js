@@ -20,6 +20,7 @@ const vn = {
   back: "Quay lại",
   setting: "Cài đặt",
   textMessage: "THÔNG ĐIỆP",
+  textCreateCampaign: "Tạo chiến dịch",
 };
 
 export default vn;

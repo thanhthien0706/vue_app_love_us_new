@@ -43,10 +43,19 @@ const routes = [
     path: "/home",
     name: "home",
     meta: {
-      title: "Trang chu",
+      title: "Trang chủ",
       middleware: [checkBeginStart],
     },
     component: () => import("@/views/frontend/HomeView"),
+  },
+  {
+    path: "/",
+    name: "actives",
+    meta: {
+      title: "Hoạt động",
+      middleware: [checkBeginStart],
+    },
+    component: () => import("@/views/frontend/ActivityView.vue"),
   },
 ];
 

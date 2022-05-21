@@ -21,6 +21,7 @@
         <BlogHome />
       </section>
     </div>
+    <PopupCampaign />
   </DefaultFrontend_1>
 </template>
 
@@ -31,6 +32,7 @@ import CountHome from "@/components/frontend/HomeCount.vue";
 import CharityOrganization from "@/components/frontend/HomeCharityOrganization.vue";
 import Campaigns from "@/components/frontend/HomeCampaigns.vue";
 import BlogHome from "@/components/frontend/HomeBlog.vue";
+import PopupCampaign from "@/components/frontend/HomeItemPopupCampaign.vue";
 
 export default {
   name: "HomeView",
@@ -41,6 +43,7 @@ export default {
     CharityOrganization,
     Campaigns,
     BlogHome,
+    PopupCampaign,
   },
 };
 </script>

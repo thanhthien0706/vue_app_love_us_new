@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+#ActivesPage {
+  /*
+    HEADER HOME START
+    */
+  #box__header__ac {
+    .img__bird__header {
+      @include WidthHeight(100%, auto);
+      object-fit: contain;
+    }
+
+    .box__header__ac__inner__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .title {
+        @include FontSize(34);
+        font-family: "Lobster", cursive;
+        margin-bottom: 40px;
+
+        span {
+          color: #42c636;
+        }
+      }
+
+      .slogan {
+        color: rgba(51, 51, 51, 0.8);
+        margin-bottom: 40px;
+        line-height: 1.4;
+      }
+
+      .speech {
+        color: #333333;
+        font-weight: bold;
+        @include FontSize(20);
+        margin-bottom: 40px;
+      }
+
+      .btn__header__box {
+        background-color: #42c636;
+        @include BorderRadius(36px);
+        position: relative;
+        overflow: hidden;
+        @include WidthHeight(240px, 50px);
+        transition: all 0.2s linear;
+        cursor: pointer;
+
+        .icon__arrow__right {
+          position: absolute;
+          color: #fff;
+          top: 50%;
+          right: 20%;
+          transform: translate(-50%, -50%);
+          opacity: 0;
+          z-index: 2;
+          transition: all 0.2s linear;
+          @include FontSize(22);
+        }
+
+        p {
+          color: #fff;
+          position: absolute;
+          z-index: 2;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          white-space: nowrap;
+          transition: all 0.2s linear;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: #7af96f;
+          @include BorderRadius(36px);
+          top: 0;
+          right: 0;
+          z-index: 1;
+          transition: all 0.2s linear;
+        }
+
+        &:hover {
+          width: 260px;
+          .icon__arrow__right {
+            $rightFadeEnd: 0%;
+            animation: fade-in 0.3s linear forwards;
+          }
+          p {
+            left: 36%;
+          }
+          &::after {
+            width: 30%;
+          }
+        }
+      }
+    }
+  }
+  /*
+    HEADER HOME END
+    */
+}

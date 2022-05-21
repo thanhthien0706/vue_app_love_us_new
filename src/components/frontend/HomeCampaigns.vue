@@ -38,8 +38,6 @@
       </swiper>
     </div>
   </div>
-
-  <PopupCampaign />
 </template>
 
 <script>
@@ -49,7 +47,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import CardCampaign from "@/components/frontend/HomeItemCardCampaign.vue";
-import PopupCampaign from "@/components/frontend/HomeItemPopupCampaign.vue";
 import { mapState, mapMutations } from "vuex";
 
 export default {
@@ -58,7 +55,6 @@ export default {
     Swiper,
     SwiperSlide,
     CardCampaign,
-    PopupCampaign,
   },
   setup() {
     return {

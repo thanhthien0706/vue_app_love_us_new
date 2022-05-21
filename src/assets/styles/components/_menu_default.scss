@@ -1,6 +1,8 @@
 .boxMenuMain {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
+  width: $width-left;
 
   .item__header {
     &--logo {
@@ -313,6 +315,22 @@
               @include FontSize(15);
               color: $mine-shaft-50;
             }
+          }
+        }
+      }
+
+      .itemButtonCreateCampaign {
+        margin-top: 14px;
+        .btnCampaign {
+          @include BorderRadius(46px);
+          @include WidthHeight(100%, 38px);
+          background: none;
+          color: #333;
+          border: 2px solid #42c636;
+          transition: all 0.2s linear;
+          &:hover {
+            background-color: #42c636;
+            color: white;
           }
         }
       }

@@ -46,6 +46,10 @@
             <p class="item__menu__text">{{ $t(item.name) }}</p>
           </router-link>
         </li>
+
+        <li class="itemButtonCreateCampaign">
+          <button class="btnCampaign">{{ $t("textCreateCampaign") }}</button>
+        </li>
       </ul>
 
       <div class="logout__box">
@@ -62,7 +66,10 @@
           <p class="text__logout">{{ $t("signout") }}</p>
         </div>
 
-        <div class="box__show_auth d-flex align-items-center" v-else>
+        <div
+          class="box__show_auth d-flex align-items-center justify-content-center"
+          v-else
+        >
           <router-link :to="{ name: 'login' }" class="link_auth">{{
             $t("login")
           }}</router-link>
@@ -95,7 +102,7 @@ export default {
         },
         {
           id: 1,
-          link: "convey",
+          link: "actives",
           image: "paw.png",
           name: "actives",
         },

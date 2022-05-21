@@ -11,7 +11,10 @@
   >
     <div id="BeginVideo" v-if="isShowVideo">
       <video class="video_begin" ref="videoNatural" @ended="onEventVideoFinish">
-        <source src="@/assets/video/bao_ve_dong_vat.mp4" type="video/mp4" />
+        <source
+          src="https://firebasestorage.googleapis.com/v0/b/app-love-u.appspot.com/o/bao_ve_dong_vat.mp4?alt=media&token=cad74d7e-3675-4c8c-a574-61f35bc97add"
+          type="video/mp4"
+        />
       </video>
 
       <div

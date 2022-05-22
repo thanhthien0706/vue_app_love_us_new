@@ -49,7 +49,7 @@ const routes = [
     component: () => import("@/views/frontend/HomeView"),
   },
   {
-    path: "/",
+    path: "/actives",
     name: "actives",
     meta: {
       title: "Hoạt động",

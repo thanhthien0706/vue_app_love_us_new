@@ -11,6 +11,10 @@
       :modules="modules"
       :pagination="{ clickable: true, dynamicBullets: true }"
       :loop="true"
+      :autoplay="{
+        delay: 1500,
+        disableOnInteraction: false,
+      }"
     >
       <swiper-slide class="slide" v-for="item in dataListMain" :key="item.id">
         <div class="slide__item backgroundMainItem">

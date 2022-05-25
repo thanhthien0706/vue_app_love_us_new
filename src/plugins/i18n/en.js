@@ -21,6 +21,9 @@ const en = {
   setting: "Setting",
   textMessage: "MESSAGE",
   textCreateCampaign: "Create a campaign",
+  address: "Address",
+  phoneNumber: "Phone number",
+  contract: "Contract",
 };
 
 export default en;

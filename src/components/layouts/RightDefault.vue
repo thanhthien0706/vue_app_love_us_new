@@ -2,7 +2,7 @@
 
 <template>
   <div id="right__default" class="fixed-element">
-    <div class="box__earth box__custom__right">
+    <div class="box__earth box__custom__right backgroundMainItem">
       <img src="@/assets/images/common/earth.gif" alt="" class="image__earth" />
       <div class="item__text">
         <p class="title">Trái đất</p>
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="box__custom__right box__group">
+    <div class="box__custom__right box__group box__custom__right">
       <p class="title__group">Nhóm liên hệ</p>
       <ul class="list__group" v-if="check_user_login">
         <li class="item__group" v-for="item in dataListGroup" :key="item.id">

@@ -2,8 +2,8 @@
 
 <template>
   <div class="box__blog__main">
-    <p class="header">Blog động vật</p>
-    <div class="blog__main row">
+    <p class="header__title">Blog động vật</p>
+    <div class="blog__main row backgroundMainItem">
       <div class="col-md-6">
         <div class="d-flex flex-column">
           <div class="box__header__main__blog d-flex align-items-center">
@@ -57,7 +57,7 @@
       >
         <swiper-slide class="slide" v-for="blog in dataBlogs" :key="blog.id">
           <router-link :to="{ name: blog.link }">
-            <div class="box__blog__item">
+            <div class="box__blog__item backgroundMainItem">
               <div class="row align-items-center">
                 <div class="col-md-7">
                   <p class="title">{{ sub_string(blog.name, 20) }}</p>

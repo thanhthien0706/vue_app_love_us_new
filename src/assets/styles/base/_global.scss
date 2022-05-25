@@ -70,3 +70,15 @@ body {
     color: #333;
   }
 }
+
+.header__title {
+  font-weight: 700;
+  @include FontSize(22);
+  margin-bottom: 74px;
+}
+
+.backgroundMainItem {
+  background-color: $bg-main-30;
+  @include FilterBlur(20px);
+  @include BorderRadius(16px);
+}

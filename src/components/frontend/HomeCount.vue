@@ -1,7 +1,7 @@
 <template>
   <div class="box__counter__animal">
     <div class="item__counter">
-      <div class="box__img">
+      <div class="box__img backgroundMainItem">
         <img src="@/assets/images/page/Veterinarian.png" alt="" />
       </div>
       <div class="box__content">
@@ -11,7 +11,7 @@
     </div>
 
     <div class="item__counter">
-      <div class="box__img">
+      <div class="box__img backgroundMainItem">
         <img src="@/assets/images/page/animal-care.png" alt="" />
       </div>
       <div class="box__content">
@@ -21,7 +21,7 @@
     </div>
 
     <div class="item__counter">
-      <div class="box__img">
+      <div class="box__img backgroundMainItem">
         <img src="@/assets/images/page/alarm.png" alt="" />
       </div>
       <div class="box__content">

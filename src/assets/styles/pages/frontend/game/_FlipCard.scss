@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap");
+
+.mainFlipCardGame {
+  background-color: black;
+  font-family: "Odibee Sans", cursive;
+  width: 100%;
+  #FlipCardMainScreen {
+    min-width: 100%;
+    min-height: 100%;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    h1 {
+      font-size: 4.5rem;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      color: #42c636;
+    }
+    h3 {
+      @include FontSize(22);
+    }
+
+    .modeGame {
+      display: flex;
+      margin-top: 1rem;
+      margin-bottom: 3rem;
+      button {
+        width: 100px;
+        height: 100px;
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid white;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        border-radius: 1rem;
+        margin: 0 1rem;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s linear;
+        &.active {
+          background-color: white;
+          color: black;
+        }
+        &:hover {
+          background-color: white;
+          color: black;
+        }
+        span:first-child {
+          font-size: 2rem;
+        }
+        span:last-child {
+          display: block;
+          font-size: 1.25rem;
+          margin-top: 0.5rem;
+        }
+      }
+    }
+    .boxInputUserName {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h3 {
+        @include FontSize(22);
+        color: white;
+        margin-bottom: 1rem;
+      }
+      .formInf__name__text {
+        width: 250px;
+        height: 35px;
+        outline: none;
+        padding: 5px;
+        padding: 0 12px;
+        @include BorderRadius(12px);
+        border: none;
+      }
+    }
+
+    .btnStartGame {
+      margin-top: 2rem;
+      @include WidthHeight(150px, 50px);
+      @include FontSize(22);
+      color: white;
+      border-radius: 15px;
+      border: 2px solid #42c636;
+      background: none;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+      &:hover {
+        background-color: #42c636;
+        color: black;
+      }
+      &:disabled {
+        border-color: rgba(65, 184, 131, 0.5);
+        color: rgba(243, 243, 243, 0.5);
+      }
+      &:disabled:hover {
+        background: none;
+        color: rgba(243, 243, 243, 0.5);
+      }
+    }
+  }
+}

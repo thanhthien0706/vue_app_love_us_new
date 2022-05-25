@@ -21,6 +21,9 @@ const vn = {
   setting: "Cài đặt",
   textMessage: "THÔNG ĐIỆP TỪ VŨ TRỤ",
   textCreateCampaign: "Tạo chiến dịch",
+  address: "Địa chỉ",
+  phoneNumber: "Số điện thoại",
+  contract: "Liên hệ",
 };
 
 export default vn;

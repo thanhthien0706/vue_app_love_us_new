@@ -15,7 +15,7 @@
         <img src="@/assets/images/page/animal-care.png" alt="" />
       </div>
       <div class="box__content">
-        <p class="title">Tổng động vật</p>
+        <p class="title">Số lượng động vật</p>
         <p class="number">32,900</p>
       </div>
     </div>

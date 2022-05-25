@@ -13,7 +13,7 @@
       :loop="true"
     >
       <swiper-slide class="slide" v-for="item in dataListMain" :key="item.id">
-        <div class="slide__item">
+        <div class="slide__item backgroundMainItem">
           <div class="row">
             <div class="box__slide__left col-md-6">
               <div class="item__title">

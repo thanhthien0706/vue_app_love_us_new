@@ -1,0 +1,13 @@
+#reportView {
+  .sc__reportProcess {
+    #ReportProcess {
+      .mapProcessReport {
+        @include WidthHeight(100%, 300px);
+        img {
+          @include WidthHeight(100%, auto);
+          @include ObjectFit(contain);
+        }
+      }
+    }
+  }
+}

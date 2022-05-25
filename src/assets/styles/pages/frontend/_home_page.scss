@@ -25,7 +25,7 @@
 
       .slide__item {
         border-radius: 16px;
-        background-color: $bg-main-30;
+        // background-color: $bg-main-30;
         padding: 30px 60px;
         display: flex;
         flex-direction: row;
@@ -128,7 +128,7 @@
         align-items: center;
 
         .box__img {
-          background-color: $bg-main-30;
+          // background-color: $bg-main-30;
           padding: 24px;
           @include BorderRadius(16px);
 
@@ -200,7 +200,6 @@
           .item__charity {
             padding: 30px 22px;
             @include BorderRadius(16px);
-            background-color: $bg-main-30;
             position: relative;
             overflow: hidden;
 
@@ -294,7 +293,6 @@
   .sc__campaigns {
     .box__campaign__content {
       padding: 20px 38px;
-      background-color: $bg-main-30;
       @include BorderRadius(16px);
 
       .title {
@@ -514,8 +512,6 @@
 
       .blog__main {
         padding: 30px 40px;
-        @include BorderRadius(16px);
-        background-color: $bg-main-30;
         position: relative;
         min-height: 370px;
         margin-bottom: 80px;
@@ -650,8 +646,6 @@
         .box__blog__item {
           width: 100%;
           padding: 16px 22px;
-          background-color: $bg-main-30;
-          @include BorderRadius(16px);
           transition: all 0.2s linear;
           cursor: pointer;
 

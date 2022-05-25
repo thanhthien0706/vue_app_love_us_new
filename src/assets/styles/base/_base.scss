@@ -5,61 +5,66 @@ FUNCTION
 */
 
 @function pxEm($pxsize) {
-    @return ($pxsize/$font-size-16)+em;
+  @return ($pxsize/$font-size-16) + em;
 }
 
 /*
 MIXIN
 */
 @mixin WidthHeight($w, $h) {
-    width: $w;
-    height: $h;
+  width: $w;
+  height: $h;
 }
 
-@mixin ObjectFit ($name) {
-    -o-object-fit: $name;
-    object-fit: $name;
+@mixin ObjectFit($name) {
+  -o-object-fit: $name;
+  object-fit: $name;
 }
 
 @mixin FontSize($val) {
-    font-size: pxEm($val)
+  font-size: pxEm($val);
 }
 
 @mixin filter($type, $value) {
-    -webkit-filter: $type + '('+ $value + ')';
-    filter: $type + '('+ $value + ')';
+  -webkit-filter: $type + "(" + $value + ")";
+  filter: $type + "(" + $value + ")";
 }
 
 @mixin transform($val) {
-    transform: translate(0, $val);
-    -webkit-transform: translate(0, $val);
-    -moz-transform: translate(0, $val);
-    -ms-transform: translate(0, $val);
-    -o-transform: translate(0, $val);
+  transform: translate(0, $val);
+  -webkit-transform: translate(0, $val);
+  -moz-transform: translate(0, $val);
+  -ms-transform: translate(0, $val);
+  -o-transform: translate(0, $val);
 }
 
 @mixin BorderRadius($val) {
-    border-radius: $val;
-    -webkit-border-radius: $val;
-    -moz-border-radius: $val;
-    -ms-border-radius: $val;
-    -o-border-radius: $val;
+  border-radius: $val;
+  -webkit-border-radius: $val;
+  -moz-border-radius: $val;
+  -ms-border-radius: $val;
+  -o-border-radius: $val;
 }
 
 @mixin ContainerCustom($width) {
-    max-width: 100%;
-    width: $width;
-    margin: 0 auto;
+  max-width: 100%;
+  width: $width;
+  margin: 0 auto;
 }
 
 @mixin MinWidth($breakpoint) {
-    @media only screen and (min-width: $breakpoint) {
-        @content;
-    }
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
 }
 
 @mixin MaxWidth($breakpoint) {
-    @media only screen and (max-width: $breakpoint) {
-        @content;
-    }
+  @media only screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin FilterBlur($blur) {
+  -webkit-backdrop-filter: blur($blur);
+  backdrop-filter: blur($blur);
 }

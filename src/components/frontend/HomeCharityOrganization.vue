@@ -40,7 +40,7 @@
             :key="item.id"
             :data-index="index"
           >
-            <div class="item__charity">
+            <div class="item__charity backgroundMainItem">
               <div class="row align-items-center">
                 <div class="col-md-7 col-sm-12">
                   <p class="name__charity">{{ sub_string(item.name, 18) }}</p>

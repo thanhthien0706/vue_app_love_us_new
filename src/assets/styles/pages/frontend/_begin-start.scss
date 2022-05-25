@@ -1,11 +1,12 @@
 #beginStartView {
   @include WidthHeight(100%, 100%);
   #BeginVideo {
-    @include WidthHeight(100%, 100%);
+    background-color: #000;
     .video_begin {
       min-width: 100%;
       min-height: 100%;
       position: fixed;
+      @include WidthHeight(100%, 100%);
       // right: 0;
       // bottom: 0;
       z-index: -1;

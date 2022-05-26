@@ -6,7 +6,9 @@
     leave-active-class="animate__animated animate__fadeOut"
   >
     <div class="mainFlipCardGame">
-      <div id="particles-js">
+      <!-- <audio src=""></audio> -->
+      <div id="particles-js"></div>
+      <div class="boxMainScreen">
         <flipcard-main-screen
           v-if="statusMatch === 'default'"
           :cardsContext="settings.cardsContext"
@@ -16,6 +18,14 @@
         <flipcard-interact-screen
           v-if="statusMatch === 'match'"
           :cardsContext="settings.cardsContext"
+          @onFinish="onGetResult($event)"
+        />
+
+        <filpcard-result
+          :timer="settings.timer"
+          :userName="settings.userNamel"
+          v-if="statusMatch === 'result'"
+          @onStartAgain="statusMatch = 'default'"
         />
       </div>
     </div>
@@ -27,9 +37,10 @@ import "particles.js";
 import FlipcardMainScreen from "@/components/frontend/game/FlipcardMainScreen.vue";
 import { shuffled } from "@/utils/arrayRandom";
 import FlipcardInteractScreen from "@/components/frontend/game/FlipcardInteractScreen.vue";
+import FilpcardResult from "@/components/frontend/game/FilpcardResult.vue";
 
 export default {
-  components: { FlipcardMainScreen, FlipcardInteractScreen },
+  components: { FlipcardMainScreen, FlipcardInteractScreen, FilpcardResult },
   name: "FlipCardView",
   data() {
     return {
@@ -39,6 +50,7 @@ export default {
         cardsContext: [],
         userNamel: "",
         startedAt: null,
+        timer: "",
       },
     };
   },
@@ -60,6 +72,14 @@ export default {
       this.settings.startedAt = new Date().getTime();
       this.settings.userNamel = event.dataUserStart.name;
       this.statusMatch = "match";
+    },
+
+    onGetResult(event) {
+      this.settings.timer = event.timer;
+      // get timers
+      // this.timer = new Date().getTime() - this.settings.startedAt;
+      // switch to results components
+      this.statusMatch = "result";
     },
 
     initParticles() {

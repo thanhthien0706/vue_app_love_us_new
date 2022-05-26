@@ -29,15 +29,18 @@
         />
       </div>
 
-      <button
-        :disabled="
-          !dataUserStart.name.length || dataUserStart.curentMode == null
-        "
-        class="btnStartGame"
-        @click="onStartGame"
-      >
-        Vào game
-      </button>
+      <div class="boxMainButton d-flex justify-content-center">
+        <button class="btnGotoHome" @click="onGoToHome">Về trang chủ</button>
+        <button
+          :disabled="
+            !dataUserStart.name.length || dataUserStart.curentMode == null
+          "
+          class="btnStartGame"
+          @click="onStartGame"
+        >
+          Vào game
+        </button>
+      </div>
     </div>
   </Transition>
 </template>
@@ -85,6 +88,9 @@ export default {
     },
     onStartGame() {
       this.$emit("onStart", { dataUserStart: this.dataUserStart });
+    },
+    onGoToHome() {
+      this.$router.push({ name: "home" });
     },
   },
 };

@@ -54,10 +54,10 @@ export default {
       dataListGame: [
         {
           id: 0,
-          avatar: "avt_game.png",
+          avatar: "game_flipcard.png",
           name: "Flip CARD ANIMAL",
           description:
-            "ádfasdfblaagadsfasdfasdfasdfasdfasdfasádfasdfasdfasdfasdfasdfasdfasdfdfasdfasdfasdfasdfádasdfasdasdf",
+            "Game lật thẻ bài động vật là một game vui. Cho mọi người giải trí. Ngoài ra, kết thúc mỗi ván game sẽ có thông tin của một loài động vật để ban tăng sự hiểu biết của mình",
           top_score: "2000",
           link: "game_flip_card",
         },

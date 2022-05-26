@@ -41,6 +41,7 @@
             @include FontSize(16);
             margin-bottom: 12px;
             .title {
+              @include FontSize(16);
               white-space: nowrap;
               font-weight: bold;
             }

@@ -114,7 +114,7 @@ export default {
         },
         {
           id: 3,
-          link: "convey",
+          link: "report",
           image: "report.png",
           name: "reports",
         },
@@ -139,12 +139,12 @@ export default {
           image: "group.png",
           name: "group",
         },
-        {
-          id: 2,
-          link: "convey",
-          image: "settings.png",
-          name: "setting",
-        },
+        // {
+        //   id: 2,
+        //   link: "convey",
+        //   image: "settings.png",
+        //   name: "setting",
+        // },
       ],
     };
   },

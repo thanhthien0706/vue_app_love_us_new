@@ -27,6 +27,21 @@ const routes = [
 
   /**
    * ==============================================================
+   * PAGE GAME
+   * ==============================================================
+   */
+
+  {
+    path: "/flip-card",
+    name: "game_flip_card",
+    meta: {
+      title: "Flip card game",
+    },
+    component: () => import("@/views/frontend/game/FlipCardView"),
+  },
+
+  /**
+   * ==============================================================
    * PAGE FRONTEND
    * ==============================================================
    */
@@ -49,22 +64,13 @@ const routes = [
     component: () => import("@/views/frontend/HomeView"),
   },
   {
-    path: "/",
+    path: "/actives",
     name: "actives",
     meta: {
       title: "Hoạt động",
       middleware: [checkBeginStart],
     },
     component: () => import("@/views/frontend/ActivityView.vue"),
-  },
-  {
-    path: "/blog",
-    name: "blog",
-    meta: {
-      title: "Blog",
-      middleware: [checkBeginStart],
-    },
-    component: () => import("@/views/frontend/BlogView.vue"),
   },
 ];
 

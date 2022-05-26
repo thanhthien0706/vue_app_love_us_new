@@ -1,14 +1,17 @@
 #beginStartView {
   @include WidthHeight(100%, 100%);
   #BeginVideo {
-    @include WidthHeight(100%, 100%);
+    background-color: #000;
     .video_begin {
       min-width: 100%;
       min-height: 100%;
       position: fixed;
-      right: 0;
-      bottom: 0;
+      @include WidthHeight(100%, 100%);
+      // right: 0;
+      // bottom: 0;
       z-index: -1;
+      object-fit: fill;
+      @include WidthHeight(100%, 100%);
     }
     .boxOverPlayOnVideo {
       min-width: 100%;
@@ -108,6 +111,16 @@
       display: flex;
       flex-direction: row;
       z-index: 1;
+
+      .videoSpace {
+        object-fit: fill;
+        @include WidthHeight(100%, 100%);
+      }
+
+      img {
+        @include WidthHeight(100%, 100%);
+        object-fit: cover;
+      }
 
       .boxImageInner {
         &.boxImageLeft {

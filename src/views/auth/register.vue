@@ -41,7 +41,7 @@
                 <input
                   id="inputFileAvater"
                   type="file"
-                  accept=".jpg, .jpeg, .png"
+                  accept=".jpg, .jpeg, .png, .mp4"
                   style="display: none"
                   @change="onChageAvater"
               /></label>

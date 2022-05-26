@@ -1,7 +1,7 @@
 <style></style>
 
 <template>
-  <div class="box__campaign__content">
+  <div class="box__campaign__content backgroundMainItem">
     <p class="title">Các chiến dịch</p>
     <ul class="list__tab">
       <li

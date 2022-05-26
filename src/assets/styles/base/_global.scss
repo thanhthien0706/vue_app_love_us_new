@@ -3,6 +3,12 @@ body {
   color: #333;
 }
 
+:root {
+  --dark: #212121;
+  --light: #f3f3f3;
+  --font: "Odibee Sans", cursive;
+}
+
 #app {
   height: 100%;
 }
@@ -28,6 +34,14 @@ body {
 
 .mt-50 {
   margin-top: 50px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+.pb-50 {
+  padding-bottom: 50px;
 }
 
 // :root {
@@ -68,5 +82,170 @@ body {
   .text_loading {
     @include FontSize(16);
     color: #333;
+  }
+}
+
+.header__title {
+  font-weight: 700;
+  @include FontSize(22);
+  margin-bottom: 60px;
+}
+
+.backgroundMainItem {
+  background-color: $bg-main-30;
+  @include FilterBlur(20px);
+  @include BorderRadius(16px);
+}
+
+.box__form__main__group {
+  margin: 20px 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .box__form__error {
+    margin-left: 22px;
+
+    &.error {
+      .list__error {
+        list-style: circle;
+
+        .error-msg {
+          color: red;
+          @include FontSize(14);
+        }
+      }
+    }
+  }
+}
+
+.form__input__group {
+  display: flex;
+  align-items: center;
+  background-color: #edf4fb;
+  padding: 10px 30px;
+  @include BorderRadius(8px);
+  color: rgba(51, 51, 51, 0.7);
+  margin: 20px 0;
+  height: 100%;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .icon_input {
+    @include FontSize(20);
+  }
+
+  .input__infor {
+    padding-left: 10px;
+    border: none;
+    background: none;
+    outline: none;
+    color: rgba(51, 51, 51, 0.7);
+    width: 100%;
+
+    &::placeholder {
+      color: rgba(51, 51, 51, 0.7);
+      font-weight: 500;
+      font-style: italic;
+    }
+  }
+}
+
+.form__btn__group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+  .box__button {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    @include WidthHeight(180px, 50px);
+    @include BorderRadius(36px);
+    border: 3px solid #42c636;
+    @include FontSize(16);
+    font-weight: 600;
+    color: rgb(51, 51, 51, 0.8);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      .inner__slide {
+        left: 0;
+      }
+
+      a {
+        left: 150px;
+      }
+    }
+
+    a {
+      position: relative;
+      left: 0;
+      transition: all 0.35s ease-Out;
+      color: rgb(51, 51, 51, 0.8);
+    }
+
+    .inner__slide {
+      @include WidthHeight(100%, 100%);
+      left: -200px;
+      position: absolute;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.35s ease-Out;
+      bottom: 0;
+      background-color: #42c636;
+
+      .icon__slide__btn {
+        @include FontSize(20);
+        color: #fff;
+      }
+    }
+  }
+
+  // .btn__submit {
+  //     padding: 16px 35px;
+  //     border: 2px solid #42C636;
+  //     @include BorderRadius(36px);
+  //     @include FontSize(16);
+  //     font-weight: 600;
+  //     background: none;
+  //     // background-color: #42C636;
+  //     color: rgb(51, 51, 51, 0.8);
+  //     overflow: hidden;
+  //     position: relative;
+  // }
+}
+
+.form__input__proof {
+  display: inline-block;
+  margin-right: 10px;
+  .btnAddProof {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgba(51, 51, 51, 0.6);
+    @include BorderRadius(36px);
+    @include WidthHeight(100%, 40px);
+    padding: 0 30px;
+    color: white;
+
+    .text {
+      margin-left: 6px;
+    }
   }
 }

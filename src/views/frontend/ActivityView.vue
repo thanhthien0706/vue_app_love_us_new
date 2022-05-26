@@ -38,16 +38,23 @@
         <!-- <BoxTree /> -->
       </div>
       <!-- TREE END -->
+
+      <!-- GAME START -->
+      <section class="sc__gameActivity">
+        <activity-game />
+      </section>
+      <!-- GAME END -->
     </div>
   </DefaultFrontend_1>
 </template>
 
 <script>
 import DefaultFrontend_1 from "@/layouts/DefaultFrontend_1.vue";
+import ActivityGame from "@/components/frontend/ActivityGame.vue";
 // import BoxTree from "@/components/frontend/activity/box_tree.vue";
 
 export default {
   name: "ActivesPage",
-  components: { DefaultFrontend_1 },
+  components: { DefaultFrontend_1, ActivityGame },
 };
 </script>

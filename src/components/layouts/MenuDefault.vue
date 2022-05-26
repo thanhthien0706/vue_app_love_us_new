@@ -120,7 +120,7 @@ export default {
         },
         {
           id: 4,
-          link: "convey",
+          link: "blog",
           image: "blog.png",
           name: "blogs",
         },

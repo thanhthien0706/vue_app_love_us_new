@@ -237,6 +237,43 @@ export default createStore({
         img: "https://upanh123.com/wp-content/uploads/2020/09/hinh-anh-con-voi-khong-lo_111944888.jpg",
       },
     ],
+    dataBlog: [
+      {
+        id: 0,
+        link: "home",
+        logo: "logo-env3.png",
+        name: "Phát triển nơi sinh sống cho loài khỉ",
+        location: "Nha trang",
+        description: "abc",
+      },
+
+      {
+        id: 1,
+        link: "home",
+        logo: "logo-env3.png",
+        name: "Bảo tồn cá heo",
+        location: "Đà Nẵng",
+        description: "bac",
+      },
+
+      {
+        id: 2,
+        link: "home",
+        logo: "logo-env3.png",
+        name: "Tê giác bên bờ vực tuyệt chủng",
+        location: "Huế",
+        description: "cab",
+      },
+
+      {
+        id: 3,
+        link: "home",
+        logo: "logo-env3.png",
+        name: "Con người và thiên nhiên",
+        location: "Quãng ngãi",
+        description: "da",
+      },
+    ],
   },
   getters: {},
   mutations: {

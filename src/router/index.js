@@ -72,15 +72,6 @@ const routes = [
     },
     component: () => import("@/views/frontend/ActivityView.vue"),
   },
-  {
-    path: "/report",
-    name: "report",
-    meta: {
-      title: "Báo cáo",
-      middleware: [checkBeginStart],
-    },
-    component: () => import("@/views/frontend/ReportView.vue"),
-  },
 ];
 
 const router = createRouter({

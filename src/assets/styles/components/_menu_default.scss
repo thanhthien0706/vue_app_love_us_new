@@ -319,6 +319,95 @@
         }
       }
 
+      .itemBoxChangeLanguage {
+        // padding: ;
+
+        .box__multi__language {
+          position: relative;
+          padding: 0 25px;
+          margin: 20px 0;
+
+          &::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 20px;
+            background-color: transparent;
+            bottom: -19px;
+            right: 0;
+          }
+
+          .current__language {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            color: $mine-shaft;
+            cursor: pointer;
+
+            .icon__flag {
+              @include WidthHeight(22px, 22px);
+              object-fit: cover;
+              margin-right: 5px;
+              border-radius: 50%;
+            }
+
+            .text__country {
+              @include FontSize(15);
+            }
+
+            .icon__arrow__down {
+              margin-left: 5px;
+              @include FontSize(16);
+            }
+          }
+
+          .list__language {
+            position: absolute;
+            // background-color: rgba(232 232 232);
+            background-color: $white-smoke;
+            color: #333;
+            padding: 10px 0;
+            border-radius: 16px;
+            top: 140%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            box-shadow: 0 0 40px 4px rgba(51, 51, 51, 0.2);
+
+            .item__language {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              color: $mine-shaft;
+              opacity: 0.5;
+              margin: 0 10px;
+              padding: 10px 14px;
+              border-radius: 16px;
+              transition: all 0.2s linear;
+
+              &:hover {
+                cursor: pointer;
+                opacity: 0.9;
+                background-color: rgba(211, 211, 211, 0.5);
+              }
+
+              .icon__flag {
+                @include WidthHeight(20px, 20px);
+                object-fit: cover;
+                margin-right: 5px;
+                border-radius: 50%;
+              }
+
+              .text__country {
+                margin-left: 10px;
+                @include FontSize(16);
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+      }
+
       .itemButtonCreateCampaign {
         margin-top: 14px;
         .btnCampaign {

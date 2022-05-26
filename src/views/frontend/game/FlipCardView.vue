@@ -6,7 +6,9 @@
     leave-active-class="animate__animated animate__fadeOut"
   >
     <div class="mainFlipCardGame">
-      <!-- <audio src=""></audio> -->
+      <audio loop autoplay ref="musicGameFlipCard">
+        <source src="@/assets/sound/music_flipcard.mp3" type="audio/mp3" />
+      </audio>
       <div id="particles-js"></div>
       <div class="boxMainScreen">
         <flipcard-main-screen
@@ -56,8 +58,12 @@ export default {
   },
   mounted() {
     this.initParticles();
+    this.initMusic();
   },
   methods: {
+    initMusic() {
+      this.$refs.musicGameFlipCard.play();
+    },
     onHandleBeforeStart(event) {
       this.settings.totalOfBlocks = event.dataUserStart.curentMode;
       const firstCards = Array.from(

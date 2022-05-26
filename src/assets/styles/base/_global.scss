@@ -249,3 +249,12 @@ body {
     }
   }
 }
+
+.input__search {
+  width: 180px;
+  padding: 10px 12px;
+  background: rgba(206, 206, 206, 0.3);
+  border: none;
+  outline: none;
+  @include BorderRadius(16px);
+}

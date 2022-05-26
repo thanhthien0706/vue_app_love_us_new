@@ -47,6 +47,51 @@
           </router-link>
         </li>
 
+        <li class="item__hr">
+          <hr />
+        </li>
+
+        <li class="itemBoxChangeLanguage">
+          <div
+            class="box__multi__language"
+            @mouseover="showListLanguages = true"
+            @mouseleave="showListLanguages = false"
+          >
+            <div class="current__language">
+              <img
+                :src="`${require('@/assets/images/icon/flag/' +
+                  currentLanguage.image)}`"
+                alt=""
+                class="icon__flag"
+              />
+              <p class="text__country">{{ currentLanguage.name }}</p>
+              <fa :icon="['fas', 'angle-down']" class="icon__arrow__down" />
+            </div>
+
+            <Transition
+              enter-active-class="animate__animated animate__fadeInDown"
+              leave-active-class="animate__animated animate__fadeOutUp"
+            >
+              <ul class="list__language" v-if="showListLanguages">
+                <li
+                  class="item__language"
+                  v-for="item in getListLanguage"
+                  :key="item.id"
+                  @click="onSelectLanguage(item)"
+                >
+                  <img
+                    :src="`${require('@/assets/images/icon/flag/' +
+                      item.image)}`"
+                    alt=""
+                    class="icon__flag"
+                  />
+                  <p class="text__country">{{ item.name }}</p>
+                </li>
+              </ul>
+            </Transition>
+          </div>
+        </li>
+
         <li class="itemButtonCreateCampaign">
           <button class="btnCampaign">{{ $t("textCreateCampaign") }}</button>
         </li>
@@ -87,12 +132,32 @@
 import checkUserLogin from "@/utils/checkUserLogin";
 import { authService } from "@/services/authService";
 import { mapActions } from "vuex";
+import handleLanguage from "@/utils/handleLanguage";
 
 export default {
   name: "MenuDefault",
 
   data() {
     return {
+      dataFlagCountry: [
+        {
+          id: 1,
+          image: "vietnam.png",
+          name: "Viet Nam",
+          language: "vi",
+        },
+        {
+          id: 2,
+          image: "usa.png",
+          name: "America",
+          language: "en",
+        },
+      ],
+
+      currentLanguage: null,
+
+      showListLanguages: false,
+
       dataMenu: [
         {
           id: 0,
@@ -149,6 +214,10 @@ export default {
     };
   },
 
+  created() {
+    this.init();
+  },
+
   methods: {
     ...mapActions(["getDataUser"]),
     onLogout() {
@@ -156,11 +225,30 @@ export default {
       authService.initAuthHeader();
       this.getDataUser();
     },
+
+    init() {
+      const dataCurrent = this.dataFlagCountry.filter(
+        (el) => el.language == handleLanguage.getLanguage()
+      );
+
+      this.currentLanguage = dataCurrent[0];
+    },
+
+    onSelectLanguage(item) {
+      this.currentLanguage = Object.assign({}, item);
+      this.$i18n.locale = item.language;
+      handleLanguage.changeLanguage(item.language);
+    },
   },
 
   computed: {
     getCheckRouterActive() {
       return this.$route.name;
+    },
+    getListLanguage() {
+      return this.dataFlagCountry.filter(
+        (item) => item.id != this.currentLanguage.id
+      );
     },
     check_user_login: checkUserLogin,
   },

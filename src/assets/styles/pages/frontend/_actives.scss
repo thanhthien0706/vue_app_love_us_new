@@ -155,4 +155,139 @@
   /*
     GAME BOX END
     */
+
+  #ActivityListAnimal {
+    .boxMainContent {
+      .boxHeaderMain {
+      }
+      .boxSlideShowAnimal {
+        .leftInner {
+          .swiper {
+            &.swiperCustom {
+              height: 380px;
+              .swiper-wrapper {
+                align-items: center;
+              }
+              .swiper-slide-active {
+                &.slideCustom {
+                  @include WidthHeight(136px !important, 136px !important);
+                }
+              }
+              .slideCustom {
+                @include WidthHeight(116px, 116px !important);
+                // &.swiper-slide-active {
+                //   .boxInnerItemAnimal {
+                //     overflow: hidden;
+                //     .imgAnimal {
+                //       @include WidthHeight(100%, 100%);
+                //       @include ObjectFit(cover);
+                //     }
+                //   }
+                // }
+
+                .boxInnerItemAnimal {
+                  @include WidthHeight(100%, 100%);
+                  overflow: hidden;
+                  .imgAnimal {
+                    @include WidthHeight(100%, 100%);
+                    @include ObjectFit(cover);
+                    @include BorderRadius(20px);
+                  }
+                }
+              }
+
+              .swiper-button-custom {
+                top: 26px;
+                @include FontSize(20);
+                color: $mine-shaft;
+                font-weight: 700;
+                @include WidthHeight(42px, 42px);
+                background-color: transparent;
+                @include BorderRadius(50%);
+                transition: all 0.2s linear;
+
+                &:hover {
+                  background-color: rgba(206, 206, 206, 0.3);
+                }
+              }
+              .swiper-button-prev {
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                right: unset;
+                bottom: unset;
+                @extend .swiper-button-custom;
+
+                &:after {
+                  @include FontSize(18);
+                  color: #fff;
+                }
+              }
+              .swiper-button-next {
+                top: unset;
+                left: 50%;
+                transform: translateX(-50%);
+                right: unset;
+                bottom: 0 !important;
+                @extend .swiper-button-custom;
+
+                &:after {
+                  @include FontSize(18);
+                  color: #fff;
+                }
+              }
+            }
+          }
+        }
+        .rightInner {
+          width: 100%;
+          margin-left: 30px;
+          .boxInnerInfor {
+            padding: 30px 24px;
+            .boxLeftInner {
+              .titleName {
+                font-weight: bold;
+                @include FontSize(18);
+                margin-bottom: 12px;
+              }
+              .description {
+                line-height: 1.4;
+                margin-bottom: 12px;
+              }
+              .inforAnimal {
+                margin-bottom: 6px;
+                line-height: 1.4;
+                span {
+                  font-weight: 600;
+                  color: #42c636;
+                }
+              }
+            }
+            .boxRightInner {
+              .imgMain {
+                @include WidthHeight(100%, 200px);
+                @include ObjectFit(cover);
+                overflow: hidden;
+                @include BorderRadius(20px);
+                margin-bottom: 16px;
+              }
+              .boxSlideImageAnimal {
+                .swiperCustomAnimal {
+                  .slideCustomAnimal {
+                    @include WidthHeight(80px !important, 80px !important);
+                    cursor: pointer;
+                    img {
+                      @include WidthHeight(100%, 100%);
+                      @include ObjectFit(cover);
+                      @include BorderRadius(12px);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

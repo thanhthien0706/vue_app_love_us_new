@@ -23,7 +23,7 @@
                 cũng có thể cứu lấy thiên nhiên.
               </p>
               <p class="speech">Hãy hành động , đừng lưỡng lự</p>
-              <div class="btn__header__box">
+              <div class="btn__header__box" @click="onGoToEl">
                 <fa :icon="['fas', 'arrow-right']" class="icon__arrow__right" />
                 <p>Tôi có thể làm gì ?</p>
               </div>
@@ -45,11 +45,17 @@
       </section>
       <!-- GAME END -->
 
-      <!-- GAME START -->
+      <!-- List Animal START -->
       <section class="sc__listAnimalActivity mt-50">
         <activity-list-animal />
       </section>
-      <!-- GAME END -->
+      <!-- List Animal END -->
+
+      <!-- can be done START -->
+      <section class="sc__canBeDone mt-50 mb-50" ref="scCanBeDone">
+        <activity-can-be-done />
+      </section>
+      <!-- can be done END -->
     </div>
   </DefaultFrontend_1>
 </template>
@@ -59,9 +65,22 @@ import DefaultFrontend_1 from "@/layouts/DefaultFrontend_1.vue";
 import ActivityGame from "@/components/frontend/ActivityGame.vue";
 import ActivityListAnimal from "@/components/frontend/ActivityListAnimal.vue";
 // import BoxTree from "@/components/frontend/activity/box_tree.vue";
+import ActivityCanBeDone from "@/components/frontend/ActivityCanBeDone.vue";
 
 export default {
   name: "ActivesPage",
-  components: { DefaultFrontend_1, ActivityGame, ActivityListAnimal },
+  components: {
+    DefaultFrontend_1,
+    ActivityGame,
+    ActivityListAnimal,
+    ActivityCanBeDone,
+  },
+  methods: {
+    onGoToEl() {
+      let element = this.$refs["scCanBeDone"];
+      let top = element.offsetTop;
+      window.scrollTo(0, top);
+    },
+  },
 };
 </script>

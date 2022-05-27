@@ -171,12 +171,12 @@ export default {
           image: "paw.png",
           name: "actives",
         },
-        {
-          id: 2,
-          link: "convey",
-          image: "event.png",
-          name: "events",
-        },
+        // {
+        //   id: 2,
+        //   link: "convey",
+        //   image: "event.png",
+        //   name: "events",
+        // },
         {
           id: 3,
           link: "report",

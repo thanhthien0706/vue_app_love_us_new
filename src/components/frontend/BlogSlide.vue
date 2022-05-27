@@ -8,6 +8,7 @@
         placeholder="Search"
         class="input__orga"
         v-model="query"
+        @keyup.enter="onSearch"
       />
     </div>
     <ul class="list__tab">
@@ -95,6 +96,8 @@ export default {
           };
         });
     },
+
+    onSearch() {},
 
     onSwiper(swiper) {
       this.swiper = swiper;

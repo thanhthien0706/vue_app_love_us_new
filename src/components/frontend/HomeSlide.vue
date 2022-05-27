@@ -73,7 +73,7 @@ export default {
           description:
             "Báo gấm (Neofelis nebulosa) hay báo mây, (tiếng Anh: Clouded Leopard) là một loài mèo cỡ trung bình trong Họ Mèo, toàn thân dài 60 tới 110 cm (2' - 3'6\") và cân nặng khoảng 11 – 20 kg (25 lbs 4oz - 44 lbs)",
           resource: "IUCN Red List",
-          name: "Clouded Leopard",
+          name: "Báo Hoa mai",
         },
         {
           id: 1,

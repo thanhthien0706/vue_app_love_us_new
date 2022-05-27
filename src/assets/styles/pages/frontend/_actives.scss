@@ -159,6 +159,7 @@
   #ActivityListAnimal {
     .boxMainContent {
       .boxHeaderMain {
+        margin-bottom: 20px;
       }
       .boxSlideShowAnimal {
         .leftInner {
@@ -174,6 +175,7 @@
                 }
               }
               .slideCustom {
+                cursor: pointer;
                 @include WidthHeight(116px, 116px !important);
                 // &.swiper-slide-active {
                 //   .boxInnerItemAnimal {
@@ -260,6 +262,38 @@
                 span {
                   font-weight: 600;
                   color: #42c636;
+                }
+              }
+
+              .btnSeenInforAnimal {
+                margin-top: 20px;
+                .btnSeen {
+                  margin: 0 10px;
+                  @include WidthHeight(150px, 40px);
+                  @include BorderRadius(14px);
+                  transition: all 0.2s linear;
+                  &:hover {
+                    &.btnSeenClass {
+                      background-color: #42c636;
+                      color: #fff;
+                    }
+                    &.btnSeenDetail {
+                      background-color: #fff;
+                      color: #42c636;
+                    }
+                  }
+                  &:first-child {
+                    margin-left: 0;
+                  }
+                  &:last-child {
+                    margin-right: 0;
+                  }
+                  &.btnSeenClass {
+                    border: 2px solid #42c636;
+                  }
+                  &.btnSeenDetail {
+                    border: 2px solid white;
+                  }
                 }
               }
             }

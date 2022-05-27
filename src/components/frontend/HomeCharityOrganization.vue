@@ -47,15 +47,20 @@
                   <p class="description">
                     {{ sub_string(item.description, 70) }}
                   </p>
-                  <button class="btn__charity" @mouseover="onScaleOverlay">
+                  <a
+                    :href="item.link"
+                    class="btn__charity"
+                    @mouseover="onScaleOverlay"
+                  >
                     Xem thông tin
-                  </button>
+                  </a>
                   <div class="box__spread"></div>
                 </div>
                 <div class="col-md-5 col-sm-12">
                   <div class="box__logo">
                     <img
-                      src="@/assets/images/logo_organization/logo-env3.png"
+                      :src="`${require('@/assets/images/logo_organization/' +
+                        item.logo)}`"
                       alt=""
                       class="img__logo"
                     />

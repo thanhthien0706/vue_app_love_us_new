@@ -161,6 +161,193 @@
     */
 
   /*
+    MAP HOME START
+    */
+  .sc__map {
+    .box__map__home {
+      display: flex;
+      flex-direction: row;
+
+      .box__item__left {
+        width: 400px;
+        // @include WidthHeight(400px, 528px);
+        margin-right: 12px;
+        // background-image: url();
+        // background-repeat: no-repeat;
+        // background-size: contain;
+        // background-position: center;
+        background-color: $bg-main-30;
+        @include BorderRadius(16px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__inner {
+          position: relative;
+          @include WidthHeight(400px, 658px);
+
+          .map__vietnam {
+            @include WidthHeight(100%, 100%);
+            object-fit: contain;
+          }
+
+          .box__map__item {
+            @include WidthHeight(158px, 158px);
+            position: absolute;
+            transition: all 0.2s linear;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+
+            &:hover {
+              transform: scale(2);
+              z-index: 22;
+
+              &.box__central {
+                transform: scale(2.5);
+              }
+
+              &.box__south {
+                left: 9%;
+              }
+
+              img {
+                filter: drop-shadow(0px 10px 4px rgba(0, 0, 0, 0.4));
+              }
+            }
+
+            img {
+              @include WidthHeight(100%, 100%);
+              object-fit: contain;
+            }
+
+            &.box__northern {
+              top: 75px;
+              left: 34px;
+            }
+
+            &.box__central {
+              @include WidthHeight(164px, 164px);
+              top: 185px;
+              left: 16%;
+              // transform: rotate(90);
+            }
+
+            &.box__south {
+              @include WidthHeight(200px, 200px);
+              top: unset;
+              bottom: 98px;
+              left: 15%;
+            }
+          }
+        }
+      }
+
+      .box__item__right {
+        width: calc(100% - 400px);
+        margin-left: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .item__region {
+          display: flex;
+          align-items: center;
+          padding: 26px 24px;
+          background-color: $bg-main-30;
+          @include BorderRadius(16px);
+          transition: all 0.2s linear;
+
+          &.active__select {
+            background: rgba(66, 198, 54, 0.3);
+
+            .btn__box {
+              color: #333 !important;
+            }
+          }
+
+          margin: 10px 0;
+
+          &:first-child {
+            margin-top: 0;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .img__region {
+            @include WidthHeight(113px, 113px);
+            background-color: $white;
+            @include BorderRadius(16px);
+            padding: 10px;
+
+            img {
+              @include WidthHeight(100%, 100%);
+              object-fit: contain;
+              filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            }
+          }
+
+          .box__inf {
+            width: calc(100% - 113px);
+            margin-left: 44px;
+
+            .name {
+              font-weight: 500;
+              @include FontSize(18);
+              padding: 0 60px;
+              position: relative;
+
+              &:after {
+                content: "";
+                position: absolute;
+                width: 50px;
+                height: 3px;
+                left: 0;
+                bottom: 0;
+                background-color: #333;
+              }
+            }
+
+            .description {
+              font-weight: 400;
+              @include FontSize(16);
+              font-style: italic;
+              color: rgba(51, 51, 51, 0.4);
+              margin: 16px 0;
+              line-height: 22px;
+            }
+
+            .btn__box {
+              display: flex;
+              align-items: center;
+              color: #42c636;
+              cursor: pointer;
+              opacity: 0.5;
+              transition: all 0.2s linear;
+
+              &:hover {
+                opacity: 1;
+              }
+
+              p {
+                text-transform: uppercase;
+                margin-right: 10px;
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /*
+      MAP HOME END
+      */
+
+  /*
     Charity organization HOME START
     */
   .sc__charity__organization {
@@ -226,6 +413,7 @@
               font-weight: 500;
               @include FontSize(16);
               transition: all 0.2s linear;
+              color: #333;
 
               &:hover {
                 opacity: 1;

@@ -9,6 +9,10 @@
         <CountHome />
       </section>
 
+      <section class="sc__map mt-50">
+        <MapHome />
+      </section>
+
       <section class="sc__charity__organization mt-50">
         <CharityOrganization />
       </section>
@@ -33,6 +37,7 @@ import CharityOrganization from "@/components/frontend/HomeCharityOrganization.v
 import Campaigns from "@/components/frontend/HomeCampaigns.vue";
 import BlogHome from "@/components/frontend/HomeBlog.vue";
 import PopupCampaign from "@/components/frontend/HomeItemPopupCampaign.vue";
+import MapHome from "@/components/frontend/HomeMap.vue";
 
 export default {
   name: "HomeView",
@@ -44,6 +49,7 @@ export default {
     Campaigns,
     BlogHome,
     PopupCampaign,
+    MapHome,
   },
 };
 </script>

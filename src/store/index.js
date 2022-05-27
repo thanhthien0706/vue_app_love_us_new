@@ -86,42 +86,42 @@ export default createStore({
     dataCharityOrganization: [
       {
         id: 0,
-        link: "home",
+        link: "https://www.thiennhien.org/",
         logo: "logo-env3.png",
         name: "Trung tâm giáo dục thiên nhiên",
         location: "Nha trang",
         description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade",
+          "Chương trình Chính sách và Pháp luật ENV ra đời năm 2007 nhằm góp phần cải tiến các văn bản pháp luật, các cơ chế, chính sách liên quan đến bảo vệ và bảo tồn ĐVHD.",
       },
 
       {
         id: 1,
-        link: "home",
-        logo: "logo-env3.png",
-        name: "Trung tâm giáo dục thiên nhiên",
-        location: "Đà Nẵng",
+        link: "https://www.facebook.com/VietnamWWF/",
+        logo: "wwf_to_chuc.png",
+        name: "Tổ chức Quốc tế về Bảo tồn Thiên nhiên tại Việt Nam",
+        location: "Hà Nội",
         description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade",
+          "WWF được thành lập vào năm 1961 bởi một nhóm các nhà yêu môi trường trên thế giới. Bắt đầu từ năm 1995, WWF chính thức có văn phòng đại diện tại Việt Nam.",
       },
 
       {
         id: 2,
-        link: "home",
-        logo: "logo-env3.png",
-        name: "Trung tâm giáo dục thiên nhiên",
+        link: "https://vnuf.edu.vn/to-chuc-bao-ton-dong-thuc-vat-hoang-da-quoc-te-ffi-tuyen-dung-can-bo-du-an-bao-ton-thuc-vat.html",
+        logo: "ffi_to_chuc.png",
+        name: "Tổ chức Bảo tồn động thực vật quốc tế",
         location: "Huế",
         description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade",
+          "Nhiệm vụ của FFI là bảo tồn các loài và hệ sinh thái bị đe dọa trên toàn thế giới, lựa chọn các giải pháp bền vững, dựa trên khoa học đúng đắn và có tính đến nhu cầu của con người.",
       },
 
       {
         id: 3,
-        link: "home",
-        logo: "logo-env3.png",
-        name: "Trung tâm giáo dục thiên nhiên",
+        link: "https://www.facebook.com/animalsasiavietnam/",
+        logo: "aa_to_chuc.png",
+        name: "Tổ chức Động vật châu Á",
         location: "Quãng ngãi",
         description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade",
+          "Từ những ngày đầu hoạt động tại Việt Nam vào năm 2006, Tổ chức Động vật Châu Á đã vươn lên trở thành một trong những tổ chức hàng đầu và có uy tín trong hoạt động kêu gọi chấm dứt việc nuôi nhốt gấu, cũng như quan tâm và cải thiện quyền lợi cho loài vật nguy cấp này.F",
       },
     ],
     dataMapVietName: [

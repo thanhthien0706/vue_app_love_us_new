@@ -24,6 +24,10 @@ const en = {
   address: "Address",
   phoneNumber: "Phone number",
   contract: "Contract",
+  numberofanimals: "Number of animals",
+  extinction: "Extinction",
+  warning: "warning",
+  charityorganization: "Charity organization",
 };
 
 export default en;

@@ -24,6 +24,10 @@ const vn = {
   address: "Địa chỉ",
   phoneNumber: "Số điện thoại",
   contract: "Liên hệ",
+  numberofanimals: "Số lượng động vật",
+  extinction: "Tuyệt chủng",
+  warning: "Cảnh báo",
+  charityorganization: "Tổ chức từ thiện",
 };
 
 export default vn;

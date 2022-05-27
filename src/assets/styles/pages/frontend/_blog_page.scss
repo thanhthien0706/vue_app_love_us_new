@@ -291,8 +291,8 @@
     /*
       CAMPAIGN HOME START
       */
-    .sc__campaigns {
-      .box__campaign__content {
+    .sc__blogslide {
+      .box__blog__content {
         padding: 20px 38px;
         background-color: $bg-main-30;
         @include BorderRadius(16px);
@@ -309,7 +309,7 @@
           margin-bottom: 30px;
   
           .item__tab {
-            @include WidthHeight(100px, 35px);
+            @include WidthHeight(128px, 35px);
             @include BorderRadius(36px);
             background: rgba(255, 255, 255, 0.4);
             display: flex;

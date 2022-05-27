@@ -4,7 +4,7 @@
       <section class="sc__blogs mt-50">
         <BlogPost />
       </section>
-      <section class="sc__blogs_slide mt-50">
+      <section class="sc__blogslide mt-50">
         <BlogSlide />
       </section>
       <section class="sc__blogs mt-50">

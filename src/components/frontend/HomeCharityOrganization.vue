@@ -20,7 +20,7 @@
 <template>
   <div class="charity__organization__content">
     <div class="header__orga">
-      <p class="title">Tổ chức từ thiện</p>
+      <p class="title">{{ $t("charityorganization") }}</p>
       <input
         type="text"
         placeholder="Tên tỉnh"

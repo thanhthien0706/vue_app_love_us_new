@@ -348,7 +348,7 @@ export default createStore({
       {
         id: 2,
         img: "https://tanbaocorp.vn/public/manipulate/800x500/article-images/1584515515-bao-ton-dong-vat-hoang-da-tai-vipearl.jpg",
-        category: "Bảo vệ động vật",
+        category: "Bảo vệ",
         description:
           "Chương trình bảo vệ động vật tại Vinpearl quy tụ gồm nhiều tổ chức từ thiện và các bạn tình nguyện viên đông đảo tham dự",
         name: "Pet Coffee Shop Day",

@@ -9,14 +9,14 @@ import { mapActions } from "vuex";
 export default {
   setup() {},
   created() {
-    // this.initMain();
+    this.initMain();
   },
   methods: {
     ...mapActions(["getDataUser"]),
-    // initMain() {
-    //   this.getDataUser();
-    //   handleLanguage.changeLanguage("vi");
-    // },
+    initMain() {
+      this.getDataUser();
+      //   handleLanguage.changeLanguage("vi");
+    },
   },
 };
 </script>

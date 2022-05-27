@@ -230,7 +230,7 @@ export default {
       const dataCurrent = this.dataFlagCountry.filter(
         (el) => el.language == handleLanguage.getLanguage()
       );
-
+      this.getDataUser();
       this.currentLanguage = dataCurrent[0];
     },
 

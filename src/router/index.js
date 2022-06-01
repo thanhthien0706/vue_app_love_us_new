@@ -42,18 +42,34 @@ const routes = [
 
   /**
    * ==============================================================
+   * PAGE ADMIN
+   * ==============================================================
+   */
+  //  admin/blogs
+  {
+    path: "/",
+    name: "admin_blogs",
+    meta: {
+      title: "Blogs",
+    },
+    component: () => import("@/views/admin/Adminblogs"),
+  },
+
+  /**
+   * ==============================================================
    * PAGE FRONTEND
    * ==============================================================
    */
 
   {
-    path: "/",
+    path: "/convey",
     name: "convey",
     meta: {
       title: "Thông điệp",
     },
-    component: () => import("@/views/frontend/BeginStartView"),
+    component: () => import("@/views/admin/Adminblogs"),
   },
+  // @/views/frontend/BeginStartView
   {
     path: "/home",
     name: "home",

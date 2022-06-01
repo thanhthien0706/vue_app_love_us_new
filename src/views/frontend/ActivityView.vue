@@ -52,7 +52,7 @@
       <!-- List Animal END -->
 
       <!-- can be done START -->
-      <section class="sc__canBeDone mt-50 mb-50" ref="scCanBeDone">
+      <section class="sc__canBeDone mt-50" ref="scCanBeDone">
         <activity-can-be-done />
       </section>
       <!-- can be done END -->

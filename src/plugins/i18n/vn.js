@@ -28,6 +28,9 @@ const vn = {
   extinction: "Tuyệt chủng",
   warning: "Cảnh báo",
   charityorganization: "Tổ chức từ thiện",
+  admin_dashboard: "Điền khiển",
+  admin_blog: "Bài viết",
+  top_most_read: "Đọc nhiều nhất",
 };
 
 export default vn;

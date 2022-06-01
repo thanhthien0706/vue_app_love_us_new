@@ -44,6 +44,12 @@ body {
   padding-bottom: 50px;
 }
 
+.bgBoxAdmin {
+  @include BorderRadius(16px);
+  background-color: $white-admin;
+  padding: 30px;
+}
+
 // :root {
 //     --slice-0: inset(50% 50% 50% 50%);
 //     --slice-1: inset(80% -6px 0 0);

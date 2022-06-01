@@ -28,6 +28,9 @@ const en = {
   extinction: "Extinction",
   warning: "warning",
   charityorganization: "Charity organization",
+  admin_dashboard: "Dashboard",
+  admin_blog: "Blogs",
+  top_most_read: "Top most read",
 };
 
 export default en;

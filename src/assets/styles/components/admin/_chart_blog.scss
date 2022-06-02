@@ -45,4 +45,42 @@
       }
     }
   }
+  .boxStatisticsNumber {
+    margin-bottom: 30px;
+    .colItemInne {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .boxInforLeft {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        .countNumber {
+          font-weight: bold;
+          @include FontSize(24);
+          margin-bottom: 12px;
+        }
+
+        .nameStatistics {
+          @include FontSize(16);
+          font-weight: 500;
+        }
+      }
+      .boxInforRight {
+        .ic_statistic {
+          @include WidthHeight(36px, 36px);
+          &.orange {
+            color: $orange-dark;
+          }
+          &.violet {
+            color: $violet;
+          }
+
+          &.blue {
+            color: $blue;
+          }
+        }
+      }
+    }
+  }
 }

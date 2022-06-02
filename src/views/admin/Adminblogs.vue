@@ -3,7 +3,55 @@
 <template>
   <AdminDefault1>
     <div class="boxMainBlogs">
-      <ChartBlog />
+      <ChartBlog
+        :listDataTopBlogs="listDataTopBlogs"
+        :dataStatistic="dataStatistic"
+        :dataChart="dataChart"
+      />
+
+      <div class="boxHandlerBlog">
+        <div class="handleBarBlog">
+          <div class="boxSearch bgBoxAdmin">
+            <fa :icon="['fas', 'search']" class="ic_search" />
+            <input
+              type="text"
+              class="inputSearch"
+              :placeholder="$t('search')"
+            />
+          </div>
+
+          <ul class="listHandle">
+            <li class="itemHandle">
+              <div class="boxBtnHandle bgBoxAdmin">
+                <fa :icon="['fas', 'plus']" class="ic_handle" />
+                <p class="textHandle">Thêm blog mới</p>
+              </div>
+            </li>
+
+            <li class="itemHandle">
+              <div class="boxBtnHandle bgBoxAdmin">
+                <fa :icon="['fas', 'filter']" class="ic_handle" />
+                <p class="textHandle">Lọc</p>
+              </div>
+            </li>
+
+            <li class="itemHandle">
+              <div class="boxBtnHandle bgBoxAdmin">
+                <fa :icon="['fas', 'trash']" class="ic_handle" />
+                <p class="textHandle">Thùng rác</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="boxShowAllBlog">
+          <ul class="listBlog">
+            <li class="itemblog" v-for="item in dataBlogs" :key="item.id">
+              <ItemBlog :dataItemBlog="item" />
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </AdminDefault1>
 </template>
@@ -11,9 +59,86 @@
 <script>
 import AdminDefault1 from "@/layouts/admin_default_1.vue";
 import ChartBlog from "@/components/admin/ChartBlog.vue";
+import ItemBlog from "@/components/admin/ItemBlog.vue";
 
 export default {
   name: "AdminBlogs",
-  components: { AdminDefault1, ChartBlog },
+  components: { AdminDefault1, ChartBlog, ItemBlog },
+  data() {
+    return {
+      listDataTopBlogs: [
+        {
+          id: 0,
+          link: "home",
+          avt: "img_avatar.png",
+          nameBlog: "Name blog",
+          numberReading: "300",
+        },
+        {
+          id: 3,
+          link: "home",
+          avt: "img_avatar.png",
+          nameBlog: "Name blog",
+          numberReading: "300",
+        },
+        {
+          id: 2,
+          link: "home",
+          avt: "img_avatar.png",
+          nameBlog: "Name blog",
+          numberReading: "300",
+        },
+      ],
+      dataStatistic: {
+        totalBlog: 20,
+        totalComments: 30,
+        totalReader: 40,
+      },
+      dataChart: {
+        labels: [
+          "Tháng 1",
+          "Tháng 2",
+          "Tháng 3",
+          "Tháng 4",
+          "Tháng 5",
+          "Tháng 6",
+          "Tháng 7",
+          "Tháng 8",
+          "Tháng 9",
+          "Tháng 10",
+          "Tháng 11",
+          "Tháng 12",
+        ],
+        datasets: [
+          {
+            label: "Bài viết",
+            data: [30, 40, 60, 70, 100, 30, 40, 60, 70, 5, 60, 70],
+            backgroundColor: ["#42c636"],
+          },
+        ],
+      },
+      dataBlogs: [
+        {
+          id: 0,
+          avatar: "campaign_1.png",
+          titleBlog: "Name blog animal hihi haha",
+          content:
+            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
+          avtAuthor: "img_avatar.png",
+          nameAuthor: "Thành Thiện pro",
+        },
+
+        {
+          id: 1,
+          avatar: "campaign_1.png",
+          titleBlog: "Name blog animal hihi haha",
+          content:
+            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
+          avtAuthor: "img_avatar.png",
+          nameAuthor: "Thành Thiện pro",
+        },
+      ],
+    };
+  },
 };
 </script>

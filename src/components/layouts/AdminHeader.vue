@@ -126,7 +126,6 @@ export default {
         (el) => el.language == handleLanguage.getLanguage()
       );
 
-      console.log(dataCurrent);
       this.currentLanguage = dataCurrent[0];
     },
     onSelectLanguage(item) {

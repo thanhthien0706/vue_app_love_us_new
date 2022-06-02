@@ -39,9 +39,7 @@ export default {
       ],
     };
   },
-  mounted() {
-    console.log(this.$route.name);
-  },
+  mounted() {},
   computed: {},
 };
 </script>

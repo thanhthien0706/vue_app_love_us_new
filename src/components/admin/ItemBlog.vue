@@ -38,7 +38,7 @@
             </li>
 
             <li class="itemBtn violet">
-              <fa :icon="['fas', 'file-pen']" class="ic_handle" />
+              <fa :icon="['fas', 'comment']" class="ic_handle" />
             </li>
 
             <li class="itemBtn orange">

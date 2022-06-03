@@ -47,7 +47,7 @@ const routes = [
    */
   //  admin/blogs
   {
-    path: "/",
+    path: "/admin/blogs/:idAuthor",
     name: "admin_blogs",
     meta: {
       title: "Blogs",
@@ -62,7 +62,7 @@ const routes = [
    */
 
   {
-    path: "/convey",
+    path: "/",
     name: "convey",
     meta: {
       title: "Thông điệp",

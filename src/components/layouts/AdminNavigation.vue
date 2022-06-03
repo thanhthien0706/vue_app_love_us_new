@@ -4,10 +4,10 @@
   <div class="AdminNavigation">
     <ul class="listMenuAdmin">
       <li class="itemAdmin" v-for="item in listMenuAdmin" :key="item.id">
-        <router-link :to="{ name: item.link }">
+        <router-link :to="{ path: item.link }">
           <div
             class="boxItem"
-            :class="{ active: item.link == this.$route.name }"
+            :class="{ active: item.nameLink == this.$route.name }"
           >
             <fa :icon="['fas', item.icon]" class="ic_navigation" />
             <p class="text_navigation">{{ $t(item.namePage) }}</p>
@@ -27,12 +27,14 @@ export default {
         {
           id: 0,
           link: "home",
+          nameLink: "home",
           icon: "chart-line",
           namePage: "admin_dashboard",
         },
         {
           id: 1,
-          link: "admin_blogs",
+          link: "/admin/blogs/all",
+          nameLink: "admin_blogs",
           icon: "file-pen",
           namePage: "admin_blog",
         },

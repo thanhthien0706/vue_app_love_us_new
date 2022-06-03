@@ -29,6 +29,7 @@
     "vue-chart-3": "^3.1.8",
     "vue-i18n": "^9.1.10",
     "vue-router": "^4.0.3",
+    "vuejs-paginate": "^2.1.0",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

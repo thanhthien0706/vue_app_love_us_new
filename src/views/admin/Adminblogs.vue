@@ -3,13 +3,28 @@
 <template>
   <AdminDefault1>
     <div class="boxMainBlogs">
+      <p
+        class="header__title text-center"
+        v-if="$route.params.idAuthor == 'all'"
+      >
+        Tất cả bài viết
+      </p>
+
+      <p class="header__title text-center" v-else>Bài viết của tôi</p>
+
       <ChartBlog
         :listDataTopBlogs="listDataTopBlogs"
         :dataStatistic="dataStatistic"
         :dataChart="dataChart"
       />
 
-      <div class="boxHandlerBlog">
+      <component
+        :is="currentComponent"
+        :dataBlogs="dataBlogs"
+        @onScrollTop="onScrollTop"
+      />
+
+      <!-- <div class="boxHandlerBlog">
         <div class="handleBarBlog">
           <div class="boxSearch bgBoxAdmin">
             <fa :icon="['fas', 'search']" class="ic_search" />
@@ -51,7 +66,7 @@
             </li>
           </ul>
         </div>
-      </div>
+      </div> -->
     </div>
   </AdminDefault1>
 </template>
@@ -59,13 +74,16 @@
 <script>
 import AdminDefault1 from "@/layouts/admin_default_1.vue";
 import ChartBlog from "@/components/admin/ChartBlog.vue";
-import ItemBlog from "@/components/admin/ItemBlog.vue";
+import AllBlog from "@/components/admin/AllBlog.vue";
+import MyBlogs from "@/components/admin/MyBlogs.vue";
 
 export default {
   name: "AdminBlogs",
-  components: { AdminDefault1, ChartBlog, ItemBlog },
+  components: { AdminDefault1, ChartBlog, AllBlog, MyBlogs },
   data() {
     return {
+      currentComponent: "AllBlog",
+
       listDataTopBlogs: [
         {
           id: 0,
@@ -137,8 +155,59 @@ export default {
           avtAuthor: "img_avatar.png",
           nameAuthor: "Thành Thiện pro",
         },
+        {
+          id: 2,
+          avatar: "campaign_1.png",
+          titleBlog: "Name blog animal hihi haha",
+          content:
+            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
+          avtAuthor: "img_avatar.png",
+          nameAuthor: "Thành Thiện pro",
+        },
+        {
+          id: 3,
+          avatar: "campaign_1.png",
+          titleBlog: "Name blog animal hihi haha",
+          content:
+            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
+          avtAuthor: "img_avatar.png",
+          nameAuthor: "Thành Thiện pro",
+        },
       ],
     };
+  },
+  mounted() {
+    // this.initDataMain();
+  },
+  methods: {
+    // initDataMain() {
+    //   const paramsId = this.$route.params.idAuthor;
+    //   if (paramsId == "all") {
+    //     this.currentComponent = AllBlog;
+    //   } else {
+    //     this.currentComponent = MyBlogs;
+    //   }
+    // },
+    onScrollTop() {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    },
+  },
+  watch: {
+    "$route.params.idAuthor": {
+      handler: function (idAuthor) {
+        if (idAuthor == "all") {
+          this.currentComponent = AllBlog;
+        } else {
+          this.currentComponent = MyBlogs;
+        }
+      },
+      deep: true,
+      immediate: true,
+    },
   },
 };
 </script>

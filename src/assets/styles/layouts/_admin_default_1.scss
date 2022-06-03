@@ -1,7 +1,7 @@
 #AdminDefault {
   background-color: $black-admin;
   @include WidthHeight(100%, 100vh);
-  overflow: hidden;
+  overflow: auto;
   color: #fff;
   .sc_adminHeader {
     position: fixed;
@@ -9,6 +9,7 @@
     right: 0;
     z-index: 9999;
     top: 0;
+    background-color: rgba(23, 24, 33);
     .AdminHeader {
       padding: 26px 32px;
       display: flex;
@@ -280,7 +281,6 @@
     }
   }
   .sc_main {
-    margin-left: 210px;
-    margin-top: 100px;
+    margin: 100px 32px 50px 210px;
   }
 }

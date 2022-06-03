@@ -31,6 +31,9 @@ const en = {
   admin_dashboard: "Dashboard",
   admin_blog: "Blogs",
   top_most_read: "Top most read",
+  blog: "Blogs",
+  comments: "Comments",
+  reader: "Reader",
 };
 
 export default en;

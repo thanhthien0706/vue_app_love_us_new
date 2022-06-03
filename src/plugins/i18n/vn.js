@@ -31,6 +31,9 @@ const vn = {
   admin_dashboard: "Điền khiển",
   admin_blog: "Bài viết",
   top_most_read: "Đọc nhiều nhất",
+  blog: "Bài viết",
+  comments: "Bình luận",
+  reader: "Người đọc",
 };
 
 export default vn;

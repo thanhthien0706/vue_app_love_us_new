@@ -16,17 +16,20 @@
       </ul>
     </div>
 
-    <component :is="currentTab" :dataBlogs="dataBlogs" />
+    <KeepAlive>
+      <component :is="currentTab" :dataBlogs="dataBlogs" />
+    </KeepAlive>
   </div>
 </template>
 
 <script>
 import AllBlog from "@/components/admin/AllBlog.vue";
 import CreateBlog from "@/components/admin/CreateBlog.vue";
+import BlogDraft from "@/components/admin/BlogDraft.vue";
 
 export default {
   name: "MyBlogs",
-  components: { AllBlog, CreateBlog },
+  components: { AllBlog, CreateBlog, BlogDraft },
   data() {
     return {
       currentTab: "AllBlog",
@@ -38,7 +41,7 @@ export default {
         },
         {
           id: 1,
-          isComponent: "",
+          isComponent: "BlogDraft",
           name: "Nháp",
         },
         {

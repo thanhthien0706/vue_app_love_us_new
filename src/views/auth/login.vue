@@ -183,6 +183,8 @@
         </div>
       </div>
     </div>
+
+    <NotifiView ref="componentNotifi" />
   </AuthenDefault>
 </template>
 
@@ -219,16 +221,33 @@ export default {
   },
   methods: {
     ...mapActions(["getDataUser"]),
+
+    onShowNotifi(option) {
+      this.$refs.componentNotifi.onCreateNotification(option);
+    },
+
     async onHandleLogin() {
       const resDataLogin = await authService.loginAccount(this.dataFormLogin);
 
       if (resDataLogin.success) {
         localStorage.setItem("loveUseToken", resDataLogin.token);
-        this.$router.push({ name: "home" });
+        // this.$router.push({ name: "home" });
         authService.initAuthHeader();
-        this.getDataUser();
+        let userData = await this.getDataUser();
+        if (userData.role == "user") {
+          this.$router.push({ name: "home" });
+        } else if (userData.role == "admin") {
+          this.$router.push({ path: "/admin/blogs/all" });
+        } else {
+          this.$router.push({ name: "login" });
+        }
       } else {
-        console.log(resDataLogin);
+        this.onShowNotifi({
+          status: "destructive",
+          message: "Đăng nhập không thành công",
+          theme: "",
+        });
+        // console.log(resDataLogin);
       }
     },
   },

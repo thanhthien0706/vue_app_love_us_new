@@ -43,8 +43,6 @@ const authService = {
   async loginAccount(formData) {
     isPending.value = true;
     try {
-      console.log(formData);
-
       const res = await axios.post("login", {
         email: formData.email,
         password: formData.password,

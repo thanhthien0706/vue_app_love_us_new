@@ -5,7 +5,16 @@
     <div class="boxHandleBlog">
       <ul class="listHandle">
         <li class="itemhandle">
-          <div class="boxBtnHandle bgBoxAdmin">
+          <div
+            class="boxBtnHandle bgBoxAdmin"
+            :class="{
+              disabled:
+                dataFormBlog.title == '' ||
+                dataFormBlog.content == '' ||
+                dataFormBlog.main_image == '',
+            }"
+            @click="onCreateBlog(false)"
+          >
             <fa :icon="['fas', 'pen-ruler']" class="ic_handle" />
             <p class="textHandle">Lưu nháp</p>
           </div>
@@ -17,9 +26,9 @@
               disabled:
                 dataFormBlog.title == '' ||
                 dataFormBlog.content == '' ||
-                dataFormBlog.main_image == '' ||
-                !dataFormBlog.list_category.length,
+                dataFormBlog.main_image == '',
             }"
+            @click="onCreateBlog(true)"
           >
             <fa :icon="['fas', 'paper-plane']" class="ic_handle" />
             <p class="textHandle">Đăng bài</p>
@@ -63,6 +72,7 @@
             class="inputForm"
             v-model="itemCategory"
             @keyup.enter="onAddCategory"
+            v-if="dataFormBlog.list_category.length != 5"
           />
         </div>
 
@@ -80,7 +90,7 @@
           </label>
 
           <img
-            src="@/assets/images/img_avatar.png"
+            :src="currentAvtBlog"
             alt=""
             class="imgAvt"
             v-if="currentAvtBlog != ''"
@@ -100,18 +110,31 @@
       </form>
     </div>
   </div>
+
+  <NotifiView ref="componentNotifi" />
 </template>
 
 <script>
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
+import { blogService, isPending } from "@/services/blogService";
+import { mapState } from "vuex";
+
 export default {
   name: "CreateBlog",
+  setup() {
+    return { isPending };
+  },
   components: { QuillEditor },
 
   data() {
     return {
+      optionNotifi: {
+        status: "",
+        message: "",
+        theme: "",
+      },
       itemCategory: "",
       currentAvtBlog: "",
 
@@ -120,10 +143,28 @@ export default {
         main_image: "",
         content: "",
         list_category: [],
+        status: false,
+      },
+      dataFormResetBlog: {
+        title: "",
+        main_image: "",
+        content: "",
+        list_category: [],
+        status: false,
       },
     };
   },
   methods: {
+    onShowNotifi(option) {
+      this.optionNotifi = option;
+      this.$refs.componentNotifi.onCreateNotification(this.optionNotifi);
+    },
+
+    resetFormBlog() {
+      this.dataFormBlog = Object.assign({}, this.dataFormResetBlog);
+      this.currentAvtBlog = "";
+    },
+
     onAddAvt(event) {
       const file = event.target.files[0];
       this.dataFormBlog.main_image = file;
@@ -135,11 +176,56 @@ export default {
     },
 
     onAddCategory() {
-      if (this.itemCategory != "") {
+      if (
+        this.itemCategory != "" &&
+        this.dataFormBlog.list_category.length < 5
+      ) {
         this.dataFormBlog.list_category.push(this.itemCategory);
         this.itemCategory = "";
       }
     },
+    async onCreateBlog(status) {
+      if (
+        this.dataFormBlog.title != "" ||
+        this.dataFormBlog.content != "" ||
+        this.dataFormBlog.main_image != ""
+      ) {
+        let formDataBlog = new FormData();
+        formDataBlog.append("main_image", this.dataFormBlog.main_image);
+        formDataBlog.append("title", this.dataFormBlog.title);
+        formDataBlog.append("content", this.dataFormBlog.content);
+        formDataBlog.append("status", status);
+        formDataBlog.append("authorId", this.$store.state.dataUserCurrent._id);
+        formDataBlog.append(
+          "authorName",
+          this.$store.state.dataUserCurrent.name
+        );
+
+        this.dataFormBlog.list_category.forEach((data) => {
+          formDataBlog.append("list_category[]", data);
+        });
+
+        const data = await blogService.createBlog(formDataBlog);
+
+        if (data.success) {
+          this.onShowNotifi({
+            status: "success",
+            message: "Tạo bài viết thành công",
+            theme: "admin",
+          });
+          this.resetFormBlog();
+        } else {
+          this.onShowNotifi({
+            status: "destructive",
+            message: "Tạo bài viết không thành công",
+            theme: "admin",
+          });
+        }
+      }
+    },
+  },
+  computed: {
+    ...mapState(["dataUserCurrent"]),
   },
 };
 </script>

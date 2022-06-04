@@ -438,8 +438,10 @@ export default createStore({
       const resData = await authService.getMe();
       if (resData.success) {
         commit("setDataUserCurrent", resData.data);
+        return resData.data;
       } else {
         commit("setDataUserCurrent", null);
+        return null;
       }
     },
   },

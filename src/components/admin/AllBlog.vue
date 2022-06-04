@@ -42,7 +42,7 @@
     <div class="boxShowAllBlog">
       <ul class="listBlog">
         <li class="itemblog" v-for="item in dataBlogs" :key="item.id">
-          <ItemBlog :dataItemBlog="item" />
+          <ItemBlog :dataItemBlog="item" isShow="full" />
         </li>
       </ul>
     </div>
@@ -51,6 +51,7 @@
 
 <script>
 import ItemBlog from "@/components/admin/ItemBlog.vue";
+
 export default {
   name: "AllBlog",
   props: ["dataBlogs"],

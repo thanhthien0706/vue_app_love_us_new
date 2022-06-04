@@ -9,6 +9,11 @@ import { authService } from "@/services/authService";
 import i18n from "@/plugins/i18n/i18n";
 
 /**
+ * COMPONENTs
+ */
+import NotifiView from "@/components/base/NotifiView.vue";
+
+/**
  * CUSTOM
  */
 /* 
@@ -38,6 +43,7 @@ authService.initAuthHeader();
 
 createApp(App)
   .component("fa", FontAwesomeIcon)
+  .component("NotifiView", NotifiView)
   .use(store)
   .use(i18n)
   .use(router)

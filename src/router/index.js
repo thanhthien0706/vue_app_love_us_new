@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import checkBeginStart from "@/middleware/checkBeginStart";
+import checkRole from "@/middleware/checkRole";
 
 const routes = [
   /**
@@ -51,6 +52,7 @@ const routes = [
     name: "admin_blogs",
     meta: {
       title: "Blogs",
+      middleware: [checkRole.isAdmin],
     },
     component: () => import("@/views/admin/Adminblogs"),
   },
@@ -67,7 +69,7 @@ const routes = [
     meta: {
       title: "Thông điệp",
     },
-    component: () => import("@/views/admin/Adminblogs"),
+    component: () => import("@/views/frontend/BeginStartView"),
   },
   // @/views/frontend/BeginStartView
   {

@@ -210,6 +210,8 @@
       </div>
     </div>
   </AuthenDefault>
+
+  <NotifiView ref="componentNotifi" />
 </template>
 
 <script>
@@ -218,6 +220,7 @@ import AuthenDefault from "@/layouts/authen_default.vue";
 import useVuelidate from "@vuelidate/core";
 import { email, sameAs, minLength, helpers } from "@vuelidate/validators";
 import { isPending, authService } from "@/services/authService";
+import { mapActions } from "vuex";
 
 export default {
   name: "RegisterPage",
@@ -265,6 +268,12 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["getDataUser"]),
+
+    onShowNotifi(option) {
+      this.$refs.componentNotifi.onCreateNotification(option);
+    },
+
     onChageAvater(event) {
       const file = event.target.files[0];
       this.dataFormRegister.fileAvater = file;
@@ -294,13 +303,26 @@ export default {
           email: this.dataFormRegister.email,
           password: this.dataFormRegister.password,
         });
+
+        console.log(resDataLogin);
         if (resDataLogin.success) {
           localStorage.setItem("loveUseToken", resDataLogin.token);
-          this.$router.push({ name: "home" });
+          // this.$router.push({ name: "home" });
           authService.initAuthHeader();
-          this.getDataUser();
+          let userData = await this.getDataUser();
+          if (userData.role == "user") {
+            this.$router.push({ name: "home" });
+          } else if (userData.role == "admin") {
+            this.$router.push({ path: "/admin/blogs/all" });
+          } else {
+            this.$router.push({ name: "login" });
+          }
         } else {
-          console.log(resDataLogin);
+          this.onShowNotifi({
+            status: "destructive",
+            message: "Đăng ký không thành công",
+            theme: "",
+          });
         }
       }
     },

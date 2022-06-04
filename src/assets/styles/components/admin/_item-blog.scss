@@ -54,6 +54,8 @@
     .listBtnHandle {
       display: flex;
       align-items: center;
+      justify-content: center;
+
       .itemBtn {
         margin: 0 10px;
         @include WidthHeight(48px, 48px);

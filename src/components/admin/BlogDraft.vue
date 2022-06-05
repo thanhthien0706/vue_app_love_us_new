@@ -8,6 +8,7 @@
           :dataItemBlog="item"
           :isShow="listShow"
           @restoreData="restoreDataBlog"
+          @editDataBlog="onEditDataBlog($event)"
         />
       </li>
     </ul>
@@ -46,6 +47,9 @@ export default {
     },
     restoreDataBlog() {
       this.initDataMain();
+    },
+    onEditDataBlog(event) {
+      this.$emit("onEditItemBlog", event);
     },
   },
   computed: {

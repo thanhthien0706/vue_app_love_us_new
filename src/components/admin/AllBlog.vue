@@ -9,12 +9,12 @@
       </div>
 
       <ul class="listHandle">
-        <li class="itemHandle">
-          <div class="boxBtnHandle bgBoxAdmin">
+        <!-- <li class="itemHandle">
+          <div class="boxBtnHandle bgBoxAdmin" @click="onCreateNewBlog">
             <fa :icon="['fas', 'plus']" class="ic_handle" />
             <p class="textHandle">Thêm blog mới</p>
           </div>
-        </li>
+        </li> -->
 
         <li class="itemHandle">
           <div class="boxBtnHandle bgBoxAdmin">
@@ -23,12 +23,12 @@
           </div>
         </li>
 
-        <li class="itemHandle">
+        <!-- <li class="itemHandle">
           <div class="boxBtnHandle bgBoxAdmin">
             <fa :icon="['fas', 'trash']" class="ic_handle" />
             <p class="textHandle">Thùng rác</p>
           </div>
-        </li>
+        </li> -->
 
         <li class="itemHandle" v-if="handleShowBtn" @click="onChangePage">
           <div class="boxBtnHandle bgBoxAdmin">
@@ -42,7 +42,7 @@
     <div class="boxShowAllBlog">
       <ul class="listBlog">
         <li class="itemblog" v-for="item in dataBlogs" :key="item.id">
-          <ItemBlog :dataItemBlog="item" isShow="full" />
+          <ItemBlog :dataItemBlog="item" :isShow="listShow" />
         </li>
       </ul>
     </div>
@@ -51,18 +51,38 @@
 
 <script>
 import ItemBlog from "@/components/admin/ItemBlog.vue";
+import { mapState } from "vuex";
+import { blogService } from "@/services/blogService";
 
 export default {
   name: "AllBlog",
-  props: ["dataBlogs"],
   components: { ItemBlog },
+  data() {
+    return {
+      listShow: ["view", "comment"],
+      dataBlogs: [],
+    };
+  },
+  mounted() {
+    this.initDataMain();
+  },
   methods: {
+    async initDataMain() {
+      const dataBlogs = await blogService.getAllBlogs();
+
+      if (dataBlogs.success) {
+        this.dataBlogs = dataBlogs.data;
+      }
+    },
+
     onChangePage() {
-      this.$router.push({ path: "/admin/blogs/thien" });
+      this.$router.push({ path: "/admin/blogs/" + this.dataUserCurrent.slug });
       this.$emit("onScrollTop");
     },
   },
   computed: {
+    ...mapState(["dataUserCurrent"]),
+
     handleShowBtn() {
       if (this.$route.params.idAuthor == "all") {
         return true;

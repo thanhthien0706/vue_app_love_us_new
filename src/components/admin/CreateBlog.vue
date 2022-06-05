@@ -4,7 +4,23 @@
   <div class="CreateBlog">
     <div class="boxHandleBlog">
       <ul class="listHandle">
-        <li class="itemhandle">
+        <li class="itemhandle" v-if="dataEditBlog.status == 'edit'">
+          <div
+            class="boxBtnHandle bgBoxAdmin"
+            :class="{
+              disabled:
+                dataFormBlog.title == '' ||
+                dataFormBlog.content == '' ||
+                dataFormBlog.main_image == '',
+            }"
+            @click="onUpdateBlog(false)"
+          >
+            <fa :icon="['fas', 'pen-ruler']" class="ic_handle" />
+            <p class="textHandle">Lưu nháp</p>
+          </div>
+        </li>
+
+        <li class="itemhandle" v-else>
           <div
             class="boxBtnHandle bgBoxAdmin"
             :class="{
@@ -29,7 +45,7 @@
                 dataFormBlog.content == '' ||
                 dataFormBlog.main_image == '',
             }"
-            @click="onCreateBlog(true)"
+            @click="onUpdateBlog(true)"
           >
             <fa :icon="['fas', 'paper-plane']" class="ic_handle" />
             <p class="textHandle">Cập nhật</p>
@@ -256,6 +272,45 @@ export default {
           this.onShowNotifi({
             status: "destructive",
             message: "Tạo bài viết không thành công",
+            theme: "admin",
+          });
+        }
+      }
+    },
+
+    async onUpdateBlog(status) {
+      if (
+        this.dataFormBlog.title != "" ||
+        this.dataFormBlog.content != "" ||
+        this.dataFormBlog.main_image != ""
+      ) {
+        let formDataBlog = new FormData();
+        formDataBlog.append("main_image", this.dataFormBlog.main_image);
+        formDataBlog.append("title", this.dataFormBlog.title);
+        formDataBlog.append("content", this.dataFormBlog.content);
+        formDataBlog.append("status", status);
+
+        this.dataFormBlog.list_category.forEach((data) => {
+          formDataBlog.append("list_category[]", data);
+        });
+
+        const updateData = await blogService.updateBlogWithId(
+          this.dataEditBlog.idBlog,
+          formDataBlog
+        );
+
+        if (updateData.success) {
+          this.onShowNotifi({
+            status: "success",
+            message: "Chỉnh sửa bài viết thành công",
+            theme: "admin",
+          });
+          this.resetFormBlog();
+          this.$emit("onCreateNewBlog");
+        } else {
+          this.onShowNotifi({
+            status: "destructive",
+            message: "Chỉnh sửa bài viết không thành công",
             theme: "admin",
           });
         }

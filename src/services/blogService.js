@@ -72,6 +72,28 @@ const blogService = {
       console.log("Error Blog: " + error);
     }
   },
+
+  // [UPDATE BLOG]
+  async updateBlogWithId(idBlog, dataBlog) {
+    try {
+      const dataRef = await axios.put(`/blog/me/${idBlog}/update`, dataBlog);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    }
+  },
+
+  // [GET ALL BLOG]
+  async getAllBlogs() {
+    try {
+      const dataRef = await axios.get(`/blog/all`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    }
+  },
 };
 
 export { blogService, isPending };

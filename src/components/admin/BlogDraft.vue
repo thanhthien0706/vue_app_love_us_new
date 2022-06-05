@@ -4,7 +4,11 @@
   <div class="BlogDraft">
     <ul class="listBlog">
       <li class="itemblog" v-for="item in dataBlogs" :key="item.id">
-        <ItemBlog :dataItemBlog="item" :isShow="listShow" />
+        <ItemBlog
+          :dataItemBlog="item"
+          :isShow="listShow"
+          @restoreData="restoreDataBlog"
+        />
       </li>
     </ul>
   </div>
@@ -37,9 +41,11 @@ export default {
       );
 
       if (dataBlog.success) {
-        console.log(dataBlog.data);
-        // this.dataBlogs = dataBlog.data;
+        this.dataBlogs = dataBlog.data;
       }
+    },
+    restoreDataBlog() {
+      this.initDataMain();
     },
   },
   computed: {

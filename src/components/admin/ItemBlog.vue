@@ -5,27 +5,19 @@
     <div class="row align-items-center">
       <div class="col-md-3">
         <div class="boxImage">
-          <img
-            :src="`${require('@/assets/images/page/' + dataItemBlog.avatar)}`"
-            alt=""
-            class="imgBlog"
-          />
+          <img :src="dataItemBlog.main_image" alt="" class="imgBlog" />
         </div>
       </div>
       <div class="col-md-6">
         <div class="boxInforBlog">
-          <p class="textTitleBlog">{{ dataItemBlog.titleBlog }}</p>
+          <p class="textTitleBlog">{{ sub_string(dataItemBlog.title, 50) }}</p>
           <p
             class="textCotentBlog"
             v-html="sub_string(dataItemBlog.content, 400)"
           ></p>
           <div class="boxAuthor">
-            <img
-              :src="`${require('@/assets/images/' + dataItemBlog.avtAuthor)}`"
-              alt=""
-              class="img__group"
-            />
-            <p class="name__group">{{ dataItemBlog.nameAuthor }}</p>
+            <img :src="dataItemBlog.dataAuthor[0].avatar" class="img__group" />
+            <p class="name__group">{{ dataItemBlog.dataAuthor[0].name }}</p>
           </div>
         </div>
       </div>
@@ -36,6 +28,7 @@
               :class="`itemBtn green ${item.color}`"
               v-for="item in listBtnHandleCurrent"
               :key="item.id"
+              @click="handleBarBlog(item.showName)"
             >
               <fa :icon="['fas', item.icon]" class="ic_handle" />
             </li>
@@ -48,6 +41,8 @@
 
 <script>
 import SubString from "@/utils/sub_string";
+import { blogService } from "@/services/blogService";
+import { mapState } from "vuex";
 
 export default {
   name: "ItemBlog",
@@ -102,7 +97,29 @@ export default {
         this.listBtnHandleCurrent = this.listBtnHandle;
       }
     },
+    handleBarBlog(nameHandle) {
+      if (nameHandle == "delete") {
+        this.handleDeleteBlog(this.dataItemBlog._id);
+      } else if (nameHandle == "edit") {
+        this.handleEditBlog(this.dataItemBlog._id);
+      }
+    },
+
+    handleEditBlog(idBlog) {
+      this.$emit("editDataBlog", idBlog);
+    },
+
+    async handleDeleteBlog(idBlog) {
+      const ref = await blogService.deleteBlogById(idBlog);
+
+      if (ref.success) {
+        this.$emit("restoreData");
+      }
+    },
     sub_string: SubString,
+  },
+  computed: {
+    ...mapState(["dataUserCurrent"]),
   },
 };
 </script>

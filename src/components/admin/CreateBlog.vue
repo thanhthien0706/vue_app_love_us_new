@@ -19,7 +19,24 @@
             <p class="textHandle">Lưu nháp</p>
           </div>
         </li>
-        <li class="itemhandle">
+
+        <li class="itemhandle" v-if="dataEditBlog.status == 'edit'">
+          <div
+            class="boxBtnHandle btnPost bgBoxAdmin"
+            :class="{
+              disabled:
+                dataFormBlog.title == '' ||
+                dataFormBlog.content == '' ||
+                dataFormBlog.main_image == '',
+            }"
+            @click="onCreateBlog(true)"
+          >
+            <fa :icon="['fas', 'paper-plane']" class="ic_handle" />
+            <p class="textHandle">Cập nhật</p>
+          </div>
+        </li>
+
+        <li class="itemhandle" v-else>
           <div
             class="boxBtnHandle btnPost bgBoxAdmin"
             :class="{
@@ -105,6 +122,7 @@
             contentType="html"
             placeholder="Viết bài của bạn ở đây..."
             v-model:content="dataFormBlog.content"
+            ref="qillEidtor"
           />
         </div>
       </form>
@@ -127,6 +145,11 @@ export default {
     return { isPending };
   },
   components: { QuillEditor },
+  inject: ["dataEditBlog"],
+
+  mounted() {
+    this.onInitEdit();
+  },
 
   data() {
     return {
@@ -155,6 +178,23 @@ export default {
     };
   },
   methods: {
+    async onInitEdit() {
+      if (this.dataEditBlog.idBlog != "" || this.dataEditBlog.status != "") {
+        const dataEditBlog = await blogService.getBlogWithId(
+          this.dataEditBlog.idBlog
+        );
+        if (dataEditBlog.success) {
+          this.dataFormBlog = {
+            title: dataEditBlog.data.title,
+            // content: dataEditBlog.data.content,
+            list_category: dataEditBlog.data.list_category,
+          };
+          this.$refs.qillEidtor.setHTML(dataEditBlog.data.content);
+          this.currentAvtBlog = dataEditBlog.data.main_image;
+        }
+      }
+    },
+
     onShowNotifi(option) {
       this.optionNotifi = option;
       this.$refs.componentNotifi.onCreateNotification(this.optionNotifi);
@@ -163,6 +203,7 @@ export default {
     resetFormBlog() {
       this.dataFormBlog = Object.assign({}, this.dataFormResetBlog);
       this.currentAvtBlog = "";
+      this.$refs.qillEidtor.setHTML("");
     },
 
     onAddAvt(event) {
@@ -184,6 +225,7 @@ export default {
         this.itemCategory = "";
       }
     },
+
     async onCreateBlog(status) {
       if (
         this.dataFormBlog.title != "" ||
@@ -196,10 +238,6 @@ export default {
         formDataBlog.append("content", this.dataFormBlog.content);
         formDataBlog.append("status", status);
         formDataBlog.append("authorId", this.$store.state.dataUserCurrent._id);
-        formDataBlog.append(
-          "authorName",
-          this.$store.state.dataUserCurrent.name
-        );
 
         this.dataFormBlog.list_category.forEach((data) => {
           formDataBlog.append("list_category[]", data);
@@ -227,5 +265,6 @@ export default {
   computed: {
     ...mapState(["dataUserCurrent"]),
   },
+  watch: {},
 };
 </script>

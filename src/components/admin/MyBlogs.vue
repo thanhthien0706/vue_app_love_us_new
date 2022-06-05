@@ -16,27 +16,36 @@
       </ul>
     </div>
 
-    <KeepAlive>
-      <component :is="currentTab" :dataBlogs="dataBlogs" />
+    <KeepAlive include="CreateBlog">
+      <Transition
+        enter-active-class="animate__animated animate__fadeIn animate__fast"
+        leave-active-class="animate__animated animate__fadeOut animate__fast"
+      >
+        <component
+          :is="currentTab"
+          :dataBlogs="dataBlogs"
+          @onEditItemBlog="eventEditBlogs($event)"
+        />
+      </Transition>
     </KeepAlive>
   </div>
 </template>
 
 <script>
-import AllBlog from "@/components/admin/AllBlog.vue";
 import CreateBlog from "@/components/admin/CreateBlog.vue";
 import BlogDraft from "@/components/admin/BlogDraft.vue";
+import BlogMePublic from "@/components/admin/BlogMePublic.vue";
 
 export default {
   name: "MyBlogs",
-  components: { AllBlog, CreateBlog, BlogDraft },
+  components: { CreateBlog, BlogDraft, BlogMePublic },
   data() {
     return {
-      currentTab: "AllBlog",
+      currentTab: "BlogMePublic",
       listTab: [
         {
           id: 0,
-          isComponent: "AllBlog",
+          isComponent: "BlogMePublic",
           name: "Bài viết",
         },
         {
@@ -50,50 +59,25 @@ export default {
           name: "Tạo bài viết",
         },
       ],
-      dataBlogs: [
-        {
-          id: 0,
-          avatar: "campaign_1.png",
-          titleBlog: "Name blog animal hihi haha",
-          content:
-            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-          avtAuthor: "img_avatar.png",
-          nameAuthor: "Thành Thiện pro",
-        },
-
-        {
-          id: 1,
-          avatar: "campaign_1.png",
-          titleBlog: "Name blog animal hihi haha",
-          content:
-            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-          avtAuthor: "img_avatar.png",
-          nameAuthor: "Thành Thiện pro",
-        },
-        {
-          id: 2,
-          avatar: "campaign_1.png",
-          titleBlog: "Name blog animal hihi haha",
-          content:
-            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-          avtAuthor: "img_avatar.png",
-          nameAuthor: "Thành Thiện pro",
-        },
-        {
-          id: 3,
-          avatar: "campaign_1.png",
-          titleBlog: "Name blog animal hihi haha",
-          content:
-            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-          avtAuthor: "img_avatar.png",
-          nameAuthor: "Thành Thiện pro",
-        },
-      ],
+      dataEditBlogItem: {
+        idBlog: "",
+        status: "",
+      },
+    };
+  },
+  provide() {
+    return {
+      dataEditBlog: this.dataEditBlogItem,
     };
   },
   methods: {
     changeComponent(component) {
       this.currentTab = component;
+    },
+    eventEditBlogs(event) {
+      this.dataEditBlogItem.idBlog = event;
+      this.dataEditBlogItem.status = "edit";
+      this.currentTab = "CreateBlog";
     },
   },
 };

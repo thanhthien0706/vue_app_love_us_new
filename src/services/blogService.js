@@ -18,15 +18,58 @@ const blogService = {
     }
   },
 
-  // [GET BLOG ADMIN WITH ID] /blog/me/:idUser
-
+  // [GET BLOG ADMIN WITH ID] /blog/me/:idUser/draft
   async getBlogMeById(idUser) {
     try {
-      const dataRef = await axios.get(`/blog/me/${idUser}`);
+      const dataRef = await axios.get(`/blog/me/${idUser}/draft`);
 
       return dataRef.data;
     } catch (err) {
       console.log("Error Blog: " + err);
+    }
+  },
+
+  // [GET BLOG PUBLIC ADMIN WITH ID] /blog/me/:idUser/public
+  async getBlogPublicMeById(idUser) {
+    try {
+      const dataRef = await axios.get(`/blog/me/${idUser}/public`);
+
+      return dataRef.data;
+    } catch (err) {
+      console.log("Error Blog: " + err);
+    }
+  },
+
+  // [DELETE BLOG] /blog/me/:idBLog/delete
+  async deleteBlogById(idBlog) {
+    try {
+      const dataRef = await axios.delete(`/blog/me/${idBlog}/delete`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error delete Blog: " + error);
+    }
+  },
+
+  // [GET COUNT] /blog/me/:idBLog/count
+  async countDocumentsDeletedWithID(idUser) {
+    try {
+      const dataRef = await axios.get(`/blog/me/${idUser}/count`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error delete Blog: " + error);
+    }
+  },
+
+  // [GET BLOG WITJ ID] /blog/me/:idBLog
+  async getBlogWithId(idBlog) {
+    try {
+      const dataRef = await axios.get(`/blog/me/${idBlog}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
     }
   },
 };

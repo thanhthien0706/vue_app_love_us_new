@@ -18,13 +18,14 @@
 
     <KeepAlive include="CreateBlog">
       <Transition
-        enter-active-class="animate__animated animate__fadeIn animate__fast"
-        leave-active-class="animate__animated animate__fadeOut animate__fast"
+        enter-active-class="animate__animated animate__fadeIn animate__faster"
+        leave-active-class="animate__animated animate__fadeOut animate__faster"
       >
         <component
           :is="currentTab"
           :dataBlogs="dataBlogs"
           @onEditItemBlog="eventEditBlogs($event)"
+          @onCreateNewBlog="onCreateNewBlog"
         />
       </Transition>
     </KeepAlive>
@@ -56,7 +57,7 @@ export default {
         {
           id: 2,
           isComponent: "CreateBlog",
-          name: "Tạo bài viết",
+          name: "Tạo/sửa bài viết",
         },
       ],
       dataEditBlogItem: {
@@ -78,6 +79,11 @@ export default {
       this.dataEditBlogItem.idBlog = event;
       this.dataEditBlogItem.status = "edit";
       this.currentTab = "CreateBlog";
+    },
+    onCreateNewBlog() {
+      this.dataEditBlogItem.idBlog = "";
+      this.dataEditBlogItem.status = "";
+      console.log(this.dataEditBlogItem);
     },
   },
 };

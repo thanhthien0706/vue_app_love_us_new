@@ -13,7 +13,7 @@
           <p class="textTitleBlog">{{ sub_string(dataItemBlog.title, 50) }}</p>
           <p
             class="textCotentBlog"
-            v-html="sub_string(dataItemBlog.content, 400)"
+            v-html="sub_string(dataItemBlog.content, 320)"
           ></p>
           <div class="boxAuthor">
             <img :src="dataItemBlog.dataAuthor[0].avatar" class="img__group" />

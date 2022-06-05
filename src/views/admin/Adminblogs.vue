@@ -2,7 +2,7 @@
 
 <template>
   <AdminDefault1>
-    <div class="boxMainBlogs">
+    <div class="boxMainBlogs" v-if="isCheckPage">
       <p
         class="header__title text-center"
         v-if="$route.params.idAuthor == 'all'"
@@ -22,6 +22,7 @@
         :is="currentComponent"
         :dataBlogs="dataBlogs"
         @onScrollTop="onScrollTop"
+        @onCreateNewBlog="onCreateNewBlog"
       />
 
       <!-- <div class="boxHandlerBlog">
@@ -68,6 +69,10 @@
         </div>
       </div> -->
     </div>
+
+    <div class="boxShowError text-center" v-else>
+      <p>Trang không tồn tại</p>
+    </div>
   </AdminDefault1>
 </template>
 
@@ -77,12 +82,15 @@ import ChartBlog from "@/components/admin/ChartBlog.vue";
 import AllBlog from "@/components/admin/AllBlog.vue";
 import MyBlogs from "@/components/admin/MyBlogs.vue";
 
+import { mapState } from "vuex";
+
 export default {
   name: "AdminBlogs",
   components: { AdminDefault1, ChartBlog, AllBlog, MyBlogs },
   data() {
     return {
       currentComponent: "AllBlog",
+      isCheckPage: true,
 
       listDataTopBlogs: [
         {
@@ -136,58 +144,47 @@ export default {
         ],
       },
       dataBlogs: [
-        {
-          id: 0,
-          avatar: "campaign_1.png",
-          titleBlog: "Name blog animal hihi haha",
-          content:
-            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-          avtAuthor: "img_avatar.png",
-          nameAuthor: "Thành Thiện pro",
-        },
-
-        {
-          id: 1,
-          avatar: "campaign_1.png",
-          titleBlog: "Name blog animal hihi haha",
-          content:
-            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-          avtAuthor: "img_avatar.png",
-          nameAuthor: "Thành Thiện pro",
-        },
-        {
-          id: 2,
-          avatar: "campaign_1.png",
-          titleBlog: "Name blog animal hihi haha",
-          content:
-            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-          avtAuthor: "img_avatar.png",
-          nameAuthor: "Thành Thiện pro",
-        },
-        {
-          id: 3,
-          avatar: "campaign_1.png",
-          titleBlog: "Name blog animal hihi haha",
-          content:
-            "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-          avtAuthor: "img_avatar.png",
-          nameAuthor: "Thành Thiện pro",
-        },
+        // {
+        //   id: 0,
+        //   avatar: "campaign_1.png",
+        //   titleBlog: "Name blog animal hihi haha",
+        //   content:
+        //     "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
+        //   avtAuthor: "img_avatar.png",
+        //   nameAuthor: "Thành Thiện pro",
+        // },
+        // {
+        //   id: 1,
+        //   avatar: "campaign_1.png",
+        //   titleBlog: "Name blog animal hihi haha",
+        //   content:
+        //     "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
+        //   avtAuthor: "img_avatar.png",
+        //   nameAuthor: "Thành Thiện pro",
+        // },
+        // {
+        //   id: 2,
+        //   avatar: "campaign_1.png",
+        //   titleBlog: "Name blog animal hihi haha",
+        //   content:
+        //     "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
+        //   avtAuthor: "img_avatar.png",
+        //   nameAuthor: "Thành Thiện pro",
+        // },
+        // {
+        //   id: 3,
+        //   avatar: "campaign_1.png",
+        //   titleBlog: "Name blog animal hihi haha",
+        //   content:
+        //     "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
+        //   avtAuthor: "img_avatar.png",
+        //   nameAuthor: "Thành Thiện pro",
+        // },
       ],
     };
   },
-  mounted() {
-    // this.initDataMain();
-  },
+  mounted() {},
   methods: {
-    // initDataMain() {
-    //   const paramsId = this.$route.params.idAuthor;
-    //   if (paramsId == "all") {
-    //     this.currentComponent = AllBlog;
-    //   } else {
-    //     this.currentComponent = MyBlogs;
-    //   }
-    // },
     onScrollTop() {
       window.scroll({
         top: 0,
@@ -195,14 +192,20 @@ export default {
         behavior: "smooth",
       });
     },
+    onCreateNewBlog() {},
+  },
+  computed: {
+    ...mapState(["dataUserCurrent"]),
   },
   watch: {
     "$route.params.idAuthor": {
       handler: function (idAuthor) {
         if (idAuthor == "all") {
           this.currentComponent = AllBlog;
-        } else {
+        } else if (idAuthor == this.dataUserCurrent.slug) {
           this.currentComponent = MyBlogs;
+        } else {
+          this.isCheckPage = false;
         }
       },
       deep: true,

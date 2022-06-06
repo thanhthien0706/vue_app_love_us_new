@@ -105,6 +105,16 @@ const blogService = {
       console.log("Error Blog: " + error);
     }
   },
+
+  async sendComment(dataComment) {
+    try {
+      const dataRef = await axios.post(`/comment/create`, dataComment);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    }
+  },
 };
 
 export { blogService, isPending };

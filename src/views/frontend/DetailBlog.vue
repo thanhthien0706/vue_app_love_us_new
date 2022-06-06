@@ -53,10 +53,11 @@
                 name="comment"
                 class="txtComment"
                 placeholder="Để lại nhận xét của bạn ở đây..."
+                v-model="commentContent"
               ></textarea>
             </div>
 
-            <div class="boxBtnSend">
+            <div class="boxBtnSend" @click="sendComment">
               <fa :icon="['fas', 'paper-plane']" class="ic_sendComment" />
             </div>
           </form>
@@ -110,6 +111,8 @@
       <p class="">Bài viết không tồn tại</p>
     </div>
   </DefaultFrontend_1>
+
+  <NotifiView ref="componentNotifi" />
 </template>
 
 <script>
@@ -123,6 +126,11 @@ export default {
   data() {
     return {
       isShow: true,
+      optionNotifi: {
+        status: "",
+        message: "",
+        theme: "",
+      },
       dataBlogDetail: {
         _id: "",
         title: "",
@@ -143,9 +151,6 @@ export default {
       commentContent: "",
       checkLike: false,
       checkDislike: false,
-      // dataCommentBlog: {
-      //   idCommentator: ,
-      // },
     };
   },
 
@@ -167,6 +172,10 @@ export default {
         }
       }
     },
+    onShowNotifi(option) {
+      this.optionNotifi = option;
+      this.$refs.componentNotifi.onCreateNotification(this.optionNotifi);
+    },
     onHandleLike() {
       this.checkLike = !this.checkLike;
       if (this.checkLike) {
@@ -178,6 +187,43 @@ export default {
       this.checkDislike = !this.checkDislike;
       if (this.checkDislike) {
         this.checkLike = false;
+      }
+    },
+
+    async sendComment() {
+      console.log(this.$store.state.dataUserCurrent);
+
+      if (this.$store.state.dataUserCurrent != null) {
+        if (this.commentContent != "") {
+          const formComment = {
+            commentator_id: this.$store.state.dataUserCurrent._id,
+            blog_id: this.dataBlogDetail._id,
+            content: this.commentContent,
+          };
+
+          const dataComment = await blogService.sendComment(formComment);
+
+          if (dataComment.success) {
+            this.onShowNotifi({
+              status: "success",
+              message: "Cảm ơn bạn đã bình luận",
+              theme: "",
+            });
+            this.commentContent = "";
+          } else {
+            this.onShowNotifi({
+              status: "destructive",
+              message: "Bình luận không thành công",
+              theme: "",
+            });
+          }
+        } else {
+          this.onShowNotifi({
+            status: "warning",
+            message: "Bạn phải viết gì đó!",
+            theme: "",
+          });
+        }
       }
     },
 

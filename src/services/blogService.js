@@ -94,6 +94,17 @@ const blogService = {
       console.log("Error Blog: " + error);
     }
   },
+
+  // [GET BLOG WITH SLUG]
+  async getBlogDetailWithSlug(slugBlog) {
+    try {
+      const dataRef = await axios.get(`/blog/${slugBlog}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    }
+  },
 };
 
 export { blogService, isPending };

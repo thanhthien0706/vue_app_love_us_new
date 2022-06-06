@@ -1,3 +1,5 @@
+import { nextTick } from "vue";
+
 import { createRouter, createWebHistory } from "vue-router";
 import checkBeginStart from "@/middleware/checkBeginStart";
 import checkRole from "@/middleware/checkRole";
@@ -62,6 +64,14 @@ const routes = [
    * PAGE FRONTEND
    * ==============================================================
    */
+  {
+    path: "/blog/:slugBlog",
+    name: "detail_blog",
+    meta: {
+      title: "blog_detail",
+    },
+    component: () => import("@/views/frontend/DetailBlog"),
+  },
 
   {
     path: "/",
@@ -127,8 +137,10 @@ function nextFactory(context, middleware, index) {
   };
 }
 
-router.afterEach((from) => {
-  document.title = from.meta.title || "Us love";
+router.afterEach((to) => {
+  nextTick(() => {
+    document.title = to.meta.title || "Us love";
+  });
 });
 
 router.beforeEach((to, from, next) => {

@@ -5,7 +5,11 @@
     <div class="row align-items-center">
       <div class="col-md-3">
         <div class="boxImage">
-          <img :src="dataItemBlog.main_image" alt="" class="imgBlog" />
+          <img
+            :src="convrt_image(dataItemBlog.main_image)"
+            alt=""
+            class="imgBlog"
+          />
         </div>
       </div>
       <div class="col-md-6">
@@ -16,7 +20,10 @@
             v-html="sub_string(dataItemBlog.content, 320)"
           ></p>
           <div class="boxAuthor">
-            <img :src="dataItemBlog.dataAuthor[0].avatar" class="img__group" />
+            <img
+              :src="convrt_image(dataItemBlog.dataAuthor[0].avatar)"
+              class="img__group"
+            />
             <p class="name__group">{{ dataItemBlog.dataAuthor[0].name }}</p>
           </div>
         </div>
@@ -43,6 +50,7 @@
 import SubString from "@/utils/sub_string";
 import { blogService } from "@/services/blogService";
 import { mapState } from "vuex";
+import ConvertImage from "@/utils/convertImage";
 
 export default {
   name: "ItemBlog",
@@ -117,6 +125,7 @@ export default {
       }
     },
     sub_string: SubString,
+    convrt_image: ConvertImage,
   },
   computed: {
     ...mapState(["dataUserCurrent"]),

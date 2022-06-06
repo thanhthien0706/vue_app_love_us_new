@@ -34,6 +34,8 @@ const en = {
   blog: "Blogs",
   comments: "Comments",
   reader: "Reader",
+  blog_detail: "Blog Detail",
+  tag: "Tags",
 };
 
 export default en;

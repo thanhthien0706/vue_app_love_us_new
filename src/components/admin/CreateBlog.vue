@@ -123,7 +123,7 @@
           </label>
 
           <img
-            :src="currentAvtBlog"
+            :src="convert_image(currentAvtBlog)"
             alt=""
             class="imgAvt"
             v-if="currentAvtBlog != ''"
@@ -154,6 +154,7 @@ import "@vueup/vue-quill/dist/vue-quill.snow.css";
 
 import { blogService, isPending } from "@/services/blogService";
 import { mapState } from "vuex";
+import ConvertImage from "@/utils/convertImage";
 
 export default {
   name: "CreateBlog",
@@ -316,6 +317,7 @@ export default {
         }
       }
     },
+    convert_image: ConvertImage,
   },
   computed: {
     ...mapState(["dataUserCurrent"]),

@@ -90,6 +90,7 @@ const routes = [
     },
     component: () => import("@/views/frontend/ActivityView.vue"),
   },
+
   {
     path: "/blog",
     name: "blog",
@@ -99,6 +100,16 @@ const routes = [
     },
     component: () => import("@/views/frontend/BlogView.vue"),
   },
+
+  {
+    path: "/blog/:slugBlog",
+    name: "detail_blog",
+    meta: {
+      title: "blog_detail",
+    },
+    component: () => import("@/views/frontend/DetailBlog"),
+  },
+
   {
     path: "/report",
     name: "report",
@@ -127,8 +138,8 @@ function nextFactory(context, middleware, index) {
   };
 }
 
-router.afterEach((from) => {
-  document.title = from.meta.title || "Us love";
+router.afterEach((to) => {
+  document.title = to.meta.title || "Us love";
 });
 
 router.beforeEach((to, from, next) => {

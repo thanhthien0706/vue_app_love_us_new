@@ -34,6 +34,8 @@ const vn = {
   blog: "Bài viết",
   comments: "Bình luận",
   reader: "Người đọc",
+  blog_detail: "Bài viết chi tiết",
+  tag: "Thẻ",
 };
 
 export default vn;

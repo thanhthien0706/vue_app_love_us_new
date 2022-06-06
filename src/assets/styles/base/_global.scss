@@ -100,7 +100,6 @@ body {
 .backgroundMainItem {
   background-color: $bg-main-30;
   // @include FilterBlur(20px);
-  backdrop-filter: blur(20px);
   @include BorderRadius(16px);
 }
 

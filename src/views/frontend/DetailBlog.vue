@@ -47,6 +47,61 @@
 
         <div class="boxComment">
           <p class="titleBox">{{ $t("comments") }} (0)</p>
+          <form action="javascript:void(0)" @submit.prevent class="formComment">
+            <div class="formGroup">
+              <textarea
+                name="comment"
+                class="txtComment"
+                placeholder="Để lại nhận xét của bạn ở đây..."
+              ></textarea>
+            </div>
+
+            <div class="boxBtnSend">
+              <fa :icon="['fas', 'paper-plane']" class="ic_sendComment" />
+            </div>
+          </form>
+
+          <div class="boxListComment">
+            <ul class="listComments">
+              <li class="itemComment">
+                <div class="boxItemComment">
+                  <img
+                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    alt=""
+                    class="imageUserComment"
+                  />
+                  <div class="boxContentCommentUser">
+                    <div class="boxNameUser">
+                      <p class="textNameUser">thành thiện</p>
+                      <p class="dateComment">1-2-2020</p>
+                    </div>
+                    <p class="content">cmmment nafy nhay quas</p>
+
+                    <!-- <div class="boxHandleComment">
+                      <div class="handlerComment">
+                        <fa
+                          :icon="['fas', 'thumbs-up']"
+                          class="ic_handle ic_like"
+                          :class="{ active: checkLike }"
+                          @click="onHandleLike"
+                        />
+                        <span class="">36</span>
+                      </div>
+                      <div class="handlerComment">
+                        <fa
+                          :icon="['fas', 'thumbs-down']"
+                          class="ic_handle ic_dislike"
+                          :class="{ active: checkDislike }"
+                          @click="onHandleDislike"
+                        />
+                        <span class="">36</span>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -68,11 +123,33 @@ export default {
   data() {
     return {
       isShow: true,
-      dataBlogDetail: {},
+      dataBlogDetail: {
+        _id: "",
+        title: "",
+        main_image: "",
+        list_category: [],
+        content: "",
+        countEye: "",
+        createdAt: "",
+        slug: "",
+        dataAuthor: [
+          {
+            _id: "",
+            avatar: "",
+            name: "",
+          },
+        ],
+      },
+      commentContent: "",
+      checkLike: false,
+      checkDislike: false,
+      // dataCommentBlog: {
+      //   idCommentator: ,
+      // },
     };
   },
 
-  created() {
+  mounted() {
     this.initDataMain();
   },
   methods: {
@@ -90,6 +167,21 @@ export default {
         }
       }
     },
+    onHandleLike() {
+      this.checkLike = !this.checkLike;
+      if (this.checkLike) {
+        this.checkDislike = false;
+      }
+    },
+
+    onHandleDislike() {
+      this.checkDislike = !this.checkDislike;
+      if (this.checkDislike) {
+        this.checkLike = false;
+      }
+    },
+
+    // handlerServerLike
 
     convert_image: ConvertImage,
   },
@@ -97,9 +189,7 @@ export default {
     titlePage() {
       const routeName = this.$route.meta.title;
       const params = this.$route.params.slugBlog;
-
       const title = `${this.$t(routeName)} - ${params}`;
-
       return title;
     },
   },

@@ -110,11 +110,17 @@ export default {
         this.handleDeleteBlog(this.dataItemBlog._id);
       } else if (nameHandle == "edit") {
         this.handleEditBlog(this.dataItemBlog._id);
+      } else if (nameHandle == "view") {
+        this.handleViewBlog(this.dataItemBlog.slug);
       }
     },
 
     handleEditBlog(idBlog) {
       this.$emit("editDataBlog", idBlog);
+    },
+
+    handleViewBlog(slug) {
+      this.$router.push({ name: "detail_blog", params: { slugBlog: slug } });
     },
 
     async handleDeleteBlog(idBlog) {

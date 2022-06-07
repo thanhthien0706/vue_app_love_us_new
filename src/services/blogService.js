@@ -106,9 +106,10 @@ const blogService = {
     }
   },
 
-  async sendComment(dataComment) {
+  // get blog most read
+  async getBlogMostRead(idAuthor, limit) {
     try {
-      const dataRef = await axios.post(`/comment/create`, dataComment);
+      const dataRef = await axios.get(`/blog//most-read/${idAuthor}/${limit}`);
 
       return dataRef.data;
     } catch (error) {

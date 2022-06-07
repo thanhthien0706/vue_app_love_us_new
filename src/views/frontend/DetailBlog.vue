@@ -46,7 +46,7 @@
         </div>
 
         <div class="boxComment">
-          <p class="titleBox">{{ $t("comments") }} (0)</p>
+          <p class="titleBox">{{ $t("comments") }} ({{ countComment }})</p>
           <form action="javascript:void(0)" @submit.prevent class="formComment">
             <div class="formGroup">
               <textarea
@@ -64,19 +64,88 @@
 
           <div class="boxListComment">
             <ul class="listComments">
-              <li class="itemComment">
+              <li v-if="dataComments == null">
+                <p>Không có bình luận nào</p>
+              </li>
+
+              <li
+                class="itemComment"
+                v-else
+                v-for="(comment, index) in dataComments"
+                :key="index"
+              >
                 <div class="boxItemComment">
                   <img
-                    src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    :src="convert_image(comment.dataParentUser[0].avatar)"
                     alt=""
                     class="imageUserComment"
                   />
                   <div class="boxContentCommentUser">
                     <div class="boxNameUser">
-                      <p class="textNameUser">thành thiện</p>
-                      <p class="dateComment">1-2-2020</p>
+                      <p class="textNameUser">
+                        {{ comment.dataParentUser[0].name }}
+                      </p>
+                      <p class="dateComment">
+                        {{ format_date(comment.createdAt) }}
+                      </p>
                     </div>
-                    <p class="content">cmmment nafy nhay quas</p>
+                    <p class="content">{{ comment.content }}</p>
+
+                    <!-- <div class="boxHandleComment">
+                      <div class="handlerComment">
+                        <fa
+                          :icon="['fas', 'thumbs-up']"
+                          class="ic_handle ic_like"
+                          :class="{ active: checkLike }"
+                          @click="onHandleLike"
+                        />
+                        <span class="">36</span>
+                      </div>
+                      <div class="handlerComment">
+                        <fa
+                          :icon="['fas', 'thumbs-down']"
+                          class="ic_handle ic_dislike"
+                          :class="{ active: checkDislike }"
+                          @click="onHandleDislike"
+                        />
+                        <span class="">36</span>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+
+                <div
+                  class="boxItemChildrenComment"
+                  v-for="(childComment, index) in comment.listChildrenComments"
+                  :key="index"
+                >
+                  <img
+                    :src="
+                      convert_image(
+                        filterChildrenComment(
+                          comment.dataChildrentrUser,
+                          childComment.commentator_id
+                        ).avatar
+                      )
+                    "
+                    alt=""
+                    class="imageUserComment"
+                  />
+                  <div class="boxContentCommentUser">
+                    <div class="boxNameUser">
+                      <p class="textNameUser">
+                        {{
+                          filterChildrenComment(
+                            comment.dataChildrentrUser,
+                            childComment.commentator_id
+                          ).name
+                        }}
+                      </p>
+                      <p class="dateComment">
+                        {{ format_date(childComment.createdAt) }}
+                      </p>
+                    </div>
+                    <p class="content">{{ childComment.content }}</p>
 
                     <!-- <div class="boxHandleComment">
                       <div class="handlerComment">
@@ -118,7 +187,9 @@
 <script>
 import DefaultFrontend_1 from "@/layouts/DefaultFrontend_1.vue";
 import { blogService } from "@/services/blogService";
+import { commentService } from "@/services/commentService";
 import ConvertImage from "@/utils/convertImage";
+import FormatDate from "@/utils/fortmatDate";
 
 export default {
   name: "DetailBlog",
@@ -148,6 +219,8 @@ export default {
           },
         ],
       },
+      dataComments: null,
+      countComment: "0",
       commentContent: "",
       checkLike: false,
       checkDislike: false,
@@ -157,6 +230,7 @@ export default {
   mounted() {
     this.initDataMain();
   },
+  created() {},
   methods: {
     async initDataMain() {
       document.title = this.titlePage;
@@ -169,6 +243,7 @@ export default {
           this.isShow = false;
         } else {
           this.dataBlogDetail = dataBLogDetial.data[0];
+          this.getAllCommentOfBlog();
         }
       }
     },
@@ -201,7 +276,7 @@ export default {
             content: this.commentContent,
           };
 
-          const dataComment = await blogService.sendComment(formComment);
+          const dataComment = await commentService.sendComment(formComment);
 
           if (dataComment.success) {
             this.onShowNotifi({
@@ -210,6 +285,7 @@ export default {
               theme: "",
             });
             this.commentContent = "";
+            this.getAllCommentOfBlog();
           } else {
             this.onShowNotifi({
               status: "destructive",
@@ -227,9 +303,33 @@ export default {
       }
     },
 
-    // handlerServerLike
+    async getAllCommentOfBlog() {
+      const dataComment = await commentService.getAllCommentsWithIdBlog(
+        this.dataBlogDetail._id
+      );
+
+      if (dataComment.success) {
+        if (dataComment.data) {
+          this.dataComments = dataComment.data.dataComment;
+          this.countComment = dataComment.data.countComment;
+        }
+      }
+    },
+
+    filterChildrenComment(dataChildrentrUser, commentatorId) {
+      let dataUser = {};
+
+      dataChildrentrUser.filter((item) => {
+        if (item._id == commentatorId) {
+          dataUser = item;
+        }
+      });
+
+      return dataUser;
+    },
 
     convert_image: ConvertImage,
+    format_date: FormatDate,
   },
   computed: {
     titlePage() {
@@ -238,6 +338,8 @@ export default {
       const title = `${this.$t(routeName)} - ${params}`;
       return title;
     },
+
+    // dataChildComment() {},
   },
 };
 </script>

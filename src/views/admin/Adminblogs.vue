@@ -24,50 +24,6 @@
         @onScrollTop="onScrollTop"
         @onCreateNewBlog="onCreateNewBlog"
       />
-
-      <!-- <div class="boxHandlerBlog">
-        <div class="handleBarBlog">
-          <div class="boxSearch bgBoxAdmin">
-            <fa :icon="['fas', 'search']" class="ic_search" />
-            <input
-              type="text"
-              class="inputSearch"
-              :placeholder="$t('search')"
-            />
-          </div>
-
-          <ul class="listHandle">
-            <li class="itemHandle">
-              <div class="boxBtnHandle bgBoxAdmin">
-                <fa :icon="['fas', 'plus']" class="ic_handle" />
-                <p class="textHandle">Thêm blog mới</p>
-              </div>
-            </li>
-
-            <li class="itemHandle">
-              <div class="boxBtnHandle bgBoxAdmin">
-                <fa :icon="['fas', 'filter']" class="ic_handle" />
-                <p class="textHandle">Lọc</p>
-              </div>
-            </li>
-
-            <li class="itemHandle">
-              <div class="boxBtnHandle bgBoxAdmin">
-                <fa :icon="['fas', 'trash']" class="ic_handle" />
-                <p class="textHandle">Thùng rác</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <div class="boxShowAllBlog">
-          <ul class="listBlog">
-            <li class="itemblog" v-for="item in dataBlogs" :key="item.id">
-              <ItemBlog :dataItemBlog="item" />
-            </li>
-          </ul>
-        </div>
-      </div> -->
     </div>
 
     <div class="boxShowError text-center" v-else>
@@ -83,6 +39,7 @@ import AllBlog from "@/components/admin/AllBlog.vue";
 import MyBlogs from "@/components/admin/MyBlogs.vue";
 
 import { mapState } from "vuex";
+import { blogService } from "@/services/blogService";
 
 export default {
   name: "AdminBlogs",
@@ -92,29 +49,7 @@ export default {
       currentComponent: "AllBlog",
       isCheckPage: true,
 
-      listDataTopBlogs: [
-        {
-          id: 0,
-          link: "home",
-          avt: "img_avatar.png",
-          nameBlog: "Name blog",
-          numberReading: "300",
-        },
-        {
-          id: 3,
-          link: "home",
-          avt: "img_avatar.png",
-          nameBlog: "Name blog",
-          numberReading: "300",
-        },
-        {
-          id: 2,
-          link: "home",
-          avt: "img_avatar.png",
-          nameBlog: "Name blog",
-          numberReading: "300",
-        },
-      ],
+      listDataTopBlogs: [],
       dataStatistic: {
         totalBlog: 20,
         totalComments: 30,
@@ -143,48 +78,12 @@ export default {
           },
         ],
       },
-      dataBlogs: [
-        // {
-        //   id: 0,
-        //   avatar: "campaign_1.png",
-        //   titleBlog: "Name blog animal hihi haha",
-        //   content:
-        //     "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-        //   avtAuthor: "img_avatar.png",
-        //   nameAuthor: "Thành Thiện pro",
-        // },
-        // {
-        //   id: 1,
-        //   avatar: "campaign_1.png",
-        //   titleBlog: "Name blog animal hihi haha",
-        //   content:
-        //     "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-        //   avtAuthor: "img_avatar.png",
-        //   nameAuthor: "Thành Thiện pro",
-        // },
-        // {
-        //   id: 2,
-        //   avatar: "campaign_1.png",
-        //   titleBlog: "Name blog animal hihi haha",
-        //   content:
-        //     "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-        //   avtAuthor: "img_avatar.png",
-        //   nameAuthor: "Thành Thiện pro",
-        // },
-        // {
-        //   id: 3,
-        //   avatar: "campaign_1.png",
-        //   titleBlog: "Name blog animal hihi haha",
-        //   content:
-        //     "<p>They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scalve deforestation and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade and commercial poaching for the wildlife trade.....</p>",
-        //   avtAuthor: "img_avatar.png",
-        //   nameAuthor: "Thành Thiện pro",
-        // },
-      ],
+      dataBlogs: [],
     };
   },
   mounted() {},
   methods: {
+    initStart() {},
     onScrollTop() {
       window.scroll({
         top: 0,
@@ -193,6 +92,13 @@ export default {
       });
     },
     onCreateNewBlog() {},
+    async getBlogMostRead(idAuthor) {
+      const dataBlogMostRead = await blogService.getBlogMostRead(idAuthor, 10);
+
+      if (dataBlogMostRead.success) {
+        this.listDataTopBlogs = dataBlogMostRead.data;
+      }
+    },
   },
   computed: {
     ...mapState(["dataUserCurrent"]),
@@ -202,8 +108,10 @@ export default {
       handler: function (idAuthor) {
         if (idAuthor == "all") {
           this.currentComponent = AllBlog;
+          this.getBlogMostRead("all");
         } else if (idAuthor == this.dataUserCurrent.slug) {
           this.currentComponent = MyBlogs;
+          this.getBlogMostRead(this.dataUserCurrent_id);
         } else {
           this.isCheckPage = false;
         }

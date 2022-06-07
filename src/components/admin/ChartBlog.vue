@@ -13,21 +13,27 @@
             <li
               class="itemTopBlog"
               v-for="item in listDataTopBlogs"
-              :key="item.id"
+              :key="item._id"
               v-else
             >
               <div class="boxItemBlogs">
                 <div class="boxNameBlogs">
                   <img
-                    :src="`${require('@/assets/images/' + item.avt)}`"
+                    :src="convert_image(item.main_image)"
                     alt=""
                     class="imgBlog"
                   />
-                  <router-link :to="{ name: item.link }" class="linkBlog">
-                    <p class="nameBlog">{{ item.nameBlog }}</p>
+                  <router-link
+                    :to="{
+                      name: 'detail_blog',
+                      params: { slugBlog: item.slug },
+                    }"
+                    class="linkBlog"
+                  >
+                    <p class="nameBlog">{{ sub_string(item.title, 15) }}</p>
                   </router-link>
                 </div>
-                <p class="countBlogs">{{ item.numberReading }}</p>
+                <p class="countBlogs">{{ item.countEye }}</p>
               </div>
             </li>
           </ul>
@@ -87,6 +93,8 @@
 import { defineComponent } from "vue";
 import { BarChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
+import ConvertImage from "@/utils/convertImage";
+import SubString from "@/utils/sub_string";
 
 Chart.register(...registerables);
 
@@ -98,5 +106,9 @@ export default defineComponent({
     return {};
   },
   mounted() {},
+  methods: {
+    convert_image: ConvertImage,
+    sub_string: SubString,
+  },
 });
 </script>

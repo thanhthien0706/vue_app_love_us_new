@@ -36,7 +36,7 @@
           </button>
         </div>
         <div class="boxMainFormReport animate__animated animate__fadeIn" v-else>
-          <p class="titleForm">Báo cáo hành vi xấu</p>
+          <p class="titleForm">Báo cáo hành vi xấu / động vật quý hiếm</p>
 
           <form action="javascript:void(0)" @submit.prevent>
             <div class="box__form__main__group">
@@ -139,7 +139,7 @@
                     class="icon__slide__btn"
                   />
                 </div>
-                <a href="javascript:void(0)" class="btn__submit">Báo cáo</a>
+                <a href="javascript:void(0)" class="btn__submit">Gửi đi</a>
               </div>
 
               <div class="box_loading" v-else>

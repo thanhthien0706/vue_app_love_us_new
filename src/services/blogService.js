@@ -105,6 +105,17 @@ const blogService = {
       console.log("Error Blog: " + error);
     }
   },
+
+  // get blog most read
+  async getBlogMostRead(idAuthor, limit) {
+    try {
+      const dataRef = await axios.get(`/blog//most-read/${idAuthor}/${limit}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    }
+  },
 };
 
 export { blogService, isPending };

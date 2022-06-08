@@ -182,6 +182,74 @@
                 @include WidthHeight(35px, 35px);
                 @include ObjectFit(cover);
                 margin-right: 20px;
+                @include BorderRadius(50%);
+              }
+              .boxContentCommentUser {
+                background-color: $bg-main-30;
+                @include BorderRadius(16px);
+                padding: 14px;
+                width: 100%;
+
+                .boxNameUser {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 10px;
+
+                  .textNameUser {
+                    font-weight: bold;
+                    @include FontSize(17);
+                    margin-right: 12px;
+                  }
+                  .dateComment {
+                    color: rgba(51, 51, 51, 0.7);
+                    @include FontSize(14);
+                  }
+                }
+
+                .content {
+                  @include FontSize(16);
+                  // margin-bottom: 10px;
+                }
+
+                .boxHandleComment {
+                  display: flex;
+                  align-items: center;
+
+                  .handlerComment {
+                    margin-right: 10px;
+                    &:last-child {
+                      margin-right: 0;
+                    }
+                    .ic_handle {
+                      @include WidthHeight(16px, 16px);
+                      margin-right: 4px;
+                      transition: all 0.2s linear;
+                      cursor: pointer;
+
+                      &.active {
+                        color: $green-main;
+                      }
+
+                      &:hover {
+                        color: $green-main;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .boxItemChildrenComment {
+              display: flex;
+              align-items: flex-start;
+              margin-top: 20px;
+              margin-left: 56px;
+
+              .imageUserComment {
+                @include WidthHeight(35px, 35px);
+                @include ObjectFit(cover);
+                margin-right: 20px;
+                @include BorderRadius(50%);
               }
               .boxContentCommentUser {
                 background-color: $bg-main-30;

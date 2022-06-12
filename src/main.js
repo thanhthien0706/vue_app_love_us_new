@@ -38,7 +38,7 @@ import "animate.css";
 /**
  * CUSTOM AXIOS
  */
-axios.defaults.baseURL = "https://api-love-us.herokuapp.com/api";
+axios.defaults.baseURL = "http://localhost:3000/api";
 authService.initAuthHeader();
 
 createApp(App)

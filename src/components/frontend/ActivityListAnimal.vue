@@ -4,17 +4,6 @@
     <div class="boxMainContent">
       <div class="boxHeaderMain">
         <div class="d-flex justify-content-end align-items-center">
-          <!-- <ul class="list__tab">
-            <li
-              class="item__tab"
-              v-for="(item, index) in dataTab"
-              :key="item.id"
-              :class="{ active: index == currentTab }"
-              @click="onChageCampaign(index)"
-            >
-              {{ item.name }}
-            </li>
-          </ul> -->
           <input
             type="text"
             placeholder="Môi trường , lớp, loài"
@@ -191,6 +180,7 @@ export default {
     },
     onClosePopup() {
       this.statusShowPopup = false;
+      document.getElementsByTagName("body")[0].style.overflow = "unset";
     },
     onShowPopupClassAnimal() {
       this.statusShowPopup = true;

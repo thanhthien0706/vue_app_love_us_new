@@ -1,5 +1,6 @@
 import { createStore } from "vuex";
 import { authService } from "@/services/authService";
+import { blogService } from "@/services/blogService";
 
 export default createStore({
   state: {
@@ -420,6 +421,7 @@ export default createStore({
         organizer: "Pet Coffee",
       },
     ],
+    dataBlogMostRead: null,
   },
   getters: {},
   mutations: {
@@ -432,6 +434,9 @@ export default createStore({
     setDataUserCurrent(state, data) {
       state.dataUserCurrent = data;
     },
+    setDataBlogMostRead(state, data) {
+      state.dataBlogMostRead = data[0];
+    },
   },
   actions: {
     async getDataUser({ commit }) {
@@ -442,6 +447,15 @@ export default createStore({
       } else {
         commit("setDataUserCurrent", null);
         return null;
+      }
+    },
+
+    async getBlogMostRead({ commit }) {
+      const dataRefBlog = await blogService.getBlogMostRead("all", 1);
+      if (dataRefBlog.success) {
+        commit("setDataBlogMostRead", dataRefBlog.data);
+      } else {
+        commit("setDataBlogMostRead", null);
       }
     },
   },

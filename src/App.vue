@@ -12,10 +12,10 @@ export default {
     this.initMain();
   },
   methods: {
-    ...mapActions(["getDataUser"]),
+    ...mapActions(["getDataUser", "getBlogMostRead"]),
     initMain() {
       this.getDataUser();
-      //   handleLanguage.changeLanguage("vi");
+      this.getBlogMostRead();
     },
   },
 };

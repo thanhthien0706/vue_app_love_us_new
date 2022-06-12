@@ -24,11 +24,12 @@
 // ----------------------------------------------------------------------
 // Pages
 // ----------------------------------------------------------------------
+@import "./pages/auth/login";
+@import "./pages/auth/register";
+@import "./pages/frontend/me/me_page";
 @import "./pages/frontend/home_page";
 @import "./pages/frontend/blog_page";
 @import "./pages/frontend/actives";
-@import "./pages/auth/login";
-@import "./pages/auth/register";
 @import "./pages/frontend/begin-start";
 @import "./pages/frontend/report";
 @import "./pages/frontend/game/FlipCard";

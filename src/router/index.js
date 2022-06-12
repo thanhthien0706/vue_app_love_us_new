@@ -59,18 +59,24 @@ const routes = [
 
   /**
    * ==============================================================
-   * PAGE FRONTEND
+   * PAGE ME
    * ==============================================================
    */
 
   {
-    path: "/",
-    name: "convey",
+    path: "/me/:idUser",
+    name: "person",
     meta: {
-      title: "Thông điệp",
+      middleware: [checkRole.isLogin],
     },
-    component: () => import("@/views/frontend/BeginStartView"),
+    component: () => import("@/views/frontend/me/MeMain"),
   },
+
+  /**
+   * ==============================================================
+   * PAGE FRONTEND
+   * ==============================================================
+   */
   // @/views/frontend/BeginStartView
   {
     path: "/home",
@@ -126,6 +132,15 @@ const routes = [
       middleware: [checkBeginStart],
     },
     component: () => import("@/views/frontend/ReportView.vue"),
+  },
+
+  {
+    path: "/",
+    name: "convey",
+    meta: {
+      title: "Thông điệp",
+    },
+    component: () => import("@/views/frontend/BeginStartView"),
   },
 ];
 

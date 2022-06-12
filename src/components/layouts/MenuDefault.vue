@@ -28,24 +28,28 @@
           </router-link>
         </li>
 
-        <li class="item__hr">
+        <li class="item__hr" v-if="check_user_login">
           <hr />
         </li>
-        <li
-          class="item__menu"
-          v-for="item in dataListPersonal"
-          :key="item.id"
-          :class="{ active: item.link === this.$route.name }"
-        >
-          <router-link :to="{ name: item.link }" class="item_link">
-            <img
-              :src="`${require('@/assets/images/icon/menu/' + item.image)}`"
-              alt=""
-              class="item__menu__icon"
-            />
-            <p class="item__menu__text">{{ $t(item.name) }}</p>
-          </router-link>
-        </li>
+        <template v-for="item in dataListPersonal" :key="item.id">
+          <li
+            class="item__menu"
+            v-if="check_user_login"
+            :class="{ active: item.link === this.$route.name }"
+          >
+            <router-link
+              :to="{ name: item.link, params: { idUser: dataUserCurrent._id } }"
+              class="item_link"
+            >
+              <img
+                :src="`${require('@/assets/images/icon/menu/' + item.image)}`"
+                alt=""
+                class="item__menu__icon"
+              />
+              <p class="item__menu__text">{{ $t(item.name) }}</p>
+            </router-link>
+          </li>
+        </template>
 
         <li class="item__hr">
           <hr />
@@ -131,7 +135,7 @@
 <script>
 import checkUserLogin from "@/utils/checkUserLogin";
 import { authService } from "@/services/authService";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import handleLanguage from "@/utils/handleLanguage";
 
 export default {
@@ -194,7 +198,7 @@ export default {
       dataListPersonal: [
         {
           id: 0,
-          link: "convey",
+          link: "person",
           image: "user.png",
           name: "person",
         },
@@ -242,6 +246,7 @@ export default {
   },
 
   computed: {
+    ...mapState(["dataUserCurrent"]),
     getCheckRouterActive() {
       return this.$route.name;
     },

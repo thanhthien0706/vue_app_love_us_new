@@ -1,0 +1,35 @@
+.MeMainBox {
+  .headerMe {
+    display: flex;
+    align-items: center;
+
+    .boxAvatar {
+      margin-right: 30px;
+      position: relative;
+
+      .imgAvatar {
+        @include WidthHeight(178px, 178px);
+        @include BorderRadius(50%);
+        overflow: hidden;
+        @include ObjectFit(cover);
+        padding: 12px;
+        background-color: $bg-main-30;
+      }
+      .ic_camera {
+        opacity: 0.7;
+        @include BorderRadius(50%);
+        padding: 10px;
+        position: absolute;
+        background-color: #fff;
+        bottom: 0;
+        left: 50%;
+        cursor: pointer;
+        transition: all 0.2s;
+        transform: translateX(-50%);
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

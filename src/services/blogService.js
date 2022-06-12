@@ -109,7 +109,7 @@ const blogService = {
   // get blog most read
   async getBlogMostRead(idAuthor, limit) {
     try {
-      const dataRef = await axios.get(`/blog//most-read/${idAuthor}/${limit}`);
+      const dataRef = await axios.get(`/blog/most-read/${idAuthor}/${limit}`);
 
       return dataRef.data;
     } catch (error) {

@@ -1,7 +1,7 @@
 <style></style>
 
 <template>
-  <div class="box__blog__main">
+  <div class="box__blog__main" v-if="dataBlogMostRead != null">
     <p class="header__title">Blog động vật</p>
     <div class="blog__main row backgroundMainItem align-items-center">
       <div class="col-md-6">
@@ -76,6 +76,10 @@
         </swiper-slide>
       </swiper>
     </div>
+  </div>
+
+  <div class="" v-else>
+    <p class="text-center">chua co du lieu</p>
   </div>
 </template>
 

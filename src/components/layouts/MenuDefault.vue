@@ -228,6 +228,7 @@ export default {
       authService.logoutAccount();
       authService.initAuthHeader();
       this.getDataUser();
+      this.$router.push({ name: "home" });
     },
 
     init() {

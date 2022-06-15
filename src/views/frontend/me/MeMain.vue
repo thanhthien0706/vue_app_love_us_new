@@ -71,6 +71,8 @@
       </div>
     </div>
   </DefaultFrontend_1>
+
+  <NotifiView ref="componentNotifi" />
 </template>
 
 <script>
@@ -78,9 +80,13 @@ import DefaultFrontend_1 from "@/layouts/DefaultFrontend_1.vue";
 import { mapState } from "vuex";
 import ConvertImage from "@/utils/convertImage";
 import MeInformation from "@/components/frontend/me/MeInformation.vue";
+import { meService, isPending } from "@/services/meService";
 
 export default {
   name: "MeMain",
+  setup() {
+    return { isPending };
+  },
   components: { DefaultFrontend_1, MeInformation },
   data() {
     return {
@@ -114,9 +120,31 @@ export default {
     intiDataMain() {
       this.avaterUser = this.dataUserCurrent.avatar;
     },
-    onChangeAvatar(event) {
+    async onChangeAvatar(event) {
       const file = event.target.files[0];
-      console.log(file);
+
+      const formDate = new FormData();
+      formDate.append("image_avatar", file);
+
+      const dataRef = await meService.updateAvatar(
+        this.dataUserCurrent._id,
+        formDate
+      );
+
+      if (dataRef.success) {
+        this.avaterUser = dataRef.data.linkNewImage;
+        this.$refs.componentNotifi.onCreateNotification({
+          status: "success",
+          message: "Đổi ảnh đại diện thành công",
+          theme: "",
+        });
+      } else {
+        this.$refs.componentNotifi.onCreateNotification({
+          status: "destructive",
+          message: "Đổi ảnh đại diện không thành công",
+          theme: "",
+        });
+      }
     },
     convert_image: ConvertImage,
   },

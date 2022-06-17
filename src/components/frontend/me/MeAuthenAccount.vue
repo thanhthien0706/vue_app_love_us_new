@@ -37,7 +37,37 @@
   </div>
 
   <div class="boxSuccesSendInfor" v-if="statusSend == 'sent_confirmation'">
-    thành công
+    <div class="boxInnerSucess">
+      <img
+        src="@/assets/images/page/check_sucess.png"
+        alt=""
+        class="imageIconSucess"
+      />
+      <p class="textTitle">Gửi thông tin thành công</p>
+    </div>
+  </div>
+
+  <div class="boxSuccesSendInfor" v-if="statusSend == 'verified'">
+    <div class="boxInnerSucess">
+      <img
+        src="@/assets/images/page/check_sucess.png"
+        alt=""
+        class="imageIconSucess"
+      />
+      <p class="textTitle">Tài khoản của bạn đã được xác minh</p>
+      <p class="description">
+        Bây giờ bạn đã có thể thao tác chức năng giới hạn.
+      </p>
+    </div>
+  </div>
+
+  <div class="boxUnverifiedAccount" v-if="statusSend == 'unverifiedAccount'">
+    <div class="boxInner">
+      <p class="title">Đang chờ xác minh</p>
+      <p class="text">
+        Cảm ơn bạn gửi thông tin. Chúng tôi sẽ phản hồi bạn sớm nhất
+      </p>
+    </div>
   </div>
 
   <NotifiView ref="componentNotifi" />
@@ -55,15 +85,19 @@ export default {
     return {
       currentComponent: "MeAuthenFace",
       nameButton: "Tiếp theo",
-      statusSend: "unsent",
+      statusSend: "",
       // unsent
       // verified
       // sent confirmation
+      // unverifiedAccount
       dataAuthenAccount: {
         imageSelfie: null,
         list_card: [],
       },
     };
+  },
+  created() {
+    this.initChecAuthAccount();
   },
   methods: {
     onImageSelfie(event) {
@@ -74,6 +108,11 @@ export default {
     },
     onImageAfterCard(event) {
       this.dataAuthenAccount.list_card[1] = event;
+    },
+    onBackAuthen() {
+      if (this.currentComponent != "MeAuthenFace") {
+        this.currentComponent = "MeAuthenFace";
+      }
     },
     async onNextAuthen() {
       if (
@@ -127,9 +166,15 @@ export default {
         }
       }
     },
-    onBackAuthen() {
-      if (this.currentComponent != "MeAuthenFace") {
-        this.currentComponent = "MeAuthenFace";
+    async initChecAuthAccount() {
+      const checkRef = await authAccountService.checkStatusAuthAccount();
+
+      if (checkRef.success) {
+        this.statusSend = "verified";
+      } else if (!checkRef.success && checkRef.code == "unverified_account") {
+        this.statusSend = "unverifiedAccount";
+      } else if (!checkRef.success && checkRef.code == "not_register_auth") {
+        this.statusSend = "unsent";
       }
     },
   },

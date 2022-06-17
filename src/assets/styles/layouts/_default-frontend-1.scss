@@ -3,40 +3,6 @@
   display: flex;
   flex-direction: column;
 
-  #bg__overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-
-    &:after {
-      content: "";
-      position: absolute;
-      @include WidthHeight(290px, 435px);
-      background: linear-gradient(180deg, #00ff00 0%, #99ffcc 100%);
-      background-attachment: fixed;
-      filter: blur(80px);
-      transform: matrix(-0.96, -0.26, 0.29, -0.96, 0, 0);
-      right: 15%;
-      top: 25%;
-      z-index: -1;
-    }
-
-    &:before {
-      content: "";
-      position: absolute;
-      @include WidthHeight(220px, 400px);
-      background: linear-gradient(180deg, #00ff00 0%, #99ffcc 100%);
-      filter: blur(100px);
-      transform: rotate(76.66deg);
-      left: 280px;
-      top: 20%;
-      z-index: -1;
-    }
-  }
-
   .content__main {
     display: flex;
     height: 100%;

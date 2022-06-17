@@ -96,7 +96,11 @@
           </div>
         </li>
 
-        <li class="itemButtonCreateCampaign">
+        <li
+          class="itemButtonCreateCampaign"
+          v-if="check_user_login"
+          @click="$router.push({ name: 'createCampaign' })"
+        >
           <button class="btnCampaign">{{ $t("textCreateCampaign") }}</button>
         </li>
       </ul>

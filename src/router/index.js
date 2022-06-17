@@ -127,6 +127,15 @@ const routes = [
   },
 
   {
+    path: "/create-campaign",
+    name: "createCampaign",
+    meta: {
+      title: "Tạo chiến dịch",
+      middleware: [checkRole.isLogin],
+    },
+    component: () => import("@/views/frontend/campaign/CreateCampaign.vue"),
+  },
+  {
     path: "/",
     name: "convey",
     meta: {

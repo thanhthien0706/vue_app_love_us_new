@@ -206,3 +206,52 @@
     }
   }
 }
+
+.boxSuccesSendInfor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include BorderRadius(16px);
+  padding: 30px;
+  background-color: $bg-main-30;
+
+  .boxInnerSucess {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .imageIconSucess {
+      @include WidthHeight(190px, auto);
+    }
+
+    .textTitle {
+      margin-top: 20px;
+      font-weight: bold;
+      @include FontSize(20);
+      margin-bottom: 20px;
+    }
+
+    .description {
+    }
+  }
+}
+
+.boxUnverifiedAccount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include BorderRadius(16px);
+  padding: 30px;
+  background-color: $bg-main-30;
+
+  .boxInner {
+    max-width: 100%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .title {
+    }
+  }
+}

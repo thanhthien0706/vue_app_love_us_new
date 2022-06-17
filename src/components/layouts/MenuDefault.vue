@@ -181,7 +181,7 @@ export default {
         },
         {
           id: 2,
-          link: "convey",
+          link: "events",
           image: "event.png",
           name: "events",
         },

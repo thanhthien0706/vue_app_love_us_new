@@ -6,6 +6,7 @@ export default createStore({
   state: {
     statusShowPopup: false,
     dataCurrentCampaign: null,
+    dataCurrentAuction: null,
     dataUserCurrent: null,
     dataListAnimal: [
       {
@@ -259,6 +260,164 @@ export default createStore({
         organizer: "Pet Coffee",
       },
     ],
+    dataListOrganization: [
+      {
+        id: 0,
+        listImage: [
+          "https://www.animalsasia.org/us/assets/images/events/uk/AAtwitterlogoWB.png",
+          "https://thesaigontimes.vn/Uploads/Articles/50059/e86f1_seu-o-tram-chim-tam-nong.jpg",
+          "https://ktmt.vnmediacdn.com/images/2021/01/09/9-1610186880-seu-dau-do.jpg",
+          "https://thesaigontimes.vn/Uploads/Articles/50059/e86f1_seu-o-tram-chim-tam-nong.jpg",
+        ],
+        name: "Tổ chức Động vật châu Á (Animals Asia)",
+        main_img_not_bg: "seu_dau_do.jpg",
+        activity:
+          "Năm 2005, tổ chức AAF và chính phủ Việt Nam đã ký kết thỏa thuận nhằm xây dựng một Trung tâm cứu hộ gấu tại Vườn quốc gia Tam Đảo, tỉnh Vĩnh Phúc và cam kết tài trợ và duy trì hoạt động của Trung tâm trong thời gian tối thiểu là 20 năm. Đây là một bước đi quan trọng hướng tới việc cứu hộ các cá thể gấu gặp nạn trong khu vực và chấm dứt việc nuôi gấu lấy mật tại Việt Nam.Với tôn chỉ và phương châm hoạt động nhân đạo, Tổ chức luôn hết mình với công tác cứu hộ gấu và hàng năm luôn dẫn đầu về giá trị giải ngân trong hạng mục các dự án phi chính phủ đang được thực hiện tại tỉnh Vĩnh Phúc.",
+        establish: "Tiến sỹ Jill Robinson",
+        founding: "Năm 1998",
+        headquarters: "có trụ sở tại Hồng Kông",
+        distribution:
+          "văn phòng đại diện tại nhiều nước như Anh, Mỹ, Đức, Ý, Úc.",
+      },
+      {
+        id: 1,
+        listImage: [
+          "https://yt3.ggpht.com/ytc/AKedOLS0aqyo4voGcMuF1LaoIb0ovqn2Z72HogCaW7tPLg=s900-c-k-c0x00ffffff-no-rj",
+        ],
+        name: "Trung tâm giáo dục thiên nhiên (ENV)",
+        activity:
+          "Hoàn thiện chính sách pháp luật: Từ năm 2008, ENV bắt đầu tích cực tham gia đóng góp cải tiến các văn bản pháp luật liên quan đến bảo vệ ĐVHD. ENV hợp tác với các bộ và các cá nhân, tổ chức có liên quan để từng bước cải tiến các văn bản pháp luật, các chính sách để các văn bản pháp luật ngày càng có tính thực thi và hiệu quả cao, giảm thiểu các lỗ hổng pháp lý, tránh sự mâu thuẫn và chồng chéo giữa các văn bản. Tăng cường thực thi pháp luật: Từ năm 2005, ENV thành lập đường dây nóng bảo vệ ĐVHD để khuyến khích người dân thông báo các vi phạm về ĐVHD cho ENV. Sau khi nhận được thông báo, ENV phối hợp với các cơ quan chức năng xử lý các vi phạm rồi thông báo kết quả cho người báo tin. Ngoài ra, ENV còn tổ chức các chiến dịch giảm thiểu vi phạm về ĐVHD tại các thành phố và các đô thị lớn trên cả nước. Giảm nhu cầu tiêu thụ: ENV thường xuyên thực hiện các chiến dịch nâng cao nhận thức cho cộng đồng nhằm giảm thiểu nhu cầu tiêu thụ ĐVHD, đồng thời khuyến khích sự tham gia của người dân trong việc bảo vệ ĐVHD. ENV sử dụng nhiều phương pháp tiếp cận khác nhau như báo chí, phát thanh, truyền hình và tổ chức các sự kiện cho nhiều đối tượng khác nhau.",
+        establish:
+          "được thành lập trên cơ sở những thành công và kinh nghiệm của Chương trình nâng cao nhận thức bảo tồn tại Vườn quốc gia (VQG) Cúc Phương (CAP).",
+        founding: "Năm 2000",
+        headquarters: "có trụ sở tại Việt Nam ",
+        distribution: "văn phòng đại diện tại Việt Nam",
+      },
+      {
+        id: 2,
+        listImage: ["https://mentori.vn/upload/recruitment/chi1625325739.jpg"],
+        name: "Tổ chức Bảo tồn động thực vật quốc tế (FFI)",
+        activity:
+          "Mục tiêu của hiệp hội là bảo vệ tương lai của các quần thể động vật có vú ở khu vực Nam Châu Phi, vốn đang ở trạng thái báo động do sự xâm lấn môi trường sống và săn bắt quá mức. Nhờ làm việc đồng thời giữa các chủ đất, chính phủ và các thợ săn mang mục đích giải trí, Hiệp hội đã giúp chính quyền thông qua các đạo luật kiểm soát săn bắn diện rộng ở Đông Phi và Nam Phi. Việc này đã nhanh chóng mở đường cho một loạt các công viên quốc gia, như Vườn quốc gia Kruger and Vườn quốc gia Serengeti.",
+        establish:
+          "bởi một nhóm các nhà tự nhiên học người Anh và chính trị gia Mỹ tại Châu Phi.",
+        founding: "thành lập năm 1903",
+        headquarters: "có trụ sở tại Mỹ và Châu Phi",
+        distribution: "FFI hiện có thành viên ở 80 quốc gia.",
+      },
+      {
+        id: 3,
+        listImage: [
+          "http://static.ybox.vn/2021/3/3/1616561035763-h%E1%BB%8Dc%20b%E1%BB%95ng%20c%C3%A1c%20ch%C3%A2u%20l%E1%BB%A5c%20(50).png",
+        ],
+        name: "Four Paws",
+        activity:
+          "Tại các khu bảo tồn của chúng tôi ở Áo, Đức, Ukraina, Kosovo, Bulgari, Thụy Sĩ, Nam Phi và Việt Nam, chúng tôi cung cấp một ngôi nhà an toàn cho các loài động vật hoang dã như mèo lớn, gấu, đười ươi và voi được giải cứu khỏi những điều kiện nuôi nhốt không phù hợp từ khắp nơi trên thế giới.Chăm sóc động vật đi lạc: Tại nhiều quốc gia, động vật đi lạc thường bị coi thường và bị giết. Các dự án triệt sản của chúng tôi nhằm mục đích hỗ trợ lâu dài. Triệt sản động vật giúp hạn chế số lượng thú hoang, đồng thời, dịch vụ chăm sóc y tế giúp ngăn ngừa bệnh tật và dịch bệnh.Cứu trợ Thảm họa dành cho Động vật: Khi thảm họa xảy ra với con người và động vật, một nhóm chuyên gia của chúng tôi sẽ hỗ trợ thông qua hình thức trực tiếp giải cứu động vật, cung cấp các dịch vụ y tế công cộng và bảo vệ sinh kế cùng với động vật.",
+        establish: "thành lập bởi Heli Dungler",
+        founding: "năm 1988 tại Vienna",
+        headquarters: "có trụ sở tại Vienna",
+        distribution:
+          "với các văn phòng tại Úc, Áo, Bỉ, Bulgary, Đức, Kosovo, Hà Lan, Thụy Sĩ, Nam Phi, Thái Lan, Ukraina, Anh, Mỹ và Việt Nam cũng như các khu bảo tồn động vật được giải cứu tại 11 quốc gia.",
+      },
+      {
+        id: 4,
+        listImage: [
+          "https://bio-env.ued.udn.vn/wp-content/uploads/2021/07/1.jpg.png",
+        ],
+        name: "Hiệp hội các vườn thú Frankfurt (FZS)",
+        activity:
+          "Các Zoological Society Frankfurt (FZS) được thành lập vào năm 1858 bởi công dân của Frankfurt thành lập Vườn động vật học, mà nó hoạt động cho đến khi Chiến tranh thế giới thứ nhất . Hội đồng thành phố sau đó nhận trách nhiệm về sở thú cho đến năm 1950, khi FZS một lần nữa trở thành hiệp hội phát triển của sở thú. Bài viết này trên một sở thú , hồ cá , công viên Safari , Dolphinarium , hoặc chuồng là một cuống . Bạn có thể giúp Wikipedia bằng cách mở rộng nó .",
+        establish: "bởi công dân của Frankfurt.",
+        founding: "được thành lập vào năm 1858",
+        headquarters: "nằm ở phần phía đông của Innenstadt (nội thành)",
+        distribution: "hiện có thành viên ở 80 quốc gia.",
+      },
+      {
+        id: 5,
+        listImage: [
+          "https://images.squarespace-cdn.com/content/v1/535bb1a7e4b0fcd1575ff4ff/1593500063262-SEYPSYED3OTO1VC9I8NK/WhatsApp+Image+2020-04-14+at+14.42.33.jpeg?format=500w",
+        ],
+        name: "WildAct",
+        activity:
+          "Bảo tồn các loài và hệ sinh thái bị đe dọa dựa trên cơ sở khoa học; Cung cấp chương trình giáo dục bảo tồn và xây dựng năng lực địa phương cho giới trẻ Việt Nam ở cả nông thôn và thành phố trên cả nước; Thay đổi tư duy của người Việt Nam thông qua các bằng chứng khoa học và kế sinh nhai của người dân địa phương; Hợp tác với các tổ chức bảo tồn và các bên liên quan khác để giải quyết các vấn đề bảo tồn tại Việt Nam cũng như trên thế giới.",
+        establish: "được thành lập bởi một tổ chức phi lợi nhuận tại Việt Nam.",
+        founding: "được thành lập vào năm 2015",
+        headquarters: "có trụ sở tại Việt Nam",
+        distribution: "các tỉnh thành trên Việt Nam.",
+      },
+    ],
+
+    dataAuction: [
+      {
+        id: 0,
+        category: "",
+        img: "https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2015/12/03/sung_te_giac.jpg",
+        description:
+          "nhằm gây quỹ bảo vệ loài tê giác ở châu Phi đang đứng trước nạn tuyệt sủng vì sự săn bắt trái phép sừng tê giác làm cho số lượng cá thể tê giác ngày càng giảm nghiêm trọng.",
+        name: "Đấu giá gây quỹ bảo vệ tê giác ở Châu Phi",
+        auctionartifacts: "sừng tê giác, mật gấu",
+        time: "10:00pm",
+        date: "Thứ 5, ngày 18/6/2022",
+        thu: "Thursday",
+        status: "New",
+        location: "470 Trần Đại Nghĩa - Đà Nẵng",
+        organizer: "Abc",
+        phonenumber: "0358559461",
+        startingprice: "1000",
+      },
+      {
+        id: 1,
+        category: "",
+        img: "https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2015/12/03/sung_te_giac.jpg",
+        description:
+          "nhằm gây quỹ bảo vệ loài tê giác ở châu Phi đang đứng trước nạn tuyệt sủng vì sự săn bắt trái phép sừng tê giác làm cho số lượng cá thể tê giác ngày càng giảm nghiêm trọng.",
+        name: "Đấu giá gây quỹ bảo vệ tê giác ở Châu Phi",
+        auctionartifacts: "sừng tê giác, mật gấu",
+        time: "10:00pm",
+        date: "Thứ 5, ngày 18/6/2022",
+        thu: "Thursday",
+        status: "New",
+        location: "470 Trần Đại Nghĩa - Đà Nẵng",
+        organizer: "Abc",
+        phonenumber: "0358559461",
+        startingprice: "1000",
+      },
+      {
+        id: 2,
+        category: "",
+        img: "https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2015/12/03/sung_te_giac.jpg",
+        description:
+          "nhằm gây quỹ bảo vệ loài tê giác ở châu Phi đang đứng trước nạn tuyệt sủng vì sự săn bắt trái phép sừng tê giác làm cho số lượng cá thể tê giác ngày càng giảm nghiêm trọng.",
+        name: "Đấu giá gây quỹ bảo vệ tê giác ở Châu Phi",
+        auctionartifacts: "sừng tê giác, mật gấu",
+        time: "10:00pm",
+        date: "Thứ 5, ngày 18/6/2022",
+        thu: "Thursday",
+        status: "New",
+        location: "470 Trần Đại Nghĩa - Đà Nẵng",
+        organizer: "Abc",
+        phonenumber: "0358559461",
+        startingprice: "1000",
+      },
+      {
+        id: 3,
+        category: "",
+        img: "https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2015/12/03/sung_te_giac.jpg",
+        description:
+          "nhằm gây quỹ bảo vệ loài tê giác ở châu Phi đang đứng trước nạn tuyệt sủng vì sự săn bắt trái phép sừng tê giác làm cho số lượng cá thể tê giác ngày càng giảm nghiêm trọng.",
+        name: "Đấu giá gây quỹ bảo vệ tê giác ở Châu Phi",
+        auctionartifacts: "sừng tê giác, mật gấu",
+        time: "10:00pm",
+        date: "Thứ 5, ngày 18/6/2022",
+        thu: "Thursday",
+        status: "New",
+        location: "470 Trần Đại Nghĩa - Đà Nẵng",
+        organizer: "Abc",
+        phonenumber: "0358559461",
+        startingprice: "1000",
+      },
+    ],
+
     dataBlogs: [
       {
         id: 0,
@@ -430,6 +589,9 @@ export default createStore({
     },
     setDataCurrentCampaign(state, data) {
       state.dataCurrentCampaign = data;
+    },
+    setDataCurrentAuction(state, data) {
+      state.dataCurrentAuction = data;
     },
     setDataUserCurrent(state, data) {
       state.dataUserCurrent = data;

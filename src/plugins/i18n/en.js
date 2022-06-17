@@ -36,6 +36,9 @@ const en = {
   reader: "Reader",
   blog_detail: "Blog Detail",
   tag: "Tags",
+  totalauction: "Total Auction",
+  numberauctionsvalid: "Number of auctions still valid",
+  totalamountauctioned: "Total amount auctioned",
 };
 
 export default en;

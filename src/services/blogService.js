@@ -116,6 +116,19 @@ const blogService = {
       console.log("Error Blog: " + error);
     }
   },
+
+  //
+  async getBlogTop(limit) {
+    try {
+      const dataRef = await axios.get(
+        `/blog/get-top-blog-with-query?limit=${limit}`
+      );
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    }
+  },
 };
 
 export { blogService, isPending };

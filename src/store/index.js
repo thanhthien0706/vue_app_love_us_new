@@ -581,6 +581,7 @@ export default createStore({
       },
     ],
     dataBlogMostRead: null,
+    dataTopBlog: null,
   },
   getters: {},
   mutations: {
@@ -598,6 +599,9 @@ export default createStore({
     },
     setDataBlogMostRead(state, data) {
       state.dataBlogMostRead = data[0];
+    },
+    setDataTopBlog(state, data) {
+      state.dataTopBlog = data;
     },
   },
   actions: {
@@ -618,6 +622,15 @@ export default createStore({
         commit("setDataBlogMostRead", dataRefBlog.data);
       } else {
         commit("setDataBlogMostRead", null);
+      }
+    },
+
+    async getTopBlog({ commit }) {
+      const dataTopBlog = await blogService.getBlogTop(12);
+      if (dataTopBlog.success) {
+        commit("setDataTopBlog", dataTopBlog.data);
+      } else {
+        commit("setDataTopBlog", null);
       }
     },
   },

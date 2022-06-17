@@ -238,6 +238,8 @@ export default {
         this.$route.params.slugBlog
       );
 
+      console.log(dataBLogDetial);
+
       if (dataBLogDetial.success) {
         if (dataBLogDetial.data == null) {
           this.isShow = false;

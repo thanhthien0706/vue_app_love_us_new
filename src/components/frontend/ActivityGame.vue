@@ -66,7 +66,7 @@ export default {
           avatar: "avt_game.png",
           name: "QUIZ GAME ANIMAL",
           description:
-            "ádfasdfblaagadsfasdfasdfasdfasdfasdfasdfasdfádfasdfasdfasdfasdfasdfasdfadfasdfasdfasdfádasdfasdasdf",
+            "Trả lời câu hỏi về đồng vật, bạn sẽ có thêm một lượng kiến thức về động vật, cũng như sẽ nhận được phần thưởng của chúng tôi",
           top_score: "2000",
           link: "game_flip_card",
         },

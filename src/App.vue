@@ -12,10 +12,11 @@ export default {
     this.initMain();
   },
   methods: {
-    ...mapActions(["getDataUser", "getBlogMostRead"]),
+    ...mapActions(["getDataUser", "getBlogMostRead", "getTopBlog"]),
     initMain() {
       this.getDataUser();
       this.getBlogMostRead();
+      this.getTopBlog();
     },
   },
 };

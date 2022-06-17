@@ -36,6 +36,9 @@ const vn = {
   reader: "Người đọc",
   blog_detail: "Bài viết chi tiết",
   tag: "Thẻ",
+  totalauction: "Tổng các cuộc đấu giá",
+  numberauctionsvalid: "Số lượng cuộc đấu giá còn hiệu lực",
+  totalamountauctioned: "Tổng tiền đấu giá được",
 };
 
 export default vn;

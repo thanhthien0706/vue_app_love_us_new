@@ -106,7 +106,15 @@ const routes = [
     },
     component: () => import("@/views/frontend/BlogView.vue"),
   },
-
+  {
+    path: "/events",
+    name: "events",
+    meta: {
+      title: "Sự kiện",
+      middleware: [checkBeginStart],
+    },
+    component: () => import("@/views/frontend/EventView.vue"),
+  },
   {
     path: "/blog/:slugBlog",
     name: "detail_blog",

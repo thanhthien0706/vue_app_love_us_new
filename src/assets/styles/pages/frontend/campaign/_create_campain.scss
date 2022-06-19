@@ -2,7 +2,7 @@
   @include WidthHeight(100%, 100vh);
   position: relative;
 
-  .boxMainFormCampaignn {
+  .boxCreateInner {
     max-width: 1024px;
     position: absolute;
     top: 50%;
@@ -10,16 +10,265 @@
     transform: translate(-50%, -50%);
     background-color: $bg-main-30;
     @include BorderRadius(16px);
-    padding: 40px;
+    padding: 30px 40px;
     @include WidthHeight(80%, auto);
 
-    .ic_back {
-      position: absolute;
-      top: 40px;
-      left: 40px;
-      @include WidthHeight(24px, 24px);
+    .boxTimelineCreate {
+      .ListTimeline {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .itemTimeline {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-right: 10px;
+
+          &:last-child {
+            margin-right: 0px;
+          }
+
+          &.active {
+            .boxContent {
+              .circle {
+                background-color: $green-main;
+                color: #fff;
+              }
+              .content {
+              }
+            }
+
+            .line-dot {
+              border-top: 2px dashed $green-main;
+            }
+          }
+
+          .boxContent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 118px;
+            margin-right: 10px;
+
+            .circle {
+              @include WidthHeight(30px, 30px);
+              @include BorderRadius(50%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              @include FontSize(18px);
+              font-weight: bold;
+              margin-bottom: 12px;
+              background-color: $bg-main-30;
+            }
+            .content {
+              text-align: center;
+              line-height: 1.2;
+            }
+          }
+
+          .line-dot {
+            border: none;
+            border-top: 2px dashed #333;
+            color: #fff;
+            background-color: #fff;
+            height: 1px;
+            width: 80px;
+          }
+        }
+      }
+    }
+
+    .mainShowComponent {
+      margin-top: 40px;
+
+      .titleText {
+        @include FontSize(18);
+        font-weight: bold;
+        margin-bottom: 18px;
+      }
+
+      .description {
+        font-weight: 500;
+        @include FontSize(16);
+        color: rgba($color: #333, $alpha: 0.7);
+        line-height: 1.2;
+      }
+
+      .formInforInput {
+        margin-top: 20px;
+
+        .box_avater {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          label {
+            // @include WidthHeight(100%, 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @include WidthHeight(80px, 80px);
+            border: 1px dashed #333;
+
+            .img__avater {
+              @include WidthHeight(100%, 100%);
+              object-fit: cover;
+            }
+          }
+
+          .text {
+            margin-top: 10px;
+            font-weight: 500;
+          }
+        }
+      }
+
+      .boxLineForm {
+        margin-top: 20px;
+        .formGroup {
+          color: rgba($color: #333, $alpha: 0.8);
+
+          .nameInput {
+            @include FontSize(16);
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: rgba($color: #333, $alpha: 1);
+          }
+
+          .inputText {
+            @include WidthHeight(100%, 42px);
+            @include BorderRadius(12px);
+            padding: 0 10px;
+            background-color: #edf4fb;
+            border: 3px solid #dce0e6;
+            outline-color: $green-main;
+            transition: all 0.2s;
+          }
+
+          .textareaInput {
+            @include WidthHeight(100%, 100px);
+            resize: none;
+            background-color: #edf4fb;
+            @include BorderRadius(12px);
+            border: 3px solid #dce0e6;
+            outline-color: $green-main;
+            padding: 10px;
+          }
+
+          .selectLocation {
+            @include WidthHeight(100%, 42px);
+            background-color: #edf4fb;
+            @include BorderRadius(12px);
+            border: 3px solid #dce0e6;
+            outline-color: $green-main;
+            padding: 0 10px;
+          }
+          .boxCheckMaxMember {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            .boxToggle {
+              @include WidthHeight(60px, 24px);
+              @include BorderRadius(46px);
+              position: relative;
+              overflow: hidden;
+
+              .checkbox {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                opacity: 0;
+                cursor: pointer;
+                z-index: 3;
+
+                &:checked + .knobs:before {
+                  content: "";
+                  left: 36px;
+                  background-color: $green-main;
+                }
+              }
+
+              .knobs {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 2;
+
+                &:before {
+                  content: "";
+                  position: absolute;
+                  top: 50%;
+                  left: 4px;
+                  width: 20px;
+                  height: 10px;
+                  color: #fff;
+                  font-size: 10px;
+                  font-weight: bold;
+                  text-align: center;
+                  line-height: 1;
+                  padding: 9px 4px;
+                  background-color: #f44336;
+                  border-radius: 50%;
+                  transform: translateY(-50%);
+                  transition: 0.3s ease all,
+                    left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+                }
+              }
+
+              .layer {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background-color: #ebf7fc;
+                transition: 0.3s ease all;
+                z-index: -1;
+              }
+            }
+          }
+        }
+      }
+
+      .boxButtonHandle {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-top: 30px;
+
+        .btnPre {
+          margin-right: 20px;
+          padding: 10px 22px;
+          @include BorderRadius(46px);
+          border: none;
+          background-color: #f6f6f6;
+          transition: all 0.2s;
+          color: rgba($color: #333, $alpha: 0.7);
+          &:hover {
+            color: rgba($color: #333, $alpha: 1);
+          }
+        }
+        .btnContinue {
+          padding: 10px 22px;
+          @include BorderRadius(46px);
+          border: none;
+          background-color: $green-main;
+          transition: all 0.2s;
+          color: #fff;
+          // opacity: 0.7;
+          // &:hover {
+          //   opacity: 1;
+          // }
+        }
+      }
+
+      @import "../../../components/frontend/campaign/campaign_infor_organize";
     }
   }
-
-  @import "./condition_campaign";
 }

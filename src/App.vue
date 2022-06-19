@@ -12,11 +12,19 @@ export default {
     this.initMain();
   },
   methods: {
-    ...mapActions(["getDataUser", "getBlogMostRead", "getTopBlog"]),
+    ...mapActions([
+      "getDataUser",
+      "getBlogMostRead",
+      "getTopBlog",
+      "getAllLocationsVietNam",
+      "getAllBankVietNam",
+    ]),
     initMain() {
       this.getDataUser();
       this.getBlogMostRead();
       this.getTopBlog();
+      this.getAllLocationsVietNam();
+      this.getAllBankVietNam();
     },
   },
 };

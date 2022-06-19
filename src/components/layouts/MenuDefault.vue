@@ -99,7 +99,7 @@
         <li
           class="itemButtonCreateCampaign"
           v-if="check_user_login"
-          @click="$router.push({ name: 'createCampaign' })"
+          @click="$router.push({ name: 'conditionCampaign' })"
         >
           <button class="btnCampaign">{{ $t("textCreateCampaign") }}</button>
         </li>

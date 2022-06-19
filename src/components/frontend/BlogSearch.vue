@@ -16,21 +16,27 @@
           disableOnInteraction: false,
         }"
       >
-        <swiper-slide class="slide" v-for="blog in dataBlogs" :key="blog.id">
-          <router-link :to="{ name: blog.link }">
+        <swiper-slide class="slide" v-for="blog in dataTopBlog" :key="blog.id">
+          <router-link
+            :to="{
+              name: 'detail_blog',
+              params: { slugBlog: blog.slug },
+            }"
+          >
             <div class="box__blog__item">
               <div class="row align-items-center">
                 <div class="col-md-7">
-                  <p class="title">{{ sub_string(blog.name, 20) }}</p>
-                  <p class="description">
-                    {{ sub_string(blog.description, 90) }}
-                  </p>
-                  <p class="time">{{ blog.time }}</p>
+                  <p class="title">{{ sub_string(blog.title, 18) }}</p>
+                  <p
+                    class="description"
+                    v-html="sub_string(blog.content, 90)"
+                  ></p>
+                  <p class="time">{{ format_date(blog.createdAt) }}</p>
                 </div>
                 <div class="col-md-5">
                   <div class="box__img__item__blog">
-                    <img :src="blog.img" alt="" />
-                    <div class="box__status">{{ blog.status }}</div>
+                    <img :src="convert_image(blog.main_image)" alt="" />
+                    <!-- <div class="box__status">{{ blog.status }}</div> -->
                   </div>
                 </div>
               </div>
@@ -52,6 +58,8 @@ import "swiper/css/grid";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import SubString from "@/utils/sub_string";
+import FormatDate from "@/utils/fortmatDate";
+import ConvertImage from "@/utils/convertImage";
 import { mapState } from "vuex";
 
 export default {
@@ -66,16 +74,15 @@ export default {
     };
   },
   data() {
-    return {
-      descriptionBlog:
-        " They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife trade      ",
-    };
+    return {};
   },
   methods: {
     sub_string: SubString,
+    format_date: FormatDate,
+    convert_image: ConvertImage,
   },
   computed: {
-    ...mapState(["dataBlogs"]),
+    ...mapState(["dataTopBlog"]),
   },
 };
 </script>

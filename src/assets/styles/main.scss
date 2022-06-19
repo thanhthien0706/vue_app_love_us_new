@@ -22,6 +22,7 @@
 @import "./components/admin/item-blog";
 @import "./components/notifi_view";
 @import "./components/frontend/me/me_information";
+@import "./components/frontend/me/me_authen_account";
 // ----------------------------------------------------------------------
 // Pages
 // ----------------------------------------------------------------------
@@ -35,8 +36,12 @@
 @import "./pages/frontend/report";
 @import "./pages/frontend/game/FlipCard";
 @import "./pages/frontend/detail_blog";
-@import "./pages/admin/blogs";
+@import "./pages/frontend/campaign/create_campain";
 @import "./pages/frontend/event_page";
+@import "./pages/frontend/page_not_found";
+@import "./pages/frontend/campaign/condition_campaign";
+@import "./pages/frontend/campaign/create_campain";
+@import "./pages/admin/blogs";
 
 // ----------------------------------------------------------------------
 // Global

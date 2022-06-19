@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import { authService } from "@/services/authService";
 import { blogService } from "@/services/blogService";
+import { baseService } from "@/services/baseService";
 
 export default createStore({
   state: {
@@ -418,62 +419,6 @@ export default createStore({
       },
     ],
 
-    dataBlogs: [
-      {
-        id: 0,
-        link: "home",
-        name: "Finding your niche as a hihi haha hihi hahahahahah",
-        description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
-        time: "Friday, 10:00pm WAT",
-        status: "new",
-        img: "https://upanh123.com/wp-content/uploads/2020/09/hinh-anh-con-voi-khong-lo_111944888.jpg",
-      },
-
-      {
-        id: 1,
-        link: "home",
-        name: "Finding your niche as a hihi haha hihi hahahahahah",
-        description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
-        time: "Friday, 10:00pm WAT",
-        status: "new",
-        img: "https://upanh123.com/wp-content/uploads/2020/09/hinh-anh-con-voi-khong-lo_111944888.jpg",
-      },
-
-      {
-        id: 2,
-        link: "home",
-        name: "Finding your niche as a hihi haha hihi hahahahahah",
-        description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
-        time: "Friday, 10:00pm WAT",
-        status: "new",
-        img: "https://upanh123.com/wp-content/uploads/2020/09/hinh-anh-con-voi-khong-lo_111944888.jpg",
-      },
-
-      {
-        id: 3,
-        link: "home",
-        name: "Finding your niche as a hihi haha hihi hahahahahah",
-        description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
-        time: "Friday, 10:00pm WAT",
-        status: "new",
-        img: "https://upanh123.com/wp-content/uploads/2020/09/hinh-anh-con-voi-khong-lo_111944888.jpg",
-      },
-
-      {
-        id: 4,
-        link: "home",
-        name: "Finding your niche as a hihi haha hihi hahahahahah",
-        description:
-          "They are threatened by habitat loss following large–scale deforestation and commercial poaching for the wildlife hihi haha hnene asdfjasdfjasdjf",
-        time: "Friday, 10:00pm WAT",
-        status: "new",
-        img: "https://upanh123.com/wp-content/uploads/2020/09/hinh-anh-con-voi-khong-lo_111944888.jpg",
-      },
-    ],
     dataBlogSlide: [
       {
         id: 0,
@@ -581,8 +526,13 @@ export default createStore({
       },
     ],
     dataBlogMostRead: null,
+    dataTopBlog: null,
+    dataLocationVietNam: null,
+    dataBankVietNam: null,
   },
-  getters: {},
+  getters: {
+    getLocationVietNam: (state) => state.dataLocationVietNam,
+  },
   mutations: {
     setStatusShowPopup(state, status) {
       state.statusShowPopup = status;
@@ -598,6 +548,15 @@ export default createStore({
     },
     setDataBlogMostRead(state, data) {
       state.dataBlogMostRead = data[0];
+    },
+    setDataTopBlog(state, data) {
+      state.dataTopBlog = data;
+    },
+    setDataLocationVietNam(state, data) {
+      state.dataLocationVietNam = data;
+    },
+    setDataBankVietNam(state, data) {
+      state.dataBankVietNam = data;
     },
   },
   actions: {
@@ -618,6 +577,33 @@ export default createStore({
         commit("setDataBlogMostRead", dataRefBlog.data);
       } else {
         commit("setDataBlogMostRead", null);
+      }
+    },
+
+    async getTopBlog({ commit }) {
+      const dataTopBlog = await blogService.getBlogTop(12);
+      if (dataTopBlog.success) {
+        commit("setDataTopBlog", dataTopBlog.data);
+      } else {
+        commit("setDataTopBlog", null);
+      }
+    },
+
+    async getAllLocationsVietNam({ commit }) {
+      const dataLocationVietNam = await baseService.getListLocation();
+      if (dataLocationVietNam.success) {
+        commit("setDataLocationVietNam", dataLocationVietNam.data);
+      } else {
+        commit("setDataLocationVietNam", null);
+      }
+    },
+
+    async getAllBankVietNam({ commit }) {
+      const dataBankVietNam = await baseService.getListbank();
+      if (dataBankVietNam.success) {
+        commit("setDataBankVietNam", dataBankVietNam.data);
+      } else {
+        commit("setDataBankVietNam", null);
       }
     },
   },

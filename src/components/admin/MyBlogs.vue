@@ -83,7 +83,6 @@ export default {
     onCreateNewBlog() {
       this.dataEditBlogItem.idBlog = "";
       this.dataEditBlogItem.status = "";
-      console.log(this.dataEditBlogItem);
     },
   },
 };

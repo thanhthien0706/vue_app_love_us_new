@@ -96,7 +96,11 @@
           </div>
         </li>
 
-        <li class="itemButtonCreateCampaign">
+        <li
+          class="itemButtonCreateCampaign"
+          v-if="check_user_login"
+          @click="$router.push({ name: 'conditionCampaign' })"
+        >
           <button class="btnCampaign">{{ $t("textCreateCampaign") }}</button>
         </li>
       </ul>
@@ -175,12 +179,12 @@ export default {
           image: "paw.png",
           name: "actives",
         },
-        {
-          id: 2,
-          link: "events",
-          image: "event.png",
-          name: "events",
-        },
+        // {
+        //   id: 2,
+        //   link: "events",
+        //   image: "event.png",
+        //   name: "events",
+        // },
         {
           id: 3,
           link: "report",

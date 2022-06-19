@@ -7,7 +7,7 @@
       <div class="col-md-6">
         <div class="d-flex flex-column">
           <div class="box__header__main__blog d-flex align-items-center">
-            <p class="status">Most read</p>
+            <p class="status">Đọc nhiều</p>
             <p class="time">{{ format_date(dataBlogMostRead.createdAt) }}</p>
           </div>
         </div>
@@ -53,21 +53,31 @@
           disableOnInteraction: false,
         }"
       >
-        <swiper-slide class="slide" v-for="blog in dataBlogs" :key="blog.id">
-          <router-link :to="{ name: blog.link }">
+        <swiper-slide class="slide" v-for="blog in dataTopBlog" :key="blog.id">
+          <router-link
+            :to="{
+              name: 'detail_blog',
+              params: { slugBlog: blog.slug },
+            }"
+          >
             <div class="box__blog__item backgroundMainItem">
               <div class="row align-items-center">
                 <div class="col-md-7">
-                  <p class="title">{{ sub_string(blog.name, 20) }}</p>
-                  <p class="description">
-                    {{ sub_string(blog.description, 90) }}
+                  <p class="title">
+                    {{ sub_string(blog.title, 18) }}
                   </p>
-                  <p class="time">{{ blog.time }}</p>
+                  <p
+                    class="description"
+                    v-html="sub_string(blog.content, 90)"
+                  ></p>
+                  <p class="time">
+                    {{ format_date(blog.createdAt) }}
+                  </p>
                 </div>
                 <div class="col-md-5">
                   <div class="box__img__item__blog">
-                    <img :src="blog.img" alt="" />
-                    <div class="box__status">{{ blog.status }}</div>
+                    <img :src="convert_image(blog.main_image)" alt="" />
+                    <!-- <div class="box__status">{{ blog.status }}</div> -->
                   </div>
                 </div>
               </div>
@@ -118,7 +128,7 @@ export default {
     convert_image: ConvertImage,
   },
   computed: {
-    ...mapState(["dataBlogs", "dataBlogMostRead"]),
+    ...mapState(["dataBlogMostRead", "dataTopBlog"]),
   },
 };
 </script>

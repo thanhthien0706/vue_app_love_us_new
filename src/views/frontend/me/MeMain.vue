@@ -80,6 +80,7 @@ import DefaultFrontend_1 from "@/layouts/DefaultFrontend_1.vue";
 import { mapState } from "vuex";
 import ConvertImage from "@/utils/convertImage";
 import MeInformation from "@/components/frontend/me/MeInformation.vue";
+import MeAuthenAccount from "@/components/frontend/me/MeAuthenAccount.vue";
 import { meService, isPending } from "@/services/meService";
 
 export default {
@@ -87,7 +88,7 @@ export default {
   setup() {
     return { isPending };
   },
-  components: { DefaultFrontend_1, MeInformation },
+  components: { DefaultFrontend_1, MeInformation, MeAuthenAccount },
   data() {
     return {
       avaterUser: null,
@@ -102,7 +103,7 @@ export default {
         {
           id: 1,
           name: "Xác minh",
-          component: "test",
+          component: "MeAuthenAccount",
         },
 
         {

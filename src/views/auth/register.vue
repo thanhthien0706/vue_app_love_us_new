@@ -8,14 +8,14 @@
           <p class="header__first">BẮT ĐẦU MIỄN PHÍ</p>
           <p class="header__second">TẠO TÀI KHOẢN MỚI</p>
           <p class="header__thrid">
-            Already a member ?
+            Bạn đã là thành viên ?
             <span
               @click="
                 {
                   this.$router.push({ name: 'login' });
                 }
               "
-              >Login</span
+              >Đăng nhập</span
             >
           </p>
         </div>

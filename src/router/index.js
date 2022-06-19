@@ -135,12 +135,41 @@ const routes = [
   },
 
   {
+    path: "/condition-campaign",
+    name: "conditionCampaign",
+    meta: {
+      title: "Điền kiện tạo chiến dịch",
+      middleware: [checkRole.isLogin],
+    },
+    component: () => import("@/views/frontend/campaign/CampaignCondition.vue"),
+  },
+
+  {
+    path: "/create-campaign",
+    name: "create_campaign",
+    meta: {
+      title: "Tạo chiến dịch",
+      middleware: [checkRole.isLogin],
+    },
+    component: () => import("@/views/frontend/campaign/CreateCampaign.vue"),
+  },
+
+  {
     path: "/",
     name: "convey",
     meta: {
       title: "Thông điệp",
     },
     component: () => import("@/views/frontend/BeginStartView"),
+  },
+
+  {
+    path: "/:pathMatch(.*)*",
+    name: "page_not_found",
+    meta: {
+      title: "Trang không tồn tại",
+    },
+    component: () => import("@/views/frontend/PageNotFound.vue"),
   },
 ];
 

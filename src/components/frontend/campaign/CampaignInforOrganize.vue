@@ -79,7 +79,20 @@
   </div>
 
   <div class="boxButtonHandle">
-    <button class="btnContinue" @click="onEmitInforOrganize">Tiếp theo</button>
+    <button
+      class="btnContinue"
+      @click="onEmitInforOrganize"
+      :disabled="
+        dataOrganize.avatar == null ||
+        dataOrganize.name == '' ||
+        dataOrganize.link == '' ||
+        dataOrganize.phone == '' ||
+        dataOrganize.address == '' ||
+        dataOrganize.description == ''
+      "
+    >
+      Tiếp theo
+    </button>
   </div>
 </template>
 

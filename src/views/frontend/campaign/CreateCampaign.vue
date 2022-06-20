@@ -60,6 +60,13 @@
             @onPreClickPageInforOrganize="
               currentComponent = 'CampaignInforOrganize'
             "
+            @onNextPageConfirm="currentComponent = 'CampaignConfirm'"
+            @onBackPageCampaign="currentComponent = 'CampaignInforNew'"
+            @onSendCreateCampaign="handleSendCreateCampaign"
+            :dataCampaign="dataMainCreateCampaign.dataCampaign"
+            :dataDonate="dataMainCreateCampaign.dataDonate"
+            @onEmitDataCampaign="emitDataCampaign($event)"
+            @onEmitDataDonate="emitDataDonate($event)"
           />
         </keep-alive>
 
@@ -75,10 +82,17 @@
 <script>
 import CampaignInforOrganize from "@/components/frontend/campaign/CampaignInforOrganize.vue";
 import CampaignInforNew from "@/components/frontend/campaign/CampaignInforNew.vue";
+import CampaignConfirm from "@/components/frontend/campaign/CampaignConfirm.vue";
+import CampaignSucess from "@/components/frontend/campaign/CampaignSucess.vue";
 
 export default {
   name: "CreateCampaign",
-  components: { CampaignInforOrganize, CampaignInforNew },
+  components: {
+    CampaignInforOrganize,
+    CampaignInforNew,
+    CampaignConfirm,
+    CampaignSucess,
+  },
   data() {
     return {
       listPassCreate: [],
@@ -86,6 +100,25 @@ export default {
       nameContinue: "Tiếp theo",
       dataMainCreateCampaign: {
         organize: null,
+        dataCampaign: {
+          avatar: null,
+          name: "",
+          start_time: "",
+          end_time: "",
+          province: "",
+          district: "",
+          ward: "",
+          location_detail: "",
+          description: "",
+          limitMember: 0,
+        },
+        dataDonate: {
+          maxMoney: 0,
+          dateDonate: 0,
+          accountNumberBank: "",
+          bankCode: "",
+          nameAccountBank: "",
+        },
       },
     };
   },
@@ -95,6 +128,15 @@ export default {
   methods: {
     initDataMain() {
       this.currentComponent = "CampaignInforOrganize";
+    },
+    handleSendCreateCampaign() {
+      this.currentComponent = "CampaignSucess";
+    },
+    emitDataCampaign(event) {
+      this.dataMainCreateCampaign.dataCampaign = event;
+    },
+    emitDataDonate(event) {
+      this.dataMainCreateCampaign.dataDonateF = event;
     },
     setDataOrganize(event) {
       this.dataMainCreateCampaign.organize = { ...event };
@@ -118,9 +160,9 @@ export default {
         this.listPassCreate = ["pass1"];
       } else if (newVal == "CampaignInforNew") {
         this.listPassCreate = ["pass1", "pass2"];
-      } else if (newVal == "test3") {
+      } else if (newVal == "CampaignConfirm") {
         this.listPassCreate = ["pass1", "pass2", "pass3"];
-      } else if (newVal == "test4") {
+      } else if (newVal == "CampaignSucess") {
         this.listPassCreate = ["pass1", "pass2", "pass3", "pass4"];
       }
     },

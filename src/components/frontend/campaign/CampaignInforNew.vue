@@ -16,13 +16,28 @@
             @submit.prevent
             class="formInforInput"
           >
+            <div class="boxLineFormAvatar">
+              <p class="nameInput">Ảnh đại diện</p>
+              <label for="inputFileAvater">
+                <fa :icon="['fas', 'user-plus']" v-if="!currentAvtOrganize" />
+                <p v-else>{{ currentAvtOrganize }}</p>
+                <input
+                  id="inputFileAvater"
+                  type="file"
+                  accept=".jpg, .jpeg, .png, .mp4"
+                  style="display: none"
+                  @change="onChageAvater"
+              /></label>
+            </div>
+
             <div class="boxLineForm">
               <div class="formGroup">
                 <p class="nameInput">Tên chiến dịch</p>
                 <input
                   type="text"
                   class="inputText"
-                  v-model="dataCampaign.name"
+                  v-model="dataCampaignNew.name"
+                  @input="emitDataCampaign"
                 />
               </div>
             </div>
@@ -34,7 +49,8 @@
                   <input
                     type="date"
                     class="inputText"
-                    v-model="dataCampaign.start_time"
+                    v-model="dataCampaignNew.start_time"
+                    @input="emitDataCampaign"
                   />
                 </div>
               </div>
@@ -44,7 +60,8 @@
                   <input
                     type="date"
                     class="inputText"
-                    v-model="dataCampaign.end_time"
+                    v-model="dataCampaignNew.end_time"
+                    @input="emitDataCampaign"
                   />
                 </div>
               </div>
@@ -57,7 +74,8 @@
                   <select
                     name=""
                     class="selectLocation"
-                    v-model="dataCampaign.province"
+                    v-model="dataCampaignNew.province"
+                    @input="emitDataCampaign"
                   >
                     <option
                       v-for="option in listProvinces"
@@ -75,7 +93,8 @@
                   <select
                     name=""
                     class="selectLocation"
-                    v-model="dataCampaign.district"
+                    v-model="dataCampaignNew.district"
+                    @input="emitDataCampaign"
                   >
                     <option
                       v-for="option in listDistricts"
@@ -94,7 +113,8 @@
                   <select
                     name=""
                     class="selectLocation"
-                    v-model="dataCampaign.ward"
+                    v-model="dataCampaignNew.ward"
+                    @input="emitDataCampaign"
                   >
                     <option
                       v-for="option in listWards"
@@ -114,7 +134,8 @@
                 <input
                   type="text"
                   class="inputText"
-                  v-model="dataCampaign.location_detail"
+                  v-model="dataCampaignNew.location_detail"
+                  @input="emitDataCampaign"
                 />
               </div>
             </div>
@@ -124,7 +145,8 @@
                 <p class="nameInput">Mô tả chiến dịch</p>
                 <textarea
                   class="textareaInput"
-                  v-model="dataCampaign.description"
+                  v-model="dataCampaignNew.description"
+                  @input="emitDataCampaign"
                 ></textarea>
               </div>
             </div>
@@ -150,7 +172,8 @@
             <input
               type="number"
               class="inputText"
-              v-model="dataCampaign.limitMember"
+              v-model="dataCampaignNew.limitMember"
+              @input="emitDataCampaign"
             />
           </div>
         </div>
@@ -179,7 +202,8 @@
               <input
                 type="number"
                 class="inputText"
-                v-model="dataDonate.maxMoney"
+                v-model="dataDonateNew.maxMoney"
+                @input="emitDataDonate"
               />
             </div>
           </div>
@@ -190,8 +214,8 @@
                 ref="inputDateDonate"
                 type="number"
                 class="inputText"
-                v-model="dataDonate.dateDonate"
-                @input="checkDateDonate(dataDonate.dateDonate)"
+                v-model="dataDonateNew.dateDonate"
+                @input="emitDataDonate"
               />
             </div>
           </div>
@@ -204,7 +228,8 @@
               <input
                 type="text"
                 class="inputText"
-                v-model="dataCampaign.accountNumberBank"
+                v-model="dataDonateNew.accountNumberBank"
+                @input="emitDataDonate"
               />
             </div>
           </div>
@@ -215,7 +240,8 @@
               <input
                 type="text"
                 class="inputText"
-                v-model="dataCampaign.nameAccountBank"
+                v-model="dataDonateNew.nameAccountBank"
+                @input="emitDataDonate"
               />
             </div>
           </div>
@@ -224,9 +250,9 @@
             <div class="formGroup">
               <p class="nameInput">Ngân hàng</p>
               <select
-                name=""
                 class="selectLocation"
-                v-model="dataDonate.bankCode"
+                v-model="dataDonateNew.bankCode"
+                @input="emitDataDonate"
               >
                 <option
                   v-for="option in listBanks"
@@ -245,16 +271,35 @@
 
   <div class="boxButtonHandle">
     <button class="btnPre" @click="onPreClickPage">Quay lại</button>
-    <button class="btnContinue">Tiếp theo</button>
+    <button
+      class="btnContinue"
+      @click="onNextPageConfirm"
+      :disabled="
+        dataCampaignNew.avatar == null ||
+        dataCampaignNew.name == '' ||
+        dataCampaignNew.start_time == '' ||
+        dataCampaignNew.end_time == '' ||
+        dataCampaignNew.province == '' ||
+        dataCampaignNew.district == '' ||
+        dataCampaignNew.ward == '' ||
+        dataCampaignNew.location_detail == '' ||
+        dataCampaignNew.description == ''
+      "
+    >
+      Tiếp theo
+    </button>
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
 import DistanceBetweenDate from "@/utils/distanceBetweenDate";
+import ClearObject from "@/utils/clearObject";
 
 export default {
   name: "CampaignInforNew",
+  // inheritAttrs: false,
+  props: ["dataCampaign", "dataDonate"],
   data() {
     return {
       listBanks: [],
@@ -262,32 +307,18 @@ export default {
       listDistricts: [],
       listWards: [],
       listCity: [],
+      currentAvtOrganize: null,
       limitMenber: false,
       statusDonate: false,
-      dataCampaign: {
-        avatar: null,
-        name: "",
-        start_time: "",
-        end_time: "",
-        province: "",
-        district: "",
-        ward: "",
-        location_detail: "",
-        description: "",
-        limitMember: 0,
-      },
-      dataDonate: {
-        maxMoney: 0,
-        dateDonate: 0,
-        accountNumberBank: "",
-        bankCode: "",
-        nameAccountBank: "",
-      },
+      dataCampaignNew: null,
+      dataDonateNew: null,
     };
   },
   created() {
     this.initLocationVietNam();
     this.initBankVietNam();
+    this.dataCampaignNew = this.dataCampaign;
+    this.dataDonateNew = this.dataDonate;
   },
   mounted() {},
   methods: {
@@ -303,6 +334,12 @@ export default {
 
         this.listProvinces = newArray;
       }
+    },
+    onChageAvater(event) {
+      const file = event.target.files[0];
+      this.dataCampaignNew.avatar = file;
+      this.currentAvtOrganize = file.name;
+      this.emitDataCampaign();
     },
     initBankVietNam() {
       if (this.dataBankVietNam) {
@@ -342,19 +379,35 @@ export default {
       }
     },
     filterDistricts(province) {
-      const newListDistricts = this.dataLocationVietNam.filter((item) => {
-        return item.code === province;
-      });
-      this.listDistricts = newListDistricts[0].districts;
+      if (province) {
+        const newListDistricts = this.dataLocationVietNam.filter((item) => {
+          return item.code === province;
+        });
+        this.listDistricts = newListDistricts[0].districts;
+      }
     },
 
     filterWards(district) {
-      const newListWards = this.listDistricts.filter((item) => {
-        return item.id === district;
-      });
-      this.listWards = newListWards[0].wards;
+      if (district) {
+        const newListWards = this.listDistricts.filter((item) => {
+          return item.id === district;
+        });
+        this.listWards = newListWards[0].wards;
+      }
+    },
+    onNextPageConfirm() {
+      this.$emit("onNextPageConfirm");
+    },
+    emitDataCampaign() {
+      this.$emit("onEmitDataCampaign", this.dataCampaignNew);
+    },
+    emitDataDonate() {
+      if (this.statusDonate) {
+        this.$emit("onEmitDataDonate", this.dataDonateNew);
+      }
     },
     distance_between_date: DistanceBetweenDate,
+    clear_object: ClearObject,
   },
   computed: {
     ...mapState(["dataLocationVietNam", "dataBankVietNam"]),
@@ -366,15 +419,25 @@ export default {
     "$store.state.dataBankVietNam"() {
       this.initBankVietNam();
     },
-    "dataCampaign.province"(newval) {
+    "dataCampaignNew.province"(newval) {
       this.filterDistricts(newval);
     },
-    "dataCampaign.district"(newval) {
+    "dataCampaignNew.district"(newval) {
       this.filterWards(newval);
     },
-    // "dataDonate.dateDonate"() {
-    //   this.checkDateDonate();
-    // },
+    statusDonate(newVal) {
+      if (!newVal) {
+        this.clear_object(this.dataDonateNew);
+      }
+    },
+    limitMenber(newVal) {
+      if (!newVal) {
+        this.dataCampaignNew.limitMember = 0;
+      }
+    },
+    "dataDonate.dateDonate"() {
+      this.checkDateDonate();
+    },
   },
 };
 </script>

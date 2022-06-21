@@ -84,6 +84,7 @@ import CampaignInforOrganize from "@/components/frontend/campaign/CampaignInforO
 import CampaignInforNew from "@/components/frontend/campaign/CampaignInforNew.vue";
 import CampaignConfirm from "@/components/frontend/campaign/CampaignConfirm.vue";
 import CampaignSucess from "@/components/frontend/campaign/CampaignSucess.vue";
+import { campaignService } from "@/services/campaignService";
 
 export default {
   name: "CreateCampaign",
@@ -101,23 +102,23 @@ export default {
       dataMainCreateCampaign: {
         organize: null,
         dataCampaign: {
-          avatar: null,
-          name: "",
-          start_time: "",
-          end_time: "",
-          province: "",
-          district: "",
-          ward: "",
-          location_detail: "",
-          description: "",
-          limitMember: 0,
+          campaign_avatar: null,
+          campaign_name: "",
+          campaign_start_time: "",
+          campaign_end_time: "",
+          campaign_province: "",
+          campaign_district: "",
+          campaign_wards: "",
+          campaign_location_detail: "",
+          campaign_description: "",
+          CM_max_members: 0,
         },
         dataDonate: {
-          maxMoney: 0,
-          dateDonate: 0,
-          accountNumberBank: "",
-          bankCode: "",
-          nameAccountBank: "",
+          Donate_max_money: 0,
+          Donate_date: 0,
+          Donate_account_number_bank: "",
+          Donate_bank_code: "",
+          Donate_bank_name_account: "",
         },
       },
     };
@@ -129,14 +130,101 @@ export default {
     initDataMain() {
       this.currentComponent = "CampaignInforOrganize";
     },
-    handleSendCreateCampaign() {
-      this.currentComponent = "CampaignSucess";
+    async handleSendCreateCampaign() {
+      const formData = new FormData();
+      formData.append(
+        "imageCampaign[]",
+        this.dataMainCreateCampaign.organize.CO_avatar
+      );
+      formData.append(
+        "imageCampaign[]",
+        this.dataMainCreateCampaign.dataCampaign.campaign_avatar
+      );
+
+      formData.append("CO_name", this.dataMainCreateCampaign.organize.CO_name);
+      formData.append("CO_link", this.dataMainCreateCampaign.organize.CO_link);
+      formData.append(
+        "CO_phone",
+        this.dataMainCreateCampaign.organize.CO_phone
+      );
+      formData.append(
+        "CO_location",
+        this.dataMainCreateCampaign.organize.CO_location
+      );
+      formData.append(
+        "CO_description",
+        this.dataMainCreateCampaign.organize.CO_description
+      );
+
+      formData.append(
+        "campaign_name",
+        this.dataMainCreateCampaign.dataCampaign.campaign_name
+      );
+      formData.append(
+        "campaign_start_time",
+        this.dataMainCreateCampaign.dataCampaign.campaign_start_time
+      );
+      formData.append(
+        "campaign_end_time",
+        this.dataMainCreateCampaign.dataCampaign.campaign_end_time
+      );
+      formData.append(
+        "campaign_province",
+        this.dataMainCreateCampaign.dataCampaign.campaign_province
+      );
+      formData.append(
+        "campaign_district",
+        this.dataMainCreateCampaign.dataCampaign.campaign_district
+      );
+      formData.append(
+        "campaign_wards",
+        this.dataMainCreateCampaign.dataCampaign.campaign_wards
+      );
+      formData.append(
+        "campaign_location_detail",
+        this.dataMainCreateCampaign.dataCampaign.campaign_location_detail
+      );
+      formData.append(
+        "campaign_description",
+        this.dataMainCreateCampaign.dataCampaign.campaign_description
+      );
+      formData.append(
+        "CM_max_members",
+        this.dataMainCreateCampaign.dataCampaign.CM_max_members
+      );
+
+      formData.append(
+        "Donate_max_money",
+        this.dataMainCreateCampaign.dataDonate.Donate_max_money
+      );
+      formData.append(
+        "Donate_date",
+        this.dataMainCreateCampaign.dataDonate.Donate_date
+      );
+      formData.append(
+        "Donate_account_number_bank",
+        this.dataMainCreateCampaign.dataDonate.Donate_account_number_bank
+      );
+      formData.append(
+        "Donate_bank_code",
+        this.dataMainCreateCampaign.dataDonate.Donate_bank_code
+      );
+      formData.append(
+        "Donate_bank_name_account",
+        this.dataMainCreateCampaign.dataDonate.Donate_bank_name_account
+      );
+
+      const dataRef = await campaignService.createCampaign(formData);
+
+      console.log(dataRef);
+
+      // this.currentComponent = "CampaignSucess";
     },
     emitDataCampaign(event) {
       this.dataMainCreateCampaign.dataCampaign = event;
     },
     emitDataDonate(event) {
-      this.dataMainCreateCampaign.dataDonateF = event;
+      this.dataMainCreateCampaign.dataDonate = event;
     },
     setDataOrganize(event) {
       this.dataMainCreateCampaign.organize = { ...event };

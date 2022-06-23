@@ -5,6 +5,12 @@
     <div id="bg__overlay"></div>
 
     <div class="boxCreateInner">
+      <fa
+        :icon="['fas', 'xmark']"
+        class="ic_cancel_campaign"
+        @click="$router.go(-1)"
+      />
+
       <div class="boxTimelineCreate">
         <ul class="ListTimeline">
           <li
@@ -88,6 +94,7 @@ import { campaignService } from "@/services/campaignService";
 
 export default {
   name: "CreateCampaign",
+
   components: {
     CampaignInforOrganize,
     CampaignInforNew,
@@ -216,9 +223,9 @@ export default {
 
       const dataRef = await campaignService.createCampaign(formData);
 
-      console.log(dataRef);
-
-      // this.currentComponent = "CampaignSucess";
+      if (dataRef.success) {
+        this.currentComponent = "CampaignSucess";
+      }
     },
     emitDataCampaign(event) {
       this.dataMainCreateCampaign.dataCampaign = event;

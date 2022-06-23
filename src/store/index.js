@@ -1,7 +1,9 @@
 import { createStore } from "vuex";
+import checkUserLogin from "@/utils/checkUserLogin";
 import { authService } from "@/services/authService";
 import { blogService } from "@/services/blogService";
 import { baseService } from "@/services/baseService";
+import { campaignService } from "@/services/campaignService";
 
 export default createStore({
   state: {
@@ -529,9 +531,12 @@ export default createStore({
     dataTopBlog: null,
     dataLocationVietNam: null,
     dataBankVietNam: null,
+    dataListGroupChat: null,
+    dataGroupChat: null,
   },
   getters: {
     getLocationVietNam: (state) => state.dataLocationVietNam,
+    getDataGroupChat: (state) => state.dataGroupChat,
   },
   mutations: {
     setStatusShowPopup(state, status) {
@@ -557,6 +562,9 @@ export default createStore({
     },
     setDataBankVietNam(state, data) {
       state.dataBankVietNam = data;
+    },
+    setDataGroupChat(state, data) {
+      state.dataGroupChat = data;
     },
   },
   actions: {
@@ -604,6 +612,20 @@ export default createStore({
         commit("setDataBankVietNam", dataBankVietNam.data);
       } else {
         commit("setDataBankVietNam", null);
+      }
+    },
+
+    async getAllGroupChat({ commit }) {
+      if (checkUserLogin) {
+        const dataGroupChat = await campaignService.getAllGroupChat();
+
+        if (dataGroupChat.success) {
+          commit("setDataGroupChat", dataGroupChat.data);
+        } else {
+          commit("setDataGroupChat", null);
+        }
+      } else {
+        commit("setDataGroupChat", null);
       }
     },
   },

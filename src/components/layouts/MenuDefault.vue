@@ -208,7 +208,7 @@ export default {
         },
         {
           id: 1,
-          link: "convey",
+          link: "ChatMe",
           image: "group.png",
           name: "group",
         },

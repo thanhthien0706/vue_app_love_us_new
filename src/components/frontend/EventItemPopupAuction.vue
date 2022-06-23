@@ -11,6 +11,9 @@
       @click.self="onClosePopup"
     >
       <div class="box__content__inner row">
+        <!-- <div class="title__header">
+          <p class="title">Chi tiết buổi đấu giá</p>
+        </div> -->
         <div class="col-md-6 col-sm-12">
           <div class="box__item__grid box__item__left">
             <p class="title">
@@ -25,12 +28,12 @@
               {{ dataCurrentAuction.auctionartifacts }}
             </p>
             <div class="row box__timeline">
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="col__inner--left">
                   <p class="box__user">
                     Người tham gia: <span class="quantity_user">134</span>
                   </p>
-                  <ul class="list__join__user">
+                  <!-- <ul class="list__join__user">
                     <li class="item__join__user">
                       <img src="@/assets/images/img_avatar.png" alt="" />
                       <p class="name">Adeyinka Johnson</p>
@@ -43,22 +46,25 @@
                       <img src="@/assets/images/img_avatar.png" alt="" />
                       <p class="name">Adeyinka Johnson</p>
                     </li>
-                  </ul>
+                  </ul> -->
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="col__inner--right">
                   <p class="infor__text">
+                    <fa :icon="['fas', 'user-circle']" class="icon_input" />
                     <span class="title">Người tổ chức: </span
                     >{{ dataCurrentAuction.organizer }}
                   </p>
 
                   <p class="infor__text">
+                    <fa :icon="['fas', 'phone-square']" class="icon_input" />
                     <span class="title">Số điện thoại: </span
                     >{{ dataCurrentAuction.phonenumber }}
                   </p>
 
                   <p class="infor__text">
+                    <fa :icon="['fas', 'usd']" class="icon_input" />
                     <span class="title">Mức giá khởi điểm: </span
                     >{{ dataCurrentAuction.startingprice }}$
                   </p>
@@ -84,11 +90,16 @@
                       src="@/assets/images/page/clock.png"
                       alt=""
                     /> -->
+                    <fa :icon="['fas', 'clock']" class="icon_input" />
                     {{ dataCurrentAuction.time }} |
                     {{ dataCurrentAuction.date }}
                   </p>
                   <div class="d-flex align-items-center">
-                    <p class="location">{{ dataCurrentAuction.location }}</p>
+                    <p class="location">
+                      <fa :icon="['fas', 'map-marker']" class="icon_input" />{{
+                        dataCurrentAuction.location
+                      }}
+                    </p>
                   </div>
                 </div>
               </div>

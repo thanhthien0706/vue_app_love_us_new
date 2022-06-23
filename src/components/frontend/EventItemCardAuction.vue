@@ -13,7 +13,9 @@
       <p class="description__card">
         {{ sub_string(dataItemAuction.description, 80) }}
       </p>
-      <div class="btn__card" @click="onEmitShowPopup(dataItemAuction)">GO</div>
+      <div class="btn__card" @click="onEmitShowPopup(dataItemAuction)">
+        Xem chi tiết
+      </div>
     </div>
     <!-- <div class="overlay"></div> -->
   </div>

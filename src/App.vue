@@ -18,6 +18,7 @@ export default {
       "getTopBlog",
       "getAllLocationsVietNam",
       "getAllBankVietNam",
+      "getAllGroupChat",
     ]),
     initMain() {
       this.getDataUser();
@@ -25,6 +26,7 @@ export default {
       this.getTopBlog();
       this.getAllLocationsVietNam();
       this.getAllBankVietNam();
+      this.getAllGroupChat();
     },
   },
 };

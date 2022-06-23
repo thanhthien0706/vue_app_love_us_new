@@ -36,7 +36,7 @@
                 <input
                   type="text"
                   class="inputText"
-                  v-model="dataCampaignNew.name"
+                  v-model="dataCampaignNew.campaign_name"
                   @input="emitDataCampaign"
                 />
               </div>
@@ -49,7 +49,7 @@
                   <input
                     type="date"
                     class="inputText"
-                    v-model="dataCampaignNew.start_time"
+                    v-model="dataCampaignNew.campaign_start_time"
                     @input="emitDataCampaign"
                   />
                 </div>
@@ -60,7 +60,7 @@
                   <input
                     type="date"
                     class="inputText"
-                    v-model="dataCampaignNew.end_time"
+                    v-model="dataCampaignNew.campaign_end_time"
                     @input="emitDataCampaign"
                   />
                 </div>
@@ -74,7 +74,7 @@
                   <select
                     name=""
                     class="selectLocation"
-                    v-model="dataCampaignNew.province"
+                    v-model="dataCampaignNew.campaign_province"
                     @input="emitDataCampaign"
                   >
                     <option
@@ -93,7 +93,7 @@
                   <select
                     name=""
                     class="selectLocation"
-                    v-model="dataCampaignNew.district"
+                    v-model="dataCampaignNew.campaign_district"
                     @input="emitDataCampaign"
                   >
                     <option
@@ -113,7 +113,7 @@
                   <select
                     name=""
                     class="selectLocation"
-                    v-model="dataCampaignNew.ward"
+                    v-model="dataCampaignNew.campaign_wards"
                     @input="emitDataCampaign"
                   >
                     <option
@@ -134,7 +134,7 @@
                 <input
                   type="text"
                   class="inputText"
-                  v-model="dataCampaignNew.location_detail"
+                  v-model="dataCampaignNew.campaign_location_detail"
                   @input="emitDataCampaign"
                 />
               </div>
@@ -145,7 +145,7 @@
                 <p class="nameInput">Mô tả chiến dịch</p>
                 <textarea
                   class="textareaInput"
-                  v-model="dataCampaignNew.description"
+                  v-model="dataCampaignNew.campaign_description"
                   @input="emitDataCampaign"
                 ></textarea>
               </div>
@@ -172,7 +172,7 @@
             <input
               type="number"
               class="inputText"
-              v-model="dataCampaignNew.limitMember"
+              v-model="dataCampaignNew.CM_max_members"
               @input="emitDataCampaign"
             />
           </div>
@@ -202,7 +202,7 @@
               <input
                 type="number"
                 class="inputText"
-                v-model="dataDonateNew.maxMoney"
+                v-model="dataDonateNew.Donate_max_money"
                 @input="emitDataDonate"
               />
             </div>
@@ -214,7 +214,7 @@
                 ref="inputDateDonate"
                 type="number"
                 class="inputText"
-                v-model="dataDonateNew.dateDonate"
+                v-model="dataDonateNew.Donate_date"
                 @input="emitDataDonate"
               />
             </div>
@@ -228,7 +228,7 @@
               <input
                 type="text"
                 class="inputText"
-                v-model="dataDonateNew.accountNumberBank"
+                v-model="dataDonateNew.Donate_account_number_bank"
                 @input="emitDataDonate"
               />
             </div>
@@ -240,7 +240,7 @@
               <input
                 type="text"
                 class="inputText"
-                v-model="dataDonateNew.nameAccountBank"
+                v-model="dataDonateNew.Donate_bank_name_account"
                 @input="emitDataDonate"
               />
             </div>
@@ -251,7 +251,7 @@
               <p class="nameInput">Ngân hàng</p>
               <select
                 class="selectLocation"
-                v-model="dataDonateNew.bankCode"
+                v-model="dataDonateNew.Donate_bank_code"
                 @input="emitDataDonate"
               >
                 <option
@@ -275,15 +275,15 @@
       class="btnContinue"
       @click="onNextPageConfirm"
       :disabled="
-        dataCampaignNew.avatar == null ||
-        dataCampaignNew.name == '' ||
-        dataCampaignNew.start_time == '' ||
-        dataCampaignNew.end_time == '' ||
-        dataCampaignNew.province == '' ||
-        dataCampaignNew.district == '' ||
-        dataCampaignNew.ward == '' ||
-        dataCampaignNew.location_detail == '' ||
-        dataCampaignNew.description == ''
+        dataCampaignNew.campaign_avatar == null ||
+        dataCampaignNew.campaign_name == '' ||
+        dataCampaignNew.campaign_start_time == '' ||
+        dataCampaignNew.campaign_end_time == '' ||
+        dataCampaignNew.campaign_province == '' ||
+        dataCampaignNew.campaign_district == '' ||
+        dataCampaignNew.campaign_wards == '' ||
+        dataCampaignNew.campaign_location_detail == '' ||
+        dataCampaignNew.campaign_description == ''
       "
     >
       Tiếp theo
@@ -337,7 +337,7 @@ export default {
     },
     onChageAvater(event) {
       const file = event.target.files[0];
-      this.dataCampaignNew.avatar = file;
+      this.dataCampaignNew.campaign_avatar = file;
       this.currentAvtOrganize = file.name;
       this.emitDataCampaign();
     },
@@ -361,14 +361,14 @@ export default {
     },
     checkDateDonate(text) {
       if (
-        this.dataCampaign.start_time == "" ||
-        this.dataCampaign.end_time == ""
+        this.dataCampaign.campaign_start_time == "" ||
+        this.dataCampaign.campaign_end_time == ""
       ) {
         this.$refs.inputDateDonate.style.outlineColor = "#f44336";
       } else {
         const date = this.distance_between_date(
-          this.dataCampaign.start_time,
-          this.dataCampaign.end_time
+          this.dataCampaign.campaign_start_time,
+          this.dataCampaign.campaign_end_time
         );
 
         if (Number(text) > date) {
@@ -419,10 +419,10 @@ export default {
     "$store.state.dataBankVietNam"() {
       this.initBankVietNam();
     },
-    "dataCampaignNew.province"(newval) {
+    "dataCampaignNew.campaign_province"(newval) {
       this.filterDistricts(newval);
     },
-    "dataCampaignNew.district"(newval) {
+    "dataCampaignNew.campaign_district"(newval) {
       this.filterWards(newval);
     },
     statusDonate(newVal) {
@@ -432,10 +432,10 @@ export default {
     },
     limitMenber(newVal) {
       if (!newVal) {
-        this.dataCampaignNew.limitMember = 0;
+        this.dataCampaignNew.CM_max_members = 0;
       }
     },
-    "dataDonate.dateDonate"() {
+    "dataDonate.Donate_date"() {
       this.checkDateDonate();
     },
   },

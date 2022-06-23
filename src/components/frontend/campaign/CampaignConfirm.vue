@@ -90,10 +90,12 @@
           <button
             class="nextPageConfirm"
             :disabled="!checkConfirm"
+            v-if="!isPendingCampaign"
             @click="$emit('onSendCreateCampaign')"
           >
             Tiếp theo
           </button>
+          <button class="nextPageConfirm" disabled v-else>Tiếp theo</button>
         </div>
       </div>
       <div class="col-md-5">
@@ -110,8 +112,13 @@
 </template>
 
 <script>
+import { isPendingCampaign } from "@/services/campaignService";
+
 export default {
   name: "CampaignConfirm",
+  setup() {
+    return { isPendingCampaign };
+  },
   data() {
     return {
       checkConfirm: false,

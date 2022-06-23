@@ -3,14 +3,14 @@
 <template>
   <div class="CampaignInforOrganize">
     <!-- <p class="titleText">Thông tin tổ chức</p>
-    <p class="description">
+    <p class="CO_description">
       Để có thể xác minh chiến dịch và tăng độ uy tín của chiến dịch của bạn.
       Chúng tôi cần bạn nhập thông tin tổ chức hiện tại của bạn.
     </p> -->
 
     <form action="javascript:void(0)" @submit.prevent class="formInforInput">
       <div class="box_avater">
-        <label for="inputFileAvater" v-if="dataOrganize.avatar == null">
+        <label for="inputFileAvater" v-if="dataOrganize.CO_avatar == null">
           <fa :icon="['fas', 'user-plus']" />
           <input
             id="inputFileAvater"
@@ -36,13 +36,21 @@
         <div class="col-md-6">
           <div class="formGroup">
             <p class="nameInput">Tên tổ chức</p>
-            <input type="text" class="inputText" v-model="dataOrganize.name" />
+            <input
+              type="text"
+              class="inputText"
+              v-model="dataOrganize.CO_name"
+            />
           </div>
         </div>
         <div class="col-md-6">
           <div class="formGroup">
             <p class="nameInput">Liên kết tới tổ chức</p>
-            <input type="text" class="inputText" v-model="dataOrganize.link" />
+            <input
+              type="text"
+              class="inputText"
+              v-model="dataOrganize.CO_link"
+            />
           </div>
         </div>
       </div>
@@ -51,7 +59,11 @@
         <div class="col-md-6">
           <div class="formGroup">
             <p class="nameInput">SĐT liên hệ</p>
-            <input type="text" class="inputText" v-model="dataOrganize.phone" />
+            <input
+              type="text"
+              class="inputText"
+              v-model="dataOrganize.CO_phone"
+            />
           </div>
         </div>
         <div class="col-md-6">
@@ -60,7 +72,7 @@
             <input
               type="text"
               class="inputText"
-              v-model="dataOrganize.address"
+              v-model="dataOrganize.CO_location"
             />
           </div>
         </div>
@@ -71,7 +83,7 @@
           <p class="nameInput">Mô tả</p>
           <textarea
             class="textareaInput"
-            v-model="dataOrganize.description"
+            v-model="dataOrganize.CO_description"
           ></textarea>
         </div>
       </div>
@@ -83,12 +95,12 @@
       class="btnContinue"
       @click="onEmitInforOrganize"
       :disabled="
-        dataOrganize.avatar == null ||
-        dataOrganize.name == '' ||
-        dataOrganize.link == '' ||
-        dataOrganize.phone == '' ||
-        dataOrganize.address == '' ||
-        dataOrganize.description == ''
+        dataOrganize.CO_avatar == null ||
+        dataOrganize.CO_name == '' ||
+        dataOrganize.CO_link == '' ||
+        dataOrganize.CO_phone == '' ||
+        dataOrganize.CO_location == '' ||
+        dataOrganize.CO_description == ''
       "
     >
       Tiếp theo
@@ -103,19 +115,19 @@ export default {
     return {
       currentAvtOrganize: null,
       dataOrganize: {
-        avatar: null,
-        name: "",
-        link: "",
-        phone: "",
-        address: "",
-        description: "",
+        CO_avatar: null,
+        CO_name: "",
+        CO_link: "",
+        CO_phone: "",
+        CO_location: "",
+        CO_description: "",
       },
     };
   },
   methods: {
     onChageAvater(event) {
       const file = event.target.files[0];
-      this.dataOrganize.avatar = file;
+      this.dataOrganize.CO_avatar = file;
       this.currentAvtOrganize = URL.createObjectURL(file);
     },
     onEmitInforOrganize() {

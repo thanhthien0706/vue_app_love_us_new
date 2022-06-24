@@ -68,15 +68,17 @@ export default {
   methods: {
     sub_string: SubString,
     genaratorGroupChat() {
-      const newArrayGroup = this.dataGroupChat.map((item) => {
-        return {
-          id: item.dataGroupChat[0]._id,
-          name: item.dataGroupChat[0].Chat_name,
-          avatar: item.dataGroupChat[0].Chat_avatar,
-        };
-      });
+      if (this.dataGroupChat) {
+        const newArrayGroup = this.dataGroupChat.map((item) => {
+          return {
+            id: item.dataGroupChat[0]._id,
+            name: item.dataGroupChat[0].Chat_name,
+            avatar: item.dataGroupChat[0].Chat_avatar,
+          };
+        });
 
-      this.listGroupChat = newArrayGroup;
+        this.listGroupChat = newArrayGroup;
+      }
     },
     convert_image: ConvertImage,
   },

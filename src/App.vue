@@ -3,13 +3,14 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 // import handleLanguage from "@/utils/handleLanguage";
 
 export default {
   setup() {},
   created() {
     this.initMain();
+    this.initCreateGroupChat();
   },
   methods: {
     ...mapActions([
@@ -27,6 +28,24 @@ export default {
       this.getAllLocationsVietNam();
       this.getAllBankVietNam();
       this.getAllGroupChat();
+    },
+    initCreateGroupChat() {
+      if (this.getDataGroupChat) {
+        const newArrayGroup = this.getDataGroupChat.map((item) => {
+          return {
+            id: item.dataGroupChat[0]._id,
+          };
+        });
+        this.$socket.emit("groupchat:join", newArrayGroup);
+      }
+    },
+  },
+  computed: {
+    ...mapGetters(["getDataGroupChat"]),
+  },
+  watch: {
+    getDataGroupChat() {
+      this.initCreateGroupChat();
     },
   },
 };

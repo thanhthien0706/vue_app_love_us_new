@@ -297,7 +297,7 @@ export default {
       formData.append("password", this.dataFormRegister.password);
 
       let resData = await authService.registerAccount(formData);
-
+      console.log(resData);
       if (resData.success) {
         const resDataLogin = await authService.loginAccount({
           email: this.dataFormRegister.email,

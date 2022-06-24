@@ -63,8 +63,18 @@
       </div>
 
       <div class="boxSendChat">
-        <input type="text" placeholder="Aa" class="inputContentChat" />
-        <fa :icon="['fas', 'paper-plane']" class="ic_send_chat" />
+        <input
+          type="text"
+          placeholder="Aa"
+          class="inputContentChat"
+          v-model="content"
+          @keypress.enter="onSendMessenger"
+        />
+        <fa
+          :icon="['fas', 'paper-plane']"
+          class="ic_send_chat"
+          @click="onSendMessenger"
+        />
       </div>
     </div>
   </div>
@@ -81,9 +91,13 @@ export default {
   data() {
     return {
       listMessenger: [],
+      content: "",
     };
   },
   created() {},
+  mounted() {
+    this.listenMessengerFromServer();
+  },
   methods: {
     async initDataMessenger() {
       const dataListMessenger = await chatService.getMessenger(
@@ -96,6 +110,22 @@ export default {
         this.listMessenger = dataListMessenger.data;
       }
     },
+
+    onSendMessenger() {
+      console.log(this.content);
+      this.$socket.emit("groupchat:sendMess", {
+        content: this.content,
+        to: this.dataGroupChat.id,
+        from: this.$store.state.dataUserCurrent._id,
+      });
+    },
+
+    listenMessengerFromServer() {
+      this.$socket.on("serverGroupChat:sendMess", (data) => {
+        console.log(data);
+      });
+    },
+
     convert_image: ConvertImage,
     sub_string: SubString,
   },

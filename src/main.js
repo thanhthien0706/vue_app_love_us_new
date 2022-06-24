@@ -7,6 +7,8 @@ import store from "./store";
 import axios from "axios";
 import { authService } from "@/services/authService";
 import i18n from "@/plugins/i18n/i18n";
+import VueSocketIO from "vue-3-socket.io";
+import SocketIO from "socket.io-client";
 
 /**
  * COMPONENTs
@@ -41,12 +43,29 @@ import "animate.css";
 axios.defaults.baseURL = "http://localhost:3000/api";
 authService.initAuthHeader();
 
+/**
+ * SOCKET.IO
+ */
+
+const socketConnection = SocketIO("http://localhost:3000");
+
 createApp(App)
   .component("fa", FontAwesomeIcon)
   .component("NotifiView", NotifiView)
   .use(store)
   .use(i18n)
   .use(router)
+  .use(
+    new VueSocketIO({
+      debug: true,
+      connection: socketConnection,
+      vuex: {
+        store,
+        actionPrefix: "SOCKET_",
+        mutationPrefix: "SOCKET_",
+      },
+    })
+  )
   .mount("#app");
 
 import "bootstrap/dist/js/bootstrap.js";

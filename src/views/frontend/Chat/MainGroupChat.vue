@@ -136,6 +136,9 @@ export default {
     searchGroup(newVal) {
       this.searchGroupChatWithName(newVal);
     },
+    getDataGroupChat() {
+      this.genaratorGroupChat();
+    },
   },
 };
 </script>

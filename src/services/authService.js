@@ -25,11 +25,7 @@ const authService = {
     isPending.value = true;
 
     try {
-      const res = await axios.post("register", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const res = await axios.post("/register", formData);
 
       return res.data;
     } catch (err) {
@@ -43,7 +39,7 @@ const authService = {
   async loginAccount(formData) {
     isPending.value = true;
     try {
-      const res = await axios.post("login", {
+      const res = await axios.post("/login", {
         email: formData.email,
         password: formData.password,
       });

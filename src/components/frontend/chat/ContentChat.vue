@@ -88,16 +88,22 @@ import { chatService } from "@/services/chatService";
 export default {
   name: "ContentChat",
   props: ["dataGroupChat"],
+  sockets: {
+    "serverGroupChat:sendMess": function (data) {
+      console.log(data);
+      this.listMessenger.push(data);
+    },
+  },
   data() {
     return {
       listMessenger: [],
       content: "",
     };
   },
-  created() {},
-  mounted() {
+  created() {
     this.listenMessengerFromServer();
   },
+  mounted() {},
   methods: {
     async initDataMessenger() {
       const dataListMessenger = await chatService.getMessenger(
@@ -112,7 +118,6 @@ export default {
     },
 
     onSendMessenger() {
-      console.log(this.content);
       this.$socket.emit("groupchat:sendMess", {
         content: this.content,
         to: this.dataGroupChat.id,
@@ -121,8 +126,8 @@ export default {
     },
 
     listenMessengerFromServer() {
-      this.$socket.on("serverGroupChat:sendMess", (data) => {
-        console.log(data);
+      this.$socket.on("serverGroupChat:sendMess", ({ content, from }) => {
+        console.log(content, from);
       });
     },
 

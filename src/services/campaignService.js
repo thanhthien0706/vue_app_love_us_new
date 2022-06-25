@@ -20,16 +20,6 @@ const campaignService = {
       isPendingCampaign.value = false;
     }
   },
-
-  async getAllGroupChat() {
-    try {
-      const dataRef = await axios.get("/campaign/group-chat/get-all");
-
-      return dataRef.data;
-    } catch (error) {
-      console.log("Error Blog: " + error);
-    }
-  },
 };
 
 export { campaignService, isPendingCampaign };

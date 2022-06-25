@@ -3,7 +3,7 @@ import checkUserLogin from "@/utils/checkUserLogin";
 import { authService } from "@/services/authService";
 import { blogService } from "@/services/blogService";
 import { baseService } from "@/services/baseService";
-import { campaignService } from "@/services/campaignService";
+import { chatService } from "@/services/chatService";
 
 export default createStore({
   state: {
@@ -533,10 +533,12 @@ export default createStore({
     dataBankVietNam: null,
     dataListGroupChat: null,
     dataGroupChat: null,
+    dataMessOfGroupChat: null,
   },
   getters: {
     getLocationVietNam: (state) => state.dataLocationVietNam,
     getDataGroupChat: (state) => state.dataGroupChat,
+    // getMessengerOfGroupChat: (state) => state.dataMessOfGroupChat,
   },
   mutations: {
     setStatusShowPopup(state, status) {
@@ -566,6 +568,9 @@ export default createStore({
     setDataGroupChat(state, data) {
       state.dataGroupChat = data;
     },
+    // setDataMessengerOfGroupChat(state, data) {
+    //   state.dataMessOfGroupChat = data;
+    // },
   },
   actions: {
     async getDataUser({ commit }) {
@@ -617,7 +622,7 @@ export default createStore({
 
     async getAllGroupChat({ commit }) {
       if (checkUserLogin) {
-        const dataGroupChat = await campaignService.getAllGroupChat();
+        const dataGroupChat = await chatService.getAllGroupChat();
 
         if (dataGroupChat.success) {
           commit("setDataGroupChat", dataGroupChat.data);
@@ -628,6 +633,20 @@ export default createStore({
         commit("setDataGroupChat", null);
       }
     },
+
+    // async getMessengerOfGroupChat({ commit }, { idGroupChat, linit, skip }) {
+    //   const dataMessenger = await await chatService.getMessenger(
+    //     idGroupChat,
+    //     linit,
+    //     skip
+    //   );
+
+    //   if (dataMessenger.success) {
+    //     commit("setDataMessengerOfGroupChat", dataMessenger.data);
+    //   } else {
+    //     commit("setDataMessengerOfGroupChat", null);
+    //   }
+    // },
   },
   modules: {},
 });

@@ -205,6 +205,8 @@
     flex: 1;
     overflow-y: auto;
     padding: 20px 16px;
+    display: flex;
+    flex-direction: column-reverse;
 
     .listMessenger {
       display: flex;

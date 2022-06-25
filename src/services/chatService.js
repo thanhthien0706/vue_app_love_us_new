@@ -3,7 +3,7 @@ import axios from "axios";
 const chatService = {
   async getMessenger(idGroupChat, limit, skip) {
     try {
-      let query = `/campaign/messenger/${idGroupChat}`;
+      let query = `/chat/messenger/${idGroupChat}`;
       if (limit) {
         query += `?limit=${limit}`;
       }
@@ -12,6 +12,16 @@ const chatService = {
       }
 
       const dataRef = await axios.get(query);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    }
+  },
+
+  async getAllGroupChat() {
+    try {
+      const dataRef = await axios.get("/chat/group-chat/get-all");
 
       return dataRef.data;
     } catch (error) {

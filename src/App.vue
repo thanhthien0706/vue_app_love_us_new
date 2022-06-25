@@ -31,11 +31,17 @@ export default {
     },
     initCreateGroupChat() {
       if (this.getDataGroupChat) {
-        const newArrayGroup = this.getDataGroupChat.map((item) => {
-          return {
-            id: item.dataGroupChat[0]._id,
-          };
+        // const newArrayGroup = this.getDataGroupChat.map((item) => {
+        //   return {
+        //     id: item.dataGroupChat[0]._id,
+        //   };
+        // });
+
+        const newArrayGroup = [];
+        this.getDataGroupChat.forEach((element) => {
+          newArrayGroup.push(element.dataGroupChat[0]._id);
         });
+
         this.$socket.emit("groupchat:join", newArrayGroup);
       }
     },

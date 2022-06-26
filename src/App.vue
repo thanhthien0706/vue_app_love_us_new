@@ -3,11 +3,18 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapMutations, mapGetters } from "vuex";
 // import handleLanguage from "@/utils/handleLanguage";
 
 export default {
   setup() {},
+  sockets: {
+    "serverGroupChat:sendMess": function (data) {
+      if (this.getIdCurrentGroupChat == data.id_group_chat) {
+        this.addMessChatCurrent(data);
+      }
+    },
+  },
   created() {
     this.initMain();
     this.initCreateGroupChat();
@@ -21,6 +28,7 @@ export default {
       "getAllBankVietNam",
       "getAllGroupChat",
     ]),
+    ...mapMutations(["addMessChatCurrent"]),
     initMain() {
       this.getDataUser();
       this.getBlogMostRead();
@@ -31,12 +39,6 @@ export default {
     },
     initCreateGroupChat() {
       if (this.getDataGroupChat) {
-        // const newArrayGroup = this.getDataGroupChat.map((item) => {
-        //   return {
-        //     id: item.dataGroupChat[0]._id,
-        //   };
-        // });
-
         const newArrayGroup = [];
         this.getDataGroupChat.forEach((element) => {
           newArrayGroup.push(element.dataGroupChat[0]._id);
@@ -47,7 +49,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getDataGroupChat"]),
+    ...mapGetters(["getDataGroupChat", "getIdCurrentGroupChat"]),
   },
   watch: {
     getDataGroupChat() {

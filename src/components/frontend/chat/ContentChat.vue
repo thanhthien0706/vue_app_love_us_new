@@ -32,10 +32,10 @@
       </div>
     </div>
     <div class="contentGroupChat">
-      <ul class="listMessenger" v-if="listMessenger !== []">
+      <ul class="listMessenger" v-if="getListMessenger !== null">
         <li
           class="itemMessenger"
-          v-for="item in listMessenger"
+          v-for="item in getListMessenger"
           :key="item._id"
           :class="{ me: item.id_sender == $store.state.dataUserCurrent._id }"
         >
@@ -83,17 +83,12 @@
 <script>
 import ConvertImage from "@/utils/convertImage";
 import SubString from "@/utils/sub_string";
-import { chatService } from "@/services/chatService";
+// import { chatService } from "@/services/chatService";
+import { mapGetters, mapMutations, mapActions } from "vuex";
 
 export default {
   name: "ContentChat",
   props: ["dataGroupChat"],
-  sockets: {
-    "serverGroupChat:sendMess": function (data) {
-      console.log(data);
-      this.listMessenger.push(data);
-    },
-  },
   data() {
     return {
       listMessenger: [],
@@ -105,16 +100,20 @@ export default {
   },
   mounted() {},
   methods: {
+    ...mapActions(["getMessengerOfGroupChat"]),
+    ...mapMutations(["setIdCurrentGroupChat"]),
     async initDataMessenger() {
-      const dataListMessenger = await chatService.getMessenger(
-        this.dataGroupChat.id,
-        "",
-        0
-      );
+      this.getMessengerOfGroupChat(this.dataGroupChat.id, "", 0);
+      this.setIdCurrentGroupChat(this.dataGroupChat.id);
+      // const dataListMessenger = await chatService.getMessenger(
+      //   this.dataGroupChat.id,
+      //   "",
+      //   0
+      // );
 
-      if (dataListMessenger.success) {
-        this.listMessenger = dataListMessenger.data;
-      }
+      // if (dataListMessenger.success) {
+      //   this.listMessenger = dataListMessenger.data;
+      // }
     },
 
     onSendMessenger() {
@@ -123,6 +122,7 @@ export default {
         to: this.dataGroupChat.id,
         from: this.$store.state.dataUserCurrent._id,
       });
+      this.listMessenger = "";
     },
 
     listenMessengerFromServer() {
@@ -133,6 +133,10 @@ export default {
 
     convert_image: ConvertImage,
     sub_string: SubString,
+  },
+
+  computed: {
+    ...mapGetters(["getIdCurrentGroupChat", "getListMessenger"]),
   },
 
   watch: {

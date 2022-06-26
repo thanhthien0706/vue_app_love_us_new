@@ -40,16 +40,16 @@ import "animate.css";
 /**
  * CUSTOM AXIOS
  */
-// axios.defaults.baseURL = "http://localhost:3000/api";
-axios.defaults.baseURL = "https://api-love-us.herokuapp.com/api";
+axios.defaults.baseURL = "http://localhost:3000/api";
+// axios.defaults.baseURL = "https://api-love-us.herokuapp.com/api";
 authService.initAuthHeader();
 
 /**
  * SOCKET.IO
  */
 
-// const socketConnection = SocketIO("http://localhost:3000");
-const socketConnection = SocketIO("https://api-love-us.herokuapp.com/");
+const socketConnection = SocketIO("http://localhost:3000");
+// const socketConnection = SocketIO("https://api-love-us.herokuapp.com/");
 
 createApp(App)
   .component("fa", FontAwesomeIcon)

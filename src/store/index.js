@@ -534,11 +534,13 @@ export default createStore({
     dataListGroupChat: null,
     dataGroupChat: null,
     dataMessOfGroupChat: null,
+    idCurrentGroupChat: null,
   },
   getters: {
     getLocationVietNam: (state) => state.dataLocationVietNam,
     getDataGroupChat: (state) => state.dataGroupChat,
-    // getMessengerOfGroupChat: (state) => state.dataMessOfGroupChat,
+    getListMessenger: (state) => state.dataMessOfGroupChat,
+    getIdCurrentGroupChat: (state) => state.idCurrentGroupChat,
   },
   mutations: {
     setStatusShowPopup(state, status) {
@@ -568,9 +570,15 @@ export default createStore({
     setDataGroupChat(state, data) {
       state.dataGroupChat = data;
     },
-    // setDataMessengerOfGroupChat(state, data) {
-    //   state.dataMessOfGroupChat = data;
-    // },
+    setDataMessengerOfGroupChat(state, data) {
+      state.dataMessOfGroupChat = data;
+    },
+    setIdCurrentGroupChat(state, id) {
+      state.idCurrentGroupChat = id;
+    },
+    addMessChatCurrent(state, mess) {
+      state.dataMessOfGroupChat.push(mess);
+    },
   },
   actions: {
     async getDataUser({ commit }) {
@@ -634,19 +642,19 @@ export default createStore({
       }
     },
 
-    // async getMessengerOfGroupChat({ commit }, { idGroupChat, linit, skip }) {
-    //   const dataMessenger = await await chatService.getMessenger(
-    //     idGroupChat,
-    //     linit,
-    //     skip
-    //   );
+    async getMessengerOfGroupChat({ commit }, idGroupChat, linit, skip) {
+      const dataMessenger = await await chatService.getMessenger(
+        idGroupChat,
+        linit,
+        skip
+      );
 
-    //   if (dataMessenger.success) {
-    //     commit("setDataMessengerOfGroupChat", dataMessenger.data);
-    //   } else {
-    //     commit("setDataMessengerOfGroupChat", null);
-    //   }
-    // },
+      if (dataMessenger.success) {
+        commit("setDataMessengerOfGroupChat", dataMessenger.data);
+      } else {
+        commit("setDataMessengerOfGroupChat", null);
+      }
+    },
   },
   modules: {},
 });

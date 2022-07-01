@@ -1,53 +1,96 @@
 <style></style>
 
 <template>
-  <div class="box__auction__content backgroundMainItem">
-    <div class="header__orga">
-      <p class="title">Các chiến dịch</p>
-      <input
-        type="text"
-        placeholder="Tìm chiến dịch"
-        class="input__orga"
-        v-model="query"
-      />
+  <section class="recent">
+    <div class="activity-grid">
+      <div class="activity-card">
+        <p>Các chiến dịch</p>
+        <div class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Tên chiến dịch</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Ảnh đại diện</th>
+                <th>Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tham quan rừng quốc gia ABC</td>
+                <td>12 Th7, 2022</td>
+                <td>30 Th7, 2022</td>
+                <td class="td-team">
+                  <div class="">
+                    <img
+                      class="img-avatar"
+                      src="@/assets/images/page/clock.png"
+                      alt=""
+                    />
+                  </div>
+                </td>
+                <td>
+                  <span class="badge success">Đã hoàn thành</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Thả động vật quý hiếm về rừng</td>
+                <td>22 Th7, 2022</td>
+                <td>30 Th7, 2022</td>
+                <td class="td-team">
+                  <div class="">
+                    <img
+                      class="img-avatar"
+                      src="@/assets/images/page/clock.png"
+                      alt=""
+                    />
+                  </div>
+                </td>
+                <td>
+                  <span class="badge warning">Đang diễn ra</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Họp meeting diễn đàn bảo vệ động vật</td>
+                <td>21 Th7, 2022</td>
+                <td>30 Th7, 2022</td>
+                <td class="td-team">
+                  <div class="">
+                    <img
+                      class="img-avatar"
+                      src="@/assets/images/page/clock.png"
+                      alt=""
+                    />
+                  </div>
+                </td>
+                <td>
+                  <span class="badge success">Đã hoàn thành</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Tuần lễ vàng bảo vệ động vật</td>
+                <td>21 Th7, 2022</td>
+                <td>30 Th7, 2022</td>
+                <td class="td-team">
+                  <div class="">
+                    <img
+                      class="img-avatar"
+                      src="@/assets/images/page/clock.png"
+                      alt=""
+                    />
+                  </div>
+                </td>
+                <td>
+                  <span class="badge success">Đã hoàn thành</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-    <div class="campaign__table">
-      <table>
-        <tr>
-          <th>Tên</th>
-          <th>Logo</th>
-          <th>Số lượng thành viên</th>
-          <th>Địa điểm</th>
-          <th>Mô tả hoạt động</th>
-          <th>Trạng thái</th>
-        </tr>
-        <tr>
-          <td>Clearup Sơn Trà</td>
-          <td><img src="" alt="" /></td>
-          <td>100</td>
-          <td>Sơn Trà</td>
-          <td>Dọn dẹp</td>
-          <td class="btn btn-success">Đủ số lượng</td>
-        </tr>
-        <tr>
-          <td>Dọn rác biển Mỹ An</td>
-          <td><img src="" alt="" /></td>
-          <td>100</td>
-          <td>Sơn Trà</td>
-          <td>Dọn dẹp</td>
-          <td class="btn btn-warning">Chưa đủ SL</td>
-        </tr>
-        <tr>
-          <td>Clearup Sơn Trà</td>
-          <td><img src="" alt="" /></td>
-          <td>100</td>
-          <td>Sơn Trà</td>
-          <td>Dọn dẹp</td>
-          <td class="btn btn-success">Đủ số lượng</td>
-        </tr>
-      </table>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -70,7 +113,7 @@ export default {
     sub_string: SubString,
   },
   computed: {
-    ...mapState(["dataBlogs"]),
+    ...mapState(["dataEvent"]),
   },
 };
 </script>

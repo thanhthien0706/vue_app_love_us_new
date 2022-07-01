@@ -354,11 +354,11 @@ export default createStore({
       {
         id: 0,
         category: "",
-        img: "https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2015/12/03/sung_te_giac.jpg",
+        img: "https://vcdn1-vnexpress.vnecdn.net/2018/12/31/a32-1546245488.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=40RDEE7tFUYVLFLAfCJpkQ",
         description:
           "nhằm gây quỹ bảo vệ loài tê giác ở châu Phi đang đứng trước nạn tuyệt sủng vì sự săn bắt trái phép sừng tê giác làm cho số lượng cá thể tê giác ngày càng giảm nghiêm trọng.",
-        name: "Đấu giá gây quỹ bảo vệ tê giác ở Châu Phi",
-        auctionartifacts: "sừng tê giác, mật gấu",
+        name: "Đấu giá thành Cham-pa 1990",
+        auctionartifacts: "Chăm-pa thành",
         time: "10:00pm",
         date: "Thứ 5, ngày 18/6/2022",
         thu: "Thursday",
@@ -371,11 +371,11 @@ export default createStore({
       {
         id: 1,
         category: "",
-        img: "https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2015/12/03/sung_te_giac.jpg",
+        img: "https://vcdn1-vnexpress.vnecdn.net/2018/12/31/a32-1546245488.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=40RDEE7tFUYVLFLAfCJpkQ",
         description:
           "nhằm gây quỹ bảo vệ loài tê giác ở châu Phi đang đứng trước nạn tuyệt sủng vì sự săn bắt trái phép sừng tê giác làm cho số lượng cá thể tê giác ngày càng giảm nghiêm trọng.",
-        name: "Đấu giá gây quỹ bảo vệ tê giác ở Châu Phi",
-        auctionartifacts: "sừng tê giác, mật gấu",
+        name: "Đấu giá thành Cham-pa 1990",
+        auctionartifacts: "Chăm-pa thành",
         time: "10:00pm",
         date: "Thứ 5, ngày 18/6/2022",
         thu: "Thursday",
@@ -388,11 +388,11 @@ export default createStore({
       {
         id: 2,
         category: "",
-        img: "https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2015/12/03/sung_te_giac.jpg",
+        img: "https://vcdn1-vnexpress.vnecdn.net/2018/12/31/a32-1546245488.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=40RDEE7tFUYVLFLAfCJpkQ",
         description:
           "nhằm gây quỹ bảo vệ loài tê giác ở châu Phi đang đứng trước nạn tuyệt sủng vì sự săn bắt trái phép sừng tê giác làm cho số lượng cá thể tê giác ngày càng giảm nghiêm trọng.",
-        name: "Đấu giá gây quỹ bảo vệ tê giác ở Châu Phi",
-        auctionartifacts: "sừng tê giác, mật gấu",
+        name: "Đấu giá thành Cham-pa 1990",
+        auctionartifacts: "Chăm-pa thành",
         time: "10:00pm",
         date: "Thứ 5, ngày 18/6/2022",
         thu: "Thursday",
@@ -405,11 +405,11 @@ export default createStore({
       {
         id: 3,
         category: "",
-        img: "https://suckhoedoisong.qltns.mediacdn.vn/Images/nguyenkhanh/2015/12/03/sung_te_giac.jpg",
+        img: "https://vcdn1-vnexpress.vnecdn.net/2018/12/31/a32-1546245488.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=40RDEE7tFUYVLFLAfCJpkQ",
         description:
           "nhằm gây quỹ bảo vệ loài tê giác ở châu Phi đang đứng trước nạn tuyệt sủng vì sự săn bắt trái phép sừng tê giác làm cho số lượng cá thể tê giác ngày càng giảm nghiêm trọng.",
-        name: "Đấu giá gây quỹ bảo vệ tê giác ở Châu Phi",
-        auctionartifacts: "sừng tê giác, mật gấu",
+        name: "Đấu giá thành Cham-pa 1990",
+        auctionartifacts: "Chăm-pa thành",
         time: "10:00pm",
         date: "Thứ 5, ngày 18/6/2022",
         thu: "Thursday",

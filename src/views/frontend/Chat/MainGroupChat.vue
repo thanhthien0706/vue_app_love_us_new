@@ -32,7 +32,7 @@
                 class="itemGroupChat"
                 v-for="item in listGroupChat"
                 :key="item.id"
-                :class="{ active: item.id == currentGroupChat }"
+                :class="{ active: item.id == getIdCurrentGroupChat }"
                 @click="handleShowChat(item)"
               >
                 <div class="boxItemInner">
@@ -73,7 +73,6 @@ export default {
   data() {
     return {
       listGroupChat: null,
-      currentGroupChat: null,
       currentShowChat: null,
       searchGroup: "",
     };
@@ -95,7 +94,6 @@ export default {
         });
 
         this.listGroupChat = newArrayGroup;
-        this.currentGroupChat = this.listGroupChat[0].id;
         this.currentShowChat = this.listGroupChat[0];
       }
     },
@@ -130,7 +128,7 @@ export default {
     sub_string: SubString,
   },
   computed: {
-    ...mapGetters(["getDataGroupChat"]),
+    ...mapGetters(["getDataGroupChat", "getIdCurrentGroupChat"]),
   },
   watch: {
     searchGroup(newVal) {

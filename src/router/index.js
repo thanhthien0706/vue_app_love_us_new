@@ -57,6 +57,15 @@ const routes = [
     component: () => import("@/views/admin/Adminblogs"),
   },
 
+  {
+    path: "/admin/auth-account",
+    name: "admin_auth_account",
+    meta: {
+      title: "Xác thực tài khoản",
+      middleware: [checkRole.isAdmin],
+    },
+    component: () => import("@/views/admin/AdminAuthAccount"),
+  },
   /**
    * ==============================================================
    * PAGE ME

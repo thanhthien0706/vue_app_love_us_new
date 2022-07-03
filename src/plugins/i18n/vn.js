@@ -30,6 +30,7 @@ const vn = {
   charityorganization: "Tổ chức từ thiện",
   admin_dashboard: "Điền khiển",
   admin_blog: "Bài viết",
+  admin_auth_account: "Xác thực TK",
   top_most_read: "Đọc nhiều nhất",
   blog: "Bài viết",
   comments: "Bình luận",

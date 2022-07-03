@@ -38,6 +38,13 @@ export default {
           icon: "file-pen",
           namePage: "admin_blog",
         },
+        {
+          id: 2,
+          link: "/admin/auth-account",
+          nameLink: "admin_auth_account",
+          icon: "receipt",
+          namePage: "admin_auth_account",
+        },
       ],
     };
   },

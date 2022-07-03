@@ -122,7 +122,7 @@ export default {
         to: this.dataGroupChat.id,
         from: this.$store.state.dataUserCurrent._id,
       });
-      this.listMessenger = "";
+      this.content = "";
     },
 
     listenMessengerFromServer() {

@@ -30,6 +30,7 @@ const en = {
   charityorganization: "Charity organization",
   admin_dashboard: "Dashboard",
   admin_blog: "Blogs",
+  admin_auth_account: "Account verification",
   top_most_read: "Top most read",
   blog: "Blogs",
   comments: "Comments",

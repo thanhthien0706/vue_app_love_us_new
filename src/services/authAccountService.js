@@ -33,6 +33,38 @@ const authAccountService = {
       isPendingCheckAuth.value = false;
     }
   },
+
+  async getAllAuthAccount(status) {
+    isPending.value = true;
+
+    try {
+      const dataRef = await axios.get(
+        `/authen-account/get-all-account?status=${status}`
+      );
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    } finally {
+      isPending.value = false;
+    }
+  },
+
+  async searhcAccountConditions(conditions) {
+    isPending.value = true;
+
+    try {
+      const dataRef = await axios.get(
+        `/authen-account/search-account?${conditions}`
+      );
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    } finally {
+      isPending.value = false;
+    }
+  },
 };
 
 export { authAccountService, isPending };

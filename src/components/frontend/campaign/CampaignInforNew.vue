@@ -156,6 +156,18 @@
       <div class="col-md-6">
         <div class="boxLineForm">
           <div class="formGroup">
+            <p class="nameInput">Mật khẩu (không bắt buộc)</p>
+            <input
+              type="text"
+              class="inputText"
+              v-model="dataCampaignNew.campaign_password"
+              @input="emitDataCampaign"
+            />
+          </div>
+        </div>
+
+        <div class="boxLineForm">
+          <div class="formGroup">
             <div class="boxCheckMaxMember">
               <p class="nameInput">Giới hạn thành viên</p>
               <div class="boxToggle">

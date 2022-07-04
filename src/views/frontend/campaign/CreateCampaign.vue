@@ -118,6 +118,7 @@ export default {
           campaign_wards: "",
           campaign_location_detail: "",
           campaign_description: "",
+          campaign_password: "",
           CM_max_members: 0,
         },
         dataDonate: {

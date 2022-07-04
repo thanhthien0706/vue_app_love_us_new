@@ -93,8 +93,8 @@
     </div>
 
     <div class="boxHandleAuth">
-      <button class="successfully">Xác nhận</button>
-      <button class="cancelation">Hủy bỏ</button>
+      <button class="successfully" :disabled="isDisableBtn">Xác nhận</button>
+      <button class="cancelation" :disabled="isDisableBtn">Hủy bỏ</button>
     </div>
   </div>
 </template>
@@ -107,6 +107,7 @@ import "swiper/css/navigation";
 
 export default {
   name: "AuthAccountInfor",
+  props: ["isDisableBtn"],
   components: {
     Swiper,
     SwiperSlide,

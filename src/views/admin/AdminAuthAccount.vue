@@ -1,7 +1,12 @@
 <template>
   <AdminDefault1>
     <div id="AdminAuthAccount">
-      <AuthAccountInfor :isDisableBtn="isDisableBtn" />
+      <AuthAccountInfor
+        :isDisableBtn="isDisableBtn"
+        :dataItemAccount="dataItemAccount"
+        :isSetShow="isShowTab"
+        @onReloadAfterAuth="initGetDataAccounts(isShowTab)"
+      />
 
       <hr class="line" />
 
@@ -29,6 +34,7 @@
             :listDataAccounts="listDataAccounts"
             :isSetShow="isShowTab"
             @onEmitSearchAccount="lsEmitSearchAccount($event)"
+            @dataItemAccount="lsEmitDataItemAccount($event)"
           />
         </keep-alive>
       </div>
@@ -55,6 +61,7 @@ export default {
       isShowTab: false,
       isDisableBtn: true,
       isSetShow: null,
+      dataItemAccount: null,
     };
   },
   created() {
@@ -74,12 +81,7 @@ export default {
     },
 
     async lsEmitSearchAccount(data) {
-      let query;
-      // if (data.search) {
-      query = `status=${data.status}&name=${data.search}&phone=${data.search}&email=${data.search}`;
-      // } else {
-      //   query = `status=${data.status}`;
-      // }  else  32
+      let query = `status=${data.status}&name=${data.search}&phone=${data.search}&email=${data.search}`;
       const datas = await authAccountService.searhcAccountConditions(query);
 
       console.log(query);
@@ -89,6 +91,12 @@ export default {
         } else {
           this.listDataAccounts = null;
         }
+      }
+    },
+    lsEmitDataItemAccount(dataAccount) {
+      if (dataAccount) {
+        this.isDisableBtn = dataAccount.status;
+        this.dataItemAccount = dataAccount.data;
       }
     },
   },

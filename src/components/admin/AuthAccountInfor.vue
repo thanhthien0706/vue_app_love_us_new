@@ -140,7 +140,13 @@
       >
         Xác nhận
       </button>
-      <button class="cancelation" :disabled="isDisableBtn">Hủy bỏ</button>
+      <button
+        class="cancelation"
+        :disabled="isDisableBtn"
+        @click="onSubmitAuthAccount('unconfirm')"
+      >
+        Hủy bỏ
+      </button>
     </div>
   </div>
 
@@ -257,18 +263,27 @@ export default {
     },
 
     async onSubmitAuthAccount(status) {
-      console.log(status, this.dataItemAccount);
       const dataConfirm = await authAccountService.confirmAuthAccount(
         this.dataItemAccount.idUser,
         status
       );
 
+      console.log(dataConfirm);
+
       if (dataConfirm.success) {
-        this.$refs.componentNotifi.onCreateNotification({
-          status: "success",
-          message: "Xác thực thành công",
-          theme: "",
-        });
+        if (dataConfirm.code == "update_success") {
+          this.$refs.componentNotifi.onCreateNotification({
+            status: "success",
+            message: "Xác thực thành công",
+            theme: "",
+          });
+        } else if (dataConfirm.code == "delete_success") {
+          this.$refs.componentNotifi.onCreateNotification({
+            status: "success",
+            message: "Hủy xác thực thành công",
+            theme: "",
+          });
+        }
       } else {
         this.$refs.componentNotifi.onCreateNotification({
           status: "destructive",
@@ -277,7 +292,9 @@ export default {
         });
       }
 
-      this.$emit("onReloadAfterAuth");
+      this.$emit("onReloadAfterAuth", {
+        status: this.dataItemAccount.status,
+      });
     },
     convert_image: ConvertImage,
     moment: moment,

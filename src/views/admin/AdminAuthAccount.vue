@@ -5,7 +5,7 @@
         :isDisableBtn="isDisableBtn"
         :dataItemAccount="dataItemAccount"
         :isSetShow="isShowTab"
-        @onReloadAfterAuth="initGetDataAccounts(isShowTab)"
+        @onReloadAfterAuth="onReloadAfterAuth($event)"
       />
 
       <hr class="line" />
@@ -91,6 +91,12 @@ export default {
         } else {
           this.listDataAccounts = null;
         }
+      }
+    },
+    onReloadAfterAuth(data) {
+      this.dataItemAccount = null;
+      if (data.status == this.isShowTab) {
+        this.initGetDataAccounts(data.status);
       }
     },
     lsEmitDataItemAccount(dataAccount) {

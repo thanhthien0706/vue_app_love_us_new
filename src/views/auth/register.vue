@@ -304,7 +304,6 @@ export default {
           password: this.dataFormRegister.password,
         });
 
-        console.log(resDataLogin);
         if (resDataLogin.success) {
           localStorage.setItem("loveUseToken", resDataLogin.token);
           // this.$router.push({ name: "home" });

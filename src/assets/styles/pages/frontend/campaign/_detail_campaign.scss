@@ -1,0 +1,205 @@
+#boxMainCampaignDetail {
+  .container_box {
+    margin-top: 20px;
+
+    .boxBack {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      .ic_back {
+        @include WidthHeight(20px, 20px);
+        transition: all 0.2s linear;
+        cursor: pointer;
+        margin-right: 10px;
+
+        &:hover {
+          color: $green-main;
+        }
+      }
+
+      .titlePage {
+        font-weight: 500;
+      }
+    }
+
+    .mainContentCampaign {
+      margin-top: 50px;
+
+      .nameCampaign {
+        @include FontSize(26);
+        font-weight: bold;
+      }
+
+      .boxTime {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .boxBtnShare {
+          position: relative;
+
+          .btnShare {
+            border: 3px solid $green-main;
+            background-color: transparent;
+            padding: 8px 14px;
+            @include BorderRadius(46px);
+            transition: all 0.2s linear;
+
+            &:hover {
+              background-color: $green-main;
+              color: #fff;
+            }
+          }
+
+          .dropdownShareList {
+            position: absolute;
+            right: 0;
+            background-color: rgb(245, 245, 245);
+            color: #333;
+            padding: 10px 10px;
+            border-radius: 16px;
+            box-shadow: 0 0 40px 4px rgb(51 51 51 / 20%);
+
+            .itemShare {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              color: #333333;
+              opacity: 0.5;
+              padding: 10px 14px;
+              border-radius: 16px;
+              transition: all 0.2s linear;
+              cursor: pointer;
+
+              &:hover {
+                opacity: 0.9;
+                background-color: rgba(211, 211, 211, 0.5);
+              }
+              .ic_item_share {
+                margin-right: 10px;
+              }
+              .nameItem {
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+      }
+
+      .boxImgCampaign {
+        @include WidthHeight(100%, 250px);
+        @include BorderRadius(16px);
+        overflow: hidden;
+
+        margin-top: 30px;
+
+        .image_campaign {
+          @include WidthHeight(100%, 100%);
+          @include ObjectFit(cover);
+        }
+      }
+
+      .boxContentCustom {
+        margin-top: 30px;
+
+        .boxListtabContent {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+
+          .itemTab {
+            background-color: #fff;
+            padding: 10px 14px;
+            @include BorderRadius(46px);
+            transition: all 0.2s linear;
+            margin-right: 12px;
+            font-weight: 500;
+            cursor: pointer;
+
+            &:last-child {
+              margin-right: 0;
+            }
+
+            &.active {
+              background-color: $green-main;
+              color: #fff;
+            }
+          }
+        }
+
+        .boxShowMainContent {
+          background-color: $bg-main-30;
+          @include BorderRadius(16px);
+          padding: 20px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+#ItemTabDesc {
+  .titleText {
+    @include FontSize(18);
+    font-weight: bold;
+    padding: 0 60px;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 3px;
+      background-color: $green-main;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .listInfor {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+
+    .itemInfor {
+      display: flex;
+      align-items: center;
+      margin-bottom: 6px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      .imgAvatar {
+        @include WidthHeight(40px, 40px);
+        @include BorderRadius(50%);
+        @include ObjectFit(cover);
+      }
+
+      .name {
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .boxDescription {
+    .textDesc {
+      @include FontSize(16);
+      font-weight: 600;
+      line-height: 1.4;
+      color: rgba($color: #333, $alpha: 0.8);
+    }
+  }
+
+  .boxOrganization {
+    margin-top: 20px;
+  }
+
+  .boxContact {
+    margin-top: 20px;
+  }
+}

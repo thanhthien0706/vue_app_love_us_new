@@ -3,6 +3,7 @@ import { ref } from "vue";
 
 const isPending = ref(null);
 const isPendingCheckAuth = ref(null);
+const isPendingConfirm = ref(null);
 
 const authAccountService = {
   async sendInforAuthen(idUser, formImage) {
@@ -65,6 +66,21 @@ const authAccountService = {
       isPending.value = false;
     }
   },
+
+  async confirmAuthAccount(idUser, status) {
+    isPendingConfirm.value = true;
+    try {
+      const dataRef = await axios.post(
+        `/authen-account/confirm-account/${idUser}?status=${status}`
+      );
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    } finally {
+      isPendingConfirm.value = false;
+    }
+  },
 };
 
-export { authAccountService, isPending };
+export { authAccountService, isPending, isPendingConfirm };

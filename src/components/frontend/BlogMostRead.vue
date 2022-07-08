@@ -59,7 +59,7 @@
               </div>
               <div class="col-md-8">
                 <p class="title">
-                  {{ sub_string(blog.title, 40) }}
+                  {{ sub_string(blog.title, 80) }}
                 </p>
                 <p
                   class="description"

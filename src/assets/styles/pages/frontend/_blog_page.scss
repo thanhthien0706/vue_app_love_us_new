@@ -1,5 +1,6 @@
 #BlogPage {
   width: 100%;
+  @import url('https://fonts.googleapis.com/css?family=Arvo');
   /*
       STYLE SLIDE MAIN HOME START
       */
@@ -684,7 +685,7 @@
 
 
 
-    /* TEST LIST BLOG COLUM */
+    /* TEST LIST BLOG COLUMN */
     .boxListBlogImage {
       .colInner {
         box-shadow: -2px 2px 10px 0px rgba(#444, 0.8);
@@ -955,8 +956,10 @@
   @include FontSize(24);
   margin-bottom: 20px;
 }
-  /* block image */
-  @import url('https://fonts.googleapis.com/css?family=Arvo');
+
+
+  /* BLOG IMAGE HEADER */
+
 
 
 .section {
@@ -1071,4 +1074,4 @@ h1 {
     }
   }
 }
-  /* end block image */
+  /* END BLOG IMAGE HEADER */

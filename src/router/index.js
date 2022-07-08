@@ -156,7 +156,11 @@ const routes = [
     },
     component: () => import("@/views/frontend/ReportView.vue"),
   },
-
+  {
+    path: "/campaign/:slug_campaign",
+    name: "detail_campaign",
+    component: () => import("@/views/frontend/campaign/CampaignDetail.vue"),
+  },
   {
     path: "/condition-campaign",
     name: "conditionCampaign",

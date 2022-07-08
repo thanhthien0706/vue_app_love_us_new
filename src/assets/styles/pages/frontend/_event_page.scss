@@ -791,6 +791,7 @@ table {
           // padding: 25px 14px;
           background: rgb(255, 255, 255, 0.12);
           @include BorderRadius(20px);
+          margin-top: 28px;
         }
         .img__main__auction {
           @include WidthHeight(100%, 320px);

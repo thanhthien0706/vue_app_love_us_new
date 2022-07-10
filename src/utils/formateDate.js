@@ -1,9 +1,13 @@
 import moment from "moment";
+moment.locale("vi");
 
 const formatDate = {
   basicFormat(date, type) {
-    moment.locale("vi");
     return moment(date).format(type);
+  },
+
+  convertToWeek(date) {
+    return moment(date).fromNow();
   },
 };
 

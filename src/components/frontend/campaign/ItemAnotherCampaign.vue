@@ -23,6 +23,39 @@
           <p class="time">Còn 33 ngày</p>
         </div>
       </div>
+
+      <div class="boxShowMember">
+        <p class="name">Thành viên</p>
+        <p class="counter"><span class="counterCurrent">3</span> / 300</p>
+      </div>
+
+      <div class="boxMainTimeline">
+        <p class="money">
+          <span class="currentMonney">21.297.007đ</span> / 243.000.000đ
+        </p>
+
+        <div class="lineShow"></div>
+
+        <div class="row rowCounterCustom align-items-center">
+          <div class="col-md-4">
+            <div class="boxContentInner">
+              <p class="nameCounterText">Lượt</p>
+              <p class="numberText">2.8.42</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="boxContentInner">
+              <p class="nameCounterText">Đạt được</p>
+              <p class="numberText">2.8.42</p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <button class="btnDonate">Quyên góp</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>

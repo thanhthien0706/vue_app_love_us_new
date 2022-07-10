@@ -2,8 +2,22 @@ import axios from "axios";
 import { ref } from "vue";
 
 const isPending = ref(null);
+const isPendingIndex = ref(null);
 
 const blogService = {
+  async getBlogsIndex() {
+    isPendingIndex.value = true;
+    try {
+      const dataRef = await axios.get("/blog/get-blog-main/index");
+
+      return dataRef.data;
+    } catch (err) {
+      console.log("Error Blog: " + err);
+    } finally {
+      isPendingIndex.value = false;
+    }
+  },
+
   // [create blog] /blog/create
   async createBlog(dataBlog) {
     isPending.value = true;
@@ -131,4 +145,4 @@ const blogService = {
   },
 };
 
-export { blogService, isPending };
+export { blogService, isPending, isPendingIndex };

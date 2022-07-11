@@ -229,6 +229,8 @@ export default {
     async onHandleLogin() {
       const resDataLogin = await authService.loginAccount(this.dataFormLogin);
 
+      console.log(resDataLogin);
+
       if (resDataLogin.success) {
         localStorage.setItem("loveUseToken", resDataLogin.token);
         // this.$router.push({ name: "home" });

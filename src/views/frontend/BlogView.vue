@@ -3,9 +3,7 @@
     <div
       id="BlogPage"
       class="animate__animated animate__fadeIn"
-      v-if="
-        !isPendingIndex && dataBlogOfAuthor != null && dataBlogMostRead != null
-      "
+      v-if="!isPendingIndex && dataBlogOfAuthor && dataBlogMostRead"
     >
       <div class="boxHeaderPage">
         <div class="row rowHeaderCustom">
@@ -16,7 +14,13 @@
                 v-for="item in dataHeaderLeft"
                 :key="item._id"
               >
-                <router-link :to="{ name: 'home' }" class="linkBlog">
+                <router-link
+                  :to="{
+                    name: 'detail_blog',
+                    params: { slugBlog: item.slug },
+                  }"
+                  class="linkBlog"
+                >
                   <div
                     class="boxImage"
                     :style="{
@@ -36,7 +40,13 @@
           </div>
           <div class="col-md-8">
             <div class="boxRightBlog">
-              <router-link :to="{ name: 'home' }" class="linkBlog">
+              <router-link
+                :to="{
+                  name: 'detail_blog',
+                  params: { slugBlog: dataHeaderRight.slug },
+                }"
+                class="linkBlog"
+              >
                 <div
                   class="boxImageBlog"
                   :style="{
@@ -62,7 +72,13 @@
         <p class="titleBlog">Theo tác giả</p>
         <div class="row rowAuthorCustom mt_20">
           <div class="col-md-6">
-            <router-link :to="{ name: 'home' }" class="linkBlog">
+            <router-link
+              :to="{
+                name: 'detail_blog',
+                params: { slugBlog: dataBlogOfAuthor.slug },
+              }"
+              class="linkBlog"
+            >
               <div class="boxBlogMain">
                 <div
                   class="boxImg"
@@ -87,12 +103,8 @@
                 v-for="item in dataListAuthor"
                 :key="item._id"
               >
-                <img
-                  :src="convert_image(item.dataAuthor[0].avatar)"
-                  alt=""
-                  class="avatar"
-                />
-                <p class="nameAuthor">{{ item.dataAuthor[0].name }}</p>
+                <img :src="convert_image(item.avatar)" alt="" class="avatar" />
+                <p class="nameAuthor">{{ item.name }}</p>
               </div>
             </div>
           </div>
@@ -122,13 +134,23 @@
                 :modules="modules"
                 :slidesPerView="2"
                 :spaceBetween="20"
+                :autoplay="{
+                  delay: 2000,
+                  disableOnInteraction: false,
+                }"
               >
                 <swiper-slide
                   class="slide"
                   v-for="item in dataBlogMostRead"
                   :key="item._id"
                 >
-                  <router-link :to="{ name: 'home' }" class="linkBlog">
+                  <router-link
+                    :to="{
+                      name: 'detail_blog',
+                      params: { slugBlog: item.slug },
+                    }"
+                    class="linkBlog"
+                  >
                     <div class="boxItemBlog">
                       <img
                         :src="convert_image(item.main_image)"
@@ -155,7 +177,12 @@
         <p class="titleBlog">Mới nhất</p>
         <ul class="listBlogNew mt_20">
           <li class="itemBlogNew" v-for="item in dataNewBlogs" :key="item._id">
-            <router-link :to="{ name: 'home' }">
+            <router-link
+              :to="{
+                name: 'detail_blog',
+                params: { slugBlog: item.slug },
+              }"
+            >
               <div class="boxContentBlog">
                 <div class="row">
                   <div class="col-md-4">
@@ -193,8 +220,11 @@
       </div>
     </div>
 
-    <div class="" v-else>
-      <p>đang tai</p>
+    <div class="text-center" v-else>
+      <div class="lds-ripple dark">
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </DefaultFrontend_1>
 </template>
@@ -250,10 +280,19 @@ export default {
     initMountedDom() {
       this.dataHeaderLeft = this.dataAllIndex.sortDescBlogs.slice(0, 2);
       this.dataHeaderRight = this.dataAllIndex.sortDescBlogs.slice(2, 3)[0];
-      this.dataListAuthor = this.dataAllIndex.authors;
       this.dataBlogOfAuthor = this.dataAllIndex.datablogOfAuthorMostRead[0];
       this.dataBlogMostRead = this.dataAllIndex.blogModelReads;
       this.dataNewBlogs = this.dataAllIndex.sortDescBlogs;
+
+      if (this.dataAllIndex.authors) {
+        let arrTemp = [];
+        this.dataAllIndex.authors.forEach((item) => {
+          arrTemp.push(item.dataAuthor[0]);
+        });
+        this.dataListAuthor = [
+          ...new Map(arrTemp.map((item, key) => [item[key], item])).values(),
+        ];
+      }
     },
 
     formate_date: formatDate.convertToWeek,

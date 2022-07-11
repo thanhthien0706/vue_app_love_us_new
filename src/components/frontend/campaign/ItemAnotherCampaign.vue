@@ -2,39 +2,68 @@
   <div class="ItemAnotherCampaign">
     <div class="boxImage">
       <img
-        src="https://sites.google.com/site/hinhanhdep24h/_/rsrc/1436687439788/home/hinh%20anh%20thien%20nhien%20dep%202015%20%281%29.jpeg"
+        :src="convert_image(dataCampaign.campaign_avatar)"
         alt=""
         class="imgCampaign"
       />
+      <div class="boxQuickView">
+        <fa :icon="['fas', 'eye']" class="ic_eye" />
+      </div>
     </div>
 
     <div class="boxContentMain">
-      <p class="titleCampaign">{{ sub_string(text, 64) }}</p>
+      <p class="titleCampaign">
+        {{ sub_string(dataCampaign.campaign_name, 60) }}
+      </p>
       <div class="boxOrganizeShow">
         <div class="boxLeft">
           <img
-            src="https://sites.google.com/site/hinhanhdep24h/_/rsrc/1436687439788/home/hinh%20anh%20thien%20nhien%20dep%202015%20%281%29.jpeg"
+            :src="convert_image(dataCampaign.dataOrganization[0].CO_avatar)"
             alt=""
             class="avatar"
           />
-          <p class="name">Hand in hand</p>
+          <p class="name">
+            {{ sub_string(dataCampaign.dataOrganization[0].CO_name, 60) }}
+          </p>
         </div>
         <div class="boxRight">
-          <p class="time">Còn 33 ngày</p>
+          <p class="time">
+            {{ convert_to_week(dataCampaign.campaign_start_time) }}
+          </p>
         </div>
       </div>
 
       <div class="boxShowMember">
         <p class="name">Thành viên</p>
-        <p class="counter"><span class="counterCurrent">3</span> / 300</p>
+        <p class="counter">
+          <span class="counterCurrent">{{
+            dataCampaign.dataInforMembers.length
+          }}</span>
+          /
+          {{
+            dataCampaign.dataMembers[0].CM_max_members == 0
+              ? "&infin;"
+              : dataCampaign.dataMembers[0].CM_max_members
+          }}
+        </p>
       </div>
 
       <div class="boxMainTimeline">
         <p class="money">
-          <span class="currentMonney">21.297.007đ</span> / 243.000.000đ
+          <span class="currentMonney">{{
+            onHandleMoneyDonate(dataCampaign.dataInforDonor)
+          }}</span>
+          /
+          {{
+            dataCampaign.dataDonate[0].Donate_max_money == 0
+              ? "&infin;"
+              : convert_money(dataCampaign.dataDonate[0].Donate_max_money)
+          }}
         </p>
 
-        <div class="lineShow"></div>
+        <div class="lineShow">
+          <div class="lineInner"></div>
+        </div>
 
         <div class="row rowCounterCustom align-items-center">
           <div class="col-md-4">
@@ -61,17 +90,31 @@
 </template>
 
 <script>
+import ConvertImage from "@/utils/convertImage";
 import SubString from "@/utils/sub_string";
+import formatDate from "@/utils/formateDate";
+import convertMoney from "@/utils/convertMoney";
 
 export default {
   name: "ItemAnotherCampaign",
+  props: ["dataCampaign"],
   data() {
     return {
       text: "Gây quỹ tặng 40 nụ cười thay đổi cuộc đời cho các em bé hở môi, hàm ếch",
     };
   },
   methods: {
+    onHandleMoneyDonate(dataDonate) {
+      if (dataDonate.length) {
+        console.log("vao if");
+      } else {
+        return "0đ";
+      }
+    },
     sub_string: SubString,
+    convert_image: ConvertImage,
+    convert_to_week: formatDate.convertToWeek,
+    convert_money: convertMoney,
   },
 };
 </script>

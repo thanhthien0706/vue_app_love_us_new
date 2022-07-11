@@ -3,7 +3,7 @@
 <template>
   <div class="box__campaign__content backgroundMainItem">
     <p class="title">Các chiến dịch</p>
-    <ul class="list__tab">
+    <!-- <ul class="list__tab">
       <li
         class="item__tab"
         v-for="(item, index) in dataTab"
@@ -13,7 +13,7 @@
       >
         {{ item.name }}
       </li>
-    </ul>
+    </ul> -->
     <div class="box__slide__campaign">
       <swiper
         class="swiper"
@@ -30,7 +30,7 @@
         <!-- swiper-slide-active -->
         <swiper-slide
           class="slide"
-          v-for="(item, index) in dataListCampaign"
+          v-for="(item, index) in dataCampaign"
           :key="index"
         >
           <CardCampaign :dataItemCampaign="item" @show-popup="onShowPopup" />
@@ -45,12 +45,14 @@ import { Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/pagination";
+import formatDate from "@/utils/formateDate";
 
 import CardCampaign from "@/components/frontend/HomeItemCardCampaign.vue";
 import { mapState, mapMutations } from "vuex";
 
 export default {
   name: "CampaignsHome",
+  props: ["dataCampaign"],
   components: {
     Swiper,
     SwiperSlide,
@@ -71,8 +73,8 @@ export default {
   },
 
   mounted() {
-    this.initData();
-    this.getDataListCampaign();
+    // this.initData();
+    // this.getDataListCampaign();
   },
 
   methods: {
@@ -114,9 +116,10 @@ export default {
         document.getElementsByTagName("body")[0].style.overflow = "hidden";
       }
     },
+    basic_format_date: formatDate.basicFormat,
   },
   computed: {
-    ...mapState(["dataCampaign", "statusShowPopup"]),
+    ...mapState(["statusShowPopup"]),
   },
   watch: {
     statusShowPopup(newVal) {

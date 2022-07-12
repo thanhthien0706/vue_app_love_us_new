@@ -165,7 +165,7 @@
         <p class="titleText">Các chiến dịch khác</p>
         <div class="row boxShowAnothorCampaign">
           <div class="col-md-4">
-            <ItemAnotherCampaign />
+            <!-- <ItemAnotherCampaign /> -->
           </div>
           <div class="col-md-4">2</div>
           <div class="col-md-4">3</div>
@@ -180,7 +180,7 @@ import formatDate from "@/utils/formateDate";
 import ItemTabDesc from "@/components/frontend/campaign/ItemTabDesc.vue";
 import ItemTableDonate from "@/components/frontend/campaign/ItemTableDonate.vue";
 import ItemListImage from "@/components/frontend/campaign/ItemListImage.vue";
-import ItemAnotherCampaign from "@/components/frontend/campaign/ItemAnotherCampaign.vue";
+// import ItemAnotherCampaign from "@/components/frontend/campaign/ItemAnotherCampaign.vue";
 
 export default {
   name: "CampaignDetail",
@@ -194,7 +194,7 @@ export default {
     ItemTabDesc,
     ItemTableDonate,
     ItemListImage,
-    ItemAnotherCampaign,
+    // ItemAnotherCampaign,
   },
   mounted() {
     this.baseMethod();

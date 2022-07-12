@@ -88,16 +88,16 @@
                         ref="imageCurrentAnimal"
                       />
                       <div class="boxSlideImageAnimal">
+                        <!-- :autoplay="{
+                            delay: 1500,
+                            disableOnInteraction: false,
+                          }" -->
                         <swiper
                           class="swiper swiperCustomAnimal"
                           :modules="modules"
                           :space-between="20"
                           :slides-per-view="3"
                           :centered-slides="true"
-                          :autoplay="{
-                            delay: 1500,
-                            disableOnInteraction: false,
-                          }"
                         >
                           <swiper-slide
                             class="slide slideCustomAnimal"

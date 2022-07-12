@@ -21,9 +21,9 @@
         <CharityOrganization />
       </section>
 
-      <section class="sc__campaigns mt-50">
+      <!-- <section class="sc__campaigns mt-50">
         <Campaigns :dataCampaign="dataCampaigns" />
-      </section>
+      </section> -->
 
       <section class="sc__blogs mt-50">
         <BlogHome />
@@ -45,7 +45,7 @@ import DefaultFrontend_1 from "@/layouts/DefaultFrontend_1.vue";
 import HomeSlide from "@/components/frontend/HomeSlide.vue";
 import CountHome from "@/components/frontend/HomeCount.vue";
 import CharityOrganization from "@/components/frontend/HomeCharityOrganization.vue";
-import Campaigns from "@/components/frontend/HomeCampaigns.vue";
+// import Campaigns from "@/components/frontend/HomeCampaigns.vue";
 import BlogHome from "@/components/frontend/HomeBlog.vue";
 import PopupCampaign from "@/components/frontend/HomeItemPopupCampaign.vue";
 import MapHome from "@/components/frontend/HomeMap.vue";
@@ -61,7 +61,7 @@ export default {
     HomeSlide,
     CountHome,
     CharityOrganization,
-    Campaigns,
+    // Campaigns,
     BlogHome,
     PopupCampaign,
     MapHome,

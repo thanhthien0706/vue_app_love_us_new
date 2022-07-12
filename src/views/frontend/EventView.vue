@@ -17,9 +17,10 @@
 
         <div class="row">
           <div
-            class="col-md-4"
+            class="col-md-4 mt_20"
             v-for="item in dataItemcampaign"
             :key="item._id"
+            style="height;: 100%"
           >
             <ItemAnotherCampaign :dataCampaign="item" />
           </div>

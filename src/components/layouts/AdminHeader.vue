@@ -16,7 +16,7 @@
     </div>
 
     <div class="boxRightHeader">
-      <p class="textHello">Xin chào admin, thành thiện</p>
+      <p class="textHello">Xin chào admin</p>
       <div class="boxInforRight">
         <ul class="listItemBox">
           <li class="itemBox">

@@ -1,0 +1,137 @@
+#DonateView {
+  @include WidthHeight(100%, 100vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .boxContentDonate {
+    background-color: $bg-main-30;
+    @include BorderRadius(16px);
+    @include WidthHeight(100%, 460px);
+    overflow: hidden;
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    box-shadow: 0 0 8px rgba($color: #000000, $alpha: 0.4);
+
+    .col-custom {
+      &-left {
+        width: 440px;
+      }
+      &-right {
+        flex: 1;
+      }
+    }
+
+    .boxImage {
+      @include WidthHeight(100%, 100%);
+      overflow: hidden;
+
+      .imgCampaign {
+        @include WidthHeight(100%, 100%);
+        @include ObjectFit(cover);
+      }
+    }
+
+    .boxContentInput {
+      background-color: #fff;
+      @include WidthHeight(100%, 100%);
+      padding: 20px;
+
+      .titleText {
+        @include FontSize(24);
+        font-weight: bold;
+
+        .nameCampaign {
+          color: $green-main;
+        }
+      }
+
+      .boxCheckCampaign {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        .nameInput {
+          font-weight: 500;
+        }
+
+        .boxToggle {
+          @include WidthHeight(60px, 24px);
+          @include BorderRadius(46px);
+          position: relative;
+          overflow: hidden;
+          background-color: $bg-main-30;
+
+          .checkbox {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 3;
+
+            &:checked + .knobs:before {
+              content: "";
+              left: 36px;
+              background-color: $green-main;
+            }
+          }
+
+          .knobs {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 4px;
+              width: 20px;
+              height: 10px;
+              color: #fff;
+              font-size: 10px;
+              font-weight: bold;
+              text-align: center;
+              line-height: 1;
+              padding: 9px 4px;
+              background-color: #f44336;
+              border-radius: 50%;
+              transform: translateY(-50%);
+              transition: 0.3s ease all,
+                left 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15);
+            }
+          }
+
+          .layer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: #ebf7fc;
+            transition: 0.3s ease all;
+            z-index: -1;
+          }
+        }
+      }
+    }
+  }
+
+  .boxLoading {
+    max-width: 1024px;
+    @include WidthHeight(80%, 360px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $bg-main-30;
+    @include BorderRadius(16px);
+  }
+}

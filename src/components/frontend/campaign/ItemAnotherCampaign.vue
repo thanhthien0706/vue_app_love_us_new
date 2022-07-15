@@ -13,7 +13,16 @@
 
     <div class="boxContentMain">
       <div class="boxMainContent">
-        <p class="titleCampaign">
+        <p
+          class="titleCampaign"
+          @click="
+            onDetailCampaign(
+              dataCampaign.slug,
+              dataCampaign.campaign_province,
+              dataCampaign._id
+            )
+          "
+        >
           {{ sub_string(dataCampaign.campaign_name, 60) }}
         </p>
         <p class="descCampaign">
@@ -54,36 +63,54 @@
 
         <div
           class="boxMainTimeline"
-          v-if="dataCampaign.dataDonate[0].Donate_bank_code"
+          v-if="dataCampaign.dataDonate.Donate_bank_code"
         >
           <p class="money">
             <span class="currentMonney">{{
-              onHandleMoneyDonate(dataCampaign.dataInforDonor)
+              convert_money(onHandleMoneyDonate(dataCampaign.dataInforDonor))
             }}</span>
             /
             {{
-              dataCampaign.dataDonate[0].Donate_max_money == 0
+              dataCampaign.dataDonate.Donate_max_money == 0
                 ? "&infin;"
-                : convert_money(dataCampaign.dataDonate[0].Donate_max_money)
+                : convert_money(dataCampaign.dataDonate.Donate_max_money)
             }}
           </p>
 
           <div class="lineShow">
-            <div class="lineInner"></div>
+            <div
+              class="lineInner"
+              :style="{
+                width:
+                  onHandlePercent(
+                    onHandleMoneyDonate(dataCampaign.dataInforDonor),
+                    dataCampaign.dataDonate.Donate_max_money
+                  ) + '%',
+              }"
+            ></div>
           </div>
 
           <div class="row rowCounterCustom align-items-center">
             <div class="col-md-4">
               <div class="boxContentInner">
                 <p class="nameCounterText">Lượt</p>
-                <p class="numberText">2.8.42</p>
+                <p class="numberText">
+                  {{ dataCampaign.dataInforDonor.length }}
+                </p>
               </div>
             </div>
 
             <div class="col-md-4">
               <div class="boxContentInner">
                 <p class="nameCounterText">Đạt được</p>
-                <p class="numberText">2.8.42</p>
+                <p class="numberText">
+                  {{
+                    onHandlePercent(
+                      onHandleMoneyDonate(dataCampaign.dataInforDonor),
+                      dataCampaign.dataDonate.Donate_max_money
+                    ) + "%"
+                  }}
+                </p>
               </div>
             </div>
 
@@ -122,11 +149,34 @@ export default {
   },
   methods: {
     onHandleMoneyDonate(dataDonate) {
-      if (dataDonate.length) {
-        console.log("vao if");
+      if (dataDonate) {
+        let temp = 0;
+        dataDonate.forEach((el) => {
+          temp += el.Donor_money;
+        });
+
+        return temp;
       } else {
-        return "0đ";
+        return 0;
       }
+    },
+    onHandlePercent(totalMoney, maxMoney) {
+      const percent = totalMoney / maxMoney;
+      if (percent > 1) {
+        return 100;
+      } else {
+        return Number.parseFloat(totalMoney / maxMoney).toFixed(4) * 100;
+      }
+    },
+    onDetailCampaign(slug, province, id) {
+      this.$router.push({
+        name: "detail_campaign",
+        params: {
+          province_campaign: province,
+          id_campaign: id,
+          slug_campaign: slug,
+        },
+      });
     },
     sub_string: SubString,
     convert_image: ConvertImage,

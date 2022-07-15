@@ -1,52 +1,71 @@
 <template>
   <div id="ItemTabDesc">
     <div class="boxDescription">
-      <p class="textDesc">
-        Dị tật tim bẩm sinh là một rối loạn bẩm sinh phổ biến nhất ở trẻ sơ
-        sinh. Trên thế giới, mỗi năm có khoảng 8-10 trẻ trong số 1000 trẻ sinh
-        ra mắc dị tật tim bẩm sinh. Tại Việt Nam, khoảng 15.000 trẻ em được sinh
-        ra mỗi năm mắc dị tật bẩm sinh này và khoảng một nửa số trẻ cần được
-        điều trị tại các bệnh viện tim mạch. 25% trẻ em sinh ra với dị tật tim
-        phức tạp sẽ không thể đón sinh nhật lần đầu tiên của mình nếu không được
-        phẫu thuật kịp thời. Việc Khám Sàng Lọc để phát hiện ra trẻ mắc bệnh tim
-        bẩm sinh là vô.
-      </p>
+      <p class="textDesc">{{ dataCampaign.campaign_description }}</p>
     </div>
 
-    <div class="boxOrganization">
-      <p class="titleText">Tổ chức</p>
+    <div class="boxContact">
+      <p class="titleText">Thông tin chủ chiến dịch</p>
 
       <ul class="listInfor">
         <li class="itemInfor">
           <p class="name">Ảnh:</p>
           <img
-            src="https://meta.vn/Data/image/2022/01/13/anh-dep-thien-nhien-3.jpg"
+            :src="convert_image(dataCampaign.dataOwnerCampaign[0].avatar)"
             alt=""
             class="imgAvatar"
           />
         </li>
         <li class="itemInfor">
-          <p class="name">Tổ chức:</p>
-          <p class="text">THanh thien</p>
+          <p class="name">Tên:</p>
+          <p class="text">{{ dataCampaign.dataOwnerCampaign[0].name }}</p>
+        </li>
+        <li class="itemInfor">
+          <p class="name">Số điện thoại:</p>
+          <p class="text">{{ dataCampaign.dataOwnerCampaign[0].phone }}</p>
+        </li>
+        <li class="itemInfor">
+          <p class="name">Email:</p>
+          <p class="text">{{ dataCampaign.dataOwnerCampaign[0].email }}</p>
+        </li>
+        <li class="itemInfor">
+          <p class="name">Điểm hoạt động:</p>
+          <p class="text">
+            {{ dataCampaign.dataOwnerCampaign[0].activity_point }}
+          </p>
         </li>
       </ul>
     </div>
 
-    <div class="boxContact">
-      <p class="titleText">Liên hệ</p>
+    <div class="boxOrganization">
+      <p class="titleText">Thông tin tổ chức</p>
 
       <ul class="listInfor">
         <li class="itemInfor">
           <p class="name">Ảnh:</p>
           <img
-            src="https://meta.vn/Data/image/2022/01/13/anh-dep-thien-nhien-3.jpg"
+            :src="convert_image(dataCampaign.dataOrganization[0].CO_avatar)"
             alt=""
             class="imgAvatar"
           />
         </li>
         <li class="itemInfor">
           <p class="name">Tổ chức:</p>
-          <p class="text">THanh thien</p>
+          <p class="text">{{ dataCampaign.dataOrganization[0].CO_name }}</p>
+        </li>
+        <li class="itemInfor">
+          <p class="name">Liên kết:</p>
+          <a :href="dataCampaign.dataOrganization[0].CO_link" class="text"
+            >Bấm vào đây</a
+          >
+        </li>
+        <li class="itemInfor">
+          <p class="name">Số điện thoại:</p>
+          <p class="text">{{ dataCampaign.dataOrganization[0].CO_phone }}</p>
+        </li>
+        <li class="itemInfor">
+          <p class="name">Địa chỉ:</p>
+          <p class="text">{{ dataCampaign.dataOrganization[0].CO_location }}</p>
         </li>
       </ul>
     </div>
@@ -54,8 +73,14 @@
 </template>
 
 <script>
+import ConvertImage from "@/utils/convertImage";
+
 export default {
   name: "ItemTabDesc",
+  props: ["dataCampaign"],
+  methods: {
+    convert_image: ConvertImage,
+  },
 };
 </script>
 

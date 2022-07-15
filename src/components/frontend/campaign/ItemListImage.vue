@@ -1,44 +1,21 @@
 <template>
   <div id="ItemListImage">
-    <div class="row row-custom">
-      <div class="col-md-3 col-custom">
+    <div class="row row-custom" v-if="dataListImages.length">
+      <div
+        class="col-md-3 col-custom"
+        v-for="(item, index) in dataListImages"
+        :key="index"
+      >
         <img
-          src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg"
+          :src="convert_image(item)"
           alt=""
           class="imgDonate"
           @click="onShowPopupImage"
-        />
-      </div>
-      <div class="col-md-3 col-custom">
-        <img
-          src="https://baoquocte.vn/stores/news_dataimages/dieulinh/012020/29/15/nhung-buc-anh-dep-tuyet-voi-ve-tinh-ban.jpg"
-          alt=""
-          class="imgDonate"
-          @click="onShowPopupImage"
-        />
-      </div>
-      <div class="col-md-3 col-custom">
-        <img
-          src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg"
-          alt=""
-          class="imgDonate"
-        />
-      </div>
-      <div class="col-md-3 col-custom">
-        <img
-          src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg"
-          alt=""
-          class="imgDonate"
-        />
-      </div>
-      <div class="col-md-3 col-custom">
-        <img
-          src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg"
-          alt=""
-          class="imgDonate"
         />
       </div>
     </div>
+
+    <p class="text-center" v-else>Chưa cập nhật ảnh</p>
 
     <Transition
       enter-active-class="animate__animated animate__zoomIn animate__faster"
@@ -62,8 +39,11 @@
 </template>
 
 <script>
+import ConvertImage from "@/utils/convertImage";
+
 export default {
   name: "ItemListImage",
+  props: ["dataListImages"],
   data() {
     return {
       isShowPopup: false,
@@ -75,6 +55,7 @@ export default {
       this.linkImage = event.target.src;
       this.isShowPopup = true;
     },
+    convert_image: ConvertImage,
   },
 };
 </script>

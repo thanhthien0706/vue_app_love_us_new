@@ -102,6 +102,14 @@ const routes = [
    */
   // @/views/frontend/BeginStartView
   {
+    path: "/donate/:slug_campaign",
+    name: "donate_campaign",
+    meta: {
+      title: "Quyên góp",
+    },
+    component: () => import("@/views/frontend/DonateView"),
+  },
+  {
     path: "/home",
     name: "home",
     meta: {
@@ -157,7 +165,7 @@ const routes = [
     component: () => import("@/views/frontend/ReportView.vue"),
   },
   {
-    path: "/campaign/:slug_campaign",
+    path: "/campaign/:province_campaign/:id_campaign/:slug_campaign",
     name: "detail_campaign",
     component: () => import("@/views/frontend/campaign/CampaignDetail.vue"),
   },

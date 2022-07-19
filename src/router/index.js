@@ -102,6 +102,22 @@ const routes = [
    */
   // @/views/frontend/BeginStartView
   {
+    path: "/animal/:slug_animal",
+    name: "detail_animal",
+    meta: {
+      title: "Chi tiết động vật",
+    },
+    component: () => import("@/views/frontend/AnimalView"),
+  },
+  {
+    path: "/animal-new/:slug_animal",
+    name: "detail_animal_new",
+    meta: {
+      title: "Chi tiết động vật",
+    },
+    component: () => import("@/views/frontend/AnimalViewNew"),
+  },
+  {
     path: "/donate/:slug_campaign",
     name: "donate_campaign",
     meta: {

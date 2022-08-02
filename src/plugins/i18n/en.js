@@ -40,6 +40,7 @@ const en = {
   totalauction: "Total Auction",
   numberauctionsvalid: "Number of auctions still valid",
   totalamountauctioned: "Total amount auctioned",
+  campaignManger: "Manager campaign",
 };
 
 export default en;

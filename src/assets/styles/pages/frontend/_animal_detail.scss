@@ -1,224 +1,89 @@
-@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
-
 #AnimalView {
-  .boxContainerMain {
-    margin-top: 50px;
-    margin-bottom: 50px;
+  @include WidthHeight(100%, 100vh);
+  background-image: url("https://res.cloudinary.com/dd1yamek1/image/upload/v1659426243/bwd_love_us/anh_rung_poj4m1.png");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 
-    .title_section {
-      @include FontSize(26);
-      font-weight: bold;
-      color: $green-main;
-      padding: 0 60px;
-      position: relative;
+  .drak_overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+  }
 
-      &::before {
-        content: "";
-        position: absolute;
-        width: 50px;
-        height: 3px;
-        @include BorderRadius(46px);
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        background-color: $green-main;
-      }
-    }
+  .InnerMainContent {
+    position: absolute;
+    @include WidthHeight(100%, 100%);
 
-    /**
-    * SECTION MAIN
-    */
-    .scMainInfor {
-      .row_custom {
-        .boxInnerLeft {
-          position: relative;
+    .boxFindAnimalMain {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
 
-          .imgAnimal {
-            @include WidthHeight(100%, 400px);
-            @include BorderRadius(16px);
-            @include ObjectFit(cover);
-          }
+      .boxSearch {
+        display: flex;
+        align-items: center;
+        width: 250px;
+        padding: 12px 16px;
+        background-color: rgba(255, 255, 255, 0.3);
+        @include BorderRadius(12px);
 
-          .boxYouCan {
-            position: absolute;
-            bottom: 30px;
-            right: 20px;
-            padding: 20px 30px;
-            background-color: rgba(0, 0, 0, 0.6);
-            @include BorderRadius(26px);
+        .ic-search {
+          @include WidthHeight(22px, auto);
+          color: #fff;
+          margin-right: 20px;
+        }
+
+        .inputSearch {
+          background: none;
+          border: none;
+          outline: none;
+          color: #fff;
+          flex: 1;
+          &::placeholder {
             color: #fff;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            transition: all 0.2s linear;
-            cursor: pointer;
-
-            &:hover {
-              box-shadow: 0 0 10px rgba($color: #fff, $alpha: 0.4);
-            }
-
-            .iconPlust {
-              color: $green-main;
-              @include WidthHeight(26px, 26px);
-              margin-left: 10px;
-            }
           }
         }
+      }
+    }
+  }
+}
 
-        .boxInnerRight {
-          .textClassAnimal {
-            padding: 0 30px;
-            margin-bottom: 24px;
+#AnimalDetailBottom {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateY(-50%);
+
+  .boxInnerContent {
+    padding: 30px 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+    border-radius: 16px;
+
+    .boxLeft {
+      .listInfoCounter {
+        display: flex;
+        align-items: center;
+
+        .itemInfo {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+          .number {
+            color: #2bfd08;
             font-weight: 700;
-            color: $green-main;
-            position: relative;
-
-            &::before {
-              content: "";
-              position: absolute;
-              width: 22px;
-              left: 0;
-              top: 50%;
-              transform: translateY(-50%);
-              height: 3px;
-              @include BorderRadius(46px);
-              background-color: $green-main;
-            }
+            font-size: 30px;
+            margin-bottom: 10px;
           }
-
-          .nameAnimal {
-            @include FontSize(60);
-            font-family: "Lobster", cursive;
-            margin-bottom: 12px;
-          }
-
-          .textLocation {
-            margin-bottom: 30px;
-            font-weight: 600;
-            color: rgba($color: #000000, $alpha: 0.5);
-          }
-
-          .rowCounterAnimal {
-            margin-bottom: 30px;
-
-            .itemCounter {
-              background-color: $bg-main-30;
-              @include BorderRadius(16px);
-              padding: 20px;
-
-              .countText {
-                @include FontSize(20);
-                font-weight: bold;
-                margin-bottom: 12px;
-                color: rgba($color: #333, $alpha: 0.9);
-              }
-
-              .nameText {
-                font-weight: 600;
-                color: rgba($color: #333, $alpha: 0.6);
-              }
-            }
-          }
-
-          .boxInfor {
-            display: flex;
-            align-items: center;
-
-            .itemInfor {
-              margin-right: 20px;
-              &:last-child {
-                margin-right: 0;
-              }
-
-              .text_title {
-                font-weight: 600;
-                margin-bottom: 8px;
-                @include FontSize(18);
-              }
-
-              .content_text {
-                color: rgba($color: #333, $alpha: 0.8);
-              }
-            }
-          }
-        }
-      }
-    }
-
-    /**
-    * SECTION INFORMATIOn
-    */
-    .scMainInfor {
-      .boxContent {
-        .boxInforListInner {
-          .inforAnimal {
-            margin-bottom: 6px;
-            line-height: 1.4;
-            span {
-              font-weight: 600;
-              color: #333;
-            }
-          }
-        }
-
-        .boxInnerContent {
-          .titleInner {
-            font-weight: 600;
-            margin: 20px 0 10px;
-          }
-          .contentInner {
-            line-height: 1.3;
-          }
-        }
-      }
-    }
-
-    /**
-    * SECTION IMAGE
-    */
-    .scMainImage {
-      .boxGridCustom {
-        .colCustom {
-          margin-top: 20px;
-
-          .imgAnimal {
-            @include WidthHeight(100%, 100%);
-            @include ObjectFit(cover);
-            @include BorderRadius(16px);
-            cursor: pointer;
-            transition: all 0.2s linear;
-            overflow: hidden;
-
-            // &:hover {
-            //   transform: scale(1.2);
-            // }
-          }
-        }
-      }
-
-      .boxOverlayImage {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 2px;
-        @include WidthHeight(100%, 100%);
-        background-color: rgba($color: #000000, $alpha: 0.3);
-
-        .boxShowImage {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          overflow: hidden;
-          @include WidthHeight(900px, 500px);
-          overflow: hidden;
-          @include BorderRadius(16px);
-
-          .imageShowCurrent {
-            @include WidthHeight(100%, 100%);
-            @include ObjectFit(cover);
+          .name {
           }
         }
       }

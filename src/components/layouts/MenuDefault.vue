@@ -217,6 +217,12 @@ export default {
           image: "group.png",
           name: "group",
         },
+        {
+          id: 2,
+          link: "ChatMe",
+          image: "icon_campaign.png",
+          name: "campaignManger",
+        },
         // {
         //   id: 2,
         //   link: "convey",

@@ -773,7 +773,6 @@
           // padding-top: 40px;
 
           .swiper-button-custom {
-            top: 26px;
             @include FontSize(20);
             color: $mine-shaft;
             font-weight: 700;
@@ -796,8 +795,6 @@
           }
 
           .swiper-button-prev {
-            right: 62px;
-            left: auto;
             @extend .swiper-button-custom;
 
             &:after {

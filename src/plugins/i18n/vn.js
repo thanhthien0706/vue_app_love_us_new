@@ -41,6 +41,7 @@ const vn = {
   numberauctionsvalid: "Số lượng cuộc đấu giá còn hiệu lực",
   totalamountauctioned: "Tổng tiền đấu giá được",
   campaignManger: "QL chiến dịch",
+  admin_animal: "QL động vật",
 };
 
 export default vn;

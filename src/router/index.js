@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import checkBeginStart from "@/middleware/checkBeginStart";
-import checkRole from "@/middleware/checkRole";
+import AdminRouter from "./AdminRouter";
+import GameRouter from "./GameRouter";
+import MeRouter from "./MeRouter";
+import FrontendRouter from "./FrontendRouter";
+import AuthRouter from "./AuthRouter";
 
 const routes = [
   /**
@@ -8,215 +11,38 @@ const routes = [
    * PAGE AUTHEN
    * ==============================================================
    */
+  ...AuthRouter,
+  /**
+   * ==============================================================
+   * PAGE ADMIN
+   * ==============================================================
+   */
 
-  {
-    path: "/login",
-    name: "login",
-    meta: {
-      title: "Đăng nhập",
-    },
-    component: () => import("@/views/auth/login"),
-  },
-  {
-    path: "/register",
-    name: "register",
-    meta: {
-      title: "Đăng kí",
-    },
-    component: () => import("@/views/auth/register"),
-  },
+  ...AdminRouter,
 
   /**
    * ==============================================================
    * PAGE GAME
    * ==============================================================
    */
-
-  {
-    path: "/flip-card",
-    name: "game_flip_card",
-    meta: {
-      title: "Flip card game",
-    },
-    component: () => import("@/views/frontend/game/FlipCardView"),
-  },
-
-  /**
-   * ==============================================================
-   * PAGE ADMIN
-   * ==============================================================
-   */
-  //  admin/blogs
-  {
-    path: "/admin/blogs/:idAuthor",
-    name: "admin_blogs",
-    meta: {
-      title: "Blogs",
-      middleware: [checkRole.isAdmin],
-    },
-    component: () => import("@/views/admin/Adminblogs"),
-  },
-
-  {
-    path: "/admin/auth-account",
-    name: "admin_auth_account",
-    meta: {
-      title: "Xác thực tài khoản",
-      middleware: [checkRole.isAdmin],
-    },
-    component: () => import("@/views/admin/AdminAuthAccount"),
-  },
+  ...GameRouter,
   /**
    * ==============================================================
    * PAGE ME
    * ==============================================================
    */
-
-  {
-    path: "/me/:idUser",
-    name: "person",
-    meta: {
-      middleware: [checkRole.isLogin],
-    },
-    component: () => import("@/views/frontend/me/MeMain"),
-  },
-
+  ...MeRouter,
   /**
    * ==============================================================
    * PAGE GROUP CHAT
    * ==============================================================
    */
-  {
-    path: "/messages/me",
-    name: "ChatMe",
-    meta: {
-      middleware: [checkRole.isLogin],
-    },
-    component: () => import("@/views/frontend/Chat/MainGroupChat"),
-  },
-
   /**
    * ==============================================================
    * PAGE FRONTEND
    * ==============================================================
    */
-
-  // Manager Campaign
-
-  // @/views/frontend/BeginStartView
-  {
-    path: "/animal/:slug_animal",
-    name: "detail_animal",
-    meta: {
-      title: "Chi tiết động vật",
-    },
-    component: () => import("@/views/frontend/AnimalView"),
-  },
-  {
-    path: "/donate/:slug_campaign",
-    name: "donate_campaign",
-    meta: {
-      title: "Quyên góp",
-    },
-    component: () => import("@/views/frontend/DonateView"),
-  },
-  {
-    path: "/home",
-    name: "home",
-    meta: {
-      title: "Trang chủ",
-      middleware: [checkBeginStart],
-    },
-    component: () => import("@/views/frontend/HomeView"),
-  },
-  {
-    path: "/actives",
-    name: "actives",
-    meta: {
-      title: "Hoạt động",
-      middleware: [checkBeginStart],
-    },
-    component: () => import("@/views/frontend/ActivityView.vue"),
-  },
-
-  {
-    path: "/blog",
-    name: "blog",
-    meta: {
-      title: "Bài viết",
-      middleware: [checkBeginStart],
-    },
-    component: () => import("@/views/frontend/BlogView.vue"),
-  },
-  {
-    path: "/events",
-    name: "events",
-    meta: {
-      title: "Sự kiện",
-      middleware: [checkBeginStart],
-    },
-    component: () => import("@/views/frontend/EventView.vue"),
-  },
-  {
-    path: "/blog/:slugBlog",
-    name: "detail_blog",
-    meta: {
-      title: "blog_detail",
-    },
-    component: () => import("@/views/frontend/DetailBlog"),
-  },
-
-  {
-    path: "/report",
-    name: "report",
-    meta: {
-      title: "Báo cáo",
-      middleware: [checkBeginStart],
-    },
-    component: () => import("@/views/frontend/ReportView.vue"),
-  },
-  {
-    path: "/campaign/:province_campaign/:id_campaign/:slug_campaign",
-    name: "detail_campaign",
-    component: () => import("@/views/frontend/campaign/CampaignDetail.vue"),
-  },
-  {
-    path: "/condition-campaign",
-    name: "conditionCampaign",
-    meta: {
-      title: "Điền kiện tạo chiến dịch",
-      middleware: [checkRole.isLogin],
-    },
-    component: () => import("@/views/frontend/campaign/CampaignCondition.vue"),
-  },
-
-  {
-    path: "/create-campaign",
-    name: "create_campaign",
-    meta: {
-      title: "Tạo chiến dịch",
-      middleware: [checkRole.isLogin],
-    },
-    component: () => import("@/views/frontend/campaign/CreateCampaign.vue"),
-  },
-
-  {
-    path: "/",
-    name: "convey",
-    meta: {
-      title: "Thông điệp",
-    },
-    component: () => import("@/views/frontend/BeginStartView"),
-  },
-
-  {
-    path: "/:pathMatch(.*)*",
-    name: "page_not_found",
-    meta: {
-      title: "Trang không tồn tại",
-    },
-    component: () => import("@/views/frontend/PageNotFound.vue"),
-  },
+  ...FrontendRouter,
 ];
 
 const router = createRouter({

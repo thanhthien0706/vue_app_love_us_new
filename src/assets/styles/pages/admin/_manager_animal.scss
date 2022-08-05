@@ -1,0 +1,31 @@
+#AdminAnimalView {
+  .tabShowView {
+    display: flex;
+    align-items: center;
+
+    .itemTab {
+      padding: 8px 12px;
+      @include BorderRadius(46px);
+      margin-right: 20px;
+      font-size: 14px;
+      font-family: 600;
+      transition: all 0.2s linear;
+      cursor: pointer;
+
+      &:hover {
+        color: $green-main;
+      }
+
+      &.active {
+        border: 2px solid $green-main;
+      }
+    }
+  }
+
+  .lineHr {
+    max-width: 100%;
+    width: 40%;
+    margin: 30px auto;
+    background-color: rgba($color: #fff, $alpha: 0.4);
+  }
+}

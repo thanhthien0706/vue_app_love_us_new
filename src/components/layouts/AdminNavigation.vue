@@ -45,6 +45,13 @@ export default {
           icon: "receipt",
           namePage: "admin_auth_account",
         },
+        {
+          id: 3,
+          link: "/admin/animal",
+          nameLink: "admin_animal",
+          icon: "paw",
+          namePage: "admin_animal",
+        },
       ],
     };
   },

@@ -52,18 +52,6 @@ MIXIN
   margin: 0 auto;
 }
 
-@mixin MinWidth($breakpoint) {
-  @media only screen and (min-width: $breakpoint) {
-    @content;
-  }
-}
-
-@mixin MaxWidth($breakpoint) {
-  @media only screen and (max-width: $breakpoint) {
-    @content;
-  }
-}
-
 @mixin FilterBlur($blur) {
   -webkit-backdrop-filter: blur($blur);
   backdrop-filter: blur($blur);

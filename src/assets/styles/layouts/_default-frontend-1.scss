@@ -29,12 +29,15 @@
         // z-index: -1;
         // position: sticky;
         // top: 30px;
-        // right: 0;
-
-        @include MaxWidth(1496px) {
+        // right: 0
+        
+      }
+      @include MaxWidth($width-tablet){
+        &__right {
           display: none;
         }
       }
+      
     }
   }
 }

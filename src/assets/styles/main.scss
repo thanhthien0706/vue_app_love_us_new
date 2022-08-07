@@ -25,6 +25,7 @@
 @import "./components/frontend/me/me_authen_account";
 @import "./components/frontend/campaign/another_campaign";
 @import "./components/frontend/campaign/popup_campaign";
+@import "./components/frontend/can_be_done";
 // ----------------------------------------------------------------------
 // Pages
 // ----------------------------------------------------------------------
@@ -45,8 +46,10 @@
 @import "./pages/frontend/campaign/detail_campaign";
 @import "./pages/frontend/donate_view";
 @import "./pages/frontend/chat/main_group_chat";
+@import "./pages/frontend/animal_detail";
 @import "./pages/admin/blogs";
 @import "./pages/admin/authen_account";
+@import "./pages/admin/manager_animal";
 
 // ----------------------------------------------------------------------
 // Global

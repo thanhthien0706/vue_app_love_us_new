@@ -43,6 +43,15 @@ const routes = [
    * ==============================================================
    */
   ...FrontendRouter,
+
+  {
+    path: "/:pathMatch(.*)*",
+    name: "page_not_found",
+    meta: {
+      title: "Trang không tồn tại",
+    },
+    component: () => import("@/views/frontend/PageNotFound.vue"),
+  },
 ];
 
 const router = createRouter({

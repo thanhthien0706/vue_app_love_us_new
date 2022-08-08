@@ -31,6 +31,7 @@
           <component
             :is="currentComponent"
             @emitShowReadMoreAnimal="handleShowReadMoreAnimal($event)"
+            :dataAnimal="dataAnimal"
           ></component>
         </Transition>
       </div>
@@ -56,6 +57,7 @@ import AnimalDetailFormInfoVue from "@/components/frontend/AnimalDetailFormInfo.
 
 export default {
   name: "AnimalDetailMainInfo",
+  props: ["dataAnimal"],
   components: {
     AnimalDetailDescribeVue,
     AnimalDetailPopupVue,

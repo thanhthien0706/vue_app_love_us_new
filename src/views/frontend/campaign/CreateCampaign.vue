@@ -197,6 +197,10 @@ export default {
         this.dataMainCreateCampaign.dataCampaign.campaign_description
       );
       formData.append(
+        "campaign_password",
+        this.dataMainCreateCampaign.dataCampaign.campaign_password
+      );
+      formData.append(
         "CM_max_members",
         this.dataMainCreateCampaign.dataCampaign.CM_max_members
       );

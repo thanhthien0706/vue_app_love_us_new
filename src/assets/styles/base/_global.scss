@@ -7,6 +7,7 @@ body {
   --dark: #212121;
   --light: #f3f3f3;
   --font: "Odibee Sans", cursive;
+  --animate-delay: 0.5s;
 }
 
 #app {
@@ -288,10 +289,10 @@ input[type="number"] {
   &:after {
     content: "";
     position: absolute;
-    @include WidthHeight(290px, 435px);
+    @include WidthHeight(230px, 410px);
     background: linear-gradient(180deg, #00ff00 0%, #99ffcc 100%);
     background-attachment: fixed;
-    filter: blur(80px);
+    filter: blur(100px);
     transform: matrix(-0.96, -0.26, 0.29, -0.96, 0, 0);
     right: 15%;
     top: 25%;

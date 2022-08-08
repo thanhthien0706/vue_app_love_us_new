@@ -131,6 +131,22 @@ const blogService = {
     }
   },
 
+  /**
+   *
+   * @param year
+   * @returns list counter of blog by year
+   */
+
+  async countBlogByYear(year) {
+    try {
+      const dataRef = await axios.get(`/blog/count-blog-with-year/${year}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error Blog: " + error);
+    }
+  },
+
   //
   async getBlogTop(limit) {
     try {

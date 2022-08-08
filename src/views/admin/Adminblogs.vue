@@ -73,7 +73,7 @@ export default {
         datasets: [
           {
             label: "Bài viết",
-            data: [30, 40, 60, 70, 100, 30, 40, 60, 70, 5, 60, 70],
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             backgroundColor: ["#42c636"],
           },
         ],
@@ -81,9 +81,24 @@ export default {
       dataBlogs: [],
     };
   },
-  mounted() {},
+  mounted() {
+    this.countBlogWithYear();
+  },
   methods: {
     initStart() {},
+    async countBlogWithYear() {
+      const date = new Date();
+      const year = date.getFullYear();
+      const dataRef = await blogService.countBlogByYear(year);
+
+      console.log(dataRef);
+      if (dataRef.status) {
+        dataRef.data.forEach((item) => {
+          this.dataChart.datasets[0].data[item._id - 1] = item.count;
+        });
+        // this.dataChart.datasets[0].data = data
+      }
+    },
     onScrollTop() {
       window.scroll({
         top: 0,

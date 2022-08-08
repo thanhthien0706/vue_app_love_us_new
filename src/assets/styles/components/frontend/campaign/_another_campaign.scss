@@ -2,18 +2,48 @@
   @include BorderRadius(16px);
   overflow: hidden;
   background-color: $bg-main-30;
+  height: 100%;
 
   .boxImage {
     @include WidthHeight(100%, 180px);
     overflow: hidden;
+    position: relative;
+    &:hover {
+      .boxQuickView {
+        @include WidthHeight(100%, 100%);
+        .ic_eye {
+          @include WidthHeight(24px, 24px);
+        }
+      }
+
+      .imgCampaign {
+        transform: scale(1.2);
+      }
+    }
 
     .imgCampaign {
       @include WidthHeight(100%, 100%);
       @include ObjectFit(cover);
       transition: all 0.2s linear;
+    }
 
-      &:hover {
-        transform: scale(1.2);
+    .boxQuickView {
+      @include WidthHeight(0, 0);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba($color: #000, $alpha: 0.2);
+      transition: all 0.2s linear;
+
+      .ic_eye {
+        color: $green-main;
+        @include WidthHeight(0, 0);
+        cursor: pointer;
+        transition: all 0.2s linear;
       }
     }
   }
@@ -24,6 +54,19 @@
     .titleCampaign {
       font-weight: 600;
       line-height: 1.2;
+      margin-bottom: 12px;
+      transition: all 0.2s linear;
+      cursor: pointer;
+      color: #333;
+
+      &:hover {
+        color: $green-main;
+      }
+    }
+
+    .descCampaign {
+      @include FontSize(16);
+      color: rgba($color: #333, $alpha: 0.6);
       margin-bottom: 20px;
     }
 
@@ -101,8 +144,7 @@
         margin: 12px 0;
         position: relative;
 
-        &::after {
-          content: "";
+        .lineInner {
           position: absolute;
           @include WidthHeight(80%, 6px);
           background-color: $green-main;
@@ -140,6 +182,13 @@
             background-color: rgb(66, 198, 54, 0.3);
           }
         }
+      }
+    }
+
+    .boxMainDonateMoney {
+      margin-top: 12px;
+      .textMain {
+        color: rgba($color: #333, $alpha: 0.8);
       }
     }
   }

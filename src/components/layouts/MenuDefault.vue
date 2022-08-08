@@ -18,14 +18,14 @@
           :key="item.id"
           :class="{ active: item.link === this.$route.name }"
         >
-          <router-link :to="{ name: item.link }" class="item_link">
+          <a @click="onHandleChangePage(item.link)" class="item_link">
             <img
               :src="`${require('@/assets/images/icon/menu/' + item.image)}`"
               alt=""
               class="item__menu__icon"
             />
             <p class="item__menu__text">{{ $t(item.name) }}</p>
-          </router-link>
+          </a>
         </li>
 
         <li class="item__hr" v-if="check_user_login">
@@ -37,8 +37,13 @@
             v-if="check_user_login"
             :class="{ active: item.link === this.$route.name }"
           >
-            <router-link
-              :to="{ name: item.link, params: { idUser: dataUserCurrent._id } }"
+            <a
+              @click="
+                $router.push({
+                  name: item.link,
+                  params: { idUser: dataUserCurrent._id },
+                })
+              "
               class="item_link"
             >
               <img
@@ -47,7 +52,7 @@
                 class="item__menu__icon"
               />
               <p class="item__menu__text">{{ $t(item.name) }}</p>
-            </router-link>
+            </a>
           </li>
         </template>
 
@@ -123,13 +128,13 @@
           class="box__show_auth d-flex align-items-center justify-content-center"
           v-else
         >
-          <router-link :to="{ name: 'login' }" class="link_auth">{{
+          <a @click="onHandleChangePage('login')" class="link_auth">{{
             $t("login")
-          }}</router-link>
+          }}</a>
           /
-          <router-link :to="{ name: 'register' }" class="link_auth">
+          <a @click="onHandleChangePage('register')" class="link_auth">
             {{ $t("register") }}
-          </router-link>
+          </a>
         </div>
       </div>
     </nav>
@@ -212,6 +217,12 @@ export default {
           image: "group.png",
           name: "group",
         },
+        {
+          id: 2,
+          link: "ManagerAnimal",
+          image: "icon_campaign.png",
+          name: "campaignManger",
+        },
         // {
         //   id: 2,
         //   link: "convey",
@@ -247,6 +258,10 @@ export default {
       this.currentLanguage = Object.assign({}, item);
       this.$i18n.locale = item.language;
       handleLanguage.changeLanguage(item.language);
+    },
+
+    onHandleChangePage(link) {
+      this.$router.push({ name: link });
     },
   },
 

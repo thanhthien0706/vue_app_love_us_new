@@ -3,7 +3,7 @@
     <div class="boxInnerPopup">
       <div class="boxMainDescribe" v-if="isShowPopupByName == 'describe'">
         <p class="nameAnimal">{{ dataShowPopup.name }}</p>
-        <div class="contentBox">{{ dataShowPopup.subContent }}</div>
+        <div class="contentBox" v-html="dataShowPopup.description"></div>
       </div>
     </div>
   </div>

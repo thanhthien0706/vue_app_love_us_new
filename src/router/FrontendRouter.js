@@ -3,6 +3,14 @@ import checkRole from "@/middleware/checkRole";
 
 const FrontendRouter = [
   {
+    path: "/manager-animal",
+    name: "ManagerAnimal",
+    meta: {
+      middleware: [checkRole.isLogin],
+    },
+    component: () => import("@/views/frontend/ManagerCampaign"),
+  },
+  {
     path: "/messages/me",
     name: "ChatMe",
     meta: {
@@ -113,15 +121,6 @@ const FrontendRouter = [
       title: "Thông điệp",
     },
     component: () => import("@/views/frontend/BeginStartView"),
-  },
-
-  {
-    path: "/:pathMatch(.*)*",
-    name: "page_not_found",
-    meta: {
-      title: "Trang không tồn tại",
-    },
-    component: () => import("@/views/frontend/PageNotFound.vue"),
   },
 ];
 export default FrontendRouter;

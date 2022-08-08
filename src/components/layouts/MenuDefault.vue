@@ -219,7 +219,7 @@ export default {
         },
         {
           id: 2,
-          link: "ChatMe",
+          link: "ManagerAnimal",
           image: "icon_campaign.png",
           name: "campaignManger",
         },

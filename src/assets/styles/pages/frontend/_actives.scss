@@ -5,6 +5,20 @@
     HEADER HOME START
     */
   #box__header__ac {
+    @include MaxWidth($width-tablet){
+      .align-items-center{
+        padding-top: 25px;
+        display: flex;
+        flex-wrap: initial;
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        margin-top: calc(-1 * var(--bs-gutter-y));
+        margin-right: calc(-.5 * var(--bs-gutter-x));
+        margin-left: calc(-.5 * var(--bs-gutter-x));
+      }
+      }
+    
+    
     .img__bird__header {
       @include WidthHeight(100%, auto);
       object-fit: contain;
@@ -110,6 +124,7 @@
     .boxListImageGame {
       .colInner {
         padding: 20px;
+
         .avt__game {
           @include WidthHeight(100%, 220px);
           @include ObjectFit(cover);
@@ -147,6 +162,14 @@
             // font-weight: 700;
             text-align: center;
           }
+        }
+      }
+      @include MaxWidth($width-tablet){
+        .game__rps{
+          width: 50% !important;
+        }
+        .colInner {
+          margin-bottom: 10px;
         }
       }
     }
@@ -321,6 +344,93 @@
             }
           }
         }
+        @include MaxWidth($width-tablet){
+          .rightInner{
+            margin-left: 15px;
+            width: 75%;
+          }
+          .description {
+            display: none;
+          }
+          .btnSeenInforAnimal{
+            width: 300px;
+            display: flex;
+            padding-bottom: 10px;
+          }
+        }
+      }
+    }
+  }
+  #ActivityCanBeDone {
+    // margin: 40px 0;
+    @include MaxWidth($width-tablet){
+      .col-md-4 {
+        width: 50%;
+        max-width: 100%;
+      }
+      .col-md-8{
+        width: 50%;
+        max-width: 100%;
+      }
+    }
+    .boxInnerLeft {
+      .boxColCustom {
+        &:nth-child(2) {
+          margin-top: 20px;
+        }
+        &:nth-child(4) {
+          margin-top: 20px;
+        }
+        .boxCardCanDone {
+          @include WidthHeight(100%, 200px);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-blend-mode: darken;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #fff;
+          cursor: pointer;
+         
+          .textCard {
+            text-align: center;
+            @include FontSize(16);
+            line-height: 1.4;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    .boxInnerRight {
+      padding: 30px 20px;
+      .header__title {
+        @include FontSize(18);
+        padding: 0 70px;
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 3px;
+          width: 60px;
+          background-color: #42c636;
+        }
+      }
+      @include MaxWidth($width-tablet){
+        .header__title{
+          padding: 0px;
+          padding-left: 15px;
+          &::after{
+            top: 12px;
+            width: 16px;
+          }
+        }
+      }
+      .textDescription {
+        line-height: 1.4;
       }
     }
   }

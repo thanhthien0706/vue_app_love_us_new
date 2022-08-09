@@ -4,7 +4,11 @@
     <p class="header__title">Game vui</p>
     <div class="boxListImageGame">
       <div class="row">
-        <div class="col-md-4" v-for="item in dataListGame" :key="item.id">
+        <div
+          class="col-md-4 game__rps"
+          v-for="item in dataListGame"
+          :key="item.id"
+        >
           <Tilt
             :options="{ max: 15, speed: 400, glare: true, 'max-glare': 0.2 }"
           >

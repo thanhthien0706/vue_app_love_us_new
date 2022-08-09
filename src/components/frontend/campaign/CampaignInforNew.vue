@@ -141,6 +141,32 @@
             </div>
 
             <div class="boxLineForm">
+              <div class="formGroup formGroupCustom">
+                <p class="nameInput">Kiểu</p>
+                <div class="boxRadio">
+                  <label>
+                    <input
+                      type="radio"
+                      name="radio"
+                      value="online"
+                      v-model="dataCampaignNew.campaign_type"
+                    />
+                    <span>Onine</span>
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="radio"
+                      value="offline"
+                      v-model="dataCampaignNew.campaign_type"
+                    />
+                    <span>Offline</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="boxLineForm">
               <div class="formGroup">
                 <p class="nameInput">Mô tả chiến dịch</p>
                 <textarea

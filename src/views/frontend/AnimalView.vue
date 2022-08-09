@@ -27,7 +27,7 @@
     <!-- </d iv> -->
   </div>
 
-  <div class="boxLoading" v-else>ddang tai</div>
+  <div class="boxLoading" v-else>Đang tải</div>
 </template>
 
 <script>

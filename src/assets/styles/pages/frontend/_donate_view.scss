@@ -325,7 +325,11 @@
       }
     }
   }
-
+  @include MaxWidth($width-tablet){
+    .boxContentDonate{
+      margin-top: 50px;
+    }
+  }
   .boxLoading {
     max-width: 1024px;
     @include WidthHeight(80%, 360px);

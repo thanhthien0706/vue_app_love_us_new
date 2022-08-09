@@ -93,6 +93,7 @@
         @include WidthHeight(100%, 250px);
         @include BorderRadius(16px);
         overflow: hidden;
+        background-color: $bg-main-30;
 
         margin-top: 30px;
 
@@ -180,6 +181,17 @@
               @include WidthHeight(100%, 6px);
               background-color: rgb(206, 206, 206, 0.8);
               @include BorderRadius(46px);
+              position: relative;
+
+              .lineInner {
+                position: absolute;
+                @include WidthHeight(80%, 6px);
+                background-color: $green-main;
+                @include BorderRadius(46px);
+                top: 0;
+                left: 0;
+                transition: all 0.2s linear;
+              }
             }
 
             .timeLineCounter {
@@ -307,7 +319,7 @@
     .itemInfor {
       display: flex;
       align-items: center;
-      margin-bottom: 6px;
+      margin-bottom: 10px;
 
       &:last-child {
         margin-bottom: 0;
@@ -320,7 +332,7 @@
       }
 
       .name {
-        font-weight: bold;
+        font-weight: 600;
         margin-right: 10px;
       }
     }
@@ -433,4 +445,159 @@
   }
 }
 
-@import "./another_campaign";
+.boxPopupPassWord {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($color: #333, $alpha: 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .boxContentInner {
+    padding: 30px 20px;
+    background-color: #fff;
+    @include BorderRadius(16px);
+    width: 440px;
+    overflow: hidden;
+    position: relative;
+
+    .title {
+      @include FontSize(18);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .descText {
+      color: rgba($color: #333, $alpha: 0.8);
+      line-height: 1.4;
+      margin-bottom: 20px;
+    }
+
+    .btnSubmitPass {
+      display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      .inputPassword {
+        padding-left: 10px;
+        border: none;
+        background-color: rgb(232, 240, 254);
+        outline: none;
+        color: rgba(51, 51, 51, 0.7);
+        @include WidthHeight(100%, 40px);
+        @include BorderRadius(8px);
+        margin-right: 10px;
+
+        &::placeholder {
+          color: rgba(51, 51, 51, 0.7);
+          font-weight: 500;
+          font-style: italic;
+        }
+      }
+
+      .btnSubmit {
+        @include WidthHeight(100px, 40px);
+        @include BorderRadius(8px);
+        outline: none;
+        border: none;
+        @include FontSize(14);
+        background-color: $green-main;
+        color: #fff;
+        font-weight: 600;
+      }
+    }
+
+    .textError {
+      color: red;
+      margin-top: 8px;
+    }
+  }
+}
+
+.boxPopupCommit {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba($color: #333, $alpha: 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .btnSubmitCommit {
+    padding: 30px 20px;
+    background-color: #fff;
+    @include BorderRadius(16px);
+    overflow: hidden;
+    position: relative;
+    max-width: 900px;
+
+    .img_commit {
+      @include WidthHeight(100%, 100%);
+      @include ObjectFit(cover);
+      @include BorderRadius(26px);
+    }
+
+    .boxContentInner {
+      .title_text {
+        font-weight: 600;
+        @include FontSize(18);
+        margin-bottom: 20px;
+      }
+
+      .listConditions {
+        .itemCondition {
+          margin-bottom: 8px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+
+          .ic_dot {
+            @include WidthHeight(6px, 6px);
+            margin-right: 10px;
+          }
+
+          .name_text {
+            color: rgba($color: #000000, $alpha: 0.6);
+            font-weight: 500;
+          }
+        }
+      }
+
+      .text_note {
+        margin-top: 20px;
+
+        span {
+          color: #333;
+          font-weight: bold;
+          @include FontSize(16);
+        }
+        color: red;
+      }
+
+      .btnJoin {
+        height: 40px;
+        background-color: $green-main;
+        @include BorderRadius(46px);
+        outline: none;
+        border: none;
+        @include FontSize(16);
+        font-weight: 600;
+        color: #fff;
+        padding: 0 14px;
+        margin-top: 20px;
+        transition: all 0.2s linear;
+        &:hover {
+          box-shadow: 0 0 6px rgba($color: #333, $alpha: 0.4);
+        }
+      }
+    }
+  }
+}

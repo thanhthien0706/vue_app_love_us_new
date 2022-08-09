@@ -1,39 +1,75 @@
 <template>
   <DefaultFrontend_1>
-    <div id="EventPage" class="animate__animated animate__fadeIn">
-      <section class="sc__count mt-50">
-        <event-campaign />
-      </section>
-      <section class="sc__count">
-        <event-count />
-      </section>
-      <section class="sc__auction mt-50">
-        <event-auction />
-      </section>
-      <section class="sc__listOrganization mt-50">
-        <event-organization />
+    <div
+      id="EventPage"
+      class="animate__animated animate__fadeIn"
+      v-if="!isPending"
+    >
+      <section class="sc_campaigns">
+        <div class="boxHeaderCampaign">
+          <p class="titleText">các chiến dịch</p>
+          <input
+            type="text"
+            placeholder="vd: Nha trang, đà nẵng"
+            class="inputSearch"
+          />
+        </div>
+
+        <div class="row">
+          <div
+            class="col-md-4 mt_20"
+            v-for="item in dataItemcampaign"
+            :key="item._id"
+            style="height;: 100%"
+          >
+            <ItemAnotherCampaign :dataCampaign="item" />
+          </div>
+        </div>
       </section>
     </div>
-    <popup-auction />
+
+    <div class="text-center" v-else>
+      <div class="lds-ripple dark">
+        <div></div>
+        <div></div>
+      </div>
+    </div>
   </DefaultFrontend_1>
+
+  <!-- <PopupCampaignVue /> -->
 </template>
 
 <script>
 import DefaultFrontend_1 from "@/layouts/DefaultFrontend_1.vue";
-import EventCount from "@/components/frontend/EventCount.vue";
-import EventCampaign from "@/components/frontend/EventCampaign.vue";
-import EventAuction from "@/components/frontend/EventAuction.vue";
-import PopupAuction from "@/components/frontend/EventItemPopupAuction.vue";
-import EventOrganization from "@/components/frontend/EventOrganization.vue";
+import ItemAnotherCampaign from "@/components/frontend/campaign/ItemAnotherCampaign.vue";
+import { initPageService, isPending } from "@/services/initPageService";
+// import PopupCampaignVue from "@/components/frontend/campaign/PopupCampaign.vue";
+
 export default {
   name: "EventView",
+  setup() {
+    return { isPending };
+  },
   components: {
     DefaultFrontend_1,
-    EventCount,
-    EventCampaign,
-    EventAuction,
-    PopupAuction,
-    EventOrganization,
+    ItemAnotherCampaign,
+    // PopupCampaignVue,
+  },
+  data() {
+    return {
+      dataItemcampaign: null,
+    };
+  },
+  created() {
+    this.initDataMain();
+  },
+  methods: {
+    async initDataMain() {
+      const dataRef = await initPageService.initEventPage();
+      if (dataRef.success) {
+        this.dataItemcampaign = dataRef.data.dataCampaigns;
+      }
+    },
   },
 };
 </script>

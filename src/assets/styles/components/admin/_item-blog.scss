@@ -20,7 +20,7 @@
   .boxInforBlog {
     .textTitleBlog {
       font-weight: bold;
-      @include FontSize(20px);
+      @include FontSize(20);
       margin-bottom: 24px;
     }
 

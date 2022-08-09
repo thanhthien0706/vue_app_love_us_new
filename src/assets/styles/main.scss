@@ -20,10 +20,14 @@
 @import "./components/menu_default";
 @import "./components/right_default";
 @import "./components/activity-popup-class-animal";
-@import "./components/admin/item-blog";
 @import "./components/notifi_view";
 @import "./components/frontend/me/me_information";
 @import "./components/frontend/me/me_authen_account";
+@import "./components/frontend/campaign/another_campaign";
+@import "./components/frontend/campaign/popup_campaign";
+@import "./components/frontend/can_be_done";
+@import "./components/frontend/item_animal";
+@import "./components/admin/item-blog";
 // ----------------------------------------------------------------------
 // Pages
 // ----------------------------------------------------------------------
@@ -42,9 +46,14 @@
 @import "./pages/frontend/campaign/condition_campaign";
 @import "./pages/frontend/campaign/create_campain";
 @import "./pages/frontend/campaign/detail_campaign";
+@import "./pages/frontend/donate_view";
 @import "./pages/frontend/chat/main_group_chat";
+@import "./pages/frontend/animal_detail";
+@import "./pages/frontend/manager_campaign";
 @import "./pages/admin/blogs";
 @import "./pages/admin/authen_account";
+@import "./pages/admin/manager_animal";
+@import "./pages/admin/campaign";
 
 // ----------------------------------------------------------------------
 // Global

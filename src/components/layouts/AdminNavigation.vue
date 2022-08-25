@@ -52,6 +52,13 @@ export default {
           icon: "paw",
           namePage: "admin_animal",
         },
+        {
+          id: 4,
+          link: "/admin/campaign",
+          nameLink: "admin_campaign",
+          icon: "tent",
+          namePage: "admin_campaign",
+        },
       ],
     };
   },

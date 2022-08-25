@@ -119,6 +119,7 @@ export default {
           campaign_location_detail: "",
           campaign_description: "",
           campaign_password: "",
+          campaign_type: "",
           CM_max_members: 0,
         },
         dataDonate: {
@@ -199,6 +200,10 @@ export default {
       formData.append(
         "campaign_password",
         this.dataMainCreateCampaign.dataCampaign.campaign_password
+      );
+      formData.append(
+        "campaign_type",
+        this.dataMainCreateCampaign.dataCampaign.campaign_type
       );
       formData.append(
         "CM_max_members",

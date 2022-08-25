@@ -20,7 +20,6 @@
 @import "./components/menu_default";
 @import "./components/right_default";
 @import "./components/activity-popup-class-animal";
-@import "./components/admin/item-blog";
 @import "./components/notifi_view";
 @import "./components/frontend/me/me_information";
 @import "./components/frontend/me/me_authen_account";
@@ -28,6 +27,7 @@
 @import "./components/frontend/campaign/popup_campaign";
 @import "./components/frontend/can_be_done";
 @import "./components/frontend/item_animal";
+@import "./components/admin/item-blog";
 // ----------------------------------------------------------------------
 // Pages
 // ----------------------------------------------------------------------
@@ -53,6 +53,7 @@
 @import "./pages/admin/blogs";
 @import "./pages/admin/authen_account";
 @import "./pages/admin/manager_animal";
+@import "./pages/admin/campaign";
 
 // ----------------------------------------------------------------------
 // Global

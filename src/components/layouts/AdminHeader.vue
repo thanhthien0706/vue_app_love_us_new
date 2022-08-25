@@ -16,7 +16,7 @@
     </div>
 
     <div class="boxRightHeader">
-      <p class="textHello">Xin chào admin</p>
+      <p class="textHello">Xin chào ADMIN</p>
       <div class="boxInforRight">
         <ul class="listItemBox">
           <li class="itemBox">
@@ -70,7 +70,7 @@
             <div class="box__person">
               <div class="box__person__inner d-flex align-items-center">
                 <p class="text__person__name">
-                  {{ sub_string(userCurrentName, 12) }}
+                  {{ sub_string(userCurrentName, 16) }}
                 </p>
                 <img
                   :src="`${require('@/assets/images/icon/flag/vietnam.png')}`"

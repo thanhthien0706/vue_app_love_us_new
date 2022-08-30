@@ -1,5 +1,12 @@
 #HomePage {
   width: 100%;
+    /* REPONSIVE TABLET */
+    @include MaxWidth($width-tablet){
+      .text__body{
+        display: none;
+      }
+  
+    }
   /*
     STYLE SLIDE MAIN HOME START
     */
@@ -50,6 +57,7 @@
               margin-bottom: 12px;
             }
 
+
             .text__resources {
               padding: 0 65px;
               position: relative;
@@ -66,6 +74,27 @@
                 @include WidthHeight(55px, 3px);
               }
             }
+
+           
+            @include MaxWidth($width-tablet){
+              .slide__item .row{
+                // display: block;
+                padding: 0px;
+              }
+              .name__animal{
+                @include FontSize(24);
+              }
+              .text__resources{
+                position: absolute;
+                padding-left: 224px;
+
+                &:after{
+                  content: "";
+                  margin-left: 165px;
+                }
+              }
+          
+            } 
           }
 
           .text__body {
@@ -93,6 +122,14 @@
               color: #fff;
             }
           }
+          @include MaxWidth($width-tablet){  
+          .btn_inf {
+            width: 165px;
+            margin-left: 100px;
+            // margin: auto;
+            padding: 10px 20px;
+          }  
+        } 
         }
 
         .box__slide__right {
@@ -102,6 +139,18 @@
             object-fit: contain;
 
             @include MaxWidth(1812px) {
+            }
+          }
+        }
+        @include MaxWidth($width-tablet){
+          .flex__row{
+            flex-wrap: wrap-reverse;
+          }
+          .box__slide__right{
+            width: 100% !important;
+            img {
+            // margin-top: 45px;
+            @include WidthHeight(100%, 100%);
             }
           }
         }
@@ -137,6 +186,11 @@
           }
         }
 
+        @include MaxWidth($width-tablet){
+          .box__img{
+            padding: 15px;
+          }
+        }
         .box__content {
           margin-left: 20px;
           color: #333;
@@ -150,6 +204,21 @@
           .number {
             font-weight: 700;
             @include FontSize(22);
+          }
+        }
+        @include MaxWidth($width-tablet){
+          .box__content {
+            margin-left: 12px;
+            color: #333;
+  
+            .title {
+              font-weight: 500;
+              @include FontSize(13);
+            }
+  
+            .number {
+              @include FontSize(18);
+            }
           }
         }
       }
@@ -341,6 +410,19 @@
         }
       }
     }
+    @include MaxWidth($width-tablet){
+      .box__map__home{
+        flex-direction: column;
+      .box__item__left{
+        margin-left: 12px;
+        width: 100%;
+      }
+      .box__item__right{
+        margin-top: 10px;
+        width: 100%;
+      }  
+      }
+    }
   }
 
   /*
@@ -465,7 +547,27 @@
                 object-fit: contain;
               }
             }
+        @include MaxWidth($width-tablet) {
+              .btn__charity{
+                // margin-left: 110px;
+              }
+              .box__logo {
+                margin-top: 28px;
+              }
+            }
+               
           }
+          @include MaxWidth($width-tablet) {
+            .item__charity{
+              margin-bottom: 10px;
+            }
+            .row_rps{
+              width: 100% !important;
+            }
+            .image_rps {
+              width: 100% !important;
+            }
+          } 
         }
       }
     }
@@ -766,6 +868,12 @@
           }
         }
       }
+      @include MaxWidth($width-tablet){
+        .blog__main{
+          margin-bottom: 30px;
+        }
+    
+      }
 
       .list__blog__box {
         .swiper__custom {
@@ -810,6 +918,12 @@
             .swiper-slide {
               height: 218px;
             }
+          }
+          @include MaxWidth($width-tablet){
+            .swiper-wrapper{
+              padding-top: 0px;
+            }
+        
           }
         }
 
@@ -874,12 +988,17 @@
           }
         }
       }
+      
     }
   }
+
 
   /*
       BLOGS HOME END
       */
+
+
+
 }
 
 .box__popup__campaign__content {

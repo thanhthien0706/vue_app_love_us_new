@@ -96,7 +96,12 @@
             font-style: italic;
           }
         }
-      }
+      } 
+    }
+  }
+  @include MaxWidth($width-tablet){
+    .innerInfor{
+      width: 100%;
     }
   }
 }

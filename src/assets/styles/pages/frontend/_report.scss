@@ -93,6 +93,18 @@
           }
         }
       }
+      @include MaxWidth($width-tablet){
+        .customRow{
+          display: block;
+        }
+        .leftInner{
+          max-width: 100% !important;
+        }
+        .rightInner{
+          max-width: 100% !important;
+        }
+      }
+
     }
   }
 }

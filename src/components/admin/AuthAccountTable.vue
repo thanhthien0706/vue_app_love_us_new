@@ -3,8 +3,9 @@
     <div class="boxHeaderMain">
       <div class="boxDropdown">
         <select class="slDropdown">
-          <option>choa thien</option>
-          <option>Hello ban toi</option>
+          <option value="" disabled selected>Admin kiểm duyệt</option>
+          <option>Nguyễn Hữu Thuật</option>
+          <option>Nguyễn Thành Thiện</option>
         </select>
       </div>
 
@@ -73,7 +74,7 @@
                   {{ formate_date(item.createdAt, "dddd") }},
                   {{ formate_date(item.createdAt, "DD-MM-YYYY") }}
                 </td>
-                <td>{{ item.dataUser[0].phone }}</td>
+                <td>0{{ item.dataUser[0].phone }}</td>
                 <td>{{ item.dataUser[0].email }}</td>
                 <td>
                   <button class="btnEyeSeen" @click="onSeenAccount(item)">

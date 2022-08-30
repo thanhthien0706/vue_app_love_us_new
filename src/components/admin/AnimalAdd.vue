@@ -174,6 +174,7 @@
 
             <div class="boxform bgBoxAdmin">
               <select v-model="dataAnimal.habitat" class="selectOption">
+                <option value="" disabled selected>Môi trường sống</option>
                 <option
                   v-for="(option, index) in optionsHabitat"
                   :value="option.value"
@@ -186,6 +187,7 @@
 
             <div class="boxform bgBoxAdmin">
               <select v-model="dataAnimal.status" class="selectOption">
+                <option value="" disabled selected>Tình trạng loài</option>
                 <option
                   v-for="(option, index) in optionsStatus"
                   :value="option.value"

@@ -12,13 +12,13 @@
       :pagination="{ clickable: true, dynamicBullets: true }"
       :loop="true"
       :autoplay="{
-        delay: 1500,
+        delay: 4000,
         disableOnInteraction: false,
       }"
     >
       <swiper-slide class="slide" v-for="item in dataListMain" :key="item.id">
         <div class="slide__item backgroundMainItem">
-          <div class="row">
+          <div class="row flex__row">
             <div class="box__slide__left col-md-6">
               <div class="item__title">
                 <h4 class="name__animal">{{ item.name }}</h4>
@@ -83,6 +83,15 @@ export default {
             "Chiều dài của bồ câu nâu là từ 36 - 40,5 cm. Bồ câu đực khi trưởng thành có phần đầu màu xám trắng còn phần trên thì có màu nâu tía với độ bóng màu xanh lá cây mờ nhạt trên cổ, thân và lưng có màu xanh nhưng óng ánh hơn, mông sẫm và đuôi có màu xám phủ hết mông, cổ họng và phần dưới có màu xám. Còn con cái thì có phần đầu màu nâu xám và nâu.",
           resource: "IUCN Red List",
           name: "Bồ câu nâu",
+        },
+        {
+          id: 2,
+          link: "home",
+          image: "te giac.png",
+          description:
+            "Tê giác hay con tê (tiếng Anh: Rhinoceros hay Rhino) (/raɪˈnɒsərəs/, từ tiếng Hy Lạp rhinokerōs, nghĩa là 'mũi sừng', từ rhis nghĩa là 'mũi', và keras nghĩa là 'sừng') là những loài động vật có vú guốc lẻ trong họ Rhinocerotidae. Trong năm loài còn sinh tồn, hai loài sinh sống ở Châu Phi, và ba loài sinh sống ở Nam Á.",
+          resource: "IUCN Red List",
+          name: "Tê giác",
         },
       ],
     };

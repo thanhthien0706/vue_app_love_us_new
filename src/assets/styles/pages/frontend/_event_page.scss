@@ -6,7 +6,7 @@
 
   .inputSearch {
     @include BorderRadius(16px);
-    width: 180px;
+    width: 190px;
     padding: 10px 12px;
     background: rgba(206, 206, 206, 0.3);
     border: none;
@@ -20,5 +20,11 @@
     align-items: center;
     justify-content: space-between;
     margin-bottom: 20px;
+  }
+}
+
+@include MaxWidth($width-tablet){
+  .col__respon__tablet{
+    width: 100% !important;
   }
 }

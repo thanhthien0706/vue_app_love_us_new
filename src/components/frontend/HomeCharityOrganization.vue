@@ -42,7 +42,7 @@
           >
             <div class="item__charity backgroundMainItem">
               <div class="row align-items-center">
-                <div class="col-md-7 col-sm-12">
+                <div class="col-md-7 col-sm-12 row_rps">
                   <p class="name__charity">{{ sub_string(item.name, 18) }}</p>
                   <p class="description">
                     {{ sub_string(item.description, 70) }}
@@ -56,7 +56,7 @@
                   </a>
                   <div class="box__spread"></div>
                 </div>
-                <div class="col-md-5 col-sm-12">
+                <div class="col-md-5 col-sm-12 image_rps">
                   <div class="box__logo">
                     <img
                       :src="`${require('@/assets/images/logo_organization/' +

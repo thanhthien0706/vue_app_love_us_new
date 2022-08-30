@@ -289,6 +289,15 @@
         }
       }
     }
+    @include MaxWidth($width-tablet){
+      .mainContentCampaign{
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .nameCampaign{
+        text-align: center
+      }
+    }  
   }
 }
 
@@ -442,6 +451,12 @@
     margin-bottom: 20px;
     @include FontSize(24);
     font-weight: 600;
+  }
+}
+@include MaxWidth($width-tablet){
+  .boxAnotherCampaign{
+    padding-left: 10px;
+    // padding-right: 10px;
   }
 }
 

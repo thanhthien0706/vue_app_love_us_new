@@ -1,8 +1,15 @@
+// @include MaxWidth($width-mobile-ip){
+//   .boxMenuMain{
+//     width: 0px !important;
+//     display: none !important;
+//   }
+// }
 .boxMenuMain {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   width: $width-left;
+
 
   .item__header {
     &--logo {
@@ -260,6 +267,7 @@
 
         &:hover {
           .item_link {
+            cursor: pointer;
             .item__menu {
               &__icon {
                 filter: opacity(1);
@@ -282,12 +290,14 @@
           );
 
           .item_link {
+            cursor: pointer;
             .item__menu {
               &__icon {
                 filter: opacity(1);
               }
 
               &__text {
+                cursor: pointer;
                 color: $mine-shaft;
                 font-weight: 600;
               }
@@ -466,3 +476,7 @@
     }
   }
 }
+/* Mobile */
+@media (max-width: 739px) {
+        
+ }

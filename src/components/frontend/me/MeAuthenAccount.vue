@@ -43,7 +43,7 @@
         alt=""
         class="imageIconSucess"
       />
-      <p class="textTitle">Gửi thông tin thành công</p>
+      <p class="textTitle">Gửi thông tin thành công.</p>
     </div>
   </div>
 

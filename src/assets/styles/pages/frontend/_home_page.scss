@@ -143,6 +143,9 @@
           }
         }
         @include MaxWidth($width-tablet){
+          .flex__row{
+            flex-wrap: wrap-reverse;
+          }
           .box__slide__right{
             width: 100% !important;
             img {

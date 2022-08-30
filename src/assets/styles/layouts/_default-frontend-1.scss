@@ -32,6 +32,12 @@
         // right: 0
         
       }
+      // an menu left tren mobile
+      @include MaxWidth($width-mobile-ip){
+        &__left{
+          display: none;
+        }
+      }
       @include MaxWidth($width-tablet){
         &__right {
           display: none;

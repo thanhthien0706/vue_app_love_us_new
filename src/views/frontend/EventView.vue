@@ -7,20 +7,20 @@
     >
       <section class="sc_campaigns">
         <div class="boxHeaderCampaign">
-          <p class="titleText">các chiến dịch</p>
+          <p class="titleText">Các chiến dịch</p>
           <input
             type="text"
-            placeholder="vd: Nha trang, đà nẵng"
+            placeholder="vd: Nha Trang, Đà Nẵng"
             class="inputSearch"
           />
         </div>
 
         <div class="row">
           <div
-            class="col-md-4 mt_20"
+            class="col-md-4 mt_20 col__respon__tablet"
             v-for="item in dataItemcampaign"
             :key="item._id"
-            style="height;: 100%"
+            style="height: 100%"
           >
             <ItemAnotherCampaign :dataCampaign="item" />
           </div>

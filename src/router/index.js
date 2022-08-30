@@ -59,6 +59,10 @@ const router = createRouter({
   routes,
 });
 
+router.afterEach((to) => {
+  document.title = to.meta.title || "Us love";
+});
+
 function nextFactory(context, middleware, index) {
   const subsequentMiddleware = middleware[index];
 
@@ -70,10 +74,6 @@ function nextFactory(context, middleware, index) {
     subsequentMiddleware({ ...context, next: nextMiddleware });
   };
 }
-
-router.afterEach((to) => {
-  document.title = to.meta.title || "Us love";
-});
 
 router.beforeEach((to, from, next) => {
   if (to.meta.middleware) {

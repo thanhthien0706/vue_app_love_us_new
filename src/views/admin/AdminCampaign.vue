@@ -64,16 +64,28 @@
 
       <section class="sc_tabManagerCampaign">
         <ul class="listTab">
-          <li class="itemTab" :class="{ active: currentTab == 'wait_censor' }">
+          <li
+            class="itemTab"
+            :class="{ active: currentTab == 'false' }"
+            @click="onGetCampaignByStatus('false')"
+          >
             Kiểm duyệt
           </li>
-          <li class="itemTab" :class="{ active: currentTab == 'happenning' }">
+          <li
+            class="itemTab"
+            :class="{ active: currentTab == 'true' }"
+            @click="onGetCampaignByStatus('true')"
+          >
             Chiến dịch
           </li>
         </ul>
 
         <Transition>
-          <CampaignTableDataVue />
+          <CampaignTableDataVue
+            :dataCampaignCurrent="dataCampaignCurrent"
+            :isPending="isPendingCampaign"
+            @removeCampaign="onHandleRemoveCampaign($event)"
+          />
         </Transition>
       </section>
     </div>
@@ -82,6 +94,8 @@
 
 <script>
 import CampaignTableDataVue from "@/components/admin/CampaignTableData.vue";
+import { isPendingCampaign, campaignService } from "@/services/campaignService";
+
 import AdminDefault1 from "@/layouts/admin_default_1.vue";
 import { BarChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
@@ -90,10 +104,14 @@ Chart.register(...registerables);
 
 export default {
   name: "AdminCampaign",
+  setup() {
+    return { isPendingCampaign };
+  },
   components: { AdminDefault1, BarChart, CampaignTableDataVue },
   data() {
     return {
-      currentTab: "wait_censor",
+      currentTab: "false",
+      dataCampaignCurrent: [],
       dataChart: {
         labels: [
           "Tháng 1",
@@ -118,6 +136,30 @@ export default {
         ],
       },
     };
+  },
+
+  mounted() {
+    this.onGetCampaignByStatus(this.currentTab);
+  },
+  methods: {
+    async onGetCampaignByStatus(status) {
+      this.currentTab = status;
+      try {
+        const dataRef = await campaignService.getCampaignByStatusConfirm(
+          status
+        );
+
+        if (dataRef.status) {
+          this.dataCampaignCurrent = dataRef.data;
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+
+    onHandleRemoveCampaign(event) {
+      this.dataCampaignCurrent.splice(event, 1);
+    },
   },
 };
 </script>

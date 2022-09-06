@@ -36,6 +36,16 @@ const campaignService = {
     }
   },
 
+  async getOneCampaign(idCampaign) {
+    try {
+      const dataRef = await axios.get(`/campaign/get-one/${idCampaign}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   async joinCampaign(idCampaign, idUser) {
     try {
       const dataRef = await axios.post(
@@ -77,6 +87,16 @@ const campaignService = {
   async confirmCampaignById(idCampaign) {
     try {
       const dataRef = await axios.get(`/campaign/confirm/${idCampaign}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error campaign: " + error);
+    }
+  },
+
+  async deleteCampaignById(idCampaign) {
+    try {
+      const dataRef = await axios.delete(`/campaign/delete/${idCampaign}`);
 
       return dataRef.data;
     } catch (error) {

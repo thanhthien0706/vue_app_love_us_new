@@ -105,12 +105,6 @@ export default {
           name: "Xác minh",
           component: "MeAuthenAccount",
         },
-
-        {
-          id: 2,
-          name: "Hoạt động",
-          component: "event",
-        },
       ],
     };
   },

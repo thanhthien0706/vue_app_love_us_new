@@ -85,11 +85,21 @@
             :dataCampaignCurrent="dataCampaignCurrent"
             :isPending="isPendingCampaign"
             @removeCampaign="onHandleRemoveCampaign($event)"
+            @getIdCampaign="onHandleIdCampaign($event)"
+            @emitDeleteCampaign="onHandleDeleteCampaign($event)"
           />
         </Transition>
       </section>
     </div>
   </AdminDefault1>
+
+  <CampaignShowQuickVue
+    :isShowQuick="isShowQuick"
+    :dataQuickView="dataQuickView"
+    @closeQuickView="handleCloseQuickView"
+  />
+
+  <NotifiView ref="componentNotifi" />
 </template>
 
 <script>
@@ -99,6 +109,7 @@ import { isPendingCampaign, campaignService } from "@/services/campaignService";
 import AdminDefault1 from "@/layouts/admin_default_1.vue";
 import { BarChart } from "vue-chart-3";
 import { Chart, registerables } from "chart.js";
+import CampaignShowQuickVue from "@/components/admin/CampaignShowQuick.vue";
 
 Chart.register(...registerables);
 
@@ -107,9 +118,16 @@ export default {
   setup() {
     return { isPendingCampaign };
   },
-  components: { AdminDefault1, BarChart, CampaignTableDataVue },
+  components: {
+    AdminDefault1,
+    BarChart,
+    CampaignTableDataVue,
+    CampaignShowQuickVue,
+  },
   data() {
     return {
+      isShowQuick: false,
+      dataQuickView: null,
       currentTab: "false",
       dataCampaignCurrent: [],
       dataChart: {
@@ -154,6 +172,52 @@ export default {
         }
       } catch (error) {
         console.log(error.message);
+      }
+    },
+
+    async onHandleIdCampaign(event) {
+      try {
+        const dataRef = await campaignService.getOneCampaign(event);
+
+        if (dataRef.status) {
+          this.dataQuickView = dataRef.data;
+          this.isShowQuick = true;
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    },
+
+    handleCloseQuickView() {
+      this.isShowQuick = false;
+      this.dataQuickView = null;
+    },
+
+    async onHandleDeleteCampaign(event) {
+      try {
+        const dataRef = await campaignService.deleteCampaignById(event);
+
+        if (dataRef.status) {
+          this.dataCampaignCurrent.forEach((campaign, index) => {
+            if (campaign._id == event) {
+              this.dataCampaignCurrent.splice(index, 1);
+            }
+          });
+
+          this.$refs.componentNotifi.onCreateNotification({
+            status: "success",
+            message: "Xóa thành công",
+            theme: "admin",
+          });
+        } else {
+          this.$refs.componentNotifi.onCreateNotification({
+            status: "destructive",
+            message: "Xóa không thành công",
+            theme: "admin",
+          });
+        }
+      } catch (error) {
+        console.log(error);
       }
     },
 

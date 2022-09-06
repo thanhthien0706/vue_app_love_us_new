@@ -87,7 +87,10 @@
                 </td>
                 <td>
                   <div class="boxHandleBtn">
-                    <button class="btnHandle green">
+                    <button
+                      class="btnHandle green"
+                      @click="emitIdCampaign(item._id)"
+                    >
                       <fa :icon="['fas', 'eye']" class="ic_handle" />
                     </button>
 
@@ -102,6 +105,7 @@
                     <button
                       class="btnHandle orange"
                       v-if="!item.campaign_confirm"
+                      @click="onEmitDeleteCampaign(item._id)"
                     >
                       <fa :icon="['fas', 'trash']" class="ic_handle" />
                     </button>
@@ -142,6 +146,12 @@ export default {
       } catch (error) {
         console.log(error.message);
       }
+    },
+    emitIdCampaign(id) {
+      this.$emit("getIdCampaign", id);
+    },
+    onEmitDeleteCampaign(id) {
+      this.$emit("emitDeleteCampaign", id);
     },
     onEmitSearchAccount() {},
     formate_date: formatDate.basicFormat,

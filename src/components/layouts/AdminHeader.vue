@@ -3,7 +3,7 @@
 <template>
   <header class="AdminHeader">
     <div class="boxHeaderlogo">
-      <router-link :to="{ name: 'home' }" class="logo__link">
+      <router-link to="/admin/blogs/all" class="logo__link">
         <img
           src="@/assets/images/ic_logo_green.png"
           alt=""

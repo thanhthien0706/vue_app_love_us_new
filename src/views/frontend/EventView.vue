@@ -20,7 +20,6 @@
             class="col-md-4 mt_20 col__respon__tablet"
             v-for="item in dataItemcampaign"
             :key="item._id"
-            style="height: 100%"
           >
             <ItemAnotherCampaign :dataCampaign="item" />
           </div>

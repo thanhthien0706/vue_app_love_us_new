@@ -36,6 +36,16 @@ const campaignService = {
     }
   },
 
+  async getOneCampaign(idCampaign) {
+    try {
+      const dataRef = await axios.get(`/campaign/get-one/${idCampaign}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   async joinCampaign(idCampaign, idUser) {
     try {
       const dataRef = await axios.post(
@@ -58,6 +68,39 @@ const campaignService = {
       console.log("Error campaign: " + error);
     } finally {
       isPendingCampaign.value = false;
+    }
+  },
+
+  async getCampaignByStatusConfirm(status) {
+    isPendingCampaign.value = true;
+    try {
+      const dataRef = await axios.get(`/campaign/manager?status=${status}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error campaign: " + error);
+    } finally {
+      isPendingCampaign.value = false;
+    }
+  },
+
+  async confirmCampaignById(idCampaign) {
+    try {
+      const dataRef = await axios.get(`/campaign/confirm/${idCampaign}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error campaign: " + error);
+    }
+  },
+
+  async deleteCampaignById(idCampaign) {
+    try {
+      const dataRef = await axios.delete(`/campaign/delete/${idCampaign}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log("Error campaign: " + error);
     }
   },
 };

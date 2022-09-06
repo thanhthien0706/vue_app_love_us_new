@@ -71,7 +71,7 @@
               <input
                 type="text"
                 class="inputForm"
-                :value="dataItemAccount.dataUser[0].name"
+                :value="dataItemAccount.dataUser.name"
                 disabled
               />
             </div>
@@ -80,7 +80,7 @@
             <div class="boxform bgBoxAdmin">
               <input
                 type="text"
-                :value="dataItemAccount.dataUser[0].email"
+                :value="dataItemAccount.dataUser.email"
                 class="inputForm"
                 disabled
               />
@@ -91,7 +91,7 @@
               <input
                 type="text"
                 :value="
-                  moment(dataItemAccount.dataUser[0].dob).format('DD-MM-YYYY')
+                  moment(dataItemAccount.dataUser.dob).format('DD-MM-YYYY')
                 "
                 class="inputForm"
                 disabled
@@ -102,7 +102,7 @@
             <div class="boxform bgBoxAdmin">
               <input
                 type="text"
-                :value="dataItemAccount.dataUser[0].phone"
+                :value="dataItemAccount.dataUser.phone"
                 class="inputForm"
                 disabled
               />
@@ -112,7 +112,7 @@
             <div class="boxform bgBoxAdmin">
               <input
                 type="text"
-                :value="dataItemAccount.dataUser[0].address"
+                :value="dataItemAccount.dataUser.address"
                 class="inputForm"
                 disabled
               />
@@ -122,7 +122,7 @@
             <div class="boxform bgBoxAdmin">
               <input
                 type="text"
-                :value="dataItemAccount.dataUser[0].activity_point"
+                :value="dataItemAccount.dataUser.activity_point"
                 class="inputForm"
                 disabled
               />

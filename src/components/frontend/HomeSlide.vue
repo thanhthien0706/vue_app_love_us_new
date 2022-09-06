@@ -12,7 +12,7 @@
       :pagination="{ clickable: true, dynamicBullets: true }"
       :loop="true"
       :autoplay="{
-        delay: 4000,
+        delay: 3000,
         disableOnInteraction: false,
       }"
     >
@@ -92,6 +92,24 @@ export default {
             "Tê giác hay con tê (tiếng Anh: Rhinoceros hay Rhino) (/raɪˈnɒsərəs/, từ tiếng Hy Lạp rhinokerōs, nghĩa là 'mũi sừng', từ rhis nghĩa là 'mũi', và keras nghĩa là 'sừng') là những loài động vật có vú guốc lẻ trong họ Rhinocerotidae. Trong năm loài còn sinh tồn, hai loài sinh sống ở Châu Phi, và ba loài sinh sống ở Nam Á.",
           resource: "IUCN Red List",
           name: "Tê giác",
+        },
+        {
+          id: 3,
+          link: "home",
+          image: "vuon_tay_trang.png",
+          description:
+            "Thân hình giống như vượn đen. Khác là ở chỗ con đực có bàn chân, bàn tay trắng, xung quanh mặt viền lông trắng (hoặc vàng nhạt, vàng xanh, ở con cái). Thân và chân tay vàng nhạt đều, xung quanh mặt trắng.",
+          resource: "IUCN Red List",
+          name: "Vượn tay trắng",
+        },
+        {
+          id: 4,
+          link: "home",
+          image: "vooc_xam.png",
+          description:
+            "Bộ lông màu xám tro tới màu nâu đen, trên đầu có mào lông, da bao quanh mắt có màu xanh và trắng. Lông ở vùng lưng thẫm hơn ở vùng bụng. Bên hông có các lông dài, đầu lông có ánh bạc. Đuôi dài hơn thân, lông đuôi rất dài. Chân tay có màu đen, phần trên cánh tay, chân và đuôi có màu xám bạc.",
+          resource: "IUCN Red List",
+          name: "Voọc xám",
         },
       ],
     };

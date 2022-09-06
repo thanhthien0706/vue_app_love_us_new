@@ -246,7 +246,7 @@ export default {
       } else {
         this.onShowNotifi({
           status: "destructive",
-          message: "Đăng nhập không thành công",
+          message: "Vui lòng kiểm tra Email hoặc Mật khẩu",
           theme: "",
         });
         // console.log(resDataLogin);

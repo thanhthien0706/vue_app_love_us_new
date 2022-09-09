@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="boxStatisInner bgBoxAdmin">
+            <!-- <div class="boxStatisInner bgBoxAdmin">
               <div class="boxInforLeft">
                 <p class="countNumber">200</p>
                 <p class="nameStatistics">Quyên góp</p>
@@ -53,7 +53,7 @@
                   class="ic_statistic violet"
                 />
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 

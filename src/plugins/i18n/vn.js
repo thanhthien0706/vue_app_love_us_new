@@ -43,6 +43,7 @@ const vn = {
   campaignManger: "QL chiến dịch",
   admin_animal: "Động vật",
   admin_campaign: "Chiến dịch",
+  admin_donate: "Quyên góp",
 };
 
 export default vn;

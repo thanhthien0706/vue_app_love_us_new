@@ -241,12 +241,14 @@ export default {
           name: "NGUYEN THANH THIEN",
           code: "106871804962",
           name_bank: "Viettinbank",
+          form: "bank",
         },
         {
           id: 0,
           name: "NGUYEN THANH THIEN",
           code: "0818133841",
           name_bank: "MoMo",
+          form: "momo",
         },
       ],
     };
@@ -339,6 +341,7 @@ export default {
       dataNew.Donor_money = this.money;
       dataNew.Donor_messenger = this.messenger;
       dataNew.Donor_code = this.endcode;
+      dataNew.Donor_form = this.isShowInfor;
       if (this.$store.state.dataUserCurrent) {
         if (!this.isAnonymous) {
           dataNew.Donor_sender = this.$store.state.dataUserCurrent._id;

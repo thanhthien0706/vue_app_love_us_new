@@ -59,6 +59,13 @@ export default {
           icon: "tent",
           namePage: "admin_campaign",
         },
+        {
+          id: 5,
+          link: "/admin/donate",
+          nameLink: "admin_donate",
+          icon: "circle-dollar-to-slot",
+          namePage: "admin_donate",
+        },
       ],
     };
   },

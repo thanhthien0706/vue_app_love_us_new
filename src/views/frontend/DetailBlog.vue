@@ -4,7 +4,7 @@
   <DefaultFrontend_1>
     <div class="DetailBlog" v-if="isShow">
       <div class="headerBlog">
-        <div class="icon" @click="$router.go(-1)">
+        <div class="icon" @click="onClosePage">
           <fa :icon="['fas', 'angle-left']" class="ic_back" />
         </div>
         <div class="boxTitle">
@@ -16,7 +16,7 @@
         </div>
       </div>
 
-      <div class="contentBlog">
+      <div class="contentBlog" ref="content_main_blog">
         <div class="boxMainImage">
           <img
             :src="convert_image(dataBlogDetail.main_image)"
@@ -197,6 +197,7 @@ export default {
   data() {
     return {
       isShow: true,
+      timeOutCounterBlog: null,
       optionNotifi: {
         status: "",
         message: "",
@@ -229,26 +230,53 @@ export default {
 
   mounted() {
     this.initDataMain();
+    this.onScrollToTop();
   },
   created() {},
   methods: {
     async initDataMain() {
-      document.title = this.titlePage;
       const dataBLogDetial = await blogService.getBlogDetailWithSlug(
         this.$route.params.slugBlog
       );
-
-      console.log(dataBLogDetial);
+      const routeName = this.$route.meta.title;
 
       if (dataBLogDetial.success) {
         if (dataBLogDetial.data == null) {
           this.isShow = false;
         } else {
+          document.title = `${this.$t(routeName)} - ${
+            dataBLogDetial.data[0].title
+          }`;
           this.dataBlogDetail = dataBLogDetial.data[0];
           this.getAllCommentOfBlog();
+          this.initCounterBlog();
         }
       }
     },
+
+    initCounterBlog() {
+      this.timeOutCounterBlog = setTimeout(async () => {
+        try {
+          const dataMain = await blogService.updateCountViewBlog(
+            this.dataBlogDetail._id
+          );
+
+          console.log(dataMain);
+        } catch (error) {
+          console.log(error.message);
+        }
+      }, 5000);
+    },
+
+    onClosePage() {
+      this.$router.go(-1);
+      clearTimeout(this.timeOutCounterBlog);
+    },
+
+    onScrollToTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
+
     onShowNotifi(option) {
       this.optionNotifi = option;
       this.$refs.componentNotifi.onCreateNotification(this.optionNotifi);
@@ -333,15 +361,6 @@ export default {
     convert_image: ConvertImage,
     format_date: FormatDate,
   },
-  computed: {
-    titlePage() {
-      const routeName = this.$route.meta.title;
-      const params = this.$route.params.slugBlog;
-      const title = `${this.$t(routeName)} - ${params}`;
-      return title;
-    },
-
-    // dataChildComment() {},
-  },
+  computed: {},
 };
 </script>

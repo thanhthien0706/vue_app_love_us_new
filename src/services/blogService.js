@@ -5,6 +5,16 @@ const isPending = ref(null);
 const isPendingIndex = ref(null);
 
 const blogService = {
+  async updateCountViewBlog(idBlog) {
+    try {
+      const dataRef = await axios.put(`/blog/counter-blog/${idBlog}`);
+
+      return dataRef.data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
+
   async getBlogsIndex() {
     isPendingIndex.value = true;
     try {

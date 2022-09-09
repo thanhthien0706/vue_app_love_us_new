@@ -254,6 +254,13 @@ export default {
           });
           // console.log(resDataLogin);
         }
+      } else {
+        this.onShowNotifi({
+          status: "destructive",
+          message: "Vui lòng kiểm tra Email hoặc Mật khẩu",
+          theme: "",
+        });
+        // console.log(resDataLogin);
       }
     },
   },

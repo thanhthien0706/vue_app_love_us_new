@@ -157,112 +157,6 @@ export default createStore({
         img: "bgnam.png",
       },
     ],
-    dataCampaign: [
-      {
-        id: 0,
-        img: "https://meta.vn/Data/image/2022/01/13/anh-dep-thien-nhien-3.jpg",
-        category: "Rừng",
-        description:
-          "We exist to help people get answers to questions threy’ve not found. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well.",
-        name: "Pet Coffee Shop Day",
-        time: "10:00pm",
-        date: "Jan 7th, 2022",
-        thu: "Thursday",
-        status: "New",
-        location: "Son Tra - Da Nang",
-        organizer: "Pet Coffee",
-      },
-
-      {
-        id: 1,
-        img: "https://meta.vn/Data/image/2022/01/13/anh-dep-thien-nhien-3.jpg",
-        category: "Rừng",
-        description:
-          "We exist to help people get answers to questions threy’ve not found. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well.",
-        name: "Pet Coffee Shop Day",
-        time: "10:00pm",
-        date: "Jan 7th, 2022",
-        thu: "Thursday",
-        status: "New",
-        location: "Son Tra - Da Nang",
-        organizer: "Pet Coffee",
-      },
-
-      {
-        id: 2,
-        img: "https://vcdn-dulich.vnecdn.net/2020/09/04/1-Meo-chup-anh-dep-khi-di-bien-9310-1599219010.jpg",
-        category: "Biển",
-        description:
-          "We exist to help people get answers to questions threy’ve not found. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well.",
-        name: "Pet Coffee Shop Day",
-        time: "10:00pm",
-        date: "Jan 7th, 2022",
-        thu: "Thursday",
-        status: "New",
-        location: "Son Tra - Da Nang",
-        organizer: "Pet Coffee",
-      },
-
-      {
-        id: 3,
-        img: "https://vcdn-dulich.vnecdn.net/2020/09/04/1-Meo-chup-anh-dep-khi-di-bien-9310-1599219010.jpg",
-        category: "Biển",
-        description:
-          "We exist to help people get answers to questions threy’ve not found. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well.",
-        name: "Pet Coffee Shop Day",
-        time: "10:00pm",
-        date: "Jan 7th, 2022",
-        thu: "Thursday",
-        status: "New",
-        location: "Son Tra - Da Nang",
-        organizer: "Pet Coffee",
-      },
-
-      {
-        id: 4,
-        img: "https://nhattientuu.com/wp-content/uploads/2020/08/hinh-anh-dep-1.jpg",
-        category: "Sông",
-        description:
-          "We exist to help people get answers to questions threy’ve not found. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well.",
-        name: "Pet Coffee Shop Day",
-        time: "10:00pm",
-        date: "Jan 7th, 2022",
-        thu: "Thursday",
-        status: "New",
-        location: "Son Tra - Da Nang",
-        organizer: "Pet Coffee",
-      },
-
-      {
-        id: 5,
-        img: "https://nhattientuu.com/wp-content/uploads/2020/08/hinh-anh-dep-1.jpg",
-        category: "Sông",
-        description:
-          "We exist to help people get answers to questions threy’ve not found. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well.",
-        name: "Pet Coffee Shop Day",
-        time: "10:00pm",
-        date: "Jan 7th, 2022",
-        thu: "Thursday",
-        status: "New",
-        location: "Son Tra - Da Nang",
-        organizer: "Pet Coffee",
-      },
-
-      {
-        id: 6,
-        img: "https://nhattientuu.com/wp-content/uploads/2020/08/hinh-anh-dep-1.jpg",
-        category: "Sông",
-        description:
-          "We exist to help people get answers to questions threy’ve not found. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well. Either that they cannot ask them or they do not know to frame them, or the answers are not framed well.",
-        name: "Pet Coffee Shop Day",
-        time: "10:00pm",
-        date: "Jan 7th, 2022",
-        thu: "Thursday",
-        status: "New",
-        location: "Son Tra - Da Nang",
-        organizer: "Pet Coffee",
-      },
-    ],
     dataListOrganization: [
       {
         id: 0,
@@ -349,7 +243,6 @@ export default createStore({
         distribution: "các tỉnh thành trên Việt Nam.",
       },
     ],
-
     dataAuction: [
       {
         id: 0,
@@ -423,7 +316,6 @@ export default createStore({
         startingprice: "không có mức định giá cụ thể",
       },
     ],
-
     dataBlogSlide: [
       {
         id: 0,

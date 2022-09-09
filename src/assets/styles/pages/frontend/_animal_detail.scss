@@ -75,11 +75,11 @@
         filter: drop-shadow(-10px 4px 4px rgba(255, 255, 255, 0.25));
       }
     }
-    @include MaxWidth($width-tablet){
-      .mainImage{
+    @include MaxWidth($width-tablet) {
+      .mainImage {
         @include WidthHeight(200px !important, 400px);
       }
-      .mainNameAnimal{
+      .mainNameAnimal {
         font-size: 3.375em !important;
       }
     }
@@ -164,8 +164,8 @@
       }
     }
   }
-  @include MaxWidth($width-tablet){
-    .boxInnerContent{
+  @include MaxWidth($width-tablet) {
+    .boxInnerContent {
       width: fit-content;
       transform: translateX(18%);
     }
@@ -243,18 +243,18 @@
           color: #fff;
           text-transform: uppercase;
           font-weight: bold;
-          @include FontSize(70);
+          @include FontSize(60);
           margin-bottom: 40px;
         }
 
         .subContent {
-          color: rgba(255, 255, 255, 0.6);
+          color: rgba(255, 255, 255, 0.7);
           font-weight: 600;
-          @include FontSize(18);
+          @include FontSize(16);
           line-height: 1.3;
           margin-bottom: 30px;
         }
-        @include MaxWidth($width-tablet){
+        @include MaxWidth($width-tablet) {
           .subContent {
             width: 400px !important;
             @include FontSize(16);
@@ -290,6 +290,28 @@
             line-height: 1.3;
             .titleInfo {
               color: rgba($color: #fff, $alpha: 1);
+            }
+          }
+        }
+      }
+
+      #boxAnimalDetailImage {
+        .boxConnentMainInner {
+          width: 600px;
+
+          .row {
+            .col-md-4 {
+              margin: 10px 0;
+            }
+          }
+
+          .boxImageInner {
+            @include WidthHeight(100%, 120px);
+            img {
+              @include WidthHeight(100%, 100%);
+              @include ObjectFit(cover);
+              @include BorderRadius(12px);
+              border: 3px solid $green-main;
             }
           }
         }

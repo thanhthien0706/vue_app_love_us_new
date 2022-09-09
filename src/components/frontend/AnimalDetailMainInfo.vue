@@ -54,6 +54,7 @@
 import AnimalDetailDescribeVue from "@/components/frontend/AnimalDetailDescribe.vue";
 import AnimalDetailPopupVue from "./AnimalDetailPopup.vue";
 import AnimalDetailFormInfoVue from "@/components/frontend/AnimalDetailFormInfo.vue";
+import AnimalDetailImagesVue from "./AnimalDetailImages.vue";
 
 export default {
   name: "AnimalDetailMainInfo",
@@ -62,6 +63,7 @@ export default {
     AnimalDetailDescribeVue,
     AnimalDetailPopupVue,
     AnimalDetailFormInfoVue,
+    AnimalDetailImagesVue,
   },
   data() {
     return {
@@ -77,6 +79,10 @@ export default {
         {
           id: 2,
           name: "AnimalDetailFormInfoVue",
+        },
+        {
+          id: 3,
+          name: "AnimalDetailImagesVue",
         },
       ],
     };

@@ -67,11 +67,16 @@
             </p>
             <div class="boxCheckCampaign">
               <p class="nameInput">Ẩn danh</p>
-              <div class="boxToggle">
-                <input type="checkbox" class="checkbox" v-model="isAnonymous" />
+              <label for="checkCampaignId" class="boxToggle">
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="checkCampaignId"
+                  v-model="isAnonymous"
+                />
                 <div class="knobs"></div>
                 <div class="layer"></div>
-              </div>
+              </label>
             </div>
 
             <form action="javascript:void(0)" class="formDonateMain">
@@ -203,6 +208,8 @@
       </div>
     </div>
   </div>
+
+  <NotifiView ref="componentNotifi" />
 </template>
 
 <script>
@@ -234,12 +241,14 @@ export default {
           name: "NGUYEN THANH THIEN",
           code: "106871804962",
           name_bank: "Viettinbank",
+          form: "bank",
         },
         {
           id: 0,
           name: "NGUYEN THANH THIEN",
           code: "0818133841",
           name_bank: "MoMo",
+          form: "momo",
         },
       ],
     };
@@ -309,6 +318,11 @@ export default {
 
     onHandleCopy(value) {
       navigator.clipboard.writeText(value);
+      this.$refs.componentNotifi.onCreateNotification({
+        status: "success",
+        message: "Đã coppy",
+        theme: "",
+      });
     },
 
     onSelectInforDonate(value) {
@@ -327,6 +341,7 @@ export default {
       dataNew.Donor_money = this.money;
       dataNew.Donor_messenger = this.messenger;
       dataNew.Donor_code = this.endcode;
+      dataNew.Donor_form = this.isShowInfor;
       if (this.$store.state.dataUserCurrent) {
         if (!this.isAnonymous) {
           dataNew.Donor_sender = this.$store.state.dataUserCurrent._id;

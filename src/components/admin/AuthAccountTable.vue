@@ -60,12 +60,12 @@
 
           <tbody class="tbody_custom">
             <template v-for="(item, index) in listDataAccounts" :key="item._id">
-              <tr class="tr_custom" v-if="!isPending">
+              <tr class="tr_custom" v-if="!isPending && listDataAccounts">
                 <th scope="row">{{ index + 1 }}</th>
-                <td>{{ item.dataUser[0].name }}</td>
+                <td>{{ item.dataUser.name }}</td>
                 <td>
                   <img
-                    :src="convert_image(item.dataUser[0].avatar)"
+                    :src="convert_image(item.dataUser.avatar)"
                     alt=""
                     class="imageAvatarAccount"
                   />
@@ -74,8 +74,8 @@
                   {{ formate_date(item.createdAt, "dddd") }},
                   {{ formate_date(item.createdAt, "DD-MM-YYYY") }}
                 </td>
-                <td>0{{ item.dataUser[0].phone }}</td>
-                <td>{{ item.dataUser[0].email }}</td>
+                <td>0{{ item.dataUser.phone }}</td>
+                <td>{{ item.dataUser.email }}</td>
                 <td>
                   <button class="btnEyeSeen" @click="onSeenAccount(item)">
                     <fa :icon="['fas', 'eye']" />

@@ -40,9 +40,10 @@ const en = {
   totalauction: "Total Auction",
   numberauctionsvalid: "Number of auctions still valid",
   totalamountauctioned: "Total amount auctioned",
-  campaignManger: "Manager campaign",
-  admin_animal: "Manager animal",
-  admin_campaign: "Manager campaign",
+  campaignManger: "Campaign",
+  admin_animal: "Animal",
+  admin_campaign: "Campaign",
+  admin_donate: "Donate",
 };
 
 export default en;

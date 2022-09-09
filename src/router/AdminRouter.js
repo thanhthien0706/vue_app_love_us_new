@@ -2,6 +2,15 @@ import checkRole from "@/middleware/checkRole";
 
 const AdminRouter = [
   {
+    path: "/admin/donate",
+    name: "admin_donate",
+    meta: {
+      title: "Donate Manager",
+      middleware: [checkRole.isAdmin],
+    },
+    component: () => import("@/views/admin/AdminDonate"),
+  },
+  {
     path: "/admin/campaign",
     name: "admin_campaign",
     meta: {

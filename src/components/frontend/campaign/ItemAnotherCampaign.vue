@@ -26,7 +26,7 @@
           {{ sub_string(dataCampaign.campaign_name, 60) }}
         </p>
         <p class="descCampaign">
-          {{ sub_string(dataCampaign.campaign_description, 100) }}
+          {{ sub_string(dataCampaign.campaign_description, 55) }}
         </p>
         <div class="boxOrganizeShow">
           <div class="boxLeft">
@@ -143,9 +143,7 @@ export default {
   name: "ItemAnotherCampaign",
   props: ["dataCampaign"],
   data() {
-    return {
-      text: "Gây quỹ tặng 40 nụ cười thay đổi cuộc đời cho các em bé hở môi, hàm ếch",
-    };
+    return {};
   },
   methods: {
     onHandleMoneyDonate(dataDonate) {

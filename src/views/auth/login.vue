@@ -25,6 +25,7 @@
                     class="input__infor"
                     autocomplete="off"
                     v-model="v$.dataFormLogin.email.$model"
+                    required
                   />
                 </div>
 
@@ -50,6 +51,7 @@
                   class="input__infor"
                   autocomplete="off"
                   v-model="dataFormLogin.password"
+                  required
                 />
               </div>
 
@@ -227,29 +229,31 @@ export default {
     },
 
     async onHandleLogin() {
-      const resDataLogin = await authService.loginAccount(this.dataFormLogin);
+      if (this.dataFormLogin.email && this.dataFormLogin.password) {
+        const resDataLogin = await authService.loginAccount(this.dataFormLogin);
 
-      console.log(resDataLogin);
+        console.log(resDataLogin);
 
-      if (resDataLogin.success) {
-        localStorage.setItem("loveUseToken", resDataLogin.token);
-        // this.$router.push({ name: "home" });
-        authService.initAuthHeader();
-        let userData = await this.getDataUser();
-        if (userData.role == "user") {
-          this.$router.push({ name: "home" });
-        } else if (userData.role == "admin") {
-          this.$router.push({ path: "/admin/blogs/all" });
+        if (resDataLogin.success) {
+          localStorage.setItem("loveUseToken", resDataLogin.token);
+          // this.$router.push({ name: "home" });
+          authService.initAuthHeader();
+          let userData = await this.getDataUser();
+          if (userData.role == "user") {
+            this.$router.push({ name: "home" });
+          } else if (userData.role == "admin") {
+            this.$router.push({ path: "/admin/blogs/all" });
+          } else {
+            this.$router.push({ name: "login" });
+          }
         } else {
-          this.$router.push({ name: "login" });
+          this.onShowNotifi({
+            status: "destructive",
+            message: "Đăng nhập không thành công",
+            theme: "",
+          });
+          // console.log(resDataLogin);
         }
-      } else {
-        this.onShowNotifi({
-          status: "destructive",
-          message: "Đăng nhập không thành công",
-          theme: "",
-        });
-        // console.log(resDataLogin);
       }
     },
   },

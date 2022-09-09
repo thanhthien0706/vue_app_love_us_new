@@ -122,12 +122,15 @@
             />
           </label>
 
-          <img
-            :src="convert_image(currentAvtBlog)"
-            alt=""
-            class="imgAvt"
-            v-if="currentAvtBlog != ''"
-          />
+          <div v-if="currentAvtBlog != ''">
+            <img
+              :src="convert_image(currentAvtBlog)"
+              alt=""
+              class="imgAvt"
+              v-if="!dataFormBlog.main_image"
+            />
+            <img :src="currentAvtBlog" alt="" class="imgAvt" v-else />
+          </div>
           <p class="showEntry" v-else>Chưa có ảnh đại diện</p>
         </div>
 
